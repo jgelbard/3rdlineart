@@ -1,0 +1,602 @@
+<form id="edit-profile" class="form-horizontal">
+						 <h2 style="background-color:#f8f7f7; text-align:center">Patient Details</h2>
+                          <hr style=" border: 1.5px solid #b49308;" />
+                          <table style="width:100%" border="0">
+                          <tr>
+                          <td><h4>First Name</h4> 
+                              
+                        </td>
+                          <td>
+                              <input type="text" class="span4" id="firstname" name="fname">
+                          </td>    
+                          <td><h4>Surname</h4> 									
+</td>    
+                          <td><span></span>												
+                              <input type="text" class="span3" id="firstname" name="lname" >
+</td>    
+                          </tr> 
+                              <tr>
+                          <td>
+                             <h4>ART-ID Number</h4>
+                        </td>
+                          <td>
+                              <input type="text" class="span4" id="firstname" value="">
+                          </td>    
+                          <td>
+                              <h4>Gender</h4>
+</td>    
+                          <td>
+                              <select>
+                              <option>select gender</option>
+                              <option>Male</option>
+                              <option>Female</option>
+                              </select>
+</td>    
+                          </tr> 
+                          <tr>
+                          <td>
+                             <h4>VL sample-ID</h4>
+                        </td>
+                          <td>
+                              <input type="text" class="span4" id="firstname" value="">
+                          </td>    
+                          <td>
+                              <h4>Date of Birth</h4>
+</td>    
+                          <td>												
+                              <input type="date" class="span3" id="firstname" value="">
+</td>    
+                          </tr> 
+                          </table>
+                          <hr />
+                          <h2 style="background-color:#f8f7f7; text-align:center">Facility Details</h2>
+                           <hr style=" border: 1px solid #cbe509;" />
+                          
+                           <table style="width:100%" border="0">
+                          
+                                <tr>
+                          <td>
+                              <h4>ART Clinic</h4> 
+                        </td>
+                          <td>
+                              <select>
+                              <option>select gender</option>
+                              <option>Male</option>
+                              <option>Female</option>
+                              </select>
+</td>    
+                          </tr> 
+                               
+                        <tr>
+                          <td>
+                              <h4>Clinician's Name</h4> 
+                        </td>
+                          <td>
+                              <input type="text" class="span4" id="firstname" name="fname">
+                          </td>    
+                          </tr> 
+                             
+                          <tr>
+                          <td>
+                             <h4>Clinician's Tel. Number</h4>
+                        </td>
+                          <td>
+                              <input type="text" class="span4" id="firstname" value="">
+                          </td>    
+                    
+                          </tr> 
+                               <tr>
+                          <td>
+                             <h4>Clinician's Email Address</h4>
+                        </td>
+                          <td>
+                              <input type="text" class="span4" id="firstname" value="">
+                          </td>    
+                    
+                          </tr> 
+                          </table>
+                           <hr />
+                          
+                         <h2 style="background-color:#f8f7f7; text-align:center">Current Clinic Status and history</h2>
+                           <hr style=" border: 1px solid #12c3f8;" />
+                          <table style="width:100%" border="0">
+                          
+                                <tr>
+                          <td>
+                              <h4>WHO stage at start of Treatment</h4> 
+                        </td>
+                          <td>
+                              <select>
+                              <option>select gender</option>
+                              <option>Male</option>
+                              <option>Female</option>
+                              </select>
+</td>    
+                          </tr> 
+                               
+                        <tr>
+                          <td>
+                              <h4>Current WHO stage (+defining condition)</h4> 
+                        </td>
+                          <td>
+                              <input type="text" class="span4" id="firstname" name="fname">
+                          </td>    
+                          </tr> 
+                             
+                          <tr>
+                          <td>
+                             <h4>Weight</h4>
+                        </td>
+                          <td>
+                              <input type="text" class="span4" id="firstname" value="">
+                          </td>    
+                    
+                          </tr> 
+                               
+                              <tr>
+                          <td>
+                             <h4>Height</h4>
+                        </td>
+                          <td>
+                              <input type="text" class="span4" id="firstname" value="">
+                          </td>    
+                    
+                          </tr> 
+                               
+                              <tr>
+                               <td>
+                            <h4>ART Interruptions?</h4>          
+                        </td>
+                                  <td>
+                                      <label class="control-label"><i>ART Interruptions*</i></label> 
+                                      <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="radiobtns1"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="radiobtns1"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	</td>   
+                              </tr>
+                              <tr>
+                          <td>  </td>
+                          <td>
+                              <table>
+                    
+                              <tr>
+                                
+                                  <td>if Yes, Date:</td>
+                                  <td> <input type="text" class="span4" id="firstname" value=""></td>
+                                  </tr>
+                                  <tr>
+                                  <td>Reason</td>
+                                  <td>
+                                      <textarea type="text" class="span3" id="firstname" value=""></textarea>
+                                      </td>
+                                  </tr>
+                              </table>
+                          </td>    
+                    
+                          </tr> 
+                        
+                              <tr>
+                          <td>
+                            <h4>History of serious side effects</h4>
+                        </td>
+                          <td>
+                              <table>
+                              <tr>
+                       
+                                  <td> 
+                                   <label class="control-label">Peripheral Neuropathy</label>
+                                      <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="perin"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="perin"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+                                  </td>
+                                  </tr>
+                              </table>
+                          </td>    
+                    
+                          </tr> 
+                               <tr>
+                       
+                                   <td> </td>
+                                  <td> 
+                                   <label class="control-label">Jaundice</label>
+                                      <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="Jaundice"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="Jaundice"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+                                  </td>
+                                  </tr>
+                              <tr>
+                       
+                                   <td> </td>
+                                  <td> 
+                                   <label class="control-label">Lipodystrophy</label>
+                                      <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="Lipodystrophy"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="Lipodystrophy"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+                                  </td>
+                                  </tr>
+                              <tr>
+                       
+                                   <td> </td>
+                                  <td> 
+                                   <label class="control-label">Kidney Failure</label>
+                                      <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="Kidneyf"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="Kidneyf"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+                                  </td>
+                                  </tr>
+                              <tr>
+                       
+                                   <td> </td>
+                                  <td> 
+                                   <label class="control-label">Psychosis</label>
+                                      <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="Psychosis"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="Psychosis"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+                                  </td>
+                                  </tr>
+                              <tr>
+                       
+                                   <td> </td>
+                                  <td> 
+                                   <label class="control-label">Gynecomastia</label>
+                                      <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="Gynecomastia"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="Gynecomastia"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+                                  </td>
+                                  </tr>
+                              <tr>
+                       
+                                   <td> </td>
+                                  <td> 
+                                   <label class="control-label">Anemia</label>
+                                      <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="Anemia"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="Anemia"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+                                  </td>
+                                  </tr>
+                                <tr>
+                       
+                                   <td> </td>
+                                   
+                                  <td>
+                                      <table>
+                              <tr>
+                                
+                                  <td>Other</td>
+                                  <td> <input type="text" class="span4" id="firstname" value=""></td>
+                                  </tr>
+                                  
+                              </table>
+                                      </td>
+                                  </tr>
+                             
+                          </table>
+    
+   <table style="width:100%" border="0">
+                             
+                                  <tr>
+                          <td>
+                            <label class="control-label">Ol in the last 6 month?</label>
+                             <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="radiobtns1"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="radiobtns1"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+</td>    
+                                      <td>
+                              If yes, Date
+                          </td>
+                          <td>
+                              <input type="date" class="span4" id="firstname" name="fname">
+                          </td> 
+                          </tr>
+                                <tr>
+                                <td></td>
+                                    <td>
+                              Diagnosis
+                          </td>
+                          <td>
+                              <textarea type="text" class="span4" id="firstname" name="fname"></textarea>
+                          </td> 
+                                    
+                                </tr>
+      
+                              
+                          </table>
+    
+    
+     <table style="width:100%" border="0">
+                          
+                                <tr>
+                         <td> 
+                                   <label class="control-label">Significant diarrhea or vomiting?</label>
+                                      <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="Anemia"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="Anemia"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+                                  </td>
+                           <td>
+                              Details
+                          </td>         
+                          <td>
+                              <select>
+                              <option>select gender</option>
+                              <option>Male</option>
+                              <option>Female</option>
+                              </select>
+</td>    
+                          </tr> 
+                               
+                        <tr>
+                          <td> 
+                                   <label class="control-label">Alcohol or drug consumption?</label>
+                                      <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="Anemia"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="Anemia"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+                                  </td>
+                            <td>
+                              Details
+                          </td>
+                          <td>
+                              <input type="text" class="span4" id="firstname" name="fname">
+                          </td>    
+                          </tr> 
+                             
+                          <tr>
+                         <td> 
+                                   <label class="control-label">Traditional medicine?</label>
+                                      <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="Anemia"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="Anemia"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+                                  </td>
+                          <td>
+                              Details
+                          </td>
+                          <td>
+                              <input type="text" class="span4" id="firstname" value="">
+                          </td>    
+                    
+                          </tr> 
+                               <tr>
+                        <td> 
+                                   <label class="control-label">Current co-medications (Antiepileptic, Steroids, Warfarin, Statins)?</label>
+                                      <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="Anemia"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="Anemia"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+                                  </td>
+                           <td>
+                              Details
+                          </td>        
+                          <td>
+                              <input type="text" class="span4" id="firstname" value="">
+                          </td>    
+                    
+                          </tr> 
+         
+                        <tr>
+                        <td> 
+                                   <label class="control-label">Other current clinical problems?</label>
+                                      <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="Anemia"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="Anemia"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+                                  </td>
+                           <td>
+                              Details
+                          </td>        
+                          <td>
+                              <input type="text" class="span4" id="firstname" value=""  style="height: 40px;">
+                          </td>    
+                    
+                          </tr> 
+                          </table>
+    
+                           <hr />
+                       <h2 style="background-color:#f8f7f7; text-align:center"> Pregnancy Section</h2>
+                           <hr style=" border: 2px solid #1c952f;" />
+                            <table style="width:100%" border="0">
+                             
+                                  <tr>
+                          <td>
+                            <label class="control-label">Is the patient currently pregnant?</label>
+                             <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="radiobtns1"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="radiobtns1"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+</td>    
+                                      <td>
+                              If yes, Date
+                          </td>
+                          <td>
+                              <input type="date" class="span4" id="firstname" name="fname">
+                          </td> 
+                          </tr>
+                                <tr>
+                                <td></td>
+                                    <td>
+                              Diagnosis
+                          </td>
+                          <td>
+                              <textarea type="text" class="span4" id="firstname" name="fname"></textarea>
+                          </td> 
+                                    
+                                </tr>
+                               <tr>
+                          <td>
+                            <label class="control-label">Is the patient breastfeeding?</label>
+                             <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="radiobtns1"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="radiobtns1"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+</td>    
+                                      <td>
+                              If yes, Date
+                          </td>
+                          <td>
+                              <input type="date" class="span4" id="firstname" name="fname">
+                          </td> 
+                          </tr>
+                          </table>
+                          <hr />
+                          <h2 style="background-color:#f8f7f7; text-align:center">Pediatric Section</h2>
+                           <hr style=" border: 2px solid #5e09e5;" />
+        
+                              <table style="width:100%" border="0">
+                              <tr>
+                                  
+                          <td>
+                            <label class="control-label">Is the patient breastfeeding?</label>
+                             <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="radiobtns1"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="radiobtns1"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+</td>    
+                          
+                          <td>
+                            <label class="control-label">Is the patient breastfeeding?</label>
+                             <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="radiobtns1"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="radiobtns1"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+</td>    
+                          </tr>  
+                                   <table style="width:100%" border="0">
+                              <tr>
+                                  
+                          <td>
+                            <label class="control-label">Is the patient breastfeeding?</label>
+                             <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="radiobtns1"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="radiobtns1"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+</td>    
+                          
+                          <td>
+                            <label class="control-label">Is the patient breastfeeding?</label>
+                             <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="radiobtns1"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="radiobtns1"> No
+                                            </label>
+                                          </div>	<!-- /controls -->	
+</td>    
+                          </tr>  
+                                 
+                                 
+                                 
+                              
+                          </table>
+                          
+                                                                                                                                                   <div class="form-actions">
+											<button type="submit" class="btn btn-primary">Save</button> 
+											<button class="btn">Cancel</button>
+                          </div> <!-- /form-actions -->            
+                          
+                            </form>
