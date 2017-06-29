@@ -111,8 +111,8 @@ $pat_id= $_GET['pat_id'];
 $age= $_GET['xx'];
 }
 
-$patient=mysql_query("SELECT * FROM patient where id='$pat_id' ", $bd); 
-    $row_pat=mysql_fetch_array($patient);
+$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+    $row_pat=mysqli_fetch_array($patient);
         
         $art_id_num =$row_pat['art_id_num'];
         $firstname =$row_pat['firstname'];
@@ -125,11 +125,11 @@ $patient=mysql_query("SELECT * FROM patient where id='$pat_id' ", $bd);
 $client_name = $firstname.' '.$lastname;
 
    
-$current_clinical_status=mysql_query("SELECT * FROM current_clinical_status where patient_id='$pat_id' ", $bd);
+$current_clinical_status=mysqli_query( $bd,"SELECT * FROM current_clinical_status where patient_id='$pat_id' ");
         
-$if_exist_current_clinical_status = mysql_num_rows ($current_clinical_status);
+$if_exist_current_clinical_status = mysqli_num_rows ($current_clinical_status);
 
-    while ($row_clinic_status=mysql_fetch_array($current_clinical_status)){
+    while ($row_clinic_status=mysqli_fetch_array($current_clinical_status)){
         
         $who_stage =$row_clinic_status['who_stage'];
         $curr_who_stage =$row_clinic_status['curr_who_stage'];
@@ -145,8 +145,8 @@ $if_exist_current_clinical_status = mysql_num_rows ($current_clinical_status);
         
         if ($art_interrup=='Yes'){
             
-        $art_interruption = mysql_query("SELECT * FROM art_interruption where patient_id='$pat_id' ", $bd); 
-        $row_art_interruption=mysql_fetch_array($art_interruption);
+        $art_interruption = mysqli_query( $bd,"SELECT * FROM art_interruption where patient_id='$pat_id' "); 
+        $row_art_interruption=mysqli_fetch_array($art_interruption);
         
         $interupt_reason =$row_art_interruption['reason'];
         $interup_date =$row_art_interruption['date'];
@@ -155,8 +155,8 @@ $if_exist_current_clinical_status = mysql_num_rows ($current_clinical_status);
         
         if ($ol_6months=='Yes'){
             
-        $ol_6months_details = mysql_query("SELECT * FROM ol_6months_details where patient_id='$pat_id' ", $bd); 
-        $row_ol_6months_details=mysql_fetch_array($ol_6months_details);
+        $ol_6months_details = mysqli_query( $bd,"SELECT * FROM ol_6months_details where patient_id='$pat_id' "); 
+        $row_ol_6months_details=mysqli_fetch_array($ol_6months_details);
         
         $ol_6months_dign =$row_ol_6months_details['ol_6months_dign'];
         $ol_6months_date =$row_ol_6months_details['ol_6months_date'];
@@ -167,8 +167,8 @@ $if_exist_current_clinical_status = mysql_num_rows ($current_clinical_status);
 
     }
 //side effects 
-$patient_side_effects=mysql_query("SELECT * FROM patient_side_effects where patient_id='$pat_id' ", $bd); 
-    $row_patient_side_effects=mysql_fetch_array($patient_side_effects);
+$patient_side_effects=mysqli_query( $bd,"SELECT * FROM patient_side_effects where patient_id='$pat_id' "); 
+    $row_patient_side_effects=mysqli_fetch_array($patient_side_effects);
         
         $PeripheralNeuropathy =$row_patient_side_effects['PeripheralNeuropathy'];
         $Jaundice =$row_patient_side_effects['Jaundice'];
@@ -180,8 +180,8 @@ $patient_side_effects=mysql_query("SELECT * FROM patient_side_effects where pati
         $other =$row_patient_side_effects['other'];
         
 //side effects details 
-$current_clinical_status_details=mysql_query("SELECT * FROM current_clinical_status_details where pat_id='$pat_id' ", $bd); 
-    $row_current_clinical_status_details=mysql_fetch_array($current_clinical_status_details);
+$current_clinical_status_details=mysqli_query( $bd,"SELECT * FROM current_clinical_status_details where pat_id='$pat_id' "); 
+    $row_current_clinical_status_details=mysqli_fetch_array($current_clinical_status_details);
         
         $sig_diarrhea_vom_details =$row_current_clinical_status_details['sig_diarrhea_vom_details'];
         $alco_drug_consump_details =$row_current_clinical_status_details['alco_drug_consump_details'];

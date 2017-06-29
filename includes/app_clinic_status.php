@@ -111,8 +111,8 @@ $pat_id= $_GET['pat_id'];
 $age= $_GET['xx'];
 }
 
-$patient=mysql_query("SELECT * FROM patient where id='$pat_id' ", $bd); 
-    $row_pat=mysql_fetch_array($patient);
+$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+    $row_pat=mysqli_fetch_array($patient);
         
         $art_id_num =$row_pat['art_id_num'];
         $firstname =$row_pat['firstname'];

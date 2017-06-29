@@ -45,7 +45,7 @@ $insert_expert_review_consolidate2=" INSERT  INTO  expert_review_consolidate2 (f
 VALUES (
 '$formID', '$sec_id', '$pi_mutation', '$switch', '$decision', '$attachements','$date_reviewed')";
 
-mysql_query($insert_expert_review_consolidate2, $bd);	
+mysqli_query( $bd,$insert_expert_review_consolidate2);	
     
  
      

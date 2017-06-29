@@ -4,8 +4,8 @@
                         <hr style=" border: 1px solid #cbe509;" />
 <?php    
 global $num_forms; 
-$form_assigned_app_results=mysql_query("SELECT * FROM assigned_app_results where  rev_id='$rev_id' and status ='Not Reviewed'", $bd); 
-$num_forms = mysql_num_rows ($form_assigned_app_results);
+$form_assigned_app_results=mysqli_query( $bd,"SELECT * FROM assigned_app_results where  rev_id='$rev_id' and status ='Not Reviewed'"); 
+$num_forms = mysqli_num_rows ($form_assigned_app_results);
 echo '<p>Total forms: [ <i>'. $num_forms .'</i> ]</p>';
 ?>
      <table class="table table-striped table-bordered">
@@ -19,7 +19,7 @@ echo '<p>Total forms: [ <i>'. $num_forms .'</i> ]</p>';
                 <tbody>
                  <?php
 
-    while ($row_form_assigned_app_results=mysql_fetch_array($form_assigned_app_results)){
+    while ($row_form_assigned_app_results=mysqli_fetch_array($form_assigned_app_results)){
         
         $form_id =$row_form_assigned_app_results['form_id'];
         $sec_id =$row_form_assigned_app_results['sec_id'];
@@ -27,9 +27,9 @@ echo '<p>Total forms: [ <i>'. $num_forms .'</i> ]</p>';
         $date_assigned =$row_form_assigned_app_results['date_assigned'];
         
        /* $SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
-                    $clinician = mysql_query($SQL_clinician,$bd);
+                    $clinician = mysqli_query($bd,$SQL_clinician);
                     
-                    $row_clinician = mysql_fetch_array($clinician);
+                    $row_clinician = mysqli_fetch_array($clinician);
                         $art_clinic = $row_clinician['art_clinic'];*/
                        
         

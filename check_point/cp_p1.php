@@ -203,7 +203,7 @@ $formID= $_POST['formID'];
 VALUES (
 '$rev_lead', '$formID', '$sec_id')";
 
-mysql_query($insert_reviewer_team_lead, $bd);	
+mysqli_query( $bd,$insert_reviewer_team_lead);	
       
       
     
@@ -211,8 +211,8 @@ $sql_form_creation4review = "UPDATE form_creation ".
        "SET status='Assigned Reviewer'".
        "WHERE 3rdlineart_form_id='$formID'" ;
 
-mysql_select_db('3rdlineart_db');
-$form_submited_4review = mysql_query( $sql_form_creation4review, $bd );   
+mysqli_select_db('3rdlineart_db');
+$form_submited_4review = mysqli_query( $bd , $sql_form_creation4review);   
     
       
 	  if(!empty($_POST['checkbox'])){   
@@ -231,12 +231,12 @@ $insert_assigned_forms=" INSERT  INTO  assigned_forms (form_id,sec_id,rev_id,dat
 VALUES (
 '$formID', '$sec_id', '$rev_id', '$date_assigned')";
 
-mysql_query($insert_assigned_forms, $bd);	
+mysqli_query( $bd,$insert_assigned_forms);	
     
     $SQL_reviewer = "SELECT * FROM reviewer WHERE id=$rev_id";
-    $reviewer = mysql_query($SQL_reviewer,$bd);
+    $reviewer = mysqli_query($bd,$SQL_reviewer);
     
-                $row_reviewer = mysql_fetch_array($reviewer);
+                $row_reviewer = mysqli_fetch_array($reviewer);
                 $rev_email_address = $row_reviewer['email'];
                 $rev_title = $row_reviewer['title'];
                 $rev_lname = $row_reviewer['lname'];
@@ -297,8 +297,8 @@ $sql_form_creation_complete = "UPDATE form_creation ".
        "SET complete='Yes'".
        "WHERE 3rdlineart_form_id='$form_ID'" ;
 
-mysql_select_db('3rdlineart_db');
-$form_submited_complete = mysql_query( $sql_form_creation_complete, $bd );   
+mysqli_select_db('3rdlineart_db');
+$form_submited_complete = mysqli_query( $bd , $sql_form_creation_complete);   
     
 }
 
@@ -310,8 +310,8 @@ $sql_form_creation_not_complete = "UPDATE form_creation ".
        "SET complete='Rejected'".
        "WHERE 3rdlineart_form_id='$form_ID'" ;
 
-mysql_select_db('3rdlineart_db');
-$form_submited_not_complete = mysql_query( $sql_form_creation_not_complete, $bd );   
+mysqli_select_db('3rdlineart_db');
+$form_submited_not_complete = mysqli_query( $bd , $sql_form_creation_not_complete);   
     
 }
 

@@ -126,18 +126,18 @@
 
    global $num_newforms; 
 
-$form_creation=mysql_query("SELECT * FROM form_creation where status='Not Complete' or complete ='Rejected' ORDER BY `form_creation`.`3rdlineart_form_id` DESC ", $bd); 
+$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where status='Not Complete' or complete ='Rejected' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
 
-$num_newforms = mysql_num_rows ($form_creation);
+$num_newforms = mysqli_num_rows ($form_creation);
 
-    while ($row_form_creation=mysql_fetch_array($form_creation)){
+    while ($row_form_creation=mysqli_fetch_array($form_creation)){
         
         $_3rdlineart_form_id =$row_form_creation['3rdlineart_form_id'];
         $clinician_id =$row_form_creation['clinician_id']; 
         $patient_id =$row_form_creation['patient_id'];
         
-        $patient=mysql_query("SELECT * FROM patient where id='$patient_id' ", $bd); 
-    $row_pat=mysql_fetch_array($patient);
+        $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$patient_id' "); 
+    $row_pat=mysqli_fetch_array($patient);
         
         $art_id_num =$row_pat['art_id_num'];
         $firstname =$row_pat['firstname'];
@@ -175,8 +175,8 @@ $num_newforms = mysql_num_rows ($form_creation);
                               <?php
 //clinic status info
 
-$facility=mysql_query("SELECT * FROM facility", $bd); 
-    while ($row_facility=mysql_fetch_array($facility)){
+$facility=mysqli_query( $bd,"SELECT * FROM facility"); 
+    while ($row_facility=mysqli_fetch_array($facility)){
         
         $facility_name =$row_facility['facilityName'];
         

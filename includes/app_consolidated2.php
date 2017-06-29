@@ -21,7 +21,7 @@
                     <?php
 
 
-    while ($row_form_creation=mysql_fetch_array($form_creation_conso2)){
+    while ($row_form_creation=mysqli_fetch_array($form_creation_conso2)){
         
         $_3rdlineart_form_id =$row_form_creation['3rdlineart_form_id'];
         $switch =$row_form_creation['switch'];

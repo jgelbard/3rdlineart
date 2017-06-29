@@ -12,7 +12,7 @@ $formID= $_POST['formID'];
 VALUES (
 '$rev_lead', '$formID', '$sec_id')";
 
-mysql_query($insert_reviewer_team_lead, $bd);	
+mysqli_query( $bd,$insert_reviewer_team_lead);	
       
       */
 
@@ -34,12 +34,12 @@ $insert_assigned_forms=" INSERT  INTO  assigned_forms (form_id,sec_id,rev_id,dat
 VALUES (
 '$formID', '$sec_id', '$rev_id', '$date_assigned')";
 
-mysql_query($insert_assigned_forms, $bd);	
+mysqli_query( $bd,$insert_assigned_forms);	
     
     $SQL_reviewer = "SELECT * FROM reviewer WHERE id=$rev_id";
-    $reviewer = mysql_query($SQL_reviewer,$bd);
+    $reviewer = mysqli_query($bd,$SQL_reviewer);
     
-                $row_reviewer = mysql_fetch_array($reviewer);
+                $row_reviewer = mysqli_fetch_array($reviewer);
                 $rev_email_address = $row_reviewer['email'];
                 $rev_title = $row_reviewer['title'];
                 $rev_lname = $row_reviewer['lname'];

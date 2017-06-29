@@ -4,8 +4,8 @@
                         <hr style=" border: 1px solid #cbe509;" />
 <?php    
 global $num_forms; 
-$form_creation=mysql_query("SELECT * FROM assigned_forms where  rev_id='$rev_id' and status ='Not Reviewed'", $bd); 
-$num_forms = mysql_num_rows ($form_creation);
+$form_creation=mysqli_query( $bd,"SELECT * FROM assigned_forms where  rev_id='$rev_id' and status ='Not Reviewed'"); 
+$num_forms = mysqli_num_rows ($form_creation);
 echo '<p>Total forms: [ <i>'. $num_forms .'</i> ]</p>';
 ?>
      <table class="table table-striped table-bordered">
@@ -19,7 +19,7 @@ echo '<p>Total forms: [ <i>'. $num_forms .'</i> ]</p>';
                 <tbody>
                  <?php
 
-    while ($row_form_creation=mysql_fetch_array($form_creation)){
+    while ($row_form_creation=mysqli_fetch_array($form_creation)){
         
         $form_id =$row_form_creation['form_id'];
         $sec_id =$row_form_creation['sec_id'];
@@ -27,9 +27,9 @@ echo '<p>Total forms: [ <i>'. $num_forms .'</i> ]</p>';
         $date_assigned =$row_form_creation['date_assigned'];
         
        /* $SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
-                    $clinician = mysql_query($SQL_clinician,$bd);
+                    $clinician = mysqli_query($bd,$SQL_clinician);
                     
-                    $row_clinician = mysql_fetch_array($clinician);
+                    $row_clinician = mysqli_fetch_array($clinician);
                         $art_clinic = $row_clinician['art_clinic'];*/
                        
         

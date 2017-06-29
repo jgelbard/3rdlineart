@@ -7,8 +7,8 @@ global $pat_id;
 $pat_id= $_GET['pat_id'];
 /*echo $pat_id;*/
 
-$patient=mysql_query("SELECT * FROM patient where id='$pat_id' ", $bd); 
-    $row_pat=mysql_fetch_array($patient);
+$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+    $row_pat=mysqli_fetch_array($patient);
         
         $art_id_num =$row_pat['art_id_num'];
         $firstname =$row_pat['firstname'];
@@ -21,15 +21,15 @@ $client_name = $firstname.' '.$lastname;
 
 $tb_treatment ="";
 //tb_treat
-$tb_treat = mysql_query("SELECT * FROM tb_treat where pat_id='$pat_id' ", $bd); 
-    while ( $row_tb_treat=mysql_fetch_array($tb_treat)){
+$tb_treat = mysqli_query( $bd,"SELECT * FROM tb_treat where pat_id='$pat_id' "); 
+    while ( $row_tb_treat=mysqli_fetch_array($tb_treat)){
         
         $tb_treatment =$row_tb_treat['tb_treatment'];
     }
 
 //tb_treat_regimen1
-$tb_treat_regimen1=mysql_query("SELECT * FROM tb_treat_regimen1 where pat_id='$pat_id' ", $bd); 
-    while ( $row_tb_treat_regimen1=mysql_fetch_array($tb_treat_regimen1)){
+$tb_treat_regimen1=mysqli_query( $bd,"SELECT * FROM tb_treat_regimen1 where pat_id='$pat_id' "); 
+    while ( $row_tb_treat_regimen1=mysqli_fetch_array($tb_treat_regimen1)){
         
         $reg1_name [] =$row_tb_treat_regimen1['reg_name'];
         $start_date1 [] =$row_tb_treat_regimen1['start_date'];
@@ -38,8 +38,8 @@ $tb_treat_regimen1=mysql_query("SELECT * FROM tb_treat_regimen1 where pat_id='$p
     }
 
 //tb_treat_regimen2
-$tb_treat_regimen2=mysql_query("SELECT * FROM tb_treat_regimen2 where pat_id='$pat_id' ", $bd); 
-    while ( $row_tb_treat_regimen2=mysql_fetch_array($tb_treat_regimen2)){
+$tb_treat_regimen2=mysqli_query( $bd,"SELECT * FROM tb_treat_regimen2 where pat_id='$pat_id' "); 
+    while ( $row_tb_treat_regimen2=mysqli_fetch_array($tb_treat_regimen2)){
         
         $reg2_name []=$row_tb_treat_regimen2['reg_name'];
         $start_date2 [] =$row_tb_treat_regimen2['start_date'];
@@ -51,8 +51,8 @@ $tb_treat_regimen2=mysql_query("SELECT * FROM tb_treat_regimen2 where pat_id='$p
 
 
 //tb_treat_MDR
-$tb_treat_mdr=mysql_query("SELECT * FROM tb_treat_mdr where pat_id='$pat_id' ", $bd); 
-    while ( $row_tb_treat_mdr=mysql_fetch_array($tb_treat_mdr)){
+$tb_treat_mdr=mysqli_query( $bd,"SELECT * FROM tb_treat_mdr where pat_id='$pat_id' "); 
+    while ( $row_tb_treat_mdr=mysqli_fetch_array($tb_treat_mdr)){
         
         $reg3_name []=$row_tb_treat_mdr['reg_name'];
         $start_date3 [] =$row_tb_treat_mdr['start_date'];

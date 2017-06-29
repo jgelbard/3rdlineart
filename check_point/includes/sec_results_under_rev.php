@@ -4,9 +4,9 @@ if(isset($_GET['lead'])){
     $form_id = $_GET ['formid'];
     
     $SQL_reviewer = "SELECT * FROM reviewer WHERE id=$rev_id";
-    $reviewer = mysql_query($SQL_reviewer,$bd);
+    $reviewer = mysqli_query($bd,$SQL_reviewer);
     
-                $row_reviewer = mysql_fetch_array($reviewer);
+                $row_reviewer = mysqli_fetch_array($reviewer);
                 $rev_email_address = $row_reviewer['email'];
                 $rev_title = $row_reviewer['title'];
                 $rev_lname = $row_reviewer['lname'];
@@ -74,8 +74,8 @@ echo"<meta http-equiv=\"Refresh\" content=\"6; url=cp_p1.php?pending\">";
                   <?php
 
 /*
-$assigned_app_results=mysql_query("SELECT distinct form_id,date_assigned FROM assigned_app_results WHERE form_id not in (select form_id from expert_review_consolidate2) ORDER BY `assigned_app_results`.`form_id` DESC", $bd); 
-    while ($row_assigned_app_results=mysql_fetch_array($assigned_app_results)){
+$assigned_app_results=mysqli_query( $bd,"SELECT distinct form_id,date_assigned FROM assigned_app_results WHERE form_id not in (select form_id from expert_review_consolidate2) ORDER BY `assigned_app_results`.`form_id` DESC"); 
+    while ($row_assigned_app_results=mysqli_fetch_array($assigned_app_results)){
         
         $form_id =$row_assigned_app_results['form_id'];
         $date_assigned =$row_assigned_app_results['date_assigned'];
@@ -86,18 +86,18 @@ $assigned_app_results=mysql_query("SELECT distinct form_id,date_assigned FROM as
                     <td> <p style="text-align:center"><strong>'.$date_assigned.'</strong></p> </td>
          ';
         
-        $assigned=mysql_query("SELECT rev_id, status FROM assigned_app_results where form_id='$form_id'", $bd); 
+        $assigned=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_app_results where form_id='$form_id'"); 
         
-        $assigned_count=mysql_query("SELECT rev_id, status FROM assigned_app_results where form_id='$form_id' and status ='Reviewed'", $bd);
+        $assigned_count=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_app_results where form_id='$form_id' and status ='Reviewed'");
         
-        $complete_review = mysql_num_rows ($assigned_count); 
+        $complete_review = mysqli_num_rows ($assigned_count); 
         
-    while ($row_assigned=mysql_fetch_array($assigned)){
+    while ($row_assigned=mysqli_fetch_array($assigned)){
        $rev_id =$row_assigned['rev_id']; 
        $rev_status =$row_assigned['status']; 
         
-            $select_reviewer=mysql_query("SELECT * FROM reviewer where id='$rev_id'", $bd); 
-            $row_select_reviewer=mysql_fetch_array($select_reviewer);
+            $select_reviewer=mysqli_query( $bd,"SELECT * FROM reviewer where id='$rev_id'"); 
+            $row_select_reviewer=mysqli_fetch_array($select_reviewer);
                 
                 $rev_fname =$row_select_reviewer['fname']; 
                 $rev_lname =$row_select_reviewer['lname']; 
@@ -145,10 +145,10 @@ $assigned_app_results=mysql_query("SELECT distinct form_id,date_assigned FROM as
     }
 */
 
-$assigned_app_results=mysql_query("SELECT distinct form_id,date_assigned FROM assigned_app_results WHERE form_id not in (select form_id from expert_review_consolidate2) ORDER BY `assigned_app_results`.`form_id` DESC", $bd); 
+$assigned_app_results=mysqli_query( $bd,"SELECT distinct form_id,date_assigned FROM assigned_app_results WHERE form_id not in (select form_id from expert_review_consolidate2) ORDER BY `assigned_app_results`.`form_id` DESC"); 
 
 
-    while ($row_assigned_app_results=mysql_fetch_array($assigned_app_results)){
+    while ($row_assigned_app_results=mysqli_fetch_array($assigned_app_results)){
         
         $form_id =$row_assigned_app_results['form_id'];
         $date_assigned =$row_assigned_app_results['date_assigned'];
@@ -159,23 +159,23 @@ $assigned_app_results=mysql_query("SELECT distinct form_id,date_assigned FROM as
                     <td> <p style="text-align:center"><strong>'.$date_assigned.'</strong></p> </td>
          ';
         
-        $assigned=mysql_query("SELECT rev_id, status FROM assigned_app_results where form_id='$form_id'", $bd); 
+        $assigned=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_app_results where form_id='$form_id'"); 
         
-        $assigned_count=mysql_query("SELECT rev_id, status FROM assigned_app_results where form_id='$form_id' and status ='Reviewed'", $bd);
+        $assigned_count=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_app_results where form_id='$form_id' and status ='Reviewed'");
         
-        $complete_review = mysql_num_rows ($assigned_count);
+        $complete_review = mysqli_num_rows ($assigned_count);
         
-    $select_team_lead=mysql_query("SELECT * FROM reviewer_team_lead2 where form_id='$form_id'", $bd);
-         $row_team_lead=mysql_fetch_array($select_team_lead);
+    $select_team_lead=mysqli_query( $bd,"SELECT * FROM reviewer_team_lead2 where form_id='$form_id'");
+         $row_team_lead=mysqli_fetch_array($select_team_lead);
         
         $team_leader_id = $row_team_lead ['rev_id'];
         
-    while ($row_assigned=mysql_fetch_array($assigned)){
+    while ($row_assigned=mysqli_fetch_array($assigned)){
        $rev_id =$row_assigned['rev_id']; 
        $rev_status =$row_assigned['status']; 
         
-            $select_reviewer=mysql_query("SELECT * FROM reviewer where id='$rev_id'", $bd); 
-            $row_select_reviewer=mysql_fetch_array($select_reviewer);
+            $select_reviewer=mysqli_query( $bd,"SELECT * FROM reviewer where id='$rev_id'"); 
+            $row_select_reviewer=mysqli_fetch_array($select_reviewer);
                 
                 $rev_fname =$row_select_reviewer['fname']; 
                 $rev_lname =$row_select_reviewer['lname']; 

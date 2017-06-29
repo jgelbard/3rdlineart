@@ -6,25 +6,25 @@
           <?php
 global $num_forms,$num_forms_lead,$num_forms_my_rev, $num_forms_aap_results; 
 
-$form_creation=mysql_query("SELECT * FROM assigned_forms where  rev_id='$rev_id' and status ='Not Reviewed'", $bd); 
-$num_forms_new = mysql_num_rows ($form_creation);
+$form_creation=mysqli_query( $bd,"SELECT * FROM assigned_forms where  rev_id='$rev_id' and status ='Not Reviewed'"); 
+$num_forms_new = mysqli_num_rows ($form_creation);
 
-$assigned_forms_lead=mysql_query("SELECT distinct form_id,date_assigned FROM assigned_forms WHERE form_id in (select form_id from reviewer_team_lead where reviewer_team_lead.rev_id=$rev_id) and form_id not in (select form_id from expert_review_consolidate1) ORDER BY `assigned_forms`.`form_id` DESC", $bd); 
+$assigned_forms_lead=mysqli_query( $bd,"SELECT distinct form_id,date_assigned FROM assigned_forms WHERE form_id in (select form_id from reviewer_team_lead where reviewer_team_lead.rev_id=$rev_id) and form_id not in (select form_id from expert_review_consolidate1) ORDER BY `assigned_forms`.`form_id` DESC"); 
 
-$num_forms_lead = mysql_num_rows ($assigned_forms_lead);
+$num_forms_lead = mysqli_num_rows ($assigned_forms_lead);
 
-$form_my_reviews=mysql_query("SELECT * FROM assigned_forms where  rev_id='$rev_id' and status ='Reviewed'", $bd); 
-$num_forms_my_rev = mysql_num_rows ($form_my_reviews);
+$form_my_reviews=mysqli_query( $bd,"SELECT * FROM assigned_forms where  rev_id='$rev_id' and status ='Reviewed'"); 
+$num_forms_my_rev = mysqli_num_rows ($form_my_reviews);
 
  global $lead_num_forms;
 
-$lead_assigned_forms=mysql_query("SELECT distinct form_id,date_assigned FROM assigned_app_results WHERE form_id in (select form_id from reviewer_team_lead2 where reviewer_team_lead2.rev_id=$rev_id) and form_id not in (select form_id from expert_review_consolidate2) ORDER BY `assigned_app_results`.`form_id` DESC", $bd); 
+$lead_assigned_forms=mysqli_query( $bd,"SELECT distinct form_id,date_assigned FROM assigned_app_results WHERE form_id in (select form_id from reviewer_team_lead2 where reviewer_team_lead2.rev_id=$rev_id) and form_id not in (select form_id from expert_review_consolidate2) ORDER BY `assigned_app_results`.`form_id` DESC"); 
 
 
-$lead_num_forms = mysql_num_rows ($lead_assigned_forms);
+$lead_num_forms = mysqli_num_rows ($lead_assigned_forms);
 
-$form_assigned_app_results=mysql_query("SELECT * FROM assigned_app_results where  rev_id='$rev_id' and status ='Not Reviewed'", $bd); 
-$num_forms_aap_results = mysql_num_rows ($form_assigned_app_results);
+$form_assigned_app_results=mysqli_query( $bd,"SELECT * FROM assigned_app_results where  rev_id='$rev_id' and status ='Not Reviewed'"); 
+$num_forms_aap_results = mysqli_num_rows ($form_assigned_app_results);
 
           if(isset($_GET['p'])){ 
   

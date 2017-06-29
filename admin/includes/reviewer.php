@@ -16,8 +16,8 @@
                 <tbody>
                  <?php
 
-$reviewer=mysql_query("SELECT * FROM reviewer", $bd); 
-    while ($row_reviewer=mysql_fetch_array($reviewer)){
+$reviewer=mysqli_query( $bd,"SELECT * FROM reviewer"); 
+    while ($row_reviewer=mysqli_fetch_array($reviewer)){
         
         $title =$row_reviewer['title'];
         $fname =$row_reviewer['fname'];
@@ -25,8 +25,8 @@ $reviewer=mysql_query("SELECT * FROM reviewer", $bd);
         $rev_id =$row_reviewer['id'];
         $user_id =$row_reviewer['user_id'];
         
-        $users=mysql_query("SELECT * FROM users where id='$user_id'", $bd); 
-        $row_users=mysql_fetch_array($users);
+        $users=mysqli_query( $bd,"SELECT * FROM users where id='$user_id'"); 
+        $row_users=mysqli_fetch_array($users);
         $username =$row_users['username'];
         
         $fullname = $fname .'  '. $lname;

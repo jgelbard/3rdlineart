@@ -16,10 +16,10 @@
                 <tbody>
                  <?php
 global $num_newforms; 
-$expert_review_consolidate1=mysql_query("SELECT * FROM expert_review_consolidate1 where genotyping='Yes' and form_id not in (select form_id from sample) ORDER BY `expert_review_consolidate1`.`id` DESC ", $bd); 
-$num_newforms = mysql_num_rows ($expert_review_consolidate1);
+$expert_review_consolidate1=mysqli_query( $bd,"SELECT * FROM expert_review_consolidate1 where genotyping='Yes' and form_id not in (select form_id from sample) ORDER BY `expert_review_consolidate1`.`id` DESC "); 
+$num_newforms = mysqli_num_rows ($expert_review_consolidate1);
 echo '<p>All reveiwed forms: [ <i>'. $num_newforms .'</i> ]</p>';
-    while ($row_expert_review_consolidate1=mysql_fetch_array($expert_review_consolidate1)){
+    while ($row_expert_review_consolidate1=mysqli_fetch_array($expert_review_consolidate1)){
         
         $form_id =$row_expert_review_consolidate1['form_id'];
         $id =$row_expert_review_consolidate1['id'];

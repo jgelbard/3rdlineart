@@ -4,8 +4,8 @@ if(isset($_POST['submit_review'])){
     
     $formID= $_GET ['formid'];
     
-    $genotyping= mysql_real_escape_string(htmlspecialchars($_POST['genotyping']));
-    $comment_to_clinician= mysql_real_escape_string(htmlspecialchars($_POST['comment_to_clinician']));
+    $genotyping= mysqli_real_escape_string(htmlspecialchars($_POST['genotyping']));
+    $comment_to_clinician= mysqli_real_escape_string(htmlspecialchars($_POST['comment_to_clinician']));
     $date_reviewed= date('Y/m/d');
     
  	
@@ -14,22 +14,22 @@ $insert_expert_review_Form=" INSERT  INTO  expert_review_Form (form_id,rev_id,ge
 VALUES (
 '$formID', '$rev_id', '$genotyping', '$comment_to_clinician', '$date_reviewed')";
 
-mysql_query($insert_expert_review_Form, $bd);
+mysqli_query( $bd,$insert_expert_review_Form);
     
     
 $sql_form_creation_r = "UPDATE form_creation ".
        "SET status='Reviewed'".
        "WHERE 3rdlineart_form_id='$formID'" ;
 
-mysql_select_db('3rdlineart_db');
-$form_reviewed = mysql_query( $sql_form_creation_r, $bd );    
+mysqli_select_db('3rdlineart_db');
+$form_reviewed = mysqli_query( $bd , $sql_form_creation_r);    
     
     $sql_assigned_forms = "UPDATE assigned_forms ".
        "SET status='Reviewed'".
        "WHERE form_id='$formID' and rev_id='$rev_id' " ;
 
-mysql_select_db('3rdlineart_db');
-$form_reviewed_as = mysql_query( $sql_assigned_forms, $bd );    
+mysqli_select_db('3rdlineart_db');
+$form_reviewed_as = mysqli_query( $bd , $sql_assigned_forms);    
     
     
     echo '							

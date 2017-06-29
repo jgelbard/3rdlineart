@@ -125,8 +125,8 @@ $age= $_GET['xx'];
 }
 
 
-$patient=mysql_query("SELECT * FROM patient where id='$pat_id' ", $bd); 
-    $row_pat=mysql_fetch_array($patient);
+$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+    $row_pat=mysqli_fetch_array($patient);
         
         $art_id_num =$row_pat['art_id_num'];
         $firstname =$row_pat['firstname'];
@@ -138,8 +138,8 @@ $patient=mysql_query("SELECT * FROM patient where id='$pat_id' ", $bd);
 $client_name = $firstname.' '.$lastname;
 
 //monitoring
-$monitoring=mysql_query("SELECT * FROM monitoring where pat_id='$pat_id' ", $bd); 
-    while ( $row_monitoring=mysql_fetch_array($monitoring)){
+$monitoring=mysqli_query( $bd,"SELECT * FROM monitoring where pat_id='$pat_id' "); 
+    while ( $row_monitoring=mysqli_fetch_array($monitoring)){
         
         $monito_date []=$row_monitoring['monito_date'];
         $cd4 []=$row_monitoring['cd4'];

@@ -105,8 +105,8 @@ $(document).ready(function(){
 global $pat_id;
 $pat_id= $_GET['pat_id'];
 
-$patient=mysql_query("SELECT * FROM patient where id='$pat_id' ", $bd); 
-    $row_pat=mysql_fetch_array($patient);
+$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+    $row_pat=mysqli_fetch_array($patient);
         
         $art_id_num =$row_pat['art_id_num'];
         $firstname =$row_pat['firstname'];
@@ -116,8 +116,8 @@ $patient=mysql_query("SELECT * FROM patient where id='$pat_id' ", $bd);
         $vl_sample_id =$row_pat['vl_sample_id'];
 
 //pregnacy for females age greater than 10
-$pregnancy=mysql_query("SELECT * FROM pregnancy where pat_id='$pat_id' ", $bd); 
-    $row_pregnancy=mysql_fetch_array($pregnancy);
+$pregnancy=mysqli_query( $bd,"SELECT * FROM pregnancy where pat_id='$pat_id' "); 
+    $row_pregnancy=mysqli_fetch_array($pregnancy);
         
         $pregnant =$row_pregnancy['pregnant'];
         $weeks_o_preg =$row_pregnancy['weeks_o_preg'];

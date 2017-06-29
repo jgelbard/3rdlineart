@@ -92,8 +92,8 @@ global $pat_id;
 $pat_id= $_GET['pat_id'];
 /*echo $pat_id;*/
 
- $patient=mysql_query("SELECT * FROM patient where id='$pat_id' ", $bd); 
-    $row_pat=mysql_fetch_array($patient);
+ $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+    $row_pat=mysqli_fetch_array($patient);
         
         $art_id_num =$row_pat['art_id_num'];
         $firstname =$row_pat['firstname'];
@@ -105,8 +105,8 @@ $pat_id= $_GET['pat_id'];
 $client_name = $firstname.' '.$lastname;
 
 //pediatric age < 3
-$pediatric=mysql_query("SELECT * FROM pediatric where pat_id='$pat_id' ", $bd); 
-    $row_pediatric=mysql_fetch_array($pediatric);
+$pediatric=mysqli_query( $bd,"SELECT * FROM pediatric where pat_id='$pat_id' "); 
+    $row_pediatric=mysqli_fetch_array($pediatric);
         
         $mother_had_single_dose_NVP =$row_pediatric['mother_had_single_dose_NVP'];
         $given_NVP =$row_pediatric['given_NVP'];

@@ -20,7 +20,7 @@
                     <?php
 
 
-    while ($row_form_creation=mysql_fetch_array($form_creation)){
+    while ($row_form_creation=mysqli_fetch_array($form_creation)){
         
         $_3rdlineart_form_id =$row_form_creation['3rdlineart_form_id'];
         $genotyping =$row_form_creation['genotyping'];

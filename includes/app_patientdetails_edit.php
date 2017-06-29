@@ -125,18 +125,18 @@
 
    global $num_newforms; 
 
-$form_creation=mysql_query("SELECT * FROM form_creation where status='Not Complete' or complete ='Rejected' ORDER BY `form_creation`.`3rdlineart_form_id` DESC ", $bd); 
+$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where status='Not Complete' or complete ='Rejected' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
 
-$num_newforms = mysql_num_rows ($form_creation);
+$num_newforms = mysqli_num_rows ($form_creation);
 
-    while ($row_form_creation=mysql_fetch_array($form_creation)){
+    while ($row_form_creation=mysqli_fetch_array($form_creation)){
         
         $_3rdlineart_form_id =$row_form_creation['3rdlineart_form_id'];
         $clinician_id =$row_form_creation['clinician_id']; 
         $patient_id =$row_form_creation['patient_id'];
         
-        $patient=mysql_query("SELECT * FROM patient where id='$patient_id' ", $bd); 
-    $row_pat=mysql_fetch_array($patient);
+        $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$patient_id' "); 
+    $row_pat=mysqli_fetch_array($patient);
         
         $art_id_num =$row_pat['art_id_num'];
         $firstname =$row_pat['firstname'];
@@ -165,8 +165,8 @@ $num_newforms = mysql_num_rows ($form_creation);
 global $pat_id;
 $pat_id= $_GET['pat_id'];
 
- $patient=mysql_query("SELECT * FROM patient where id='$pat_id' ", $bd); 
-    $row_pat=mysql_fetch_array($patient);
+ $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+    $row_pat=mysqli_fetch_array($patient);
         
         $pat_art_clinic =$row_pat['pat_art_clinic'];
         $art_id_num =$row_pat['art_id_num'];
@@ -224,9 +224,9 @@ echo '
                                                        
                                                        ';
                                                       
-                                                       $current_clinical_status=mysql_query("SELECT * FROM current_clinical_status where patient_id='$pat_id' ", $bd);
+                                                       $current_clinical_status=mysqli_query( $bd,"SELECT * FROM current_clinical_status where patient_id='$pat_id' ");
         
-    $if_exist_current_clinical_status = mysql_num_rows ($current_clinical_status);
+    $if_exist_current_clinical_status = mysqli_num_rows ($current_clinical_status);
 
     if ($if_exist_current_clinical_status !='0'){
         
@@ -235,9 +235,9 @@ echo '
                                                        </div>';
     
 }
-    $pediatric_section=mysql_query("SELECT * FROM  pediatric where pat_id='$pat_id' ", $bd);
+    $pediatric_section=mysqli_query( $bd,"SELECT * FROM  pediatric where pat_id='$pat_id' ");
         
-    $if_exist_pediatric_section = mysql_num_rows ($pediatric_section);
+    $if_exist_pediatric_section = mysqli_num_rows ($pediatric_section);
 
     if ($if_exist_pediatric_section !='0' && $PATage < 4 ){
         
@@ -248,9 +248,9 @@ echo '
 }
     
     
-$pregnancy=mysql_query("SELECT * FROM  pregnancy where pat_id='$pat_id' ", $bd);
+$pregnancy=mysqli_query( $bd,"SELECT * FROM  pregnancy where pat_id='$pat_id' ");
         
-    $if_exist_pregnancy = mysql_num_rows ($pregnancy);
+    $if_exist_pregnancy = mysqli_num_rows ($pregnancy);
 
     if ($if_exist_pregnancy !='0' || $PATage > 10 && $gender=='Female'){
         
@@ -259,9 +259,9 @@ $pregnancy=mysql_query("SELECT * FROM  pregnancy where pat_id='$pat_id' ", $bd);
                                                        </div>';
     
 }
-   $treatment_history=mysql_query("SELECT * FROM  treatment_history where pat_id='$pat_id' ", $bd);
+   $treatment_history=mysqli_query( $bd,"SELECT * FROM  treatment_history where pat_id='$pat_id' ");
         
-    $if_exist_treatment_history = mysql_num_rows ($treatment_history);
+    $if_exist_treatment_history = mysqli_num_rows ($treatment_history);
 
     if ($if_exist_treatment_history !='0'){
         
@@ -270,9 +270,9 @@ $pregnancy=mysql_query("SELECT * FROM  pregnancy where pat_id='$pat_id' ", $bd);
                                                        </div>';
     
 }
-     $tb_treat=mysql_query("SELECT * FROM  tb_treat where pat_id='$pat_id' ", $bd);
+     $tb_treat=mysqli_query( $bd,"SELECT * FROM  tb_treat where pat_id='$pat_id' ");
         
-    $if_exist_tb_treat = mysql_num_rows ($tb_treat);
+    $if_exist_tb_treat = mysqli_num_rows ($tb_treat);
 
     if ($if_exist_tb_treat !='0'){
         
@@ -322,8 +322,8 @@ $pregnancy=mysql_query("SELECT * FROM  pregnancy where pat_id='$pat_id' ", $bd);
                               <?php
 //clinic status info
 
-$facility=mysql_query("SELECT * FROM facility", $bd); 
-    while ($row_facility=mysql_fetch_array($facility)){
+$facility=mysqli_query( $bd,"SELECT * FROM facility"); 
+    while ($row_facility=mysqli_fetch_array($facility)){
         
         $facility_name =$row_facility['facilityName'];
         

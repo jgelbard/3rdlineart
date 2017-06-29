@@ -19,26 +19,26 @@ global $formID;
 $formID= $_GET['formid'];
 
 
-$form_creation=mysql_query("SELECT * FROM form_creation where 3rdlineart_form_id ='$formID'", $bd); 
+$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where 3rdlineart_form_id ='$formID'"); 
 
 
-    while ($row_form_creation=mysql_fetch_array($form_creation)){
+    while ($row_form_creation=mysqli_fetch_array($form_creation)){
         
         $clinician_id =$row_form_creation['clinician_id'];
         $patient_id =$row_form_creation['patient_id'];
         
         
         $SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
-                    $clinician = mysql_query($SQL_clinician,$bd);
+                    $clinician = mysqli_query($bd,$SQL_clinician);
                     
-                    $row_clinician = mysql_fetch_array($clinician);
+                    $row_clinician = mysqli_fetch_array($clinician);
                         $art_clinic = $row_clinician['art_clinic'];
                         $clinician_name = $row_clinician['name'];
         
          $SQL_patient = "SELECT * FROM patient WHERE id=$patient_id";
-                    $patient = mysql_query($SQL_patient,$bd);
+                    $patient = mysqli_query($bd,$SQL_patient);
                     
-                    $row_patient = mysql_fetch_array($patient);
+                    $row_patient = mysqli_fetch_array($patient);
                         $firstname = $row_patient['firstname'];
                         $lastname = $row_patient['lastname'];
                         $art_id_num = $row_patient['art_id_num'];
@@ -70,8 +70,8 @@ echo '<h2 style="background-color:#dedd6;  text-align:center; color:#000000">Con
 echo '<form id="edit-profile" class="form-horizontal" action="reviwer_p1.php?p" method="post" style="background-color:#ddf; padding:10px;">';
     
 
-/*$reviewer=mysql_query("SELECT * FROM reviewer", $bd); 
-    while ($row_reviewer=mysql_fetch_array($reviewer)){
+/*$reviewer=mysqli_query( $bd,"SELECT * FROM reviewer"); 
+    while ($row_reviewer=mysqli_fetch_array($reviewer)){
         
         $id =$row_reviewer['id'];
         $fname =$row_reviewer['fname'];
@@ -104,9 +104,9 @@ echo $sec_id;*/
 <tr>
  <?php
 
-$expert_review_result=mysql_query("SELECT * FROM expert_review_result where form_id ='$formID' ", $bd); 
+$expert_review_result=mysqli_query( $bd,"SELECT * FROM expert_review_result where form_id ='$formID' "); 
 
-    while ($row_expert_review_result=mysql_fetch_array($expert_review_result)){
+    while ($row_expert_review_result=mysqli_fetch_array($expert_review_result)){
         
         $rev_id = $row_expert_review_result['rev_id'];
         $pi_mutation =$row_expert_review_result['pi_mutation'];
@@ -119,8 +119,8 @@ $expert_review_result=mysql_query("SELECT * FROM expert_review_result where form
         $comment =$row_expert_review_result['comment'];
         $feedback_to_clinician =$row_expert_review_result['feedback_to_clinician'];
         
-         $select_reviewer=mysql_query("SELECT * FROM reviewer where id='$rev_id'", $bd); 
-            $row_select_reviewer=mysql_fetch_array($select_reviewer);
+         $select_reviewer=mysqli_query( $bd,"SELECT * FROM reviewer where id='$rev_id'"); 
+            $row_select_reviewer=mysqli_fetch_array($select_reviewer);
                 
                 $rev_fname =$row_select_reviewer['fname']; 
                 $rev_lname =$row_select_reviewer['lname']; 
@@ -196,17 +196,17 @@ $expert_review_result=mysql_query("SELECT * FROM expert_review_result where form
      
 
 
-$form_creation=mysql_query("SELECT clinician_id FROM form_creation where 3rdlineart_form_id ='$formID' ", $bd); 
+$form_creation=mysqli_query( $bd,"SELECT clinician_id FROM form_creation where 3rdlineart_form_id ='$formID' "); 
 
-    while ($row_form_creation=mysql_fetch_array($form_creation)){
+    while ($row_form_creation=mysqli_fetch_array($form_creation)){
     
         $clinician_id =$row_form_creation['clinician_id'];
         
         
         $SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
-                    $clinician = mysql_query($SQL_clinician,$bd);
+                    $clinician = mysqli_query($bd,$SQL_clinician);
                     
-                    $row_clinician = mysql_fetch_array($clinician);
+                    $row_clinician = mysqli_fetch_array($clinician);
                         $clinician_name = $row_clinician['name'];
                         $clinician_phone = $row_clinician['phone'];
                         $clinician_email = $row_clinician['email'];

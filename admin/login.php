@@ -14,7 +14,7 @@ function quote_smart($value, $handle) {
    }
 
    if (!is_numeric($value)) {
-       $value = "'" . mysql_real_escape_string($value, $handle) . "'";
+       $value = "'" . mysqli_real_escape_string($value, $handle) . "'";
    }
    return $value;
 }
@@ -36,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$server = "Localhost";
 
 
-	$db_handle = mysql_connect($server, $user_name, $pass_word);
-	$db_found = mysql_select_db($database, $db_handle);
+	$db_handle = mysqli_connect($server, $user_name, $pass_word);
+	$db_found = mysqli_select_db($database, $db_handle);
 
 	
 
@@ -47,16 +47,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$SQL = "SELECT * FROM users WHERE 	username=$username AND password=$pword;";
 		
 		   
-    $result = mysql_query($SQL,$bd);
+    $result = mysqli_query($bd,$SQL);
 			
-    $num_rows = mysql_num_rows($result);
+    $num_rows = mysqli_num_rows($result);
 			if($num_rows!=0){
                 
                 $SQL_user = "SELECT * FROM users WHERE username=$username";
                 
-                $user = mysql_query($SQL_user,$bd);
+                $user = mysqli_query($bd,$SQL_user);
                 
-				while($row_user = mysql_fetch_array($user)) {
+				while($row_user = mysqli_fetch_array($user)) {
                     
                     $role = $row_user['role'];
                     $user_id = $row_user['id'];
@@ -74,9 +74,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     
                      if ($role=='Admin'){
                      $SQL_admin = "SELECT * FROM admin WHERE user_id=$user_id";
-                    $admin = mysql_query($SQL_admin,$bd);
+                    $admin = mysqli_query($bd,$SQL_admin);
                     
-                    $row_admin = mysql_fetch_array($admin);
+                    $row_admin = mysqli_fetch_array($admin);
                 
                         $_SESSION['id'] = $row_admin['id'];
                         $_SESSION['fname'] = $row_admin['fname'];
@@ -86,9 +86,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     
                 if ($role=='Clinician'){
                 $SQL_clinician = "SELECT * FROM clinician WHERE user_id=$user_id";
-                    $clinician = mysql_query($SQL_clinician,$bd);
+                    $clinician = mysqli_query($bd,$SQL_clinician);
                     
-                    $row_clinician = mysql_fetch_array($clinician);
+                    $row_clinician = mysqli_fetch_array($clinician);
                 
                         $_SESSION['id'] = $row_clinician['id'];
                         $_SESSION['name'] = $row_clinician['name'];
@@ -100,9 +100,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	
                 if ($role=='Reviewer'){
                 $SQL_reviewer = "SELECT * FROM reviewer WHERE user_id=$user_id";
-                    $reviewer = mysql_query($SQL_reviewer,$bd);
+                    $reviewer = mysqli_query($bd,$SQL_reviewer);
                     
-                    $row_reviewer = mysql_fetch_array($reviewer);
+                    $row_reviewer = mysqli_fetch_array($reviewer);
                 
                         $_SESSION['id'] = $row_reviewer['id'];    
                         $_SESSION['fname'] = $row_reviewer['fname'];
@@ -115,9 +115,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     
                 if ($role=='Secretary'){
                 $SQL_secretary = "SELECT * FROM secretary WHERE user_id=$user_id";
-                    $secretary = mysql_query($SQL_secretary,$bd);
+                    $secretary = mysqli_query($bd,$SQL_secretary);
                     
-                    $row_secretary = mysql_fetch_array($secretary);
+                    $row_secretary = mysqli_fetch_array($secretary);
                 
                         $_SESSION['id'] = $row_secretary['id'];
                         $_SESSION['fname'] = $row_secretary['fname'];
@@ -130,9 +130,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     
                      if ($role=='Lab'){
                 $SQL_pih_lab = "SELECT * FROM pih_lab WHERE user_id=$user_id";
-                    $pih_lab = mysql_query($SQL_pih_lab,$bd);
+                    $pih_lab = mysqli_query($bd,$SQL_pih_lab);
                     
-                    $row_pih_lab = mysql_fetch_array($pih_lab);
+                    $row_pih_lab = mysqli_fetch_array($pih_lab);
                 
                         $_SESSION['id'] = $row_pih_lab['id'];
                         $_SESSION['fname'] = $row_pih_lab['fname'];

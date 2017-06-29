@@ -92,8 +92,8 @@ if(isset($_GET['p'])){
 if(isset($_GET['review'])){ 
     $formID= $_GET ['id'];
     
-    $form_creation=mysql_query("SELECT * FROM form_creation where 3rdlineart_form_id='$formID' ", $bd); 
-    while ($row_form_creation=mysql_fetch_array($form_creation)){
+    $form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where 3rdlineart_form_id='$formID' "); 
+    while ($row_form_creation=mysqli_fetch_array($form_creation)){
         
         $_3rdlineart_form_id =$row_form_creation['3rdlineart_form_id'];
         $clinician_id =$row_form_creation['clinician_id'];
@@ -102,9 +102,9 @@ if(isset($_GET['review'])){
         $date_created =$row_form_creation['date_created'];
         
         $SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
-                    $clinician = mysql_query($SQL_clinician,$bd);
+                    $clinician = mysqli_query($bd,$SQL_clinician);
                     
-                    $row_clinician = mysql_fetch_array($clinician);
+                    $row_clinician = mysqli_fetch_array($clinician);
     }                   $facility = $row_clinician['art_clinic'];
     
  include ('includes/review_form.php');  

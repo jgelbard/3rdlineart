@@ -17,10 +17,10 @@
                 <tbody>
                  <?php
 global $num_newforms; 
-$form_creation=mysql_query("SELECT * FROM form_creation where status='Complete' and complete !='Rejected' ORDER BY `form_creation`.`3rdlineart_form_id` DESC ", $bd); 
-$num_newforms = mysql_num_rows ($form_creation);
+$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where status='Complete' and complete !='Rejected' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
+$num_newforms = mysqli_num_rows ($form_creation);
 echo '<p>Total forms: [ <i>'. $num_newforms .'</i> ]</p>';
-    while ($row_form_creation=mysql_fetch_array($form_creation)){
+    while ($row_form_creation=mysqli_fetch_array($form_creation)){
         
         $_3rdlineart_form_id =$row_form_creation['3rdlineart_form_id'];
         $clinician_id =$row_form_creation['clinician_id'];
@@ -30,9 +30,9 @@ echo '<p>Total forms: [ <i>'. $num_newforms .'</i> ]</p>';
         $date_created =$row_form_creation['date_created'];
         
         $SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
-                    $clinician = mysql_query($SQL_clinician,$bd);
+                    $clinician = mysqli_query($bd,$SQL_clinician);
                     
-                    $row_clinician = mysql_fetch_array($clinician);
+                    $row_clinician = mysqli_fetch_array($clinician);
                         $art_clinic = $row_clinician['art_clinic'];
                        
         

@@ -111,65 +111,65 @@ global $num_newforms;
 /*      echo $start_date. ' -'.$stop_date;*/
       
  //  	Number of applications received   
-$form_creation=mysql_query("SELECT * FROM form_creation where status!='Not Complete' and date_created Between '$start_date' And '$stop_date' ORDER BY `form_creation`.`3rdlineart_form_id` DESC ", $bd); 
-$num_newforms = mysql_num_rows ($form_creation);
+$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where status!='Not Complete' and date_created Between '$start_date' And '$stop_date' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
+$num_newforms = mysqli_num_rows ($form_creation);
       
 //Number of complete application forms received
       global $num_complete_forms; 
-$complete_forms=mysql_query("SELECT * FROM form_creation where status!='Not Complete' and complete ='Yes' and date_created Between '$start_date' And '$stop_date' ORDER BY `form_creation`.`3rdlineart_form_id` DESC ", $bd); 
-$num_complete_forms = mysql_num_rows ($complete_forms);
+$complete_forms=mysqli_query( $bd,"SELECT * FROM form_creation where status!='Not Complete' and complete ='Yes' and date_created Between '$start_date' And '$stop_date' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
+$num_complete_forms = mysqli_num_rows ($complete_forms);
       
 //Number of applications found indicated for genotyping
 global $num_forms_genotyping; 
-$expert_review_consolidate1=mysql_query("SELECT * FROM expert_review_consolidate1 WHERE date_reviewed Between '$start_date' And '$stop_date' ORDER BY `expert_review_consolidate1`.`id` DESC ", $bd); 
-$num_forms_genotyping = mysql_num_rows ($expert_review_consolidate1);    
+$expert_review_consolidate1=mysqli_query( $bd,"SELECT * FROM expert_review_consolidate1 WHERE date_reviewed Between '$start_date' And '$stop_date' ORDER BY `expert_review_consolidate1`.`id` DESC "); 
+$num_forms_genotyping = mysqli_num_rows ($expert_review_consolidate1);    
 
 //sample
-$sample=mysql_query("SELECT * FROM sample ", $bd); 
-$num_samples = mysql_num_rows ($sample);
+$sample=mysqli_query( $bd,"SELECT * FROM sample "); 
+$num_samples = mysqli_num_rows ($sample);
 
  //sample with results
-$results=mysql_query("SELECT * FROM app_results ", $bd); 
-$num_results = mysql_num_rows ($results);
+$results=mysqli_query( $bd,"SELECT * FROM app_results "); 
+$num_results = mysqli_num_rows ($results);
 
 global $num_PI_resistance; 
-$expert_review_consolidate2_PI=mysql_query("SELECT * FROM expert_review_consolidate2 where pi_mutation ='Yes' ", $bd); 
-$num_PI_resistance = mysql_num_rows ($expert_review_consolidate2_PI);
+$expert_review_consolidate2_PI=mysqli_query( $bd,"SELECT * FROM expert_review_consolidate2 where pi_mutation ='Yes' "); 
+$num_PI_resistance = mysqli_num_rows ($expert_review_consolidate2_PI);
 
 global $num_switch_resistance; 
-$expert_review_consolidate2_switch=mysql_query("SELECT * FROM expert_review_consolidate2 where switch ='SwitchYes' ", $bd); 
-$num_switch_resistance = mysql_num_rows ($expert_review_consolidate2_switch);
+$expert_review_consolidate2_switch=mysqli_query( $bd,"SELECT * FROM expert_review_consolidate2 where switch ='SwitchYes' "); 
+$num_switch_resistance = mysqli_num_rows ($expert_review_consolidate2_switch);
      
   }
 
 else {
 
-$form_creation=mysql_query("SELECT * FROM form_creation where status!='Not Complete' ORDER BY `form_creation`.`3rdlineart_form_id` DESC ", $bd); 
-$num_newforms = mysql_num_rows ($form_creation);
+$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where status!='Not Complete' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
+$num_newforms = mysqli_num_rows ($form_creation);
 
 global $num_complete_forms; 
-$complete_forms=mysql_query("SELECT * FROM form_creation where status!='Not Complete' and complete ='Yes' ORDER BY `form_creation`.`3rdlineart_form_id` DESC ", $bd); 
-$num_complete_forms = mysql_num_rows ($complete_forms);
+$complete_forms=mysqli_query( $bd,"SELECT * FROM form_creation where status!='Not Complete' and complete ='Yes' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
+$num_complete_forms = mysqli_num_rows ($complete_forms);
 
 global $num_forms_genotyping; 
-$expert_review_consolidate1=mysql_query("SELECT * FROM expert_review_consolidate1 ORDER BY `expert_review_consolidate1`.`id` DESC ", $bd); 
-$num_forms_genotyping = mysql_num_rows ($expert_review_consolidate1);
+$expert_review_consolidate1=mysqli_query( $bd,"SELECT * FROM expert_review_consolidate1 ORDER BY `expert_review_consolidate1`.`id` DESC "); 
+$num_forms_genotyping = mysqli_num_rows ($expert_review_consolidate1);
 
 //sample
-$sample=mysql_query("SELECT * FROM sample ", $bd); 
-$num_samples = mysql_num_rows ($sample);
+$sample=mysqli_query( $bd,"SELECT * FROM sample "); 
+$num_samples = mysqli_num_rows ($sample);
 
 //sample with results
-$results=mysql_query("SELECT * FROM app_results ", $bd); 
-$num_results = mysql_num_rows ($results);
+$results=mysqli_query( $bd,"SELECT * FROM app_results "); 
+$num_results = mysqli_num_rows ($results);
 
 global $num_PI_resistance; 
-$expert_review_consolidate2_PI=mysql_query("SELECT * FROM expert_review_consolidate2 where pi_mutation ='Yes' ", $bd); 
-$num_PI_resistance = mysql_num_rows ($expert_review_consolidate2_PI);
+$expert_review_consolidate2_PI=mysqli_query( $bd,"SELECT * FROM expert_review_consolidate2 where pi_mutation ='Yes' "); 
+$num_PI_resistance = mysqli_num_rows ($expert_review_consolidate2_PI);
 
 global $num_switch_resistance; 
-$expert_review_consolidate2_switch=mysql_query("SELECT * FROM expert_review_consolidate2 where switch ='SwitchYes' ", $bd); 
-$num_switch_resistance = mysql_num_rows ($expert_review_consolidate2_switch);
+$expert_review_consolidate2_switch=mysqli_query( $bd,"SELECT * FROM expert_review_consolidate2 where switch ='SwitchYes' "); 
+$num_switch_resistance = mysqli_num_rows ($expert_review_consolidate2_switch);
 
 }
 ?>
@@ -222,8 +222,8 @@ $num_switch_resistance = mysql_num_rows ($expert_review_consolidate2_switch);
 <?php
 //clinic status info
 
-$facility=mysql_query("SELECT * FROM facility", $bd); 
-    while ($row_facility=mysql_fetch_array($facility)){
+$facility=mysqli_query( $bd,"SELECT * FROM facility"); 
+    while ($row_facility=mysqli_fetch_array($facility)){
         
         $facility_name =$row_facility['facilityName'];
         

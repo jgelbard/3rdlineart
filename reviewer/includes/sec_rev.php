@@ -6,10 +6,10 @@
  <?php 
     global $num_forms;
 
-$assigned_forms=mysql_query("SELECT distinct form_id,date_assigned FROM assigned_forms WHERE form_id in (select form_id from reviewer_team_lead where reviewer_team_lead.rev_id=$rev_id) and form_id not in (select form_id from expert_review_consolidate1) ORDER BY `assigned_forms`.`form_id` DESC", $bd); 
+$assigned_forms=mysqli_query( $bd,"SELECT distinct form_id,date_assigned FROM assigned_forms WHERE form_id in (select form_id from reviewer_team_lead where reviewer_team_lead.rev_id=$rev_id) and form_id not in (select form_id from expert_review_consolidate1) ORDER BY `assigned_forms`.`form_id` DESC"); 
 
 
-$num_forms = mysql_num_rows ($assigned_forms);
+$num_forms = mysqli_num_rows ($assigned_forms);
 
 
 echo '<p>Total forms: [ <i>'. $num_forms .'</i> ]</p>';
@@ -27,7 +27,7 @@ echo '<p>Total forms: [ <i>'. $num_forms .'</i> ]</p>';
                 <tbody>
                   <?php
 
-    while ($row_assigned_forms=mysql_fetch_array($assigned_forms)){
+    while ($row_assigned_forms=mysqli_fetch_array($assigned_forms)){
         
         $form_id =$row_assigned_forms['form_id'];
         $date_assigned =$row_assigned_forms['date_assigned'];
@@ -39,24 +39,24 @@ echo '<p>Total forms: [ <i>'. $num_forms .'</i> ]</p>';
                     <td> <p style="text-align:center"><strong>
          ';
         
-        $assigned=mysql_query("SELECT rev_id, status FROM assigned_forms where form_id='$form_id'", $bd); 
+        $assigned=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_forms where form_id='$form_id'"); 
         
-        $assigned_count=mysql_query("SELECT rev_id, status FROM assigned_forms where form_id='$form_id' and status ='Reviewed'", $bd);
+        $assigned_count=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_forms where form_id='$form_id' and status ='Reviewed'");
         
-        $complete_review = mysql_num_rows ($assigned_count);
+        $complete_review = mysqli_num_rows ($assigned_count);
         
-    $select_team_lead=mysql_query("SELECT * FROM reviewer_team_lead where form_id='$form_id'", $bd);
-         $row_team_lead=mysql_fetch_array($select_team_lead);
+    $select_team_lead=mysqli_query( $bd,"SELECT * FROM reviewer_team_lead where form_id='$form_id'");
+         $row_team_lead=mysqli_fetch_array($select_team_lead);
         
         $team_leader_id = $row_team_lead ['rev_id'];
         
-    while ($row_assigned=mysql_fetch_array($assigned)){
+    while ($row_assigned=mysqli_fetch_array($assigned)){
         
        $rev_id_as =$row_assigned['rev_id']; 
        $rev_status =$row_assigned['status']; 
         
-            $select_reviewer=mysql_query("SELECT * FROM reviewer where id='$rev_id_as'", $bd); 
-            $row_select_reviewer=mysql_fetch_array($select_reviewer);
+            $select_reviewer=mysqli_query( $bd,"SELECT * FROM reviewer where id='$rev_id_as'"); 
+            $row_select_reviewer=mysqli_fetch_array($select_reviewer);
                 
                 $rev_fname =$row_select_reviewer['fname']; 
                 $rev_lname =$row_select_reviewer['lname']; 

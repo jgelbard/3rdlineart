@@ -9,12 +9,12 @@ $formID= $_GET['formid'];
                     
                      <?php
 
-$form_creation=mysql_query("SELECT * FROM patient, form_creation, expert_review_consolidate2 WHERE  form_creation.3rdlineart_form_id=expert_review_consolidate2.form_id and form_creation.clinician_id ='$clinicianID' and form_creation.patient_id=patient.id and expert_review_consolidate2.form_id ='$formID' ORDER BY `form_creation`.`3rdlineart_form_id` DESC", $bd); 
+$form_creation=mysqli_query( $bd,"SELECT * FROM patient, form_creation, expert_review_consolidate2 WHERE  form_creation.3rdlineart_form_id=expert_review_consolidate2.form_id and form_creation.clinician_id ='$clinicianID' and form_creation.patient_id=patient.id and expert_review_consolidate2.form_id ='$formID' ORDER BY `form_creation`.`3rdlineart_form_id` DESC"); 
 
 
-$num_forms = mysql_num_rows ($form_creation);
+$num_forms = mysqli_num_rows ($form_creation);
 
-    while ($row_form_creation=mysql_fetch_array($form_creation)){
+    while ($row_form_creation=mysqli_fetch_array($form_creation)){
         
         $_3rdlineart_form_id =$row_form_creation['3rdlineart_form_id'];
         $clinician_id =$row_form_creation['clinician_id'];
@@ -27,21 +27,21 @@ $num_forms = mysql_num_rows ($form_creation);
         
         
         $SQL_app_results = "SELECT * FROM app_results WHERE form_id=$_3rdlineart_form_id";
-                    $app_results = mysql_query($SQL_app_results,$bd);
+                    $app_results = mysqli_query($bd,$SQL_app_results);
                     
-                    $row_app_results = mysql_fetch_array($app_results);
+                    $row_app_results = mysqli_fetch_array($app_results);
                     $result_pdf = $row_app_results ['result_pdf'];
         
         $SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
-                    $clinician = mysql_query($SQL_clinician,$bd);
+                    $clinician = mysqli_query($bd,$SQL_clinician);
                     
-                    $row_clinician = mysql_fetch_array($clinician);
+                    $row_clinician = mysqli_fetch_array($clinician);
                         $art_clinic = $row_clinician['art_clinic'];
         
          $SQL_patient = "SELECT * FROM patient WHERE id=$patient_id";
-                    $patient = mysql_query($SQL_patient,$bd);
+                    $patient = mysqli_query($bd,$SQL_patient);
                     
-                    $row_patient = mysql_fetch_array($patient);
+                    $row_patient = mysqli_fetch_array($patient);
                         $firstname = $row_patient['firstname'];
                         $lastname = $row_patient['lastname'];
                         $gender = $row_patient['gender'];

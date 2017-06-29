@@ -21,8 +21,8 @@ else {
  $location ="complete_form.php";  
 }
 
-$patient=mysql_query("SELECT * FROM patient where id='$pat_id' ", $bd); 
-    $row_pat=mysql_fetch_array($patient);
+$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+    $row_pat=mysqli_fetch_array($patient);
         
         $art_id_num =$row_pat['art_id_num'];
         $firstname =$row_pat['firstname'];
@@ -35,8 +35,8 @@ $client_name = $firstname.' '.$lastname;
 
 
 //adherence
-$adherence=mysql_query("SELECT * FROM adherence where pat_id='$pat_id' ", $bd); 
-    $row_adherence=mysql_fetch_array($adherence);
+$adherence=mysqli_query( $bd,"SELECT * FROM adherence where pat_id='$pat_id' "); 
+    $row_adherence=mysqli_fetch_array($adherence);
         
         $scheduled_visit_date1 =$row_adherence['scheduled_visit_date1'];
         $actual_visit_date1 =$row_adherence['actual_visit_date1'];
@@ -52,8 +52,8 @@ $adherence=mysql_query("SELECT * FROM adherence where pat_id='$pat_id' ", $bd);
         
      
  //adherence_questions
-$adherence_questions=mysql_query("SELECT * FROM adherence_questions where pat_id='$pat_id' ", $bd); 
-    $row_adherence_questions=mysql_fetch_array($adherence_questions);
+$adherence_questions=mysqli_query( $bd,"SELECT * FROM adherence_questions where pat_id='$pat_id' "); 
+    $row_adherence_questions=mysqli_fetch_array($adherence_questions);
         
         $ever_forget_2_take_meds =$row_adherence_questions['ever_forget_2_take_meds'];
         $careless_taking_meds =$row_adherence_questions['careless_taking_meds'];
@@ -65,8 +65,8 @@ $adherence_questions=mysql_query("SELECT * FROM adherence_questions where pat_id
 
      
   //lab
-$lab=mysql_query("SELECT * FROM lab where pat_id='$pat_id' ", $bd); 
-    $row_lab=mysql_fetch_array($lab);
+$lab=mysqli_query( $bd,"SELECT * FROM lab where pat_id='$pat_id' "); 
+    $row_lab=mysqli_fetch_array($lab);
         
         $creatinine =$row_lab['creatinine'];
         $hb =$row_lab['hb'];

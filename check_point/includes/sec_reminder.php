@@ -16,10 +16,10 @@
                 <tbody>
                  <?php
 global $num_newforms; 
-$expert_review_consolidate2=mysql_query("SELECT * FROM expert_review_consolidate2 ORDER BY `expert_review_consolidate2`.`id` DESC ", $bd); 
-$num_newforms = mysql_num_rows ($expert_review_consolidate2);
+$expert_review_consolidate2=mysqli_query( $bd,"SELECT * FROM expert_review_consolidate2 ORDER BY `expert_review_consolidate2`.`id` DESC "); 
+$num_newforms = mysqli_num_rows ($expert_review_consolidate2);
 echo '<p>All reveiwed forms: [ <i>'. $num_newforms .'</i> ]</p>';
-    while ($row_expert_review_consolidate2=mysql_fetch_array($expert_review_consolidate2)){
+    while ($row_expert_review_consolidate2=mysqli_fetch_array($expert_review_consolidate2)){
         
         $form_id =$row_expert_review_consolidate2['form_id'];
         $id =$row_expert_review_consolidate2['id'];

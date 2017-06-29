@@ -21,8 +21,8 @@ if(isset($_GET['formID'])){
 $today = date ('Y/m/d');
    
 
- $patient=mysql_query("SELECT * FROM patient,form_creation where patient.id=form_creation.patient_id and form_creation.3rdlineart_form_id='$formid' ", $bd); 
-    $row_pat=mysql_fetch_array($patient);
+ $patient=mysqli_query( $bd,"SELECT * FROM patient,form_creation where patient.id=form_creation.patient_id and form_creation.3rdlineart_form_id='$formid' "); 
+    $row_pat=mysqli_fetch_array($patient);
         
         $art_id_num =$row_pat['art_id_num'];
         $patientName =$row_pat['firstname'].'  ' .$row_pat['lastname'];
@@ -49,16 +49,16 @@ $age =GetAge($dob);
 
 }
    /* //patient 
-$sample=mysql_query("SELECT * FROM sample ", $bd); 
-    while ( $row_sample=mysql_fetch_array($sample)){
+$sample=mysqli_query( $bd,"SELECT * FROM sample "); 
+    while ( $row_sample=mysqli_fetch_array($sample)){
         
         $sample_id =$row_sample['id'];
         $form_id =$row_sample['form_id'];
         $clinician_id =$row_sample['clinician_id'];
         $status =$row_sample['status'];
         
-            $clinician=mysql_query("SELECT * FROM clinician where id='$clinician_id'", $bd); 
-                $row_clinician=mysql_fetch_array($clinician);
+            $clinician=mysqli_query( $bd,"SELECT * FROM clinician where id='$clinician_id'"); 
+                $row_clinician=mysqli_fetch_array($clinician);
                     $art_clinic =$row_clinician['art_clinic'];*/
         
 ?>

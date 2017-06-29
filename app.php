@@ -280,14 +280,14 @@ font-size:110%;
                             -->
 	   <?php 
 global $tot_number;
-$form_creation=mysql_query("SELECT * FROM form_creation, expert_review_consolidate1 WHERE form_creation.3rdlineart_form_id not in (select form_id from sample) and form_creation.3rdlineart_form_id=expert_review_consolidate1.form_id and form_creation.clinician_id ='$clinicianID'", $bd); 
+$form_creation=mysqli_query($bd, "SELECT * FROM form_creation, expert_review_consolidate1 WHERE form_creation.3rdlineart_form_id not in (select form_id from sample) and form_creation.3rdlineart_form_id=expert_review_consolidate1.form_id and form_creation.clinician_id ='$clinicianID'"); 
 
-$tot_number = mysql_num_rows ($form_creation);
+$tot_number = mysqli_num_rows ($form_creation);
 
 global $tot_number_conso2;
-$form_creation_conso2=mysql_query("SELECT * FROM form_creation, expert_review_consolidate2 WHERE form_creation.3rdlineart_form_id=expert_review_consolidate2.form_id and form_creation.clinician_id ='$clinicianID'", $bd); 
+$form_creation_conso2=mysqli_query($bd, "SELECT * FROM form_creation, expert_review_consolidate2 WHERE form_creation.3rdlineart_form_id=expert_review_consolidate2.form_id and form_creation.clinician_id ='$clinicianID'"); 
 
-$tot_number_conso2 = mysql_num_rows ($form_creation_conso2);
+$tot_number_conso2 = mysqli_num_rows ($form_creation_conso2);
 ?>
                             
                    

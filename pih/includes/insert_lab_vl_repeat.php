@@ -3,26 +3,26 @@
 if(isset($_POST['submit_vl_done'])){ 
     
     
-    $sampleid= mysql_real_escape_string(htmlspecialchars($_POST['sampleid']));
-    $form_id= mysql_real_escape_string(htmlspecialchars($_GET['formID']));
-    $receive_date= mysql_real_escape_string(htmlspecialchars($_POST['receive_date']));
-    $vl_result= mysql_real_escape_string(htmlspecialchars($_POST['vl_result']));
-    $dispatch_date= mysql_real_escape_string(htmlspecialchars($_POST['dispatch_date']));
-    $nhls_receive_date= mysql_real_escape_string(htmlspecialchars($_POST['nhls_receive_date']));
+    $sampleid= mysqli_real_escape_string(htmlspecialchars($_POST['sampleid']));
+    $form_id= mysqli_real_escape_string(htmlspecialchars($_GET['formID']));
+    $receive_date= mysqli_real_escape_string(htmlspecialchars($_POST['receive_date']));
+    $vl_result= mysqli_real_escape_string(htmlspecialchars($_POST['vl_result']));
+    $dispatch_date= mysqli_real_escape_string(htmlspecialchars($_POST['dispatch_date']));
+    $nhls_receive_date= mysqli_real_escape_string(htmlspecialchars($_POST['nhls_receive_date']));
     $date_created = date ('Y-m-d  h:m:s');
  	
 $insert_lab_vl_repeat=" INSERT  INTO  lab_vl_repeat (form_id,receive_date,vl_result,dispatch_date,nhls_receive_date,lab_personel_id,date_record_created)
 VALUES (
 '$form_id', '$receive_date', '$vl_result', '$dispatch_date', '$nhls_receive_date', '$pih_staff_id', '$date_created')";
 
-mysql_query($insert_lab_vl_repeat, $bd);	
+mysqli_query( $bd,$insert_lab_vl_repeat);	
     
     $sql_sample = "UPDATE sample ".
        "SET status='Dispatched'".
        "WHERE id='$sampleid'" ;
 
-mysql_select_db('3rdlineart_db');
-$sample_recieved = mysql_query( $sql_sample, $bd );
+mysqli_select_db('3rdlineart_db');
+$sample_recieved = mysqli_query( $bd , $sql_sample);
     
  echo '							
 <div class="alert alert-success">

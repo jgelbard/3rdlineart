@@ -3,13 +3,13 @@ global $id;
 $id = $_GET['id'];
 echo $id;
 
- $reviewer=mysql_query("SELECT * FROM reviewer where id='$id' ", $bd); 
-    $row_reviewer=mysql_fetch_array($reviewer);
+ $reviewer=mysqli_query( $bd,"SELECT * FROM reviewer where id='$id' "); 
+    $row_reviewer=mysqli_fetch_array($reviewer);
         
         $user_id =$row_reviewer['user_id'];
 
-    $user = mysql_query("SELECT * FROM users where id='$user_id' ", $bd); 
-    $row_user=mysql_fetch_array($user);
+    $user = mysqli_query( $bd,"SELECT * FROM users where id='$user_id' "); 
+    $row_user=mysqli_fetch_array($user);
 
         $username =$row_user['username'];
         $password =$row_user['password'];

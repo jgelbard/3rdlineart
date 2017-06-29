@@ -9,8 +9,8 @@ $age= $_GET['xx'];
 $gender= $_GET['g'];
 /*echo $pat_id;*/
 
-$patient=mysql_query("SELECT * FROM patient where id='$pat_id' ", $bd); 
-    $row_pat=mysql_fetch_array($patient);
+$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+    $row_pat=mysqli_fetch_array($patient);
         
         $art_id_num =$row_pat['art_id_num'];
         $firstname =$row_pat['firstname'];
@@ -50,9 +50,9 @@ echo '
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysql_query($retrieve_drugs);
+     $drugs = mysqli_query($retrieve_drugs);
 	       
-while($drug_row = mysql_fetch_array($drugs)) {
+while($drug_row = mysqli_fetch_array($drugs)) {
     
     
 	$drug_name = $drug_row['drug_name'];
@@ -252,9 +252,9 @@ while($drug_row = mysql_fetch_array($drugs)) {
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysql_query($retrieve_drugs);
+     $drugs = mysqli_query($retrieve_drugs);
 	       
-while($drug_row = mysql_fetch_array($drugs)) {
+while($drug_row = mysqli_fetch_array($drugs)) {
     
     
 	$drug_name = $drug_row['drug_name'];
@@ -275,9 +275,9 @@ while($drug_row = mysql_fetch_array($drugs)) {
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysql_query($retrieve_drugs);
+     $drugs = mysqli_query($retrieve_drugs);
 	       
-while($drug_row = mysql_fetch_array($drugs)) {
+while($drug_row = mysqli_fetch_array($drugs)) {
     
     
 	$drug_name = $drug_row['drug_name'];
@@ -299,9 +299,9 @@ while($drug_row = mysql_fetch_array($drugs)) {
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysql_query($retrieve_drugs);
+     $drugs = mysqli_query($retrieve_drugs);
 	       
-while($drug_row = mysql_fetch_array($drugs)) {
+while($drug_row = mysqli_fetch_array($drugs)) {
     
     
 	$drug_name = $drug_row['drug_name'];
@@ -324,9 +324,9 @@ while($drug_row = mysql_fetch_array($drugs)) {
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysql_query($retrieve_drugs);
+     $drugs = mysqli_query($retrieve_drugs);
 	       
-while($drug_row = mysql_fetch_array($drugs)) {
+while($drug_row = mysqli_fetch_array($drugs)) {
     
     
 	$drug_name = $drug_row['drug_name'];
@@ -424,9 +424,9 @@ $(document).ready(function(){
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysql_query($retrieve_drugs);
+     $drugs = mysqli_query($retrieve_drugs);
 	       
-while($drug_row = mysql_fetch_array($drugs)) {
+while($drug_row = mysqli_fetch_array($drugs)) {
     
     
 	$drug_name = $drug_row['drug_name'];
@@ -456,9 +456,9 @@ while($drug_row = mysql_fetch_array($drugs)) {
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysql_query($retrieve_drugs);
+     $drugs = mysqli_query($retrieve_drugs);
 	       
-while($drug_row = mysql_fetch_array($drugs)) {
+while($drug_row = mysqli_fetch_array($drugs)) {
     
     
 	$drug_name = $drug_row['drug_name'];
@@ -489,9 +489,9 @@ while($drug_row = mysql_fetch_array($drugs)) {
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysql_query($retrieve_drugs);
+     $drugs = mysqli_query($retrieve_drugs);
 	       
-while($drug_row = mysql_fetch_array($drugs)) {
+while($drug_row = mysqli_fetch_array($drugs)) {
     
     
 	$drug_name = $drug_row['drug_name'];
@@ -521,9 +521,9 @@ while($drug_row = mysql_fetch_array($drugs)) {
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysql_query($retrieve_drugs);
+     $drugs = mysqli_query($retrieve_drugs);
 	       
-while($drug_row = mysql_fetch_array($drugs)) {
+while($drug_row = mysqli_fetch_array($drugs)) {
     
     
 	$drug_name = $drug_row['drug_name'];
@@ -553,9 +553,9 @@ while($drug_row = mysql_fetch_array($drugs)) {
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysql_query($retrieve_drugs);
+     $drugs = mysqli_query($retrieve_drugs);
 	       
-while($drug_row = mysql_fetch_array($drugs)) {
+while($drug_row = mysqli_fetch_array($drugs)) {
     
     
 	$drug_name = $drug_row['drug_name'];

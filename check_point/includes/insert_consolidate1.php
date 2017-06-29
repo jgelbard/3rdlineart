@@ -15,7 +15,7 @@ $insert_expert_review_consolidate1=" INSERT  INTO  expert_review_consolidate1 (f
 VALUES (
 '$formID', '$genotyping', '$comment_to_clinician', '$date_reviewed')";
 
-mysql_query($insert_expert_review_consolidate1, $bd);	
+mysqli_query( $bd,$insert_expert_review_consolidate1);	
     
  
      

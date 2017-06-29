@@ -13,7 +13,7 @@ $formID= $_POST['formID'];
 VALUES (
 '$rev_lead', '$formID', '$sec_id')";
 
-mysql_query($insert_reviewer_team_lead, $bd);	
+mysqli_query( $bd,$insert_reviewer_team_lead);	
       
 	  if(!empty($_POST['checkbox'])){   
  $checkbox = $_POST['checkbox'];
@@ -31,12 +31,12 @@ $insert_assigned_app_results=" INSERT  INTO  assigned_app_results (form_id,sec_i
 VALUES (
 '$formID', '$sec_id', '$rev_id', '$date_assigned')";
 
-mysql_query($insert_assigned_app_results, $bd);	
+mysqli_query( $bd,$insert_assigned_app_results);	
     
     $SQL_reviewer = "SELECT * FROM reviewer WHERE id=$rev_id";
-    $reviewer = mysql_query($SQL_reviewer,$bd);
+    $reviewer = mysqli_query($bd,$SQL_reviewer);
     
-                $row_reviewer = mysql_fetch_array($reviewer);
+                $row_reviewer = mysqli_fetch_array($reviewer);
                 $rev_email_address = $row_reviewer['email'];
                 $rev_title = $row_reviewer['title'];
                 $rev_lname = $row_reviewer['lname'];
@@ -116,7 +116,7 @@ echo 'form'.$formID;
 VALUES (
 '$formID','$file_name_new','$date_created')";
 
-$retval=mysql_query($insert_app_results, $bd);
+$retval=mysqli_query( $bd,$insert_app_results);
              
          }
        }

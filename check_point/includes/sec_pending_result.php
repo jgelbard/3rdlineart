@@ -19,10 +19,10 @@
                 <tbody>
                  <?php
 global $num_forms; 
-$form_creation=mysql_query("SELECT * FROM form_creation, lab_vl_repeat WHERE form_id not in (select form_id from app_results) and form_creation.3rdlineart_form_id=lab_vl_repeat.form_id ORDER BY `form_creation`.`3rdlineart_form_id` DESC", $bd); 
-$num_forms = mysql_num_rows ($form_creation);
+$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation, lab_vl_repeat WHERE form_id not in (select form_id from app_results) and form_creation.3rdlineart_form_id=lab_vl_repeat.form_id ORDER BY `form_creation`.`3rdlineart_form_id` DESC"); 
+$num_forms = mysqli_num_rows ($form_creation);
 echo '<p>Total forms: [ <i>'. $num_forms .'</i> ]</p>';
-    while ($row_form_creation=mysql_fetch_array($form_creation)){
+    while ($row_form_creation=mysqli_fetch_array($form_creation)){
         
         $_3rdlineart_form_id =$row_form_creation['3rdlineart_form_id'];
         $clinician_id =$row_form_creation['clinician_id'];
@@ -33,15 +33,15 @@ echo '<p>Total forms: [ <i>'. $num_forms .'</i> ]</p>';
         $date_created =$row_form_creation['date_created'];
         
         $SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
-                    $clinician = mysql_query($SQL_clinician,$bd);
+                    $clinician = mysqli_query($bd,$SQL_clinician);
                     
-                    $row_clinician = mysql_fetch_array($clinician);
+                    $row_clinician = mysqli_fetch_array($clinician);
                         $art_clinic = $row_clinician['art_clinic'];
         
          $SQL_patient = "SELECT * FROM patient WHERE id=$patient_id";
-                    $patient = mysql_query($SQL_patient,$bd);
+                    $patient = mysqli_query($bd,$SQL_patient);
                     
-                    $row_patient = mysql_fetch_array($patient);
+                    $row_patient = mysqli_fetch_array($patient);
                         $firstname = $row_patient['firstname'];
                         $lastname = $row_patient['lastname'];
                         $gender = $row_patient['gender'];

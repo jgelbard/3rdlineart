@@ -12,16 +12,16 @@ if(isset($_GET['received'])){
        "SET status='Received'".
        "WHERE id='$sampleid'" ;
 
-mysql_select_db('3rdlineart_db');
-$sample_recieved = mysql_query( $sql_sample, $bd );
+mysqli_select_db('3rdlineart_db');
+$sample_recieved = mysqli_query( $bd , $sql_sample);
     
     echo"<meta http-equiv=\"Refresh\" content=\"1; url=pih_p1.php?p\">";
     
 }
     //sample
-$sample=mysql_query("SELECT * FROM sample where status !='Dispatched'", $bd); 
+$sample=mysqli_query( $bd,"SELECT * FROM sample where status !='Dispatched'"); 
 
-$num_forms = mysql_num_rows ($sample);
+$num_forms = mysqli_num_rows ($sample);
 echo '<p>Total forms: [ <i>'. $num_forms .'</i> ]</p>';
 
 echo '
@@ -38,7 +38,7 @@ echo '
                 <tbody>
     ';
 
-    while ( $row_sample=mysql_fetch_array($sample)){
+    while ( $row_sample=mysqli_fetch_array($sample)){
         
         $sample_id =$row_sample['id'];
         $form_id =$row_sample['form_id'];
@@ -46,8 +46,8 @@ echo '
         $status =$row_sample['status'];
         $date_created =$row_sample['date_created'];
         
-            $clinician=mysql_query("SELECT * FROM clinician where id='$clinician_id'", $bd); 
-                $row_clinician=mysql_fetch_array($clinician);
+            $clinician=mysqli_query( $bd,"SELECT * FROM clinician where id='$clinician_id'"); 
+                $row_clinician=mysqli_fetch_array($clinician);
                     $art_clinic =$row_clinician['art_clinic'];
         
         
