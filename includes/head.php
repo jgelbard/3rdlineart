@@ -18,7 +18,8 @@
 <?php
 // $root = realpath(dirname(dirname($_SERVER["SCRIPT_FILENAME"])));
 // $root = realpath($_SERVER["SCRIPT_FILENAME"]);
-$root = '/var/www/html/3rdlineart';
+/*$root = '3rdlineart';
 echo($root);
-include ($root . '/includes/config.php');
+include ($root .'/includes/config.php');*/
+include ('includes/config.php');
 ?>

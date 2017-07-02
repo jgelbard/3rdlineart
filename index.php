@@ -38,6 +38,13 @@ include ('includes/head.php');
 			<div class="login-fields">
 				
 				<p>Please provide your details</p>
+                <?php
+$_error = $_GET ['error'];
+if ($_error =='fail'){
+    echo'
+				<p style="color:#f00">You issued wrong Username or Password</p>
+                    ';}
+                ?>
 				<div class="field">
 					<label for="username">Username</label>
 					<input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" />
