@@ -4,14 +4,14 @@ if(isset($_POST['update_pediatric'])){
 	
     
     
-    $patient_id= mysql_real_escape_string(htmlspecialchars($_POST['pat_id']));
+    $patient_id= mysqli_real_escape_string(htmlspecialchars($_POST['pat_id']));
     
     
     $sql_delete_pediatric = "DELETE FROM  pediatric where pat_id =$patient_id";
-    mysql_query($sql_delete_pediatric, $bd);
+    mysqli_query( $bd,$sql_delete_pediatric);
     
    
-    if (mysql_query($sql_delete_pediatric, $bd)){
+    if (mysqli_query($sql_delete_pediatric, $bd)){
     echo '							
 <div class="alert alert-success">
                                                   <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -21,10 +21,10 @@ if(isset($_POST['update_pediatric'])){
    ';
     }
     
- 	$mother_had_single_dose_NVP= mysql_real_escape_string(htmlspecialchars($_POST['mother_had_single_dose_NVP']));
- 	$given_NVP= mysql_real_escape_string(htmlspecialchars($_POST['given_NVP']));
-	$mother_had_PMTCT=mysql_real_escape_string(htmlspecialchars($_POST['mother_had_PMTCT']));
-	$swallow_tablets=mysql_real_escape_string(htmlspecialchars($_POST['swallow_tablets']));
+ 	$mother_had_single_dose_NVP= mysqli_real_escape_string(htmlspecialchars($_POST['mother_had_single_dose_NVP']));
+ 	$given_NVP= mysqli_real_escape_string(htmlspecialchars($_POST['given_NVP']));
+	$mother_had_PMTCT=mysqli_real_escape_string(htmlspecialchars($_POST['mother_had_PMTCT']));
+	$swallow_tablets=mysqli_real_escape_string(htmlspecialchars($_POST['swallow_tablets']));
     
     
  	
@@ -32,7 +32,7 @@ $insert_pediatric=" INSERT  INTO  pediatric (pat_id,mother_had_single_dose_NVP,g
 VALUES (
 '$patient_id', '$mother_had_single_dose_NVP', '$given_NVP', '$mother_had_PMTCT', '$swallow_tablets')";
 
-mysql_query($insert_pediatric, $bd);	
+mysqli_query( $bd,$insert_pediatric);	
     
 include ('includes/app_treatment1_edit.php');   
 }

@@ -2,13 +2,13 @@
 
 if(isset($_POST['update_patD'])){ 
     
-    $pat_id= mysql_real_escape_string(htmlspecialchars($_POST['pat_id']));
-    $art_id_num= mysql_real_escape_string(htmlspecialchars($_POST['art_id_num']));
- 	$firstname= mysql_real_escape_string(htmlspecialchars($_POST['firstname']));
-	$lastname=mysql_real_escape_string(htmlspecialchars($_POST['lastname']));
- 	$gender= mysql_real_escape_string(htmlspecialchars($_POST['gender']));
-	$dob=mysql_real_escape_string(htmlspecialchars($_POST['dob']));
-	$vl_sample_id=mysql_real_escape_string(htmlspecialchars($_POST['vl_sample_id']));
+    $pat_id= mysqli_real_escape_string(htmlspecialchars($_POST['pat_id']));
+    $art_id_num= mysqli_real_escape_string(htmlspecialchars($_POST['art_id_num']));
+ 	$firstname= mysqli_real_escape_string(htmlspecialchars($_POST['firstname']));
+	$lastname=mysqli_real_escape_string(htmlspecialchars($_POST['lastname']));
+ 	$gender= mysqli_real_escape_string(htmlspecialchars($_POST['gender']));
+	$dob=mysqli_real_escape_string(htmlspecialchars($_POST['dob']));
+	$vl_sample_id=mysqli_real_escape_string(htmlspecialchars($_POST['vl_sample_id']));
     
 	$date_created= date('Y/m/d');
 
@@ -24,8 +24,8 @@ SET art_id_num='$art_id_num',
        
        WHERE id='$pat_id'" ;
 
-mysql_select_db('3rdlineart_db');
-$patient_updated = mysql_query($sql_update_patient, $bd );    
+mysqli_select_db('3rdlineart_db');
+$patient_updated = mysqli_query( $bd ,$sql_update_patient);    
     
     if ($patient_updated){
     
@@ -37,9 +37,9 @@ $patient_updated = mysql_query($sql_update_patient, $bd );
                            </div>
                ';
    
-$current_clinical_status=mysql_query("SELECT * FROM current_clinical_status where patient_id='$pat_id' ", $bd);
+$current_clinical_status=mysqli_query( $bd,"SELECT * FROM current_clinical_status where patient_id='$pat_id' ");
         
-$if_exist_current_clinical_status = mysql_num_rows ($current_clinical_status);
+$if_exist_current_clinical_status = mysqli_num_rows ($current_clinical_status);
 
 if ($if_exist_current_clinical_status =='0'){
     

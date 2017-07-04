@@ -2,15 +2,15 @@
 
 if(isset($_POST['update_Preg'])){ 
 	
-    $pat_id= mysql_real_escape_string(htmlspecialchars($_GET['pat_id']));
+    $pat_id= mysqli_real_escape_string(htmlspecialchars($_GET['pat_id']));
     
      $sql_delete_pregnancy = "DELETE FROM  pregnancy where pat_id =$pat_id";
-    mysql_query($sql_delete_pregnancy, $bd);
+    mysqli_query( $bd,$sql_delete_pregnancy);
     
    
- 	$pregnant= mysql_real_escape_string(htmlspecialchars($_POST['pregnant']));
- 	$weeks_o_preg= mysql_real_escape_string(htmlspecialchars($_POST['weeks_o_preg']));
-	$breastfeeding=mysql_real_escape_string(htmlspecialchars($_POST['breastfeeding']));
+ 	$pregnant= mysqli_real_escape_string(htmlspecialchars($_POST['pregnant']));
+ 	$weeks_o_preg= mysqli_real_escape_string(htmlspecialchars($_POST['weeks_o_preg']));
+	$breastfeeding=mysqli_real_escape_string(htmlspecialchars($_POST['breastfeeding']));
     
     if ($pregnant=='Yes_preg'){
     $pregnant ='Yes';
@@ -24,7 +24,7 @@ $insert_preg=" INSERT  INTO  pregnancy (pat_id,pregnant,weeks_o_preg,breastfeedi
 VALUES (
 '$pat_id', '$pregnant', '$weeks_o_preg', '$breastfeeding')";
 
-mysql_query($insert_preg, $bd);	
+mysqli_query( $bd,$insert_preg);	
    
   
     echo '								

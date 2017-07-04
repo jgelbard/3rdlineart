@@ -4,18 +4,18 @@ if(isset($_POST['submit_patD'])){
     
    /* $id = date("ymdhis");
 	*/
-    $pat_art_clinic= mysql_real_escape_string(htmlspecialchars($_POST['pat_art_clinic']));
-    $art_id_num= mysql_real_escape_string(htmlspecialchars($_POST['art_id_num']));
- 	$firstname= mysql_real_escape_string(htmlspecialchars($_POST['firstname']));
-	$lastname=mysql_real_escape_string(htmlspecialchars($_POST['lastname']));
- 	$gender= mysql_real_escape_string(htmlspecialchars($_POST['gender']));
-	$dob=mysql_real_escape_string(htmlspecialchars($_POST['dob']));
-	$vl_sample_id=mysql_real_escape_string(htmlspecialchars($_POST['vl_sample_id']));
+    $pat_art_clinic= mysqli_real_escape_string(htmlspecialchars($_POST['pat_art_clinic']));
+    $art_id_num= mysqli_real_escape_string(htmlspecialchars($_POST['art_id_num']));
+ 	$firstname= mysqli_real_escape_string(htmlspecialchars($_POST['firstname']));
+	$lastname=mysqli_real_escape_string(htmlspecialchars($_POST['lastname']));
+ 	$gender= mysqli_real_escape_string(htmlspecialchars($_POST['gender']));
+	$dob=mysqli_real_escape_string(htmlspecialchars($_POST['dob']));
+	$vl_sample_id=mysqli_real_escape_string(htmlspecialchars($_POST['vl_sample_id']));
 	$date_created= date('Y/m/d');
 
         
-    $check_patient=mysql_query("SELECT * FROM patient where art_id_num='$art_id_num' ", $bd); 
-    $patient_Exist = mysql_num_rows ($check_patient);
+    $check_patient=mysqli_query( $bd,"SELECT * FROM patient where art_id_num='$art_id_num' "); 
+    $patient_Exist = mysqli_num_rows ($check_patient);
     
     if ($patient_Exist =='0'){
 
@@ -23,13 +23,13 @@ $insert_patient=" INSERT  INTO patient(pat_art_clinic,art_id_num,firstname,lastn
 VALUES (
 '$pat_art_clinic','$art_id_num', '$firstname', '$lastname', '$gender', '$dob', '$vl_sample_id', '$date_created' )";
 
-mysql_query($insert_patient, $bd);	
+mysqli_query( $bd,$insert_patient);	
     
  
- $patient=mysql_query("SELECT * FROM patient where art_id_num ='$art_id_num' ", $bd); 
+ $patient=mysqli_query( $bd,"SELECT * FROM patient where art_id_num ='$art_id_num' "); 
 
     global $pat_id;	
-    while ($row_pat=mysql_fetch_array($patient)){
+    while ($row_pat=mysqli_fetch_array($patient)){
         $pat_id =$row_pat['id'];
        /* echo '3rdLineID:'.$row_pat['id'];*/
 
@@ -41,7 +41,7 @@ $insert_form_creation=" INSERT  INTO form_creation (clinician_id,patient_id,stat
 VALUES (
  '$clinicianID', '$pat_id', 'Not Complete', '$date_created' )";
 
-mysql_query($insert_form_creation, $bd);	    
+mysqli_query( $bd,$insert_form_creation);	    
     
  include ('includes/app_clinic_status.php');     
 }
