@@ -11,21 +11,21 @@
          $dbpass = 'rootpassword';
          
          $rec_limit = 10;
-         $conn = mysql_connect($dbhost, $dbuser, $dbpass);
+         $conn = mysqli_connect($dbhost, $dbuser, $dbpass);
          
          if(! $conn ) {
-            die('Could not connect: ' . mysql_error());
+            die('Could not connect: ' . mysqli_error());
          }
-         mysql_select_db('test_db');
+         mysqli_select_db('test_db');
          
          /* Get total number of records */
          $sql = "SELECT count(emp_id) FROM employee ";
-         $retval = mysql_query( $sql, $conn );
+         $retval = mysqli_query( $conn , $sql);
          
          if(! $retval ) {
-            die('Could not get data: ' . mysql_error());
+            die('Could not get data: ' . mysqli_error());
          }
-         $row = mysql_fetch_array($retval, MYSQL_NUM );
+         $row = mysqli_fetch_array($retval, MYSQL_NUM );
          $rec_count = $row[0];
          
          if( isset($_GET{'page'} ) ) {
@@ -41,13 +41,13 @@
             "FROM employee ".
             "LIMIT $offset, $rec_limit";
             
-         $retval = mysql_query( $sql, $conn );
+         $retval = mysqli_query( $conn , $sql);
          
          if(! $retval ) {
-            die('Could not get data: ' . mysql_error());
+            die('Could not get data: ' . mysqli_error());
          }
          
-         while($row = mysql_fetch_array($retval, MYSQL_ASSOC)) {
+         while($row = mysqli_fetch_array($retval, MYSQL_ASSOC)) {
             echo "EMP ID :{$row['emp_id']}  <br> ".
                "EMP NAME : {$row['emp_name']} <br> ".
                EMP SALARY : {$row['emp_salary']} <br> ".
@@ -65,7 +65,7 @@
             echo "<a href = \"$_PHP_SELF?page = $last\">Last 10 Records</a>";
          }
          
-         mysql_close($conn);
+         mysqli_close($conn);
       ?>
       
    </body>

@@ -108,9 +108,9 @@ if(isset($_POST['cancel_app'])){
     $sql_cancel_app = "DELETE FROM form_creation where patient_id =$pat_id";
     $sql_cancel_patient = "DELETE FROM patient where id =$pat_id";
     
-    mysql_query($sql_cancel_patient, $bd);
+    mysqli_query( $bd,$sql_cancel_patient);
     
-    if (mysql_query($sql_cancel_app, $bd)){
+    if (mysqli_query($sql_cancel_app, $bd)){
     echo '<div class="alert alert-warning">
                                                   <button type="button" class="close" data-dismiss="alert">&times;</button>
                                                   <p style="color:#f00"><strong>Yoo!</strong> You Cancelled the application. </p>
@@ -194,9 +194,9 @@ if(!isset($_POST['complete_submit']) && !isset($_POST['cancel_app'])){
                                                        
                                                        ';
                                                       
-                                                       $current_clinical_status=mysql_query("SELECT * FROM current_clinical_status where patient_id='$pat_id' ", $bd);
+                                                       $current_clinical_status=mysqli_query( $bd,"SELECT * FROM current_clinical_status where patient_id='$pat_id' ");
         
-    $if_exist_current_clinical_status = mysql_num_rows ($current_clinical_status);
+    $if_exist_current_clinical_status = mysqli_num_rows ($current_clinical_status);
 
     if ($if_exist_current_clinical_status !='0'){
         
@@ -205,9 +205,9 @@ if(!isset($_POST['complete_submit']) && !isset($_POST['cancel_app'])){
                                                        </div>';
     
 }
-    $pediatric_section=mysql_query("SELECT * FROM  pediatric where pat_id='$pat_id' ", $bd);
+    $pediatric_section=mysqli_query( $bd,"SELECT * FROM  pediatric where pat_id='$pat_id' ");
         
-    $if_exist_pediatric_section = mysql_num_rows ($pediatric_section);
+    $if_exist_pediatric_section = mysqli_num_rows ($pediatric_section);
 
     if ($if_exist_pediatric_section !='0' && $age < 4 ){
         
@@ -218,9 +218,9 @@ if(!isset($_POST['complete_submit']) && !isset($_POST['cancel_app'])){
 }
     
     
-$pregnancy=mysql_query("SELECT * FROM  pregnancy where pat_id='$pat_id' ", $bd);
+$pregnancy=mysqli_query( $bd,"SELECT * FROM  pregnancy where pat_id='$pat_id' ");
         
-    $if_exist_pregnancy = mysql_num_rows ($pregnancy);
+    $if_exist_pregnancy = mysqli_num_rows ($pregnancy);
 
     if ($if_exist_pregnancy !='0' || $age > 10 && $gender=='Female'){
         
@@ -229,9 +229,9 @@ $pregnancy=mysql_query("SELECT * FROM  pregnancy where pat_id='$pat_id' ", $bd);
                                                        </div>';
     
 }
-   $treatment_history=mysql_query("SELECT * FROM  treatment_history where pat_id='$pat_id' ", $bd);
+   $treatment_history=mysqli_query( $bd,"SELECT * FROM  treatment_history where pat_id='$pat_id' ");
         
-    $if_exist_treatment_history = mysql_num_rows ($treatment_history);
+    $if_exist_treatment_history = mysqli_num_rows ($treatment_history);
 
     if ($if_exist_treatment_history !='0'){
         
@@ -240,9 +240,9 @@ $pregnancy=mysql_query("SELECT * FROM  pregnancy where pat_id='$pat_id' ", $bd);
                                                        </div>';
     
 }
-     $tb_treat=mysql_query("SELECT * FROM  tb_treat where pat_id='$pat_id' ", $bd);
+     $tb_treat=mysqli_query( $bd,"SELECT * FROM  tb_treat where pat_id='$pat_id' ");
         
-    $if_exist_tb_treat = mysql_num_rows ($tb_treat);
+    $if_exist_tb_treat = mysqli_num_rows ($tb_treat);
 
     if ($if_exist_tb_treat !='0'){
         
@@ -295,8 +295,8 @@ $sql_form_creation = "UPDATE form_creation ".
        "SET status='Complete'".
        "WHERE patient_id='$pat_id'" ;
 
-mysql_select_db('3rdlineart_db');
-$form_submited = mysql_query( $sql_form_creation, $bd );    
+mysqli_select_db('3rdlineart_db');
+$form_submited = mysqli_query( $bd , $sql_form_creation);    
     
     echo '							
 <div class="alert alert-success">

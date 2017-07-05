@@ -9,8 +9,8 @@
 include('config.php'); //include of db config file
 include ('pagnation.php'); //include of paginat page
 $per_page = 5; // number of results to show per page
-$result = mysql_query("SELECT * FROM countries");
-$total_results = mysql_num_rows($result);
+$result = mysqli_query("SELECT * FROM countries");
+$total_results = mysqli_num_rows($result);
 $total_pages = ceil($total_results / $per_page);
 
 if (!isset($_GET['page']))
@@ -69,8 +69,8 @@ break;
 }
 // echo out the contents of each row into a table
 echo "<tr>";
-echo '<td>' . mysql_result($result, $i, 'ccode') . '</td>';
-echo '<td>' . mysql_result($result, $i, 'country') . '</td>';
+echo '<td>' . mysqli_result($result, $i, 'ccode') . '</td>';
+echo '<td>' . mysqli_result($result, $i, 'country') . '</td>';
 echo "</tr>";
 }
 // close table>
