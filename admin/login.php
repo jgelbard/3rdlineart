@@ -14,7 +14,7 @@ function quote_smart($value, $handle) {
    }
 
    if (!is_numeric($value)) {
-       $value = "'" . mysqli_real_escape_string($value, $handle) . "'";
+       $value = "'" . mysqli_real_escape_string($handle, $value) . "'";
    }
    return $value;
 }

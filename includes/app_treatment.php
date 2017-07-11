@@ -48,7 +48,7 @@ echo '
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysqli_query($retrieve_drugs);
+     $drugs = mysqli_query($bd, $retrieve_drugs);
 	       
 while($drug_row = mysqli_fetch_array($drugs)) {
     
@@ -225,7 +225,7 @@ while($drug_row = mysqli_fetch_array($drugs)) {
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysqli_query($retrieve_drugs);
+     $drugs = mysqli_query($bd, $retrieve_drugs);
 	       
 while($drug_row = mysqli_fetch_array($drugs)) {
     
@@ -248,7 +248,7 @@ while($drug_row = mysqli_fetch_array($drugs)) {
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysqli_query($retrieve_drugs);
+     $drugs = mysqli_query($bd, $retrieve_drugs);
 	       
 while($drug_row = mysqli_fetch_array($drugs)) {
     
@@ -272,7 +272,7 @@ while($drug_row = mysqli_fetch_array($drugs)) {
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysqli_query($retrieve_drugs);
+     $drugs = mysqli_query($bd, $retrieve_drugs);
 	       
 while($drug_row = mysqli_fetch_array($drugs)) {
     
@@ -297,7 +297,7 @@ while($drug_row = mysqli_fetch_array($drugs)) {
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysqli_query($retrieve_drugs);
+     $drugs = mysqli_query($bd, $retrieve_drugs);
 	       
 while($drug_row = mysqli_fetch_array($drugs)) {
     
@@ -397,7 +397,7 @@ $(document).ready(function(){
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysqli_query($retrieve_drugs);
+     $drugs = mysqli_query($bd, $retrieve_drugs);
 	       
 while($drug_row = mysqli_fetch_array($drugs)) {
     
@@ -429,7 +429,7 @@ while($drug_row = mysqli_fetch_array($drugs)) {
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysqli_query($retrieve_drugs);
+     $drugs = mysqli_query($bd, $retrieve_drugs);
 	       
 while($drug_row = mysqli_fetch_array($drugs)) {
     
@@ -462,7 +462,7 @@ while($drug_row = mysqli_fetch_array($drugs)) {
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysqli_query($retrieve_drugs);
+     $drugs = mysqli_query($bd, $retrieve_drugs);
 	       
 while($drug_row = mysqli_fetch_array($drugs)) {
     
@@ -494,7 +494,7 @@ while($drug_row = mysqli_fetch_array($drugs)) {
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysqli_query($retrieve_drugs);
+     $drugs = mysqli_query($bd, $retrieve_drugs);
 	       
 while($drug_row = mysqli_fetch_array($drugs)) {
     
@@ -526,7 +526,7 @@ while($drug_row = mysqli_fetch_array($drugs)) {
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysqli_query($retrieve_drugs);
+     $drugs = mysqli_query($bd, $retrieve_drugs);
 	       
 while($drug_row = mysqli_fetch_array($drugs)) {
     

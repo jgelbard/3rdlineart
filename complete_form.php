@@ -110,7 +110,7 @@ if(isset($_POST['cancel_app'])){
     
     mysqli_query( $bd,$sql_cancel_patient);
     
-    if (mysqli_query($sql_cancel_app, $bd)){
+    if (mysqli_query($bd, $sql_cancel_app)){
     echo '<div class="alert alert-warning">
                                                   <button type="button" class="close" data-dismiss="alert">&times;</button>
                                                   <p style="color:#f00"><strong>Yoo!</strong> You Cancelled the application. </p>
