@@ -403,10 +403,11 @@ echo '
 </fieldset>
     <hr />
     <h3>Important Note:</h3>
-    <div class="text"> <p style="color:#f00">While this form is processed, keep the patient on his current treatment regimen. It may still confer some benefit to be patient and resistance testing can only be done while patient is on treatment</p> </div>
+    <div class="text"> <p style="color:#f00">While this form is processed keep the patient on his current treatment regimen. It may still confer some benefit to be patient and resistance testing can only be done while patient is on treatment</p> </div>
     
                       <div class="form-actions">
                                                                                                                                                    <div class="span3">
+                                                                                                                                                   <?php include ('includes/app_edit_first.php'); ?>
                <button class="btn" name="submit_patD" style="padding:10px; font-size:180%">Back</button>                                                                                                                                    </div>
                                                                                                                                                    <div class="span3"><!--
 											<button type="submit" class="btn btn-primary" style="padding:10px; font-size:180%">Save</button> -->.

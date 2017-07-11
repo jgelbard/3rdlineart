@@ -70,10 +70,10 @@ $reviewer=mysqli_query( $bd,"SELECT * FROM reviewer");
         $rev_fullname =$title.'. '. $fname. ' '. $lname;
         
         $assigned_forms=mysqli_query( $bd,"SELECT * FROM assigned_forms where rev_id=' $id'");
-        $count = mysqli_numrows ($assigned_forms);
+        $count = mysqli_num_rows ($assigned_forms);
         
         $assigned_forms_reviewed=mysqli_query( $bd,"SELECT * FROM assigned_forms where status = 'Reviewed' and rev_id=' $id'");
-        $rev_count = mysqli_numrows ($assigned_forms_reviewed);
+        $rev_count = mysqli_num_rows ($assigned_forms_reviewed);
         $pending = $count - $rev_count;
        
         echo '<tr><td>

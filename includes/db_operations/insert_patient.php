@@ -4,13 +4,13 @@ if(isset($_POST['submit_patD'])){
     
    /* $id = date("ymdhis");
 	*/
-    $pat_art_clinic= mysqli_real_escape_string(htmlspecialchars($_POST['pat_art_clinic']));
-    $art_id_num= mysqli_real_escape_string(htmlspecialchars($_POST['art_id_num']));
- 	$firstname= mysqli_real_escape_string(htmlspecialchars($_POST['firstname']));
-	$lastname=mysqli_real_escape_string(htmlspecialchars($_POST['lastname']));
- 	$gender= mysqli_real_escape_string(htmlspecialchars($_POST['gender']));
-	$dob=mysqli_real_escape_string(htmlspecialchars($_POST['dob']));
-	$vl_sample_id=mysqli_real_escape_string(htmlspecialchars($_POST['vl_sample_id']));
+    $pat_art_clinic= mysqli_real_escape_string($bd, $_POST['pat_art_clinic']);
+    $art_id_num= mysqli_real_escape_string($bd, $_POST['art_id_num']);
+ 	$firstname= mysqli_real_escape_string($bd, $_POST['firstname']);
+	$lastname=mysqli_real_escape_string($bd, $_POST['lastname']);
+ 	$gender= mysqli_real_escape_string($bd, $_POST['gender']);
+	$dob=mysqli_real_escape_string($bd, $_POST['dob']);
+	$vl_sample_id=mysqli_real_escape_string($bd, $_POST['vl_sample_id']);
 	$date_created= date('Y/m/d');
 
         

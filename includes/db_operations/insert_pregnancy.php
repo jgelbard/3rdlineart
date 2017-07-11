@@ -2,10 +2,10 @@
 
 if(isset($_POST['submit_Preg'])){ 
 	
-    $patient_id= mysqli_real_escape_string(htmlspecialchars($_POST['pat_id']));
- 	$pregnant= mysqli_real_escape_string(htmlspecialchars($_POST['pregnant']));
- 	$weeks_o_preg= mysqli_real_escape_string(htmlspecialchars($_POST['weeks_o_preg']));
-	$breastfeeding=mysqli_real_escape_string(htmlspecialchars($_POST['breastfeeding']));
+    $patient_id= mysqli_real_escape_string($bd, $_POST['pat_id']);
+ 	$pregnant= mysqli_real_escape_string($bd, $_POST['pregnant']);
+ 	$weeks_o_preg= mysqli_real_escape_string($bd, $_POST['weeks_o_preg']);
+	$breastfeeding=mysqli_real_escape_string($bd, $_POST['breastfeeding']);
     
     if ($pregnant=='Yes_preg'){
     $pregnant ='Yes';

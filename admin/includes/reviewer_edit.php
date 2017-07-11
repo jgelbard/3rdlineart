@@ -24,8 +24,8 @@ echo $id;
        
 ?>
 
-	<div class="span11">
-       	<h1 style="text-align:center">New Reviewer Registration</h1>	
+
+       	<h1 style="text-align:center; background-color:#e8e8e8">Edit Reviewer Details</h1>	
         <hr />
 </div>
         
@@ -33,9 +33,6 @@ echo $id;
 	
 <form id="edit-profile" class="form-horizontal" action="dash.php" method="post">
 
-                          <table style="width:80%" border="0">
-                          <tr>
-                          <td>
                                <select class="span4" id="title"name="title" style="margin:5px">
                               <option><?php echo $title; ?></option>
                               <option>Prof</option>
@@ -44,7 +41,9 @@ echo $id;
                               <option>Ms</option>
                               <option>Mrs</option>
                               </select>
-                              
+                            <br />  
+    <span></span>												
+                              <input type="text" class="span3" id="firstname" placeholder="Affliated Institution" name="affiliate_institution" style="margin:5px" value="<?php echo  $affiliate_institution; ?>"><br />
                               <input type="text" class="span4" id="firstname" placeholder="username" name="username" value="<?php echo $username; ?>" style="margin:5px"><br />
                             
                               
@@ -54,18 +53,13 @@ echo $id;
                               <input type="text" class="span4" id="phone" placeholder="Phone Number"  name="phone" value="<?php echo $phone; ?>" style="margin:5px"><br />
                               <input type="password" class="span4" id="firstname" placeholder="Password"  name="password" value="<?php echo  $password; ?>" style="margin:5px"><br />
                               <input type="password" class="span4" id="firstname" placeholder="Confirm Password"  name="confirm_pswd" style="margin:5px" value="<?php echo  $password; ?>" ><br />
-                          </td>    
+                        
                          
-                          <td><span></span>												
-                              <input type="text" class="span3" id="firstname" placeholder="Affliated Institution" name="affiliate_institution" style="margin:5px" value="<?php echo  $affiliate_institution; ?>">
                               <h4>Expert Snapshot</h4>
                                 <textarea type="text" id="email" rows="18" cols="20" name="snapshot"  style="width:100%; margin:5px">
      
       </textarea>
-</td>    
-                          </tr>
-                            
-                          </table>
+
                                                                                                                                        <div class="form-actions">
                                                                                                                                                    <div class="span4">
                <button class="btn" style="padding:10px; font-size:180%">Cancel</button>                                                                                                                                    </div>
@@ -77,4 +71,3 @@ echo $id;
     
                            
 </form>
-    </div>

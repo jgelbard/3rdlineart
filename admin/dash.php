@@ -42,7 +42,7 @@ include ('../includes/head.php');
 </head>
 <body>
 <?php
-    include ('includes/nav_main.php');
+    include ('../includes/nav_main.php');
     include ('includes/nav_sub.php');
     
     ?>
@@ -71,36 +71,56 @@ include ('../includes/head.php');
                       <?php
 
 include ('includes/insert_reviewer.php'); 
+include ('includes/insert_clinician.php'); 
+include ('includes/insert_lab_user.php'); 
+include ('includes/insert_sec.php'); 
+include ('includes/insert_drug.php'); 
+include ('includes/insert_facility.php'); 
+include ('includes/insert_affliates.php'); 
 
-if(isset($_GET['p'])){ 
 
- echo '<div class="span11">
-          <div class="widget">
-            <div class="widget-header"> 
-             
-            </div>
-            <!-- /widget-header -->
-            <div class="widget-content">
-              <div class="shor-tcuts"> 
-                  <a href="dash.php?rev" class="shortcut"><i class="shortcut-icon icon-list-alt"></i><span
-                                        class="shortcut-label">Manage Reviewers</span> </a><br />
-                  <a href="dash.php?lab" class="shortcut"><i
-                                            class="shortcut-icon icon-bookmark"></i><span class="shortcut-label">Manage Lab user</span> </a><br />
-                  <a href="dash.php?sec" class="shortcut"> <i class="shortcut-icon icon-comment"></i><span class="shortcut-label">Manage Sec</span> </a><br />
-                  <a href="dash.php?clin" class="shortcut"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Manage Clinician</span> </a><br />
-                  <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-user"></i><span
-                                                class="shortcut-label">All Users</span> </a><br />
-                  <a href="../reports.php" target="_blank" class="shortcut"> <i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Reports</span> </a> </div>
-              <!-- /shortcuts --> 
-            </div>
-            <!-- /widget-content --> 
-          </div>
-                            </div>
+ echo '<div class="span2" style="border-right:3px solid #535469; padding:10px">
+        <h3>Navigation Menu</h3>  
+                  <a href="dash.php?man_facility" class="button btn btn-primary btn-large">Manage Facility </a><br />
+                  <a href="dash.php?man_drugs" class="button btn btn-primary btn-large">Manage Drugs </a><br />
+                  <a href="dash.php?man_affliates" class="button btn btn-primary btn-large">Manage Affliates </a><br />
+                  <a href="dash.php?rev" class="button btn btn-primary btn-large">Manage Reviewers </a>
+                  <a href="dash.php?clin" class="button btn btn-primary btn-large">Manage Clinician </a><hr />           
+                  <a href="dash.php?lab" class="button btn btn-primary btn-large">Manage Lab user </a><br />
+                  <a href="dash.php?sec" class="button btn btn-primary btn-large">Manage Sec </a><br />
+
+                 
+                  <a href="../reports.php" target="_blank" class="button btn btn-primary btn-large">Reports </a> </div>
+            
 					  ';   
     
+if(isset($_GET['p'])){ 
+echo '<div class="span8" style="padding:200px 50px">
+<h1 style="font-size:1000%; color:#efeded">Admin Page</h1>
+</div>
+';    
 }
 
 
+echo '<div class="span8">';
+if(isset($_GET['man_facility'])){ 
+ include ('includes/admin_facilities.php');   
+}
+if(isset($_GET['create_facility'])){ 
+ include ('includes/create_facility.php');   
+}
+if(isset($_GET['man_drugs'])){ 
+ include ('includes/man_drugs.php');   
+}
+if(isset($_GET['create_drug'])){ 
+ include ('includes/create_drug.php');   
+}
+if(isset($_GET['man_affliates'])){ 
+ include ('includes/man_affliates.php');   
+}
+if(isset($_GET['create_affliate'])){ 
+ include ('includes/create_affliate.php');   
+}
 if(isset($_GET['clin'])){ 
  include ('includes/clinician.php');   
 }
@@ -123,11 +143,15 @@ if(isset($_GET['create_sec'])){
  include ('includes/create_sec.php');   
 }
 
+if(isset($_GET['create_lab_user'])){ 
+ include ('includes/create_lab.php');   
+}
+
 if(isset($_GET['reviewer'])){ 
  include ('includes/reviewer_new.php');   
 }
 
-if(isset($_GET['edit_reviewer'])){ 
+if(isset($_GET['rev_edit'])){ 
  include ('includes/reviewer_edit.php');   
 }
 
@@ -137,7 +161,7 @@ if(isset($_GET['edit_reviewer'])){
 ?>
                             
 	
-				
+                        </div>
 					</div> <!-- /pricing-plans -->
 						
 					</div> <!-- /widget-content -->

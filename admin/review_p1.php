@@ -48,7 +48,7 @@ include ('../includes/head.php');
 <body>
 <?php
     include ('../includes/nav_main.php');
-    include ('../includes/nav_sub.php');
+    include ('includes/nav_sub.php');
     
     ?>
     
@@ -150,7 +150,7 @@ if(isset($_POST['submit_Preg'])){
     
 </div> <!-- /main -->
     
- <?php /*include ('includes/footer.php');*/ ?>   
+ <?php /*include ('../includes/footer.php');*/ ?>   
 
 <!-- Le javascript
 ================================================== -->

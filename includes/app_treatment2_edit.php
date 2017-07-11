@@ -61,7 +61,7 @@
                 weight: {
 					required: true,
 					minlength: 2,
-					maxlength: 3
+					maxlength: 6
 				},
 			 height: {
 					required: true,
@@ -159,45 +159,72 @@ echo '
 
 <input type="hidden" name="pat_id" value="<?php echo $pat_id; ?>" />
  <input type="hidden" name="dob" value="<?php echo $dob; ?>"  /> 
-  <script>
+  
+                     <script>
   $( function() {
     $( "#datepicker16" ).datepicker({
       changeMonth: true,
-      changeYear: true
-    });
-  } );
-  </script>
-
-<script>
-  $( function() {
-    $( "#datepicker17" ).datepicker({
-      changeMonth: true,
-      changeYear: true
-    });
-  } );
-  </script>
-
- <script>
-  $( function() {
-    $( "#datepicker18" ).datepicker({
-      changeMonth: true,
-      changeYear: true
-    });
-  } );
-  </script>
-
- <script>
-  $( function() {
-    $( "#datepicker19" ).datepicker({
-      changeMonth: true,
+         maxDate: '0', 
+				beforeShow : function()
+				{
+					jQuery( this ).datepicker('option','maxDate', jQuery('#datepicker17').val() );
+                },
       changeYear: true
     });
   } );
   </script>
                      <script>
   $( function() {
+    $( "#datepicker17" ).datepicker({
+      changeMonth: true,
+        maxDate: '0', 
+				beforeShow : function()
+				{
+					jQuery( this ).datepicker('option','minDate', jQuery('#datepicker16').val() );
+				} , 
+      changeYear: true
+    });
+  } );
+  </script>
+
+ 
+                     <script>
+  $( function() {
+    $( "#datepicker18" ).datepicker({
+      changeMonth: true,
+         maxDate: '0', 
+				beforeShow : function()
+				{
+					jQuery( this ).datepicker('option','minDate', jQuery('#datepicker17').val() );
+				} , 
+      changeYear: true
+    });
+  } );
+  </script>
+                     <script>
+  $( function() {
+    $( "#datepicker19" ).datepicker({
+      changeMonth: true,
+        maxDate: '0', 
+				beforeShow : function()
+				{
+					jQuery( this ).datepicker('option','minDate', jQuery('#datepicker18').val() );
+				} , 
+      changeYear: true
+    });
+  } );
+  </script>
+
+      
+                     <script>
+  $( function() {
     $( "#datepicker20" ).datepicker({
       changeMonth: true,
+         maxDate: '0', 
+				beforeShow : function()
+				{
+					jQuery( this ).datepicker('option','minDate', jQuery('#datepicker19').val() );
+				} , 
       changeYear: true
     });
   } );
@@ -206,14 +233,25 @@ echo '
   $( function() {
     $( "#datepicker21" ).datepicker({
       changeMonth: true,
+        maxDate: '0', 
+				beforeShow : function()
+				{
+					jQuery( this ).datepicker('option','minDate', jQuery('#datepicker20').val() );
+				} , 
       changeYear: true
     });
   } );
   </script>
-                     <script>
+
+                   <script>
   $( function() {
     $( "#datepicker22" ).datepicker({
       changeMonth: true,
+         maxDate: '0', 
+				beforeShow : function()
+				{
+					jQuery( this ).datepicker('option','minDate', jQuery('#datepicker21').val() );
+				} , 
       changeYear: true
     });
   } );
@@ -222,39 +260,38 @@ echo '
   $( function() {
     $( "#datepicker23" ).datepicker({
       changeMonth: true,
+        maxDate: '0', 
+				beforeShow : function()
+				{
+					jQuery( this ).datepicker('option','minDate', jQuery('#datepicker22').val() );
+				} , 
       changeYear: true
     });
   } );
   </script>
-                     <script>
+
+    <script>
   $( function() {
     $( "#datepicker24" ).datepicker({
       changeMonth: true,
+         maxDate: '0', 
+				beforeShow : function()
+				{
+					jQuery( this ).datepicker('option','minDate', jQuery('#datepicker23').val() );
+				} , 
       changeYear: true
     });
   } );
   </script>
-                    
-                      <script>
-  $( function() {
-    $( "#datepicker24" ).datepicker({
-      changeMonth: true,
-      changeYear: true
-    });
-  } );
-  </script>
-                    
-                      <script>
-  $( function() {
-    $( "#datepicker24" ).datepicker({
-      changeMonth: true,
-      changeYear: true
-    });
-  } );
-  </script>                   <script>
+         <script>
   $( function() {
     $( "#datepicker25" ).datepicker({
       changeMonth: true,
+        maxDate: '0', 
+				beforeShow : function()
+				{
+					jQuery( this ).datepicker('option','minDate', jQuery('#datepicker24').val() );
+				} , 
       changeYear: true
     });
   } );

@@ -4,15 +4,15 @@ if(isset($_POST['submit_review_result'])){
     
     $formID= $_GET ['formid'];
     
-    $pi_mutation= mysqli_real_escape_string(htmlspecialchars($_POST['pi_mutation']));
-    $switch= mysqli_real_escape_string(htmlspecialchars($_POST['switch']));
-    $drug1= mysqli_real_escape_string(htmlspecialchars($_POST['drug1']));
-    $drug2= mysqli_real_escape_string(htmlspecialchars($_POST['drug2']));
-    $drug3= mysqli_real_escape_string(htmlspecialchars($_POST['drug3']));
-    $drug4= mysqli_real_escape_string(htmlspecialchars($_POST['drug4']));
-    $drug5= mysqli_real_escape_string(htmlspecialchars($_POST['drug5']));
-    $comment= mysqli_real_escape_string(htmlspecialchars($_POST['comment_to_clinician']));
-    $feedback_to_clinician= mysqli_real_escape_string(htmlspecialchars($_POST['feedback_to_clinician']));
+    $pi_mutation= mysqli_real_escape_string($bd, htmlspecialchars($_POST['pi_mutation']));
+    $switch= mysqli_real_escape_string($bd, htmlspecialchars($_POST['switch']));
+    $drug1= mysqli_real_escape_string($bd, htmlspecialchars($_POST['drug1']));
+    $drug2= mysqli_real_escape_string($bd, htmlspecialchars($_POST['drug2']));
+    $drug3= mysqli_real_escape_string($bd, htmlspecialchars($_POST['drug3']));
+    $drug4= mysqli_real_escape_string($bd, htmlspecialchars($_POST['drug4']));
+    $drug5= mysqli_real_escape_string($bd, htmlspecialchars($_POST['drug5']));
+    $comment= mysqli_real_escape_string($bd, htmlspecialchars($_POST['comment_to_clinician']));
+    $feedback_to_clinician= mysqli_real_escape_string($bd, htmlspecialchars($_POST['feedback_to_clinician']));
     
     if ($switch=='SwitchYes'){
     $switch ='Yes';

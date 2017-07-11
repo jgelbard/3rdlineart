@@ -2,13 +2,13 @@
 
 if(isset($_POST['update_patD'])){ 
     
-    $pat_id= mysqli_real_escape_string(htmlspecialchars($_POST['pat_id']));
-    $art_id_num= mysqli_real_escape_string(htmlspecialchars($_POST['art_id_num']));
- 	$firstname= mysqli_real_escape_string(htmlspecialchars($_POST['firstname']));
-	$lastname=mysqli_real_escape_string(htmlspecialchars($_POST['lastname']));
- 	$gender= mysqli_real_escape_string(htmlspecialchars($_POST['gender']));
-	$dob=mysqli_real_escape_string(htmlspecialchars($_POST['dob']));
-	$vl_sample_id=mysqli_real_escape_string(htmlspecialchars($_POST['vl_sample_id']));
+    $pat_id= mysqli_real_escape_string($bd, $_POST['pat_id']);
+    $art_id_num= mysqli_real_escape_string($bd, $_POST['art_id_num']);
+ 	$firstname= mysqli_real_escape_string($bd, $_POST['firstname']);
+	$lastname=mysqli_real_escape_string($bd, $_POST['lastname']);
+ 	$gender= mysqli_real_escape_string($bd, $_POST['gender']);
+	$dob=mysqli_real_escape_string($bd, $_POST['dob']);
+	$vl_sample_id=mysqli_real_escape_string($bd, $_POST['vl_sample_id']);
     
 	$date_created= date('Y/m/d');
 
@@ -24,7 +24,7 @@ SET art_id_num='$art_id_num',
        
        WHERE id='$pat_id'" ;
 
-mysqli_select_db('3rdlineart_db');
+mysqli_select_db($bd, '3rdlineart_db');
 $patient_updated = mysqli_query( $bd ,$sql_update_patient);    
     
     if ($patient_updated){

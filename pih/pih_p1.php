@@ -198,7 +198,7 @@ font-size:110%;
 </head>
 <body>
 <?php
-    include ('../includes/nav_main.php');
+    include ('includes/nav_main.php');
     include ('includes/nav_sub.php');
     
     ?>

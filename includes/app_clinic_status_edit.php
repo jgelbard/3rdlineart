@@ -1301,8 +1301,8 @@ else {
                           </table>
 </fieldset>
      <div class="form-actions">
-                                                                                                                                                   <div class="span3">
-               <button class="btn" style="padding:10px; font-size:180%"><a href="app.php?back&part_1<?php echo '&pat_id='.$pat_id.'' ?>">Back</a></button>                                                                                                                                    </div>
+                                                                                                                                                    <div class="span3">
+              <a href="app.php?back&part_1<?php echo '&pat_id='.$pat_id.'' ?>" class="btn" style="padding:10px; font-size:180%">Back</a>                                                                                                                                    </div>
                                                                                                                                                    <div class="span3"><!--
 											<button type="submit" class="btn btn-primary" style="padding:10px; font-size:180%">Save</button> -->.
 											

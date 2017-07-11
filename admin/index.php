@@ -6,7 +6,7 @@
     <title>Login - 3rd Line ART Expert Committee Malawi</title>
 <?php 
     
-include ('includes/head.php');
+include ('../includes/head.php');
     
     ?>
 </head>
@@ -27,14 +27,12 @@ include ('includes/head.php');
 			<div class="nav-collapse">
 				<ul class="nav pull-right">
 					<li class="">						
-						<a href="signup.html" class="">
-							Don't have an account?
-						</a>
+						
 					</li>
 					<li class="">						
-						<a href="index.html" class="">
+						<a href="#" class="">
 							<i class="icon-chevron-left"></i>
-							Back to Homepage
+							help
 						</a>
 					</li>
 				</ul>
@@ -52,6 +50,15 @@ include ('includes/head.php');
 			<div class="login-fields">
 				
 				<p>Please provide your details</p>
+                <?php
+if(isset($_GET ['error'])){ 
+$_error = $_GET ['error'];
+if ($_error =='fail'){
+    echo'
+				<p style="color:#f00">You issued wrong Username or Password</p>
+                    ';}
+}
+                ?>
 				<div class="field">
 					<label for="username">Username</label>
 					<input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" />

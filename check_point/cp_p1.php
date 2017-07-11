@@ -29,7 +29,6 @@
     <title>Application Form</title>
     
    <?php 
-    
 include ('../includes/head.php');
     
     ?>
@@ -59,14 +58,22 @@ include ('../includes/head.php');
         padding: 30px;
         margin-top: 20px;
         border: 1px solid #000;
-    }   
+    }  
+     
+   
+        .radio {
+        font-size:115%;
+        }
+        
+        
+
 .radio_sty {
   color: #AAAAAA;
   display: inline;
   position: relative;
   float: left;
   width: 100%;
-  height: 80px;
+  height: 100px;
 	
 }
 
@@ -89,7 +96,8 @@ include ('../includes/head.php');
 }
 
 .radio_sty:hover label{
-	color: #FFFFFF;
+	color: #47aa12;
+    font-weight:800;
 }
 
 .radio_sty .check{
@@ -107,7 +115,7 @@ include ('../includes/head.php');
 }
 
 .radio_sty:hover .check {
-  border: 5px solid #FFFFFF;
+  border: 5px solid #47aa12;
 }
 
 .radio_sty .check::before {
@@ -125,7 +133,7 @@ include ('../includes/head.php');
 }
 
 input[type=radio]:checked ~ .check {
-  border: 5px solid #f4bf0f;
+  border: 5px solid #0cde80;
 }
 
 input[type=radio]:checked ~ .check::before{
@@ -133,7 +141,7 @@ input[type=radio]:checked ~ .check::before{
 }
 
 input[type=radio]:checked ~ label{
-  color: #fab415;
+  color: #0cde80;
 }
                  /* latin-ext */
 @font-face {
@@ -148,12 +156,29 @@ input[type=radio]:checked ~ label{
   font-style: normal;
   font-weight: 400;
     
+ 
+}
+        .control-label {
+        position:relative; top:30px;
+
+
+	font-family: 'Lato', sans-serif;
+font-size:110%;
+        
+        }
+
+ form .error, .error {
+ 
+  color: #ff0000;
+}
+         
     </style>
+    
 </head>
 <body>
 <?php
     include ('../includes/nav_main.php');
-    include ('../includes/nav_sub.php');
+    include ('includes/nav_sub.php');
     
     ?>
     
@@ -297,7 +322,7 @@ $sql_form_creation_complete = "UPDATE form_creation ".
        "SET complete='Yes'".
        "WHERE 3rdlineart_form_id='$form_ID'" ;
 
-mysqli_select_db('3rdlineart_db');
+mysqli_select_db($bd, '3rdlineart_db');
 $form_submited_complete = mysqli_query( $bd , $sql_form_creation_complete);   
     
 }
@@ -310,7 +335,7 @@ $sql_form_creation_not_complete = "UPDATE form_creation ".
        "SET complete='Rejected'".
        "WHERE 3rdlineart_form_id='$form_ID'" ;
 
-mysqli_select_db('3rdlineart_db');
+mysqli_select_db($bd , '3rdlineart_db');
 $form_submited_not_complete = mysqli_query( $bd , $sql_form_creation_not_complete);   
     
 }

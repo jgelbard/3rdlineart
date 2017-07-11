@@ -23,7 +23,17 @@ include ('includes/head.php');
 				3rd Line ART Expert Committee Malawi				
 			</a>	
 			<div class="nav-collapse">
-				
+				<ul class="nav pull-right">
+					<li class="">						
+						
+					</li>
+					<li class="">						
+						<a href="#" class="">
+							<i class="icon-chevron-left"></i>
+							help
+						</a>
+					</li>
+				</ul>
 			</div><!--/.nav-collapse -->	
 		</div> <!-- /container -->
 	</div> <!-- /navbar-inner -->
@@ -38,6 +48,15 @@ include ('includes/head.php');
 			<div class="login-fields">
 				
 				<p>Please provide your details</p>
+                <?php
+if(isset($_GET ['error'])){ 
+$_error = $_GET ['error'];
+if ($_error =='fail'){
+    echo'
+				<p style="color:#f00">You issued wrong Username or Password</p>
+                    ';}
+}
+                ?>
 				<div class="field">
 					<label for="username">Username</label>
 					<input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" />

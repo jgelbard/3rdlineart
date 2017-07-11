@@ -16,9 +16,8 @@
  <link rel="stylesheet" href="css/jquery-ui.css">
 
 <?php
-// $root = realpath(dirname(dirname($_SERVER["SCRIPT_FILENAME"])));
-// $root = realpath($_SERVER["SCRIPT_FILENAME"]);
-$root = '/var/www/html/3rdlineart';
-echo($root);
-include ($root . '/includes/config.php');
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/3rdlineart5/includes/config.php";
+echo('including: '.$path);
+include_once($path);
 ?>

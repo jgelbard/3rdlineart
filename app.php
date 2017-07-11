@@ -56,12 +56,14 @@ if (document.layers) {
 document.oncontextmenu = new Function("return false")
 </script>  
    <?php 
-    
+   
 include ('includes/head.php');
     
     ?>
     
-    <style>
+    
+     
+ <style>
     input[type="text"],select {
     height: 35px;
         font-size:130%;
@@ -146,7 +148,8 @@ include ('includes/head.php');
 }
 
 .radio_sty:hover label{
-	color: #FFFFFF;
+	color: #47aa12;
+    font-weight:800;
 }
 
 .radio_sty .check{
@@ -164,7 +167,7 @@ include ('includes/head.php');
 }
 
 .radio_sty:hover .check {
-  border: 5px solid #FFFFFF;
+  border: 5px solid #47aa12;
 }
 
 .radio_sty .check::before {
@@ -216,8 +219,8 @@ font-size:110%;
         
         }
 
- form .error {
-  display: block;  
+ form .error, .error {
+ 
   color: #ff0000;
 }
          
@@ -238,16 +241,10 @@ font-size:110%;
 
 	    <div class="container">
 	 <?Php
-/*if (isset($_SESSION['identification'])){
-
-       global  $fname;
-       $fname= $_SESSION['username'];
-       $lname= $_SESSION['lname'];
-  
-       
-	  	   echo '<h4>  <span class="glyphicon glyphicon-user">Logged in: '. $fullname.'</span></h4>';
+if (isset($_SESSION['identification'])){
+	  	   echo '<h4>  <span class="glyphicon glyphicon-user">Clinician: '. $fullname.'</span></h4>';
 	   
-	   	   }*/
+	   	   }
 	   ?>  
 	      <div class="row">
 	      	
@@ -255,29 +252,16 @@ font-size:110%;
 	      		
 	      		<div class="widget">
 						
-					<div class="widget-header">
+					<!--<div class="widget-header">
 						<i class="icon-th-large"></i>
 						<h3 style="text-align:right">3rd Line ART Application Form</h3>
                         
-					</div> <!-- /widget-header -->
-					
+					</div>  /widget-header 
+					-->
 					<div class="widget-content">
 						
 						<div class="pricing-plans plans-3">
-                 <!--<form>
-                 <select>
-                     <option>3e443333</option>
-                     <option>3e443333</option>
-                     <option>3e443333</option>
-                     <option>3e443333</option>
-                     <option>3e443333</option>
-                     <option>3e443333</option>
-                     <option>3e443333</option>
-                     <option>3e443333</option>
-                     </select>           
-                            
-                 </form>           
-                            -->
+                
 	   <?php 
 global $tot_number;
 $form_creation=mysqli_query($bd, "SELECT * FROM form_creation, expert_review_consolidate1 WHERE form_creation.3rdlineart_form_id not in (select form_id from sample) and form_creation.3rdlineart_form_id=expert_review_consolidate1.form_id and form_creation.clinician_id ='$clinicianID'"); 
@@ -354,6 +338,11 @@ $age =GetAge($dob);
 /*echo $dob;*/
 if(isset($_GET['p'])){ 
  include ('includes/app_facility.php');  
+ /*include ('includes/app_treatment3.php'); */
+}
+//dash stats
+if(isset($_GET['dash'])){ 
+ include ('includes/app_dashboard.php');  
  /*include ('includes/app_treatment3.php'); */
 }
 if(isset($_GET['rev'])){ 
@@ -603,6 +592,7 @@ include ('includes/app_adherence_edit.php');
   $( function() {
     $( "#datepicker" ).datepicker({
       changeMonth: true,
+         maxDate: '0', 
       changeYear: true
     });
   } );
@@ -611,6 +601,7 @@ include ('includes/app_adherence_edit.php');
   $( function() {
     $( "#datepicker1" ).datepicker({
       changeMonth: true,
+         maxDate: '0', 
       changeYear: true
     });
   } );

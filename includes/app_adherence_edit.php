@@ -89,14 +89,24 @@ echo '
   $( function() {
     $( "#datepickersVis_Date1" ).datepicker({
       changeMonth: true,
+        maxDate: '0',
+        beforeShow : function()
+				{
+					jQuery( this ).datepicker('option','maxDate', jQuery('#datepickeraVis_Date12').val() );
+                },
       changeYear: true
     });
   } );
   </script>     
 <script>
   $( function() {
-    $( "#datepickeraVis_Date1" ).datepicker({
+    $( "#datepickeraVis_Date12" ).datepicker({
       changeMonth: true,
+        maxDate: '0',
+        beforeShow : function()
+				{
+					jQuery( this ).datepicker('option','minDate', jQuery('#datepickeraVis_Date1').val() );
+                },
       changeYear: true
     });
   } );
@@ -105,14 +115,24 @@ echo '
   $( function() {
     $( "#datepickersVis_Date2" ).datepicker({
       changeMonth: true,
+        maxDate: '0', 
+				beforeShow : function()
+				{
+					jQuery( this ).datepicker('option','maxDate', jQuery('#datepickeraVis_Date22').val() );
+                },
       changeYear: true
     });
   } );
   </script>     
 <script>
   $( function() {
-    $( "#datepickeraVis_Date2" ).datepicker({
+    $( "#datepickeraVis_Date22" ).datepicker({
       changeMonth: true,
+        maxDate: '0', 
+				beforeShow : function()
+				{
+					jQuery( this ).datepicker('option','minDate', jQuery('#datepickeraVis_Date2').val() );
+                },
       changeYear: true
     });
   } );
@@ -121,14 +141,22 @@ echo '
   $( function() {
     $( "#datepickersVis_Date3" ).datepicker({
       changeMonth: true,
+        beforeShow : function()
+				{
+					jQuery( this ).datepicker('option','maxDate', jQuery('#datepickeraVis_Date32').val() );
+                },
       changeYear: true
     });
   } );
   </script>     
 <script>
   $( function() {
-    $( "#datepickeraVis_Date3" ).datepicker({
+    $( "#datepickeraVis_Date32" ).datepicker({
       changeMonth: true,
+        beforeShow : function()
+				{
+					jQuery( this ).datepicker('option','minDate', jQuery('#datepickeraVis_Date3').val() );
+                },
       changeYear: true
     });
   } );
@@ -182,7 +210,7 @@ echo '
                 pill_count1: {
 					required: true,
 					minlength: 1,
-					maxlength: 3
+					maxlength: 5
 				},
 			 height: {
 					required: true,
@@ -193,8 +221,11 @@ echo '
 			},
 			messages: {
 				datepickersVis_Date1: "Please enter Client's Visit date",
+				datepickersVis_Date12: "Please enter Client's Visit date",
 				datepickersVis_Date2: "Please enter Client's Visit date",
+				datepickersVis_Date22: "Please enter Client's Visit date",
 				datepickersVis_Date3: "Please enter Client's Visit date",
+				datepickersVis_Date32: "Please enter Client's Visit date",
 				lastname: "Please enter Client's lastname",
 								
                 datepickersVis_Date1: {
@@ -233,7 +264,7 @@ echo '
 
 if (!empty ( $scheduled_visit_date1)) { echo $scheduled_visit_date1; } ?> " onchange="updatedate();"/> </td>
                       <td> <h4>Actual visit date </h4><label><i>(dd/mm/yyyy)</i></td>
-                    <td> <input type="text" name="actual_visit_date1" id="datepickeraVis_Date1" required value="<?php 
+                    <td> <input type="text" name="actual_visit_date1" id="datepickeraVis_Date12" required value="<?php 
 
 if (!empty ( $actual_visit_date1)) { echo  $actual_visit_date1; } ?> " required /> </td>
                       <td> <h4>Pill Count (%) </h4> </td>
@@ -248,7 +279,7 @@ if (!empty ( $pill_count1)) { echo  $pill_count1; } ?>" required /> </td>
 
 if (!empty ( $scheduled_visit_date2)) { echo $scheduled_visit_date2; } ?> " required /> </td>
                          <td><h4> Actual visit date </h4> <label><i>(dd/mm/yyyy)</i></td>
-                    <td> <input type="text" name="actual_visit_date2" id="datepickeraVis_Date2" required value="<?php 
+                    <td> <input type="text" name="actual_visit_date2" id="datepickeraVis_Date22" required value="<?php 
 
 if (!empty ( $actual_visit_date2)) { echo  $actual_visit_date2; } ?> " required/> </td>
                          <td><h4> Pill Count (%) </h4></td>
@@ -263,7 +294,7 @@ if (!empty ( $pill_count2)) { echo  $pill_count2; } ?>" required/> </td>
 
 if (!empty ( $scheduled_visit_date3)) { echo $scheduled_visit_date3; } ?> " required /> </td>
                         <td> <h4>Actual visit date </h4><label><i>(dd/mm/yyyy)</i></td>
-                    <td> <input type="text" name="actual_visit_date3" id="datepickeraVis_Date3" required value="<?php 
+                    <td> <input type="text" name="actual_visit_date3" id="datepickeraVis_Date32" required value="<?php 
 
 if (!empty ( $actual_visit_date3)) { echo  $actual_visit_date3; } ?> "  required/> </td>
                         <td> <h4>Pill Count (%)</h4> </td>
@@ -583,10 +614,11 @@ if (!empty ($hepbag)) { if ($hepbag =='Not tested') { echo  'checked="checked"';
 </fieldset>
     <hr />
     <h3>Important Note:</h3>
-    <div class="text"> <p style="color:#f00">While this form is processed, keep the patient on his current treatment regimen. It may still confer some benefit to be patient and resistance testing can only be done while patient is on treatment</p> </div>
+    <div class="text"> <p style="color:#f00">While this form is processed keep the patient on his current treatment regimen. It may still confer some benefit to be patient and resistance testing can only be done while patient is on treatment</p> </div>
     
                       <div class="form-actions">
                                                                                                                                                   <div class="span3">
+                                                                                                                                                      <?php include ('includes/app_edit_first.php'); ?>
              <a class="btn" href="app.php?back&back_treatment3<?php echo '&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'' ?>" style="padding:10px; font-size:180%">Back</a>                                                                                                                                      </div> 
                                                                                                                                                    <div class="span3"><!--
 											<button type="submit" class="btn btn-primary" style="padding:10px; font-size:180%">Save</button> -->.

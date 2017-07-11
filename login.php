@@ -3,10 +3,7 @@ session_start();
 include("includes/config.php");
 $username = "";
 $pword = "";
-$errorMessage = "";
-//==========================================
-//	ESCAPE DANGEROUS SQL CHARACTERS
-//==========================================
+
 function quote_smart($value, $handle) {
 
    if (get_magic_quotes_gpc()) {
@@ -20,6 +17,8 @@ function quote_smart($value, $handle) {
    return $value;
 }
 
+include ("admin/includes/crypt_function.php");
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
    $username = $_POST['username'];
    $pword = $_POST['password'];
@@ -28,32 +27,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
    $username = htmlspecialchars($username);
    $pword = htmlspecialchars($pword);
 
-   $username = quote_smart($username, $bd);
-   $pword = quote_smart($pword, $bd);
-         
-    $SQL = "SELECT * FROM users WHERE username=$username AND password=$pword;";
-			   
+ /*  $username = quote_smart($username, $bd);*/
+ /*  $pword = quote_smart($pword, $bd);*/
+
+echo('key is '.$key);
+echo('salt is '.$salt);
+
+   $username = encrypt ($username, $key);
+   echo('username is '.$username);
+   $pword= hasword ($pword, $salt);
+
+    $SQL = "SELECT * FROM users WHERE username='$username' AND password='$pword';";    			   
     $result = mysqli_query($bd,$SQL);
 			
     $num_rows = mysqli_num_rows($result);
+    echo $username;
 
     if($num_rows!=0){
-        $SQL_user = "SELECT * FROM users WHERE username=$username";                
+        $SQL_user = "SELECT * FROM users WHERE username='$username'";                
         $user = mysqli_query($bd,$SQL_user);
                 
 	while($row_user = mysqli_fetch_array($user)) {
                     
-                    $role = $row_user['role'];
+                    $role = decrypt ($row_user['role'], $key);
                     $user_id = $row_user['id'];
 		    echo("role is ".$role);
                     $_SESSION['login'] = 'true';
-				    $_SESSION['username'] = $row_user['username'];
-                    //$_SESSION['session_number'] = $row['session_number'];
-                    /*$_SESSION['fname'] = $row_learner['fname'];
-                    $_SESSION['lname'] = $row_learner['lname'];*/
-				    $_SESSION['identification'] = $row_user['id'];
-           
-			   
+		    $_SESSION['username'] = $row_user['username'];
+		    $_SESSION['identification'] = $row_user['id'];           			   
                     $_SESSION['start'] = time(); // taking now logged in time
                     $_SESSION['expire'] = $_SESSION['start'] + (20 * 60) ;
                     //header ("Location:".$pageLocation);
@@ -62,8 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     $SQL_clinician = "SELECT * FROM clinician WHERE user_id=$user_id";
                     $clinician = mysqli_query($bd,$SQL_clinician);
                     
-                    $row_clinician = mysqli_fetch_array($clinician);
-                
+                    $row_clinician = mysqli_fetch_array($clinician);                
                         $_SESSION['id'] = $row_clinician['id'];
                         $_SESSION['name'] = $row_clinician['name'];
                         $_SESSION['phone'] = $row_clinician['phone'];
@@ -71,6 +71,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                         $_SESSION['art_clinic'] = $row_clinician['art_clinic'];
                     echo"<meta http-equiv=\"Refresh\" content=\"0; url=app.php?p\">";
                 }
+        
+               /* if ($role=='Admin'){
+                     $SQL_admin = "SELECT * FROM admin WHERE user_id=$user_id";
+                    $admin = mysqli_query($bd,$SQL_admin);
+                    
+                    $row_admin = mysqli_fetch_array($admin);                
+                        $_SESSION['id'] = $row_admin['id'];
+                        $_SESSION['fname'] = $row_admin['fname'];
+                        $_SESSION['lname'] = $row_admin['lname'];
+                     echo"<meta http-equiv=\"Refresh\" content=\"0; url=admin/dash.php?p\">";    
+                     }*/
 	
                 if ($role=='Reviewer'){
                 $SQL_reviewer = "SELECT * FROM reviewer WHERE user_id=$user_id";
@@ -115,30 +126,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                         $_SESSION['email'] = $row_pih_lab['email'];
                         
                     echo"<meta http-equiv=\"Refresh\" content=\"0; url=pih/pih_p1.php?p\">";
-                }
-	    
-	    
-	    
-				
+                }				
 }
 			
 			}
 		
 	
-	if ($num_rows== 0)
-	{
-		
-	$error="fail" ;
-	//header ("Location: index.php?error=$error&use=$use");
-	echo"<meta http-equiv=\"Refresh\" content=\"0; url=index.php?error=$error&sub=login\">";
-		}
-	
-	
+	if ($num_rows== 0) {
+	   $error="fail" ;
+	   //header ("Location: index.php?error=$error&use=$use");
+	   echo"<meta http-equiv=\"Refresh\" content=\"3; url=index.php?error=$error&sub=login\">";
+	}	
 }
-		
-		
-	
-
-
-
 ?>

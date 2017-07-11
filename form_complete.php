@@ -2,8 +2,8 @@
 global $pat_id;
 $pat_id= $_GET['pat_id'];
 
- $patient=mysql_query("SELECT * FROM patient where id='$pat_id' ", $bd); 
-    $row_pat=mysql_fetch_array($patient);
+ $patient=mysqli_query($bd, "SELECT * FROM patient where id='$pat_id' "); 
+    $row_pat=mysqli_fetch_array($patient);
         
         $art_id_num =$row_pat['art_id_num'];
         $firstname =$row_pat['firstname'];
@@ -45,8 +45,8 @@ $age =GetAge($dob);
 
 //clinic status info
 
-$current_clinical_status=mysql_query("SELECT * FROM current_clinical_status where patient_id='$pat_id' ", $bd); 
-    while ($row_clinic_status=mysql_fetch_array($current_clinical_status)){
+$current_clinical_status=mysqli_query($bd, "SELECT * FROM current_clinical_status where patient_id='$pat_id' "); 
+    while ($row_clinic_status=mysqli_fetch_array($current_clinical_status)){
         
         $who_stage =$row_clinic_status['who_stage'];
         $curr_who_stage =$row_clinic_status['curr_who_stage'];
@@ -62,8 +62,8 @@ $current_clinical_status=mysql_query("SELECT * FROM current_clinical_status wher
         
         if ($art_interrup=='Yes'){
             
-        $art_interruption = mysql_query("SELECT * FROM art_interruption where patient_id='$pat_id' ", $bd); 
-        $row_art_interruption=mysql_fetch_array($art_interruption);
+        $art_interruption = mysqli_query($bd, "SELECT * FROM art_interruption where patient_id='$pat_id' "); 
+        $row_art_interruption=mysqli_fetch_array($art_interruption);
         
         $interupt_reason =$row_art_interruption['reason'];
         $interup_date =$row_art_interruption['date'];
@@ -72,8 +72,8 @@ $current_clinical_status=mysql_query("SELECT * FROM current_clinical_status wher
         
         if ($ol_6months=='Yes'){
             
-        $ol_6months_details = mysql_query("SELECT * FROM ol_6months_details where patient_id='$pat_id' ", $bd); 
-        $row_ol_6months_details=mysql_fetch_array($ol_6months_details);
+        $ol_6months_details = mysqli_query($bd,"SELECT * FROM ol_6months_details where patient_id='$pat_id' "); 
+        $row_ol_6months_details=mysqli_fetch_array($ol_6months_details);
         
         $ol_6months_dign =$row_ol_6months_details['ol_6months_dign'];
         $ol_6months_date =$row_ol_6months_details['ol_6months_date'];
@@ -84,8 +84,8 @@ $current_clinical_status=mysql_query("SELECT * FROM current_clinical_status wher
 
     }
 //side effects 
-$patient_side_effects=mysql_query("SELECT * FROM patient_side_effects where patient_id='$pat_id' ", $bd); 
-    $row_patient_side_effects=mysql_fetch_array($patient_side_effects);
+$patient_side_effects=mysqli_query($bd, "SELECT * FROM patient_side_effects where patient_id='$pat_id' "); 
+    $row_patient_side_effects=mysqli_fetch_array($patient_side_effects);
         
         $PeripheralNeuropathy =$row_patient_side_effects['PeripheralNeuropathy'];
         $Jaundice =$row_patient_side_effects['Jaundice'];
@@ -97,8 +97,8 @@ $patient_side_effects=mysql_query("SELECT * FROM patient_side_effects where pati
         $other =$row_patient_side_effects['other'];
         
 //side effects details 
-$current_clinical_status_details=mysql_query("SELECT * FROM current_clinical_status_details where pat_id='$pat_id' ", $bd); 
-    $row_current_clinical_status_details=mysql_fetch_array($current_clinical_status_details);
+$current_clinical_status_details=mysqli_query($bd,"SELECT * FROM current_clinical_status_details where pat_id='$pat_id' "); 
+    $row_current_clinical_status_details=mysqli_fetch_array($current_clinical_status_details);
         
         $sig_diarrhea_vom_details =$row_current_clinical_status_details['sig_diarrhea_vom_details'];
         $alco_drug_consump_details =$row_current_clinical_status_details['alco_drug_consump_details'];
@@ -108,8 +108,8 @@ $current_clinical_status_details=mysql_query("SELECT * FROM current_clinical_sta
 
    
   //tb_treatment
-$tb_treatment=mysql_query("SELECT * FROM tb_treatment where pat_id='$pat_id' ", $bd); 
-    $row_tb_treatment=mysql_fetch_array($tb_treatment);
+$tb_treatment=mysqli_query($bd,"SELECT * FROM tb_treatment where pat_id='$pat_id' "); 
+    $row_tb_treatment=mysqli_fetch_array($tb_treatment);
         
         $reg1 =$row_tb_treatment['reg1'];
         $reg2 =$row_tb_treatment['reg2'];
@@ -119,8 +119,8 @@ $tb_treatment=mysql_query("SELECT * FROM tb_treatment where pat_id='$pat_id' ", 
         $reason_o_changes =$row_tb_treatment['reason_o_changes'];
 
 //adherence
-$adherence=mysql_query("SELECT * FROM adherence where pat_id='$pat_id' ", $bd); 
-    $row_adherence=mysql_fetch_array($adherence);
+$adherence=mysqli_query($bd,"SELECT * FROM adherence where pat_id='$pat_id' "); 
+    $row_adherence=mysqli_fetch_array($adherence);
         
         $scheduled_visit_date1 =$row_adherence['scheduled_visit_date1'];
         $actual_visit_date1 =$row_adherence['actual_visit_date1'];
@@ -136,8 +136,8 @@ $adherence=mysql_query("SELECT * FROM adherence where pat_id='$pat_id' ", $bd);
         
      
  //adherence_questions
-$adherence_questions=mysql_query("SELECT * FROM adherence_questions where pat_id='$pat_id' ", $bd); 
-    $row_adherence_questions=mysql_fetch_array($adherence_questions);
+$adherence_questions=mysqli_query($bd,"SELECT * FROM adherence_questions where pat_id='$pat_id' "); 
+    $row_adherence_questions=mysqli_fetch_array($adherence_questions);
         
         $ever_forget_2_take_meds =$row_adherence_questions['ever_forget_2_take_meds'];
         $careless_taking_meds =$row_adherence_questions['careless_taking_meds'];
@@ -147,8 +147,8 @@ $adherence_questions=mysql_query("SELECT * FROM adherence_questions where pat_id
         $_3months_days_not_taken_meds =$row_adherence_questions['3months_days_not_taken_meds'];
      
   //lab
-$lab=mysql_query("SELECT * FROM lab where pat_id='$pat_id' ", $bd); 
-    $row_lab=mysql_fetch_array($lab);
+$lab=mysqli_query($bd,"SELECT * FROM lab where pat_id='$pat_id' "); 
+    $row_lab=mysqli_fetch_array($lab);
         
         $creatinine =$row_lab['creatinine'];
         $hb =$row_lab['hb'];
@@ -157,8 +157,8 @@ $lab=mysql_query("SELECT * FROM lab where pat_id='$pat_id' ", $bd);
         $hepbag =$row_lab['hepbag'];
                   
 //treatement history
-$treatment_history=mysql_query("SELECT * FROM treatment_history where pat_id='$pat_id' ", $bd); 
-    $row_treatment_history=mysql_fetch_array($treatment_history);
+$treatment_history=mysqli_query($bd,"SELECT * FROM treatment_history where pat_id='$pat_id' "); 
+    $row_treatment_history=mysqli_fetch_array($treatment_history);
         
         $art_drug =$row_treatment_history['art_drug'];
         $treat_start_date =$row_treatment_history['start_date'];
@@ -167,8 +167,8 @@ $treatment_history=mysql_query("SELECT * FROM treatment_history where pat_id='$p
 
   if  ($gender=='Female' && $age >'10'){                
 //pregnacy for females age greater than 10
-$pregnancy=mysql_query("SELECT * FROM pregnancy where pat_id='$pat_id' ", $bd); 
-    $row_pregnancy=mysql_fetch_array($pregnancy);
+$pregnancy=mysqli_query($bd, "SELECT * FROM pregnancy where pat_id='$pat_id' "); 
+    $row_pregnancy=mysqli_fetch_array($pregnancy);
         
         $pregnant =$row_pregnancy['pregnant'];
         $weeks_o_preg =$row_pregnancy['weeks_o_preg'];
@@ -179,8 +179,8 @@ $pregnancy=mysql_query("SELECT * FROM pregnancy where pat_id='$pat_id' ", $bd);
 
 if  ( $age <='3'){                
 //pediatric age < 3
-$pediatric=mysql_query("SELECT * FROM pediatric where pat_id='$pat_id' ", $bd); 
-    $row_pediatric=mysql_fetch_array($pediatric);
+$pediatric=mysqli_query($bd, "SELECT * FROM pediatric where pat_id='$pat_id' "); 
+    $row_pediatric=mysqli_fetch_array($pediatric);
         
         $mother_had_single_dose_NVP =$row_pediatric['mother_had_single_dose_NVP'];
         $given_NVP =$row_pediatric['given_NVP'];
@@ -188,6 +188,8 @@ $pediatric=mysql_query("SELECT * FROM pediatric where pat_id='$pat_id' ", $bd);
         $swallow_tablets =$row_pediatric['swallow_tablets'];
         
   }
+
+ include ('includes/app_edit_menu.php');  
 ?>
 
 <h1 style="background-color:#f8f7f7; text-align:center; color:#000">3rd Line ART Expert Committee Malawi</h1>
@@ -362,8 +364,8 @@ echo '<i style="color:#f00">No ART Interruptions</i>';
                              
                                if ($art_interrup=='Yes'){
             
-        $art_interruption = mysql_query("SELECT * FROM art_interruption where patient_id='$pat_id' ", $bd); 
-        $row_art_interruption=mysql_fetch_array($art_interruption);
+        $art_interruption = mysqli_query($bd, "SELECT * FROM art_interruption where patient_id='$pat_id' "); 
+        $row_art_interruption=mysqli_fetch_array($art_interruption);
         
         $interupt_reason =$row_art_interruption['reason'];
         $interup_date =$row_art_interruption['date'];
@@ -489,8 +491,8 @@ else { echo '
 
 if ($ol_6months=='Yes'){
             
-        $ol_6months_details = mysql_query("SELECT * FROM ol_6months_details where patient_id='$pat_id' ", $bd); 
-        $row_ol_6months_details=mysql_fetch_array($ol_6months_details);
+        $ol_6months_details = mysqli_query($bd, "SELECT * FROM ol_6months_details where patient_id='$pat_id' "); 
+        $row_ol_6months_details=mysqli_fetch_array($ol_6months_details);
         
         $ol_6months_dign =$row_ol_6months_details['ol_6months_dign'];
         $ol_6months_date =$row_ol_6months_details['ol_6months_date'];
@@ -712,8 +714,8 @@ else {
                     <?php
 
 //treatement history
-$treatment_history=mysql_query("SELECT * FROM treatment_history where pat_id='$pat_id' ", $bd); 
-      while ($row_treatment_history=mysql_fetch_array($treatment_history)){
+$treatment_history=mysqli_query($bd, "SELECT * FROM treatment_history where pat_id='$pat_id' "); 
+      while ($row_treatment_history=mysqli_fetch_array($treatment_history)){
         
         $art_drug =$row_treatment_history['art_drug'];
         $treat_start_date =$row_treatment_history['start_date'];
@@ -728,9 +730,9 @@ $treatment_history=mysql_query("SELECT * FROM treatment_history where pat_id='$p
         /*       
         $retrieve_drugs ="SELECT * FROM drugs";
 
-     $drugs = mysql_query($retrieve_drugs);
+     $drugs = mysqli_query($bd, $retrieve_drugs);
 	       
-while($drug_row = mysql_fetch_array($drugs)) {
+while($drug_row = mysqli_fetch_array($drugs)) {
     
     
 	$drug_name = $drug_row['drug_name'];
@@ -777,8 +779,8 @@ while($drug_row = mysql_fetch_array($drugs)) {
                 <tbody>
                     <?php
     //monitoring
-$monitoring=mysql_query("SELECT * FROM monitoring where pat_id='$pat_id' ", $bd); 
-    while ( $row_monitoring=mysql_fetch_array($monitoring)){
+$monitoring=mysqli_query($bd, "SELECT * FROM monitoring where pat_id='$pat_id' "); 
+    while ( $row_monitoring=mysqli_fetch_array($monitoring)){
         
         $monito_date =$row_monitoring['monito_date'];
         $cd4 =$row_monitoring['cd4'];
@@ -813,15 +815,15 @@ $monitoring=mysql_query("SELECT * FROM monitoring where pat_id='$pat_id' ", $bd)
                    <?php
 
 //tb_treatment
-$tb_treat =mysql_query("SELECT * FROM tb_treat where pat_id='$pat_id' ", $bd); 
-    $row_tb_treat=mysql_fetch_array($tb_treat);
+$tb_treat =mysqli_query($bd, "SELECT * FROM tb_treat where pat_id='$pat_id' "); 
+    $row_tb_treat=mysqli_fetch_array($tb_treat);
         
         $tb_tb_treatment =$row_tb_treat['tb_treatment'];
 if ($tb_tb_treatment=='Yes') {
 
     //tb_treat_regimen1
-$tb_treat_regimen1=mysql_query("SELECT * FROM tb_treat_regimen1 where pat_id='$pat_id' ", $bd); 
-    while ( $row_tb_treat_regimen1=mysql_fetch_array($tb_treat_regimen1)){
+$tb_treat_regimen1=mysqli_query($bd, "SELECT * FROM tb_treat_regimen1 where pat_id='$pat_id' "); 
+    while ( $row_tb_treat_regimen1=mysqli_fetch_array($tb_treat_regimen1)){
         
         $reg_name =$row_tb_treat_regimen1['reg_name'];
         $start_date =$row_tb_treat_regimen1['start_date'];
@@ -849,8 +851,8 @@ $tb_treat_regimen1=mysql_query("SELECT * FROM tb_treat_regimen1 where pat_id='$p
     }
 
 //tb_treat_regimen2
-$tb_treat_regimen2=mysql_query("SELECT * FROM tb_treat_regimen2 where pat_id='$pat_id' ", $bd); 
-    while ( $row_tb_treat_regimen2=mysql_fetch_array($tb_treat_regimen2)){
+$tb_treat_regimen2=mysqli_query($bd, "SELECT * FROM tb_treat_regimen2 where pat_id='$pat_id' "); 
+    while ( $row_tb_treat_regimen2=mysqli_fetch_array($tb_treat_regimen2)){
         
         $reg_name =$row_tb_treat_regimen2['reg_name'];
         $start_date =$row_tb_treat_regimen2['start_date'];
@@ -871,8 +873,8 @@ $tb_treat_regimen2=mysql_query("SELECT * FROM tb_treat_regimen2 where pat_id='$p
     }
 
 //tb_treat_MDR
-$tb_treat_mdr=mysql_query("SELECT * FROM tb_treat_mdr where pat_id='$pat_id' ", $bd); 
-    while ( $row_tb_treat_mdr=mysql_fetch_array($tb_treat_mdr)){
+$tb_treat_mdr=mysqli_query($bd, "SELECT * FROM tb_treat_mdr where pat_id='$pat_id' "); 
+    while ( $row_tb_treat_mdr=mysqli_fetch_array($tb_treat_mdr)){
         
         $reg_name =$row_tb_treat_mdr['reg_name'];
         $start_date =$row_tb_treat_mdr['start_date'];

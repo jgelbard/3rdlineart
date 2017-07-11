@@ -107,7 +107,7 @@ $sample=mysqli_query( $bd,"SELECT * FROM sample ");
                               <p>Age</p>
 </td>    
                           <td>
-                              <h4> <?php echo $age ?></h4>
+                              <h4> <?php echo $dob ?></h4>
 </td>    
                           </tr> 
                               

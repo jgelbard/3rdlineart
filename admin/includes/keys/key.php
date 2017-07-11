@@ -1,0 +1,1 @@
+<?php $key = md5('bigbullets');  $salt = md5('bigbullets'); ?>

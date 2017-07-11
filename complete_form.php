@@ -108,9 +108,9 @@ if(isset($_POST['cancel_app'])){
     $sql_cancel_app = "DELETE FROM form_creation where patient_id =$pat_id";
     $sql_cancel_patient = "DELETE FROM patient where id =$pat_id";
     
-    mysql_query($sql_cancel_patient, $bd);
+    mysqli_query($bd, $sql_cancel_patient);
     
-    if (mysql_query($sql_cancel_app, $bd)){
+    if (mysqli_query($bd, $sql_cancel_app)){
     echo '<div class="alert alert-warning">
                                                   <button type="button" class="close" data-dismiss="alert">&times;</button>
                                                   <p style="color:#f00"><strong>Yoo!</strong> You Cancelled the application. </p>
@@ -149,8 +149,7 @@ if(isset($_POST['save_app'])){
 }
 
 if(!isset($_POST['complete_submit']) && !isset($_POST['cancel_app'])){ 
-    
-    
+     
  include ('form_complete.php');     
     
     
@@ -171,95 +170,13 @@ if(!isset($_POST['complete_submit']) && !isset($_POST['cancel_app'])){
                            
                            
                              <a class="btn" href="app.php?back_adherence&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'" style="padding:10px; margin:2px; font-size:180%">Back</a>        
-                            
+                     ';       
                 
-                <a href="#myModal" role="button" class="btn btn-primary"   data-toggle="modal" style="padding:10px; font-size:120%; float:left" >Edit Menu</a>
-  
-												
-													<!--  Button to trigger modal 
-                                                    <a href="#myModal" role="button" class="btn">Launch demo modal</a>
-                                                     -->
-                                                    <!-- Modal -->
-                                                    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                      <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        <h4 style="text-align:center">Edit Menu</h3>
-                                                      </div>
-                                                      <div class="modal-body"> 
-                                                      
-                                                      <div style="width:90%; background-color:#f2f2f2; border-radius: 5px; padding:5px; text-align:center; margin:5px;" >
-                                                       <a href="#myModal" role="button" class="btn btn-warning"   data-toggle="modal" style="width:90%;" >Patient Details</a>
-                                                       </div>
-                                                       
-                                                       
-                                                       ';
-                                                      
-                                                       $current_clinical_status=mysql_query("SELECT * FROM current_clinical_status where patient_id='$pat_id' ", $bd);
-        
-    $if_exist_current_clinical_status = mysql_num_rows ($current_clinical_status);
-
-    if ($if_exist_current_clinical_status !='0'){
-        
-        echo '<div style="width:90%; background-color:#f2f2f2; border-radius: 5px; padding:5px; text-align:center; margin:5px;" >
-                                                       <a href="app.php?back&part_2&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'" class="btn btn-warning"   style="width:90%;" >Current Clinic status</a>
-                                                       </div>';
+               
+               
+    include ('includes/app_edit_menu.php'); 
     
-}
-    $pediatric_section=mysql_query("SELECT * FROM  pediatric where pat_id='$pat_id' ", $bd);
-        
-    $if_exist_pediatric_section = mysql_num_rows ($pediatric_section);
-
-    if ($if_exist_pediatric_section !='0' && $age < 4 ){
-        
-        echo ' <div style="width:90%; background-color:#f2f2f2; border-radius: 5px; padding:5px; text-align:center; margin:5px;" >
-                                                       <a href="app.php?back&part_2&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'" class="btn btn-warning"  style="width:90%;" >Pediatric Section</a>
-                                                       </div>';
-    
-}
-    
-    
-$pregnancy=mysql_query("SELECT * FROM  pregnancy where pat_id='$pat_id' ", $bd);
-        
-    $if_exist_pregnancy = mysql_num_rows ($pregnancy);
-
-    if ($if_exist_pregnancy !='0' || $age > 10 && $gender=='Female'){
-        
-        echo ' <div style="width:90%; background-color:#f2f2f2; border-radius: 5px; padding:5px; text-align:center; margin:5px;" >
-                                                       <a href="app.php?back&back_3&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'" class="btn btn-warning"  style="width:90%;" >Pregnancy Section</a>
-                                                       </div>';
-    
-}
-   $treatment_history=mysql_query("SELECT * FROM  treatment_history where pat_id='$pat_id' ", $bd);
-        
-    $if_exist_treatment_history = mysql_num_rows ($treatment_history);
-
-    if ($if_exist_treatment_history !='0'){
-        
-        echo ' <div style="width:90%; background-color:#f2f2f2; border-radius: 5px; padding:5px; text-align:center; margin:5px;" >
-                                                      <a href="app.php?back&back_treatment1&pat_id='.$pat_id.'" class="btn btn-warning"   style="width:90%;" >ART Treatment</a>
-                                                       </div>';
-    
-}
-     $tb_treat=mysql_query("SELECT * FROM  tb_treat where pat_id='$pat_id' ", $bd);
-        
-    $if_exist_tb_treat = mysql_num_rows ($tb_treat);
-
-    if ($if_exist_tb_treat !='0'){
-        
-        echo ' <div style="width:90%; background-color:#f2f2f2; border-radius: 5px; padding:5px; text-align:center; margin:5px;" >
-                                                       <a href="app.php?back&back_treatment2&pat_id='.$pat_id.'" class="btn btn-warning"   style="width:90%;" >TB Treatment</a>
-                                                       </div>';
-    
-}
-   
- echo '                                     
-                                                      </div>
-                                                      <div class="modal-footer">
-                                                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                                                       
-                                                      </div>
-                                                    </div>
-
+    echo '
                 
                 </div>
                 
@@ -296,7 +213,7 @@ $sql_form_creation = "UPDATE form_creation ".
        "WHERE patient_id='$pat_id'" ;
 
 mysql_select_db('3rdlineart_db');
-$form_submited = mysql_query( $sql_form_creation, $bd );    
+$form_submited = mysqli_query($bd, $sql_form_creation );    
     
     echo '							
 <div class="alert alert-success">
