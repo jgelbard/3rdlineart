@@ -2,7 +2,11 @@
 
 if(isset($_GET['sendsample'])){ 
 	
+<<<<<<< HEAD
     $form_id= mysqli_real_escape_string($bd, $_GET['formid']);
+=======
+    $form_id= mysqli_real_escape_string($bd, htmlspecialchars($_GET['formid']));
+>>>>>>> 6efad32ac1db985d04e400ec932fc4f3ad788296
     $date_created= date('Y/m/d');
  	
 $insert_sample=" INSERT  INTO  sample (form_id,clinician_id,date_created)

@@ -6,7 +6,6 @@ if(isset($_POST['submit_treatment2'])){
     
  
     
-    
     $monito_date= mysqli_real_escape_string($bd, $_POST['monito_date']);
  	$cd4= mysqli_real_escape_string($bd, $_POST['cd4']);
 	$vl=mysqli_real_escape_string($bd, $_POST['vl']);

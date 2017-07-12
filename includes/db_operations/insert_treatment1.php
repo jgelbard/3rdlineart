@@ -2,6 +2,7 @@
 
 if(isset($_POST['submit_treatment1'])){ 
 	
+
     $patient_id= mysqli_real_escape_string($bd, $_GET['pat_id']);
     
  	$art_drug= mysqli_real_escape_string($bd, $_POST['art_drug']);

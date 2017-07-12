@@ -266,6 +266,7 @@ if(isset($_POST['update_treatment3'])){
     
     }
   
+
     /* $reg11= mysqli_real_escape_string($bd, $_POST['reg11']);
  	$reg21= mysqli_real_escape_string($bd, $_POST['reg21']);
 	$mdr1=mysqli_real_escape_string($bd, $_POST['mdr1']);

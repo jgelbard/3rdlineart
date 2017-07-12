@@ -5,7 +5,7 @@ if(isset($_POST['submit_treatment3'])){
     $patient_id= mysqli_real_escape_string($bd, $_GET['pat_id']);
     $tb_treat= mysqli_real_escape_string($bd, $_POST['tb_treat']);
     
-     $insert_tb_treat=" INSERT  INTO  tb_treat (tb_treatment,pat_id)
+    $insert_tb_treat=" INSERT  INTO  tb_treat (tb_treatment,pat_id)
                 VALUES ('$tb_treat', '$patient_id')";
 
                 mysqli_query( $bd,$insert_tb_treat);	

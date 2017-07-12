@@ -2,6 +2,7 @@
 
 if(isset($_POST['submit_clinicstatus'])){ 
 	
+<<<<<<< HEAD
     $patient_id= mysqli_real_escape_string($bd, $_POST['pat_id']);
  	$who_stage= mysqli_real_escape_string($bd, $_POST['who_stage']);
  	$curr_who_stage= mysqli_real_escape_string($bd, $_POST['curr_who_stage']);
@@ -24,18 +25,52 @@ if(isset($_POST['submit_clinicstatus'])){
 	$Gynecomastia=mysqli_real_escape_string($bd, $_POST['Gynecomastia']);
 	$Anemia=mysqli_real_escape_string($bd, $_POST['Anemia']);
 	$other=mysqli_real_escape_string($bd, $_POST['sdef_other']);
+=======
+    $patient_id= mysqli_real_escape_string($bd, htmlspecialchars($_POST['pat_id']));
+ 	$who_stage= mysqli_real_escape_string($bd, htmlspecialchars($_POST['who_stage']));
+ 	$curr_who_stage= mysqli_real_escape_string($bd, htmlspecialchars($_POST['curr_who_stage']));
+	$weight=mysqli_real_escape_string($bd, htmlspecialchars($_POST['weight']));
+ 	$height= mysqli_real_escape_string($bd, htmlspecialchars($_POST['height']));
+	$art_interrup=mysqli_real_escape_string($bd, htmlspecialchars($_POST['art_interrup']));
+	$h_o_ss_effects=mysqli_real_escape_string($bd, htmlspecialchars($_POST['pat_id']));
+	$ol_6months=mysqli_real_escape_string($bd, htmlspecialchars($_POST['ol_6months']));
+	$sig_diarrhea_vom=mysqli_real_escape_string($bd, htmlspecialchars($_POST['sig_diarrhea_vom']));
+	$alco_drug_consump=mysqli_real_escape_string($bd, htmlspecialchars($_POST['alco_drug_consump']));
+	$trad_med=mysqli_real_escape_string($bd, htmlspecialchars($_POST['trad_med']));
+	$co_medi=mysqli_real_escape_string($bd, htmlspecialchars($_POST['co_medi']));
+	$other_curr_problem=mysqli_real_escape_string($bd, htmlspecialchars($_POST['other_curr_problem']));
+	
+	$PeripheralNeuropathy=mysqli_real_escape_string($bd, htmlspecialchars($_POST['PeripheralNeuropathy']));
+	$Jaundice=mysqli_real_escape_string($bd, htmlspecialchars($_POST['Jaundice']));
+	$Lipodystrophy=mysqli_real_escape_string($bd, htmlspecialchars($_POST['Lipodystrophy']));
+	$KidneyFailure=mysqli_real_escape_string($bd, htmlspecialchars($_POST['KidneyFailure']));
+	$Psychosis=mysqli_real_escape_string($bd, htmlspecialchars($_POST['Psychosis']));
+	$Gynecomastia=mysqli_real_escape_string($bd, htmlspecialchars($_POST['Gynecomastia']));
+	$Anemia=mysqli_real_escape_string($bd, htmlspecialchars($_POST['Anemia']));
+	$other=mysqli_real_escape_string($bd, htmlspecialchars($_POST['sdef_other']));
+>>>>>>> 6efad32ac1db985d04e400ec932fc4f3ad788296
     
   //if yes details 
     if ($art_interrup=='Yes'){
         
+<<<<<<< HEAD
     $art_interrup_date=mysqli_real_escape_string($bd, $_POST['art_interrup_date']);
     $art_interrup_reason=mysqli_real_escape_string($bd, $_POST['art_interrup_reason']);
+=======
+    $art_interrup_date=mysqli_real_escape_string($bd, htmlspecialchars($_POST['art_interrup_date']));
+    $art_interrup_reason=mysqli_real_escape_string($bd, htmlspecialchars($_POST['art_interrup_reason']));
+>>>>>>> 6efad32ac1db985d04e400ec932fc4f3ad788296
    
     }
     
      if ($ol_6months=='Yes'){
+<<<<<<< HEAD
 	$ol_6months_date=mysqli_real_escape_string($bd, $_POST['ol_6months_date']);
 	$ol_6months_dign=mysqli_real_escape_string($bd, $_POST['ol_6months_dign']);
+=======
+	$ol_6months_date=mysqli_real_escape_string($bd, htmlspecialchars($_POST['ol_6months_date']));
+	$ol_6months_dign=mysqli_real_escape_string($bd, htmlspecialchars($_POST['ol_6months_dign']));
+>>>>>>> 6efad32ac1db985d04e400ec932fc4f3ad788296
          
      }
     $sig_diarrhea_vom_details ="";
@@ -45,6 +80,7 @@ if(isset($_POST['submit_clinicstatus'])){
     $other_curr_problem_details="";
         
     if(isset($_POST['sig_diarrhea_vom_details'])){
+<<<<<<< HEAD
 	$sig_diarrhea_vom_details=mysqli_real_escape_string($bd, $_POST['sig_diarrhea_vom_details']);
     }
     if(isset($_POST['alco_drug_consump_details'])){
@@ -58,6 +94,21 @@ if(isset($_POST['submit_clinicstatus'])){
     }
     if(isset($_POST['other_curr_problem_details'])){
 	$other_curr_problem_details=mysqli_real_escape_string($bd, $_POST['other_curr_problem_details']);
+=======
+	$sig_diarrhea_vom_details=mysqli_real_escape_string($bd, htmlspecialchars($_POST['sig_diarrhea_vom_details']));
+    }
+    if(isset($_POST['alco_drug_consump_details'])){
+	$alco_drug_consump_details=mysqli_real_escape_string($bd, htmlspecialchars($_POST['alco_drug_consump_details']));
+    }
+    if(isset($_POST['trad_med_details'])){
+	$trad_med_details=mysqli_real_escape_string($bd, htmlspecialchars($_POST['trad_med_details']));
+    }
+    if(isset($_POST['co_medi_details'])){
+	$co_medi_details=mysqli_real_escape_string($bd, htmlspecialchars($_POST['co_medi_details']));
+    }
+    if(isset($_POST['other_curr_problem_details'])){
+	$other_curr_problem_details=mysqli_real_escape_string($bd, htmlspecialchars($_POST['other_curr_problem_details']));
+>>>>>>> 6efad32ac1db985d04e400ec932fc4f3ad788296
     
     }
     
