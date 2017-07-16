@@ -21,14 +21,14 @@ $sql_form_creation_r = "UPDATE form_creation ".
        "SET status='Reviewed'".
        "WHERE 3rdlineart_form_id='$formID'" ;
 
-mysqli_select_db('3rdlineart_db');
+// mysqli_select_db('3rdlineart_db');
 $form_reviewed = mysqli_query( $bd , $sql_form_creation_r);    
     
     $sql_assigned_forms = "UPDATE assigned_forms ".
        "SET status='Reviewed'".
        "WHERE form_id='$formID' and rev_id='$rev_id' " ;
 
-mysqli_select_db('3rdlineart_db');
+// mysqli_select_db('3rdlineart_db');
 $form_reviewed_as = mysqli_query( $bd , $sql_assigned_forms);    
     
     

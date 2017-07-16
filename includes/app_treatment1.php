@@ -45,7 +45,7 @@ echo '
                 <tbody>
                   <tr>
                     <td> 
-                          <select name="art_drug">   
+                          <select name="art_drug1">   
                         <option>select drug</option>
                         <?php
         $retrieve_drugs ="SELECT * FROM drugs";
@@ -63,9 +63,9 @@ while($drug_row = mysqli_fetch_array($drugs)) {
 ?>
                   
                         </select> </td>
-                    <td> <input type="text" name="start_date" id="datepicker6"  /> </td>
-                     <td> <input type="text" name="stop_date" id="datepicker7" /> </td>
-                    <td><textarea name="reason_for_change">
+                    <td> <input type="text" name="start_date1" id="datepicker6"  /> </td>
+                     <td> <input type="text" name="stop_date1" id="datepicker7" /> </td>
+                    <td><textarea name="reason_for_change1">
                         
                         </textarea></td>
                   </tr> 

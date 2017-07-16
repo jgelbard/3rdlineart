@@ -1,5 +1,4 @@
-
-  <h2 style="background-color:#f8f7f7; text-align:center"> Treatment History</h2>
+<h2 style="background-color:#f8f7f7; text-align:center"> Treatment History</h2>
                         <!--   <hr style=" border: 2px solid #1c952f;" />  --> 
 <?php
 
@@ -21,7 +20,6 @@ $client_name = $firstname.' '.$lastname;
 
 echo '
 <form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$pat_id.'" method="post">
-
 ';
 ?> 
 

@@ -1,6 +1,6 @@
 <?PHP
 session_start();
-include("includes/config.php");
+include("../includes/config.php");
 $username = "";
 $pword = "";
 $errorMessage = "";
@@ -14,12 +14,9 @@ function quote_smart($value, $handle) {
    }
 
    if (!is_numeric($value)) {
-<<<<<<< HEAD
+
        // $value = "'" . mysqli_real_escape_string($value, $handle) . "'";
        $value = "'" . mysqli_real_escape_string($handle, $value) . "'";       
-=======
-       $value = "'" . mysqli_real_escape_string($handle, $value) . "'";
->>>>>>> 6efad32ac1db985d04e400ec932fc4f3ad788296
    }
    return $value;
 }

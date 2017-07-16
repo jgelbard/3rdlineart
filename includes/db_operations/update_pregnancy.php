@@ -2,25 +2,15 @@
 
 if(isset($_POST['update_Preg'])){ 
 	
-<<<<<<< HEAD
     $pat_id= mysqli_real_escape_string($bd, $_GET['pat_id']);
-=======
-    $pat_id= mysqli_real_escape_string($bd, htmlspecialchars($_GET['pat_id']));
->>>>>>> 6efad32ac1db985d04e400ec932fc4f3ad788296
     
      $sql_delete_pregnancy = "DELETE FROM  pregnancy where pat_id =$pat_id";
     mysqli_query( $bd,$sql_delete_pregnancy);
     
    
-<<<<<<< HEAD
  	$pregnant= mysqli_real_escape_string($bd, $_POST['pregnant']);
  	$weeks_o_preg= mysqli_real_escape_string($bd, $_POST['weeks_o_preg']);
 	$breastfeeding=mysqli_real_escape_string($bd, $_POST['breastfeeding']);
-=======
- 	$pregnant= mysqli_real_escape_string($bd, htmlspecialchars($_POST['pregnant']));
- 	$weeks_o_preg= mysqli_real_escape_string($bd, htmlspecialchars($_POST['weeks_o_preg']));
-	$breastfeeding=mysqli_real_escape_string($bd, htmlspecialchars($_POST['breastfeeding']));
->>>>>>> 6efad32ac1db985d04e400ec932fc4f3ad788296
     
     if ($pregnant=='Yes_preg'){
     $pregnant ='Yes';

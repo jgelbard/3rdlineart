@@ -21,7 +21,7 @@ mysqli_query( $bd,$insert_lab_vl_repeat);
        "SET status='Dispatched'".
        "WHERE id='$sampleid'" ;
 
-mysqli_select_db('3rdlineart_db');
+// mysqli_select_db('3rdlineart_db');
 $sample_recieved = mysqli_query( $bd , $sql_sample);
     
  echo '							

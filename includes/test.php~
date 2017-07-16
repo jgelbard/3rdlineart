@@ -1,0 +1,16 @@
+<?php
+$PeripheralNeuropathy='Yes';
+$Jaundice='No';
+$Lipodystrophy='No';
+                                                                               $condition = ["PeripheralNeuropathy"=>'Perpheral Neuropathy',
+                                                                               "Jaundice"=>'Jaundice',
+                                                                               "Lipodystrophy"=>'Lipodystrophy'];
+foreach ($condition as $key => $value) {
+    eval("\$checked = (\$$key=='Yes')?'checked="checked"':'');")
+    echo "<tr>        
+ <td>
+$checked
+</td>
+";
+
+   ?>

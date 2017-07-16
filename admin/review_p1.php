@@ -150,8 +150,6 @@ if(isset($_POST['submit_Preg'])){
     
 </div> <!-- /main -->
     
- <?php /*include ('../includes/footer.php');*/ ?>   
-
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

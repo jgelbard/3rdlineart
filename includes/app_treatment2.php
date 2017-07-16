@@ -145,10 +145,10 @@ echo '
                 <tbody>
                     
                   <tr>
-                    <td> <input type="text" name="monito_date" id="datepicker16" /> </td>
-                    <td> <input type="text" name="cd4" style="width:120px" /> </td>
-                    <td> <input type="text" name="vl" style="width:120px" /> </td>
-                   <td><textarea name="reason_4_detectable_vl" >
+                    <td> <input type="text" name="monito_date1" id="datepicker16" /> </td>
+                    <td> <input type="text" name="cd41" style="width:120px" /> </td>
+                    <td> <input type="text" name="vl1" style="width:120px" /> </td>
+                   <td><textarea name="reason_4_detectable_vl1" >
                         
                         </textarea></td>
                        <td> <input type="number" name="weight"  /> </td>

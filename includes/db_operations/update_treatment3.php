@@ -5,9 +5,8 @@ if(isset($_POST['update_treatment3'])){
     $patient_id= mysqli_real_escape_string($bd, $_GET['pat_id']);
     $tb_treat= mysqli_real_escape_string($bd, $_POST['tb_treat']);
     
-     $sql_delete_treatment3 = "DELETE FROM  tb_treat where pat_id =$patient_id";
-     mysqli_query( $bd,$sql_delete_treatment3);
-    
+    $sql_delete_treatment3 = "DELETE FROM  tb_treat where pat_id =$patient_id";
+    mysqli_query( $bd,$sql_delete_treatment3);
     
     $sql_delete_tb_treat_regimen1 = "DELETE FROM  tb_treat_regimen1 where pat_id =$patient_id";
     mysqli_query( $bd,$sql_delete_tb_treat_regimen1);
@@ -38,8 +37,22 @@ if(isset($_POST['update_treatment3'])){
     
     if ($tb_treat=='Yes'){
         
-        if(isset($_POST['regimen1_checked'])){ 
-     
+        if(isset($_POST['regimen1_checked'])){
+            for ($i=1; $i<=5; $i++) {     
+                $reg_name= mysqli_real_escape_string($bd, $_POST['reg'.$i]);
+                $tbstart_date=mysqli_real_escape_string($bd, $_POST['tbstart_date'.$i]); 
+                $tbstop_date=mysqli_real_escape_string($bd, $_POST['tbstop_date'.$i]); 
+                $reason_o_changes=mysqli_real_escape_string($bd, $_POST['reason_o_changes'.$i]);
+
+                $insert_tb_treat_regimen1=" INSERT  INTO  tb_treat_regimen1
+                    (pat_id,reg_name,start_date,stop_date,reason_for_change)
+                    VALUES (
+                    '$patient_id', '$reg_name', '$tbstart_date', '$tbstop_date', '$reason_o_changes')";
+
+                mysqli_query( $bd,$insert_tb_treat_regimen1);
+                
+            }
+/*            
                 $reg_name1= mysqli_real_escape_string($bd, $_POST['reg1']);
                 $tbstart_date1=mysqli_real_escape_string($bd, $_POST['tbstart_date1']); 
                 $tbstop_date1=mysqli_real_escape_string($bd, $_POST['tbstop_date1']); 
@@ -111,11 +124,25 @@ if(isset($_POST['update_treatment3'])){
 
                 mysqli_query( $bd,$insert_tb_treat_regimen15);	
             }
-           
-
+*/         
     }
         if(isset($_POST['regimen2_checked'])){ 
+     		$arr = array(2, 22, 23, 24, 25);
+            foreach ($arr as $i) {
+
+                $reg_name2= mysqli_real_escape_string($bd, $_POST['reg2']);
+                $tbstart_date2=mysqli_real_escape_string($bd, $_POST['tbstart_date2']); 
+                $tbstop_date2=mysqli_real_escape_string($bd, $_POST['tbstop_date2']); 
+                $reason_o_changes2=mysqli_real_escape_string($bd, $_POST['reason_o_changes2']);
      
+                $insert_tb_treat_regimen2=" INSERT  INTO  tb_treat_regimen2
+                (pat_id,reg_name,start_date,stop_date,reason_for_change)
+                VALUES (
+                '$patient_id', '$reg_name2', '$tbstart_date2', '$tbstop_date2', '$reason_o_changes2')";
+
+                mysqli_query( $bd,$insert_tb_treat_regimen2);
+            }
+/*        
                 $reg_name2= mysqli_real_escape_string($bd, $_POST['reg2']);
                 $tbstart_date2=mysqli_real_escape_string($bd, $_POST['tbstart_date2']); 
                 $tbstop_date2=mysqli_real_escape_string($bd, $_POST['tbstop_date2']); 
@@ -184,14 +211,28 @@ if(isset($_POST['update_treatment3'])){
 
                 mysqli_query( $bd,$insert_tb_treat_regimen25);
              }
-            
+*/          
     }
         if(isset($_POST['mdr_checked'])){ 
-     
-                $mdr= mysqli_real_escape_string($bd, $_POST['mdr']);
-                $tbstart_date_mdr=mysqli_real_escape_string($bd, $_POST['tbstart_date_mdr']); 
-                $tbstop_date_mdr=mysqli_real_escape_string($bd, $_POST['tbstop_date_mdr']); 
-                $reason_o_changes_mdr=mysqli_real_escape_string($bd, $_POST['reason_o_changes_mdr']);
+            for($i=0; $i<=5; $i++) {
+                $mdr= mysqli_real_escape_string($bd, $_POST['mdr'.$i]);
+                $tbstart_date_mdr=mysqli_real_escape_string($bd, $_POST['tbstart_date_mdr'.$i]); 
+                $tbstop_date_mdr=mysqli_real_escape_string($bd, $_POST['tbstop_date_mdr'.$i]); 
+                $reason_o_changes_mdr=mysqli_real_escape_string($bd, $_POST['reason_o_changes_mdr'.$i]);
+
+                $insert_tb_treat_mdr="INSERT INTO tb_treat_mdr
+                          (pat_id,reg_name,start_date,stop_date,reason_for_change)
+                          VALUES (
+                          '$patient_id', '$mdr', '$tbstart_date_mdr', '$tbstop_date_mdr', '$reason_o_changes_mdr')";
+
+                mysqli_query( $bd,$insert_tb_treat_mdr);
+                
+            }
+/*            
+                $mdr= mysqli_real_escape_string($bd, $_POST['mdr1']);
+                $tbstart_date_mdr=mysqli_real_escape_string($bd, $_POST['tbstart_date_mdr1']); 
+                $tbstop_date_mdr=mysqli_real_escape_string($bd, $_POST['tbstop_date_mdr1']); 
+                $reason_o_changes_mdr=mysqli_real_escape_string($bd, $_POST['reason_o_changes_mdr1']);
              
                 $mdr2= mysqli_real_escape_string($bd, $_POST['mdr2']);
                 $tbstart_date_mdr2=mysqli_real_escape_string($bd, $_POST['tbstart_date_mdr2']); 
@@ -263,7 +304,7 @@ if(isset($_POST['update_treatment3'])){
                 mysqli_query( $bd,$insert_tb_treat_mdr5);
              
              }
-    
+*/  
     }
   
 

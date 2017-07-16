@@ -86,11 +86,10 @@ if ($_error =='fail'){
 
 <div class="login-extra">
 	<a href="reset.php">Reset Password</a>
-</div> <!-- /login-extra -->
-<script src="js/jquery-1.7.2.min.js"></script>
-<script src="js/bootstrap.js"></script>
-
-<script src="js/signin.js"></script>
+</div>
+<script src="../js/jquery-1.7.2.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/signin.js"></script>
 
 </body>
 

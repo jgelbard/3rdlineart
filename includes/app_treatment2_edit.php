@@ -313,17 +313,17 @@ echo '
                 <tbody>
                     
                   <tr>
-                    <td> <input type="text" name="monito_date" id="datepicker16" required value="<?php 
+                    <td> <input type="text" name="monito_date1" id="datepicker16" required value="<?php 
 if (!empty ($monito_date ['0'])) { echo $monito_date ['0']; } ?>" /> </td>
-                    <td> <input type="number" name="cd4" style="width:120px" value="<?php 
+                    <td> <input type="number" name="cd41" style="width:120px" value="<?php 
 if (!empty ($cd4 ['0'])) { echo $cd4 ['0']; } ?>" /> </td>
-                    <td> <input type="number" name="vl" style="width:120px" value="<?php 
+                    <td> <input type="number" name="vl1" style="width:120px" value="<?php 
 if (!empty ( $vl ['0'])) { echo  $vl ['0']; } ?>" /> </td>
-                   <td><textarea name="reason_4_detectable_vl" >
+                   <td><textarea name="reason_4_detectable_vl1" >
                          <?php 
 if (!empty ( $reason_4_detectable_vl ['0'])) { echo $reason_4_detectable_vl ['0']; } ?>
                         </textarea></td>
-                       <td> <input type="number" name="weight" value="<?php 
+                       <td> <input type="number" name="weight1" value="<?php 
 if (!empty ( $weight ['0'])) { echo  $weight ['0']; } ?>" /> </td>
                   </tr>  
                     
