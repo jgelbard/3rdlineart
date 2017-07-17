@@ -1,6 +1,9 @@
 <?php
 echo $_SERVER['SERVER_ADDR'].':'.$_SERVER['SERVER_HOST'];
-$rooturl = $_SERVER['SERVER_ADDR']."/3rdlineart5/";
+// $serveraddr = $_SERVER['SERVER_ADDR'];
+// $serveraddr='localhost'; // genotype-PowerEdge-T130';
+$serveraddr = '168.253.229.30';
+$rooturl = $serveraddr."/3rdlineart5/";
 $path = $_SERVER['DOCUMENT_ROOT']."/3rdlineart5";
 $cpath = $path."/includes/config.php";
 echo('including: '.$cpath);
