@@ -40,8 +40,10 @@ mysqli_query( $bd,$insert_assigned_app_results);
                 $rev_email_address = $row_reviewer['email'];
                 $rev_title = $row_reviewer['title'];
                 $rev_lname = $row_reviewer['lname'];
- 
-     
+
+
+email_msg('insert_consolidate1', $rev_email_address);
+/* moved to email_templates.php   
  $to = $rev_email_address;
    $subject = "3RD Line Expert Commitee: Results for Genotyping received from NHLS";
    $message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -80,7 +82,7 @@ mysqli_query( $bd,$insert_assigned_app_results);
    $header .= "MIME-Version: 1.0\r\n";
    $header .= "Content-type: text/html\r\n";
    $retval = mail ($to,$subject,$message,$header);    
-    
+*/    
     
 }
       }

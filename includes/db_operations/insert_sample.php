@@ -10,8 +10,10 @@ VALUES (
 '$form_id', '$clinicianID', '$date_created')";
 
 mysqli_query( $bd,$insert_sample);	
-  
-       
+
+email_msg('insert_sample', $email);
+// moved to email_templates
+/*
  $to = $email;
    $subject = "New Patient Sample 3RD Line";
    $message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -38,7 +40,7 @@ mysqli_query( $bd,$insert_sample);
    $header .= "MIME-Version: 1.0\r\n";
    $header .= "Content-type: text/html\r\n";
    $retval = mail ($to,$subject,$message,$header);    
-    
+*/  
 }
 
 

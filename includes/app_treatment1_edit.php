@@ -133,6 +133,8 @@ while ($row_treatment_history=mysqli_fetch_array($treatment_history)) {
 	$treat_stop_date [] = $row_treatment_history['stop_date'];
 	$treat_reason_for_change [] = $row_treatment_history['reason_for_change'];
 }
+echo "$treat_start_date[0];<br>";
+echo "$treat_start_date[1];<br>";
 
 echo '
 <form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$pat_id.'" method="post">';
@@ -235,8 +237,20 @@ echo '
 </form>
 <script type="text/javascript" charset="utf-8">   
 
-	function updatedate(){ 
+<?php
+    $dp = 7;
+    for($i=1; $i<10; $i++) {
+        $dp2 = $dp + 1;
+        echo "
+	function updatedate$i(){ 
+		datepicker = document.getElementById(\"datepicker$dp\").value;         
+		document.getElementById(\"datepicker$dp2\").value = datepicker;  
+	}";
+    $dp += 2;
+    }
 
+/*
+    function updatedate(){ 
 		datepicker7 = document.getElementById("datepicker7").value;         
 		document.getElementById("datepicker8").value = datepicker7;  
 	}
@@ -264,7 +278,7 @@ echo '
 		datepicker17 = document.getElementById("datepicker17").value;         
 		document.getElementById("datepicker18").value = datepicker17; 
 
-	}  
+	} 
 	function updatedate7(){ 
 		datepicker19 = document.getElementById("datepicker19").value;         
 		document.getElementById("datepicker20").value = datepicker19; 
@@ -278,8 +292,9 @@ echo '
 	function updatedate9(){ 
 		datepicker23 = document.getElementById("datepicker23").value;         
 		document.getElementById("datepicker24").value = datepicker23; 
-
 	} 
+*/
+?>
 </script>
 
 

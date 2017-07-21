@@ -67,8 +67,7 @@ echo '<h2 style="background-color:#dedd6;  text-align:center; color:#000000">Con
 
 
 echo '<form id="edit-profile" class="form-horizontal" action="cp_p1.php?pending" method="post" style="background-color:#ddf; padding:10px;">';
-<tr>
-	<?php
+echo '<tr>';
 
 	$expert_review_result=mysqli_query( $bd,"SELECT * FROM expert_review_result where form_id ='$formID' "); 
 
@@ -152,8 +151,6 @@ echo '<form id="edit-profile" class="form-horizontal" action="cp_p1.php?pending"
 	echo '
 </td></tr>
 </table>
-
-
 ';
 
 

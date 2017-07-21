@@ -175,6 +175,9 @@ $expire= $_SESSION['expire'];}
 									</div>				
 									';
 
+                                    email_msg('complete_form');
+
+                                    /* moved to email_templates
 									$receiver ='3rdlineart@lighthouse.org.mw';
 									$to = $receiver;
 									$subject = "New 3rd Line ART Application";
@@ -190,7 +193,7 @@ $expire= $_SESSION['expire'];}
 									$header .= "MIME-Version: 1.0\r\n";
 									$header .= "Content-type: text/html\r\n";
 									$retval = mail ($to,$subject,$message,$header);
-
+                                    */
 								}
 
 								?>	

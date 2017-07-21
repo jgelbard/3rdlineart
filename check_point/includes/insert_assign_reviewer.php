@@ -36,15 +36,17 @@ VALUES (
 
 mysqli_query( $bd,$insert_assigned_forms);	
     
-    $SQL_reviewer = "SELECT * FROM reviewer WHERE id=$rev_id";
-    $reviewer = mysqli_query($bd,$SQL_reviewer);
-    
-                $row_reviewer = mysqli_fetch_array($reviewer);
-                $rev_email_address = $row_reviewer['email'];
-                $rev_title = $row_reviewer['title'];
-                $rev_lname = $row_reviewer['lname'];
- 
-     
+$SQL_reviewer = "SELECT * FROM reviewer WHERE id=$rev_id";
+$reviewer = mysqli_query($bd,$SQL_reviewer);
+
+$row_reviewer = mysqli_fetch_array($reviewer);
+$rev_email_address = $row_reviewer['email'];
+$rev_title = $row_reviewer['title'];
+$rev_lname = $row_reviewer['lname'];
+
+email_msg('insert_assign_reviewer', $rev_email_address);                
+
+/* moved to email_templates     
  $to = $rev_email_address;
    $subject = "3RD Line Expert Application form review";
    $message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -75,9 +77,8 @@ mysqli_query( $bd,$insert_assigned_forms);
    $header .= "Cc:j.dumisani7291@gmail.com\r\n";
    $header .= "MIME-Version: 1.0\r\n";
    $header .= "Content-type: text/html\r\n";
-   $retval = mail ($to,$subject,$message,$header);    
-    
-    
+   $retval = mail ($to,$subject,$message,$header);      
+*/    
 }
       }
       

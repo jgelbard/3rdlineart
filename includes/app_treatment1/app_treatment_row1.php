@@ -1,27 +1,31 @@
 <?php
 include ("../../includes/config.php");
 $datepicker = 6;
-$datepicker2 = $datepicker + 1;
-   
-	$druglist = '<option value="">select drug</option>';
-                
-				$retrieve_drugs ="SELECT * FROM drugs";
-				$drugs = mysqli_query($bd, $retrieve_drugs);
-                
-				while($drug_row = mysqli_fetch_array($drugs)) {
-					$drug_name = $drug_row['drug_name'];
-					$druglist .= '<option value="'.$drug_name.'">'.$drug_name.'</option>';
-				}
 
-for($i=0; $i<=10; $i++) {
+$druglist = '<option value="">select drug</option>';
+$retrieve_drugs ="SELECT * FROM drugs";
+$drugs = mysqli_query($bd, $retrieve_drugs);
+                
+while($drug_row = mysqli_fetch_array($drugs)) {
+    $drug_name = $drug_row['drug_name'];
+    $druglist .= '<option value="'.$drug_name.'">'.$drug_name.'</option>';
+}
+
+$numvisrows = 10;
+$visrow = 1;
+for($i=0; $i<10; $i++) {
+    $i_1 = $i - 1;
 	$drug = $i + 1;
+    $drug_2 = $drug - 1;
     $date = $drug;
     $drugb = "art_drug$drug"."_b";
     $drugc = "art_drug$drug"."_c";
     $required = '';
     if ($i < 2)
         $required = 'required';
-
+    $rowclass = "";
+    $datepicker2 = $datepicker + 1;
+    
 	echo "
 	<script>
 		$( function() {
@@ -48,11 +52,13 @@ for($i=0; $i<=10; $i++) {
 		} );
 	</script>";
 
+    if ($i > $numvisrows)
+        $rowclass = "class=\"row$drug box\""; 
+
 	echo "
-	<tr>
+	<tr $rowclass>
 		<td> 		
 			<select name=\"art_drug$drug\" $required id=\"art_drug$drug\" style=\"width:120px\">";
-
 				if (!empty ($art_drug["$i"])) {
 					$art_drug_row = explode("-", $art_drug["$i"]); 
 					$drug_array_size = sizeof($art_drug_row);
@@ -64,7 +70,6 @@ for($i=0; $i<=10; $i++) {
 			</select> </td>
 			<td> 		
 				<select name=\"$drugb\" $required id=\"art_drug$drug\" style=\"width:120px\">";  
-
 					if (!empty ($art_drug["$i"])) {
 						$art_drug_row=explode("-",$art_drug ["$i"]); 
 						$drug_array_size = sizeof ($art_drug_row);
@@ -85,32 +90,47 @@ for($i=0; $i<=10; $i++) {
 						}                        
 						echo "$druglist
 					</select> </td>
-					<td> <input type=\"text\" name=\"start_date$date\"  value=\"";
+				<td><input type=\"text\" name=\"start_date$date\"value=\"";
 						if (!empty ($treat_start_date["$i"])) {
-							echo $treat_start_date ['0'];
+							echo $treat_start_date ["$i"];
 						}
 						else {
-							echo '';
+						  echo '';
 						} echo "\" id=\"datepicker$datepicker\" /> </td>
-						<td> <input type=\"text\" name=\"stop_date$date\"   value=\"";
-							if (!empty ($treat_stop_date["$i"])) {
-								echo $treat_stop_date ["$i"];
-							}
-							else {
-								echo '';
-							} echo "\" id=\"datepicker$datepicker2\" onchange=\"updatedate();\" /> </td>
-							<td><textarea name=\"reason_for_change$date\">";
-								if (!empty ($treat_reason_for_change["$i"])) {
-									echo $treat_reason_for_change["$i"];
-								}
-								else {
-									echo '';
-								}
-								echo "
-							</textarea></td>
+				<td><input type=\"text\" name=\"stop_date$date\" value=\"";
+                        if (!empty ($treat_stop_date["$i"])) {
+                            echo $treat_stop_date ["$i"];
+                        }
+                        else {
+                            echo '';
+                        } echo "\" id=\"datepicker$datepicker2\" onchange=\"updatedate$drug();\" /> </td>
+				<td><textarea name=\"reason_for_change$date\">";
+                        if (!empty ($treat_reason_for_change["$i"])) {
+                            echo $treat_reason_for_change["$i"];
+                        }
+                        else {
+                            echo '';
+                        }
+                        echo "
+				 </textarea></td>";
+// comment this if broken
+    if ($drug > $numvisrows) {
+        echo "
+    <td><form action=\"#\">
+        <div class=\"box$drug\">
+    <input type=\"button\" name=\"row$drug\" class=\"btn btn-success\" value=\"+\" />";
+    if ($i > ($numvisrows + 1))
+        echo "<input type=\"button\" name=\"row$drug_2\" class=\"btn btn-danger\" value=\"-\" />";
+    echo "
+        </div>
+    </form></td>";
+    $visrow += 1;
+    }
+//
+                        echo "
 						</tr>
 						";
-						$datepicker++;
+						$datepicker += 2;
                         //  exit();
 					}
 					?>

@@ -16,9 +16,10 @@ VALUES (
 '$formID', '$genotyping', '$comment_to_clinician', '$date_reviewed')";
 
 mysqli_query( $bd,$insert_expert_review_consolidate1);	
+
+email_msg('insert_consolidate1', $clinician_email);
     
- 
-     
+/* moved to email_templates   
  $to = $clinician_email;
    $subject = "3RD Line Expert Application form review";
    $message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -39,7 +40,7 @@ mysqli_query( $bd,$insert_expert_review_consolidate1);
    $header .= "MIME-Version: 1.0\r\n";
    $header .= "Content-type: text/html\r\n";
    $retval = mail ($to,$subject,$message,$header);    
-    
+*/    
     
 }
     

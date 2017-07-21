@@ -90,5 +90,5 @@ $other_curr_problem_details='';
 $foo['0'] = 'bar';
 $foo[0] = 'baz';
 $i = 0;
-echo "$foo[$i]<br>$foo['0']";
+// echo "$foo[$i]<br>$foo['0']";
 ?>

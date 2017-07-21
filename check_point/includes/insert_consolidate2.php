@@ -40,15 +40,16 @@ $attachements= "no attachements";
       
 $date_reviewed = date('Y/m/d');
       
-	echo  $pi_mutation;
+echo  $pi_mutation;
 $insert_expert_review_consolidate2=" INSERT  INTO  expert_review_consolidate2 (form_id,sec_id,pi_mutation,switch,decision,attachements,consolidate2_date)
 VALUES (
 '$formID', '$sec_id', '$pi_mutation', '$switch', '$decision', '$attachements','$date_reviewed')";
 
 mysqli_query( $bd,$insert_expert_review_consolidate2);	
-    
- 
-     
+
+email_msg('insert_consolidate2', $clinician_email);
+
+/*   
  $to = $clinician_email;
    $subject = "3RD Line Expert Committee Genotype Result review";
    $message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -70,7 +71,7 @@ mysqli_query( $bd,$insert_expert_review_consolidate2);
    $header .= "MIME-Version: 1.0\r\n";
    $header .= "Content-type: text/html\r\n";
    $retval = mail ($to,$subject,$message,$header);   
-      
+*/      
       echo '							
 <div class="alert alert-success">
                                                   <button type="button" class="close" data-dismiss="alert">&times;</button>
