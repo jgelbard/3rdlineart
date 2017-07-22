@@ -206,7 +206,7 @@ echo '
 <tr>
     <td><h4>WHO stage at start of Treatment</h4> <br /></td>
     <td>
-                              <select name="who_stage" id="who_stage" style="width:180px;height:50px;" required>
+                              <select name="who_stage" id="who_stage" style="width:180px;height:50px;" required tabindex="1">
                               <option value="<?php echo $who_stage ?>"><?php echo $who_stage ?></option>
                               <option value="1">1</option>
                               <option value="2">2</option>
@@ -219,7 +219,7 @@ echo '
                               <h4>Current WHO stage (+defining condition)</h4>  <br />
                         </td>
                           <td>
-                            <select name="curr_who_stage" style="width:200px; height:50px;">
+                            <select name="curr_who_stage" style="width:200px; height:50px;" tabindex="2">
                              <option><?php echo $curr_who_stage?></option>
                               <option>1</option>
                               <option>2</option>
@@ -233,12 +233,12 @@ echo '
      <tr><td> <br /></td></tr>
      <tr>
     <td><h4>Curr Weight<label><span><i>*kg</i></span></label></h4></td>
-    <td><input type="number" class="span4" id="weight" value="<?php echo $weight ?>" placeholder="kg" name="weight" required style="width:100px; height:50px; font-size:130%">
+    <td><input type="number" class="span4" id="weight" value="<?php echo $weight ?>" placeholder="kg" name="weight" required style="width:100px; height:50px; font-size:130%" tabindex="3">
          <br />
          </td>
   
     <td> <h4>Curr Height <label><span><i>*cm</i></span></label></h4></td>
-    <td><input type="number" class="span4" id="height" value="<?php echo $height ?>" placeholder="cm" name="height" required style="width:100px; height:50px; font-size:130%">
+    <td><input type="number" class="span4" id="height" value="<?php echo $height ?>" placeholder="cm" name="height" required style="width:100px; height:50px; font-size:130%" tabindex="4">
          <br />
          </td>
      
@@ -265,7 +265,7 @@ echo '
                          <tr>
                             
                                <td>
-                            <h4>ART Interruptions?</h4>
+                            <h4 tabindex="5">ART Interruptions?</h4>
                                    <?php 
          if ($art_interrup=='Yes'){
             
@@ -314,7 +314,7 @@ else {
 		</div>
   </div>
     <div style="width:100px; float:left" class="radio_sty">
-    <input type="radio" id="nart_interrup" name="art_interrup" value="intr_No" checked="checked">
+    <input type="radio" id="nart_interrup" name="art_interrup" value="intr_No" checked="checked" tabindex="1">
     <label for="nart_interrup">No</label>
     
     <div class="check">
@@ -354,7 +354,7 @@ else {
 <table style="width:100%" border="0" cellspacing="10px">
    <tr>   
     <td>
-      <h4 style="color:#fff">History of serious side effects</h4>
+      <h4 style="color:#fff" tabindex="6">History of serious side effects</h4>
                         </td>
                           <td>
 <table>
@@ -362,7 +362,7 @@ else {
                               <tr>
                        
                                   <td> 
-                                   <label class="control-label">Peripheral Neuropathy</label>
+                                   <label tabindex="7" class="control-label">Peripheral Neuropathy</label>
                                       <?php 
 
                                        if ($PeripheralNeuropathy=='Yes'){
@@ -412,7 +412,7 @@ else {
                        
                                    <td> </td>
                                   <td> 
-                                   <label class="control-label">Jaundice</label>
+                                   <label tabindex="8" class="control-label">Jaundice</label>
                                       
                                       <?php 
 
@@ -463,7 +463,7 @@ else {
                        
                                    <td> </td>
                                   <td>
-                                      <label class="control-label">Lipodystrophy</label>
+                                      <label tabindex="9" class="control-label">Lipodystrophy</label>
                                       
                                       
                                       <?php 
@@ -522,7 +522,7 @@ else {
                        
                                    <td> </td>
                                   <td> 
-                                   <label class="control-label">Kidney Failure</label>
+                                   <label tabindex="10" class="control-label">Kidney Failure</label>
                                        <?php 
 
                                        if ($KidneyFailure=='Yes'){
@@ -579,7 +579,7 @@ else {
                        
                                    <td> </td>
                                   <td> 
-                                   <label class="control-label">Psychosis</label>
+                                   <label tabindex="11" class="control-label">Psychosis</label>
                                       
                                       <?php 
 
@@ -636,7 +636,7 @@ else {
 
                                   <td> 
                                       
-                                   <label class="control-label">Gynecomastia</label>
+                                   <label tabindex="12" class="control-label">Gynecomastia</label>
                                       
 <?php
 echo '                                   
@@ -659,7 +659,7 @@ echo '
                                    <td> </td>
 
                                   <td> 
-                                   <label class="control-label">Anemia</label>
+                                   <label tabindex="13" class="control-label">Anemia</label>
                                        <?php 
 
                                        if ($Anemia=='Yes'){
@@ -726,7 +726,7 @@ echo '
                               <tr>
                                 
                                   <td>Other</td>
-                                  <td> <input type="text" class="span4" name ="sdef_other"  value="<?php echo $other ?>" ></td>
+                                  <td> <input type="text" class="span4" name ="sdef_other"  value="<?php echo $other ?>" tabindex="14"></td>
                                   </tr>
                                   
                               </table>
