@@ -290,7 +290,7 @@ if (isset($_SESSION['identification'])) {
 										$form_submited_complete = mysqli_query( $bd , $sql_form_creation_complete);   
 
 									}
-
+                                    /* 
 									if(isset($_GET['notcomplete'])){ 
 
 										$form_ID= $_GET['form_id'];
@@ -302,6 +302,10 @@ if (isset($_SESSION['identification'])) {
 										$form_submited_not_complete = mysqli_query( $bd , $sql_form_creation_not_complete);   
 
 									}
+                                    */
+                                    if(isset($_GET['notcomplete'])){ 
+                                        include ('includes/sec_app_reject.php');   
+                                    }
 
 									if(isset($_GET['p'])){ 
 										include ('includes/sec_new.php');   

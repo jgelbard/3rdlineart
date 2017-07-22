@@ -48,7 +48,7 @@ $reviewer=mysqli_query( $bd,"SELECT * FROM reviewer");
                     <td> <p style="text-align:center"><strong>'.$phone.'</strong></p> </td>
                     <td> <p style="text-align:center"><strong>'.$snapshot.'</strong></p> </td>
                     <td class="td-actions"><a href="dash.php?rev_edit&id='.$rev_id.'"> Edit </i></a></td>
-                    <td class="td-actions"><a href="dash.php?rev_remove&id='.$rev_id.'" style="color:#f00"> Remove </i></a></td>
+                    <td class="td-actions"><a href="dash.php?del_user&page=rev&id='.$user_id.'" style="color:#f00" onclick ="return confirm (\'Are you sure you want to delete?\')"> Remove </i></a></td>
                   </tr> 
         
         ';

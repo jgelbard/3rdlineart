@@ -245,7 +245,7 @@ include ('includes/head.php');
 
 							<div class="widget-content">
 
-								<div class="pricing-plans plans-3">
+                                <div class="pricing-plans plans-3">
 
 									<?php 
 									global $tot_number;
@@ -266,9 +266,11 @@ include ('includes/head.php');
 
 									$pat_id = $_POST['id'];
 									if ($pat_id !='--select ARV Number--') {
-
+        
+                                        if(isset($_POST['comment'])){ 
+                                            $pat_id =$pat_id.'&comment&form_id='.$_POST['form_id'];
+                                        }                                       
 										echo"<meta http-equiv=\"Refresh\" content=\"0; url=app.php?back&part_1&pat_id=".$pat_id."\">";
-
 									}
 									else {
 										include ('includes/app_patientdetails.php');   
@@ -311,6 +313,10 @@ include ('includes/head.php');
 									include ('includes/app_dashboard.php');  
 									/*include ('includes/app_treatment3.php'); */
 								}
+
+                                if(isset($_GET['rejec'])){ 
+                                    include ('includes/app_rejected_forms.php');  
+                                }
 
 								if(isset($_GET['rev'])){ 
 									include ('includes/app_consolidated1.php');   

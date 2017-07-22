@@ -184,7 +184,7 @@ $expire= $_SESSION['expire'];}
 									$message = '<p>Dear 3<sup>rd</sup> Line ART Secretary,</p>
 									<p>&nbsp;</p>
 									<p>You have a new 3<sup>rd</sup> Line ART Expert committee application form from '.$facility.'.</p>
-									<p>Kindly check its completeness and do following the SOP.</p>
+									<p>Kindly check its completeness, following the SOP.</p>
 									<p>&nbsp;</p>
 									<p>Regards</p>
 									<p>System email Notification &nbsp;</p>'; 

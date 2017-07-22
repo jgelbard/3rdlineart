@@ -151,7 +151,7 @@ if (isset($_POST['xupdate_clinicstatus'])) {
 			include ('includes/app_clinic_status_edit.php');
       
 	} else
-		echo "not updaated";    
+		echo "not updated";    
 }
 
 ?>

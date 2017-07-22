@@ -70,6 +70,7 @@ include ('../includes/head.php');
 						<div class="pricing-plans plans-3">
                       <?php
 
+include ('includes/delete_user.php');                             
 include ('includes/insert_reviewer.php'); 
 include ('includes/insert_clinician.php'); 
 include ('includes/insert_lab_user.php'); 
@@ -79,30 +80,31 @@ include ('includes/insert_facility.php');
 include ('includes/insert_affliates.php'); 
 
 
- echo '<div class="span2" style="border-right:3px solid #535469; padding:10px">
-        <h3>Navigation Menu</h3>  
-                  <a href="dash.php?man_facility" class="button btn btn-primary btn-large">Manage Facility </a><br />
-                  <a href="dash.php?man_drugs" class="button btn btn-primary btn-large">Manage Drugs </a><br />
-                  <a href="dash.php?man_affliates" class="button btn btn-primary btn-large">Manage Affliates </a><br />
-                  <a href="dash.php?rev" class="button btn btn-primary btn-large">Manage Reviewers </a>
-                  <a href="dash.php?clin" class="button btn btn-primary btn-large">Manage Clinician </a><hr />           
-                  <a href="dash.php?lab" class="button btn btn-primary btn-large">Manage Lab user </a><br />
-                  <a href="dash.php?sec" class="button btn btn-primary btn-large">Manage Sec </a><br />
+ echo ' <div class="span11" style="border-bottom:3px solid #535469; margin:3px 0;">
+       <h3>Manage Menu</h3>   
+                  <a href="dash.php?man_facility" class="button btn btn-invert btn-large" style="margin:2px">Facility </a>
+                  <a href="dash.php?man_drugs" class="button btn btn-invert btn-large" style="margin:2px">Drugs </a>
+                  <a href="dash.php?man_affliates" class="button btn btn-invert btn-large" style="margin:2px">Affliates </a>
+                  <a href="dash.php?rev" class="button btn btn-invert btn-large" style="margin:2px">Reviewers </a>
+                  <a href="dash.php?clin" class="button btn btn-invert btn-large" style="margin:2px">Clinician </a>           
+                  <a href="dash.php?lab" class="button btn btn-invert btn-large" style="margin:2px">Lab user </a>
+                  <a href="dash.php?sec" class="button btn btn-invert btn-large" style="margin:2px">Secretary </a>
 
                  
-                  <a href="../reports.php" target="_blank" class="button btn btn-primary btn-large">Reports </a> </div>
+                  <a href="../reports.php" target="_blank" class="button btn btn-primary btn-large" style="margin:2px">Reports </a> </div>
+
             
 					  ';   
     
 if(isset($_GET['p'])){ 
-echo '<div class="span8" style="padding:200px 50px">
+echo '<div class="span11" style="padding:200px 50px">
 <h1 style="font-size:1000%; color:#efeded">Admin Page</h1>
 </div>
 ';    
 }
 
 
-echo '<div class="span8">';
+echo '<div class="span11">';
 if(isset($_GET['man_facility'])){ 
  include ('includes/admin_facilities.php');   
 }
@@ -178,13 +180,16 @@ if(isset($_GET['rev_edit'])){
 	</div>
     
 </div> <!-- /main -->
+    
+ <?php /*include ('includes/footer.php');*/ ?>   
 
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="../js/jquery-1.7.2.min.js"></script>
-<script src="../js/bootstrap.js"></script>
-<script src="../js/base.js"></script>
+<script src="js/jquery-1.7.2.min.js"></script>
+
+<script src="js/bootstrap.js"></script>
+<script src="js/base.js"></script>
 
   </body>
 

@@ -41,7 +41,7 @@ $secretary=mysqli_query($bd, "SELECT * FROM secretary");
                     <td> <p style="text-align:center"><strong>'.$email.'</strong></p> </td>
                      <td> <p style="text-align:center"><strong>'.$phone.'</strong></p></td>
                     <td class="td-actions"><a href="dash.php?sec_edit&id='.$id.'"> Edit </i></a></td>
-                    <td class="td-actions"><a href="dash.php?sec_remove&id='.$id.'" style="color:#f00"> Remove </i></a></td>
+                    <td class="td-actions"><a href="dash.php?del_user&page=sec&id='.$user_id.'" style="color:#f00"> Remove </i></a></td>
                   </tr> 
         
         ';

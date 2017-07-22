@@ -171,12 +171,11 @@ $num_newforms = mysqli_num_rows ($form_creation);
                               </td>
                               <td>
                               <select name="pat_art_clinic" required id="art_clinic">
-                              <option selected="selected" value="">select ARTS Clinic</option>
+                              <option selected="selected" value="">select ART Clinic</option>
                               <?php
 //clinic status info
 
-$facility=mysqli_query( $bd,"SELECT * FROM facility");
-        echo ('foo: ');
+$facility=mysqli_query( $bd,"SELECT * FROM facility"); 
     while ($row_facility=mysqli_fetch_array($facility)){
         
         $facility_name =$row_facility['facilityName'];

@@ -1,7 +1,6 @@
 <?php
 global $id;
 $id = $_GET['id'];
-echo $id;
 
  $reviewer=mysqli_query( $bd,"SELECT * FROM reviewer where id='$id' "); 
     $row_reviewer=mysqli_fetch_array($reviewer);
@@ -25,7 +24,7 @@ echo $id;
 ?>
 
 
-       	<h1 style="text-align:center; background-color:#e8e8e8">Edit Reviewer Details</h1>	
+       <h2 style="background-color:#fff; text-align:center; color:#000000">Edit Reviewer Details</h2>	
         <hr />
 </div>
         
@@ -42,8 +41,26 @@ echo $id;
                               <option>Mrs</option>
                               </select>
                             <br />  
-    <span></span>												
-                              <input type="text" class="span3" id="firstname" placeholder="Affliated Institution" name="affiliate_institution" style="margin:5px" value="<?php echo  $affiliate_institution; ?>"><br />
+    <span></span>	
+    
+    <select name="affiliate_institution" required id="affiliate_institution" style="margin:5px">
+                            <option  value="">select Affliated Institution</option>
+                              <?php
+//facility
+echo '<option selected="selected">'.$affiliate_institution.'</option>';
+$partner_org=mysqli_query( $bd,"SELECT * FROM partner_org"); 
+    while ($row_partner_org=mysqli_fetch_array($partner_org)){
+        
+        $partner_org_name =$row_partner_org['partner_org_name'];
+        
+        echo '<option>'.$partner_org_name.'</option>';
+       
+    }
+?>
+                              </select><br />
+    
+                              <!--<input type="text" class="span3" id="firstname" placeholder="Affliated Institution" name="affiliate_institution" style="margin:5px" value="<?php //echo  $affiliate_institution; ?>"><br />
+    -->
                               <input type="text" class="span4" id="firstname" placeholder="username" name="username" value="<?php echo $username; ?>" style="margin:5px"><br />
                             
                               
@@ -56,7 +73,7 @@ echo $id;
                         
                          
                               <h4>Expert Snapshot</h4>
-                                <textarea type="text" id="email" rows="18" cols="20" name="snapshot"  style="width:100%; margin:5px">
+                                <textarea type="text" id="email" rows="8" cols="12" name="snapshot"  style="width:100%; margin:5px">
      
       </textarea>
 
@@ -65,7 +82,7 @@ echo $id;
                <button class="btn" style="padding:10px; font-size:180%">Cancel</button>                                                                                                                                    </div>
                                  
                                             <div class="span4">
-											<button type="submit" class="button btn btn-primary btn-large" style="padding:10px; font-size:180%" name="register_rev">Register</button>
+											<button type="submit" class="button btn btn-primary btn-large" style="padding:10px; font-size:180%" name="update_rev">Register</button>
                                             </div>
                           </div>
     

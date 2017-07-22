@@ -1,0 +1,1254 @@
+************* ./includes/nav_sub.php ***********
+************* ./includes/app_clinic_status.php ***********
+************* ./includes/display_login_info.php ***********
+************* ./includes/app_dashboard.php ***********
+************* ./includes/crypt_function.php ***********
+************* ./includes/app_patientdetails.php ***********
+************* ./includes/app_consolidated2_view.php ***********
+************* ./includes/app_pedriatric.php ***********
+************* ./includes/app_treatment1_edit.php ***********
+Files ./includes/app_treatment1_edit.php and ../dumi/3rdlineart5/./includes/app_treatment1_edit.php differ
+************* ./includes/db_operations/insert_treatment.php ***********
+************* ./includes/db_operations/insert_adherence_lab.php ***********
+Files ./includes/db_operations/insert_adherence_lab.php and ../dumi/3rdlineart5/./includes/db_operations/insert_adherence_lab.php differ
+************* ./includes/db_operations/update_patient.php ***********
+Files ./includes/db_operations/update_patient.php and ../dumi/3rdlineart5/./includes/db_operations/update_patient.php differ
+************* ./includes/db_operations/update_clinic_status.php ***********
+Files ./includes/db_operations/update_clinic_status.php and ../dumi/3rdlineart5/./includes/db_operations/update_clinic_status.php differ
+************* ./includes/db_operations/insert_clinic_status.php ***********
+Files ./includes/db_operations/insert_clinic_status.php and ../dumi/3rdlineart5/./includes/db_operations/insert_clinic_status.php differ
+************* ./includes/db_operations/insert_treatment3.php ***********
+Files ./includes/db_operations/insert_treatment3.php and ../dumi/3rdlineart5/./includes/db_operations/insert_treatment3.php differ
+************* ./includes/db_operations/insert_treatment2.php ***********
+Files ./includes/db_operations/insert_treatment2.php and ../dumi/3rdlineart5/./includes/db_operations/insert_treatment2.php differ
+************* ./includes/db_operations/update_pediatric.php ***********
+Files ./includes/db_operations/update_pediatric.php and ../dumi/3rdlineart5/./includes/db_operations/update_pediatric.php differ
+************* ./includes/db_operations/insert_patient.php ***********
+Files ./includes/db_operations/insert_patient.php and ../dumi/3rdlineart5/./includes/db_operations/insert_patient.php differ
+************* ./includes/db_operations/insert_sample.php ***********
+Files ./includes/db_operations/insert_sample.php and ../dumi/3rdlineart5/./includes/db_operations/insert_sample.php differ
+************* ./includes/db_operations/update_treatment2.php ***********
+Files ./includes/db_operations/update_treatment2.php and ../dumi/3rdlineart5/./includes/db_operations/update_treatment2.php differ
+************* ./includes/db_operations/update_pregnancy.php ***********
+************* ./includes/db_operations/update_treatment1.php ***********
+Files ./includes/db_operations/update_treatment1.php and ../dumi/3rdlineart5/./includes/db_operations/update_treatment1.php differ
+************* ./includes/db_operations/insert_pediatric.php ***********
+************* ./includes/db_operations/insert_pregnancy.php ***********
+************* ./includes/db_operations/update_adherence_lab.php ***********
+Files ./includes/db_operations/update_adherence_lab.php and ../dumi/3rdlineart5/./includes/db_operations/update_adherence_lab.php differ
+************* ./includes/db_operations/insert_treatment1.php ***********
+Files ./includes/db_operations/insert_treatment1.php and ../dumi/3rdlineart5/./includes/db_operations/insert_treatment1.php differ
+************* ./includes/db_operations/update_treatment3.php ***********
+Files ./includes/db_operations/update_treatment3.php and ../dumi/3rdlineart5/./includes/db_operations/update_treatment3.php differ
+************* ./includes/app_edit_menu.php ***********
+************* ./includes/app_facility.php ***********
+Files ./includes/app_facility.php and ../dumi/3rdlineart5/./includes/app_facility.php differ
+************* ./includes/app_pregnancy_edit.php ***********
+************* ./includes/nav_main.php ***********
+************* ./includes/app_treatment3_edit.php ***********
+************* ./includes/config.php ***********
+Files ./includes/config.php and ../dumi/3rdlineart5/./includes/config.php differ
+************* ./includes/app_consolidated1_view.php ***********
+************* ./includes/app_adherence.php ***********
+Files ./includes/app_adherence.php and ../dumi/3rdlineart5/./includes/app_adherence.php differ
+************* ./includes/app_consolidated1.php ***********
+************* ./includes/app_treatment3.php ***********
+************* ./includes/footer.php ***********
+************* ./includes/app_treatment.php ***********
+Files ./includes/app_treatment.php and ../dumi/3rdlineart5/./includes/app_treatment.php differ
+************* ./includes/email_templates.php ***********
+************* ./includes/app_patientdetails_edit.php ***********
+Files ./includes/app_patientdetails_edit.php and ../dumi/3rdlineart5/./includes/app_patientdetails_edit.php differ
+************* ./includes/app_form.php ***********
+************* ./includes/app_pregnancy.php ***********
+************* ./includes/app_treatment1/app_treatment_row1.php ***********
+Files ./includes/app_treatment1/app_treatment_row1.php and ../dumi/3rdlineart5/./includes/app_treatment1/app_treatment_row1.php differ
+************* ./includes/app_adherence_edit.php ***********
+Files ./includes/app_adherence_edit.php and ../dumi/3rdlineart5/./includes/app_adherence_edit.php differ
+************* ./includes/app_treatment1.php ***********
+Files ./includes/app_treatment1.php and ../dumi/3rdlineart5/./includes/app_treatment1.php differ
+************* ./includes/app_treatment2_edit.php ***********
+Files ./includes/app_treatment2_edit.php and ../dumi/3rdlineart5/./includes/app_treatment2_edit.php differ
+************* ./includes/app_treatment2.php ***********
+Files ./includes/app_treatment2.php and ../dumi/3rdlineart5/./includes/app_treatment2.php differ
+************* ./includes/app_edit_first.php ***********
+************* ./includes/app_edit_last.php ***********
+************* ./includes/test.php ***********
+************* ./includes/app_consolidated2.php ***********
+************* ./includes/app_pedriatric_edit.php ***********
+************* ./includes/keys/key.php ***********
+************* ./includes/head.php ***********
+Files ./includes/head.php and ../dumi/3rdlineart5/./includes/head.php differ
+************* ./reviewer/includes/nav_sub.php ***********
+************* ./reviewer/includes/display_login_info.php ***********
+************* ./reviewer/includes/sec_consolidate2.php ***********
+************* ./reviewer/includes/app_patientdetails.php ***********
+************* ./reviewer/includes/sec_rev.php ***********
+************* ./reviewer/includes/sec_reviewed_app.php ***********
+************* ./reviewer/includes/app_pedriatric.php ***********
+************* ./reviewer/includes/resultpdf_view.php ***********
+************* ./reviewer/includes/sec_consolidate1.php ***********
+************* ./reviewer/includes/nav_main.php ***********
+************* ./reviewer/includes/insert_consolidate1.php ***********
+************* ./reviewer/includes/review_form.php ***********
+Files ./reviewer/includes/review_form.php and ../dumi/3rdlineart5/./reviewer/includes/review_form.php differ
+************* ./reviewer/includes/rev_new.php ***********
+************* ./reviewer/includes/insert_review.php ***********
+Files ./reviewer/includes/insert_review.php and ../dumi/3rdlineart5/./reviewer/includes/insert_review.php differ
+************* ./reviewer/includes/review_result.php ***********
+************* ./reviewer/includes/insert_reviewed_result.php ***********
+Files ./reviewer/includes/insert_reviewed_result.php and ../dumi/3rdlineart5/./reviewer/includes/insert_reviewed_result.php differ
+************* ./reviewer/includes/footer.php ***********
+************* ./reviewer/includes/app_form.php ***********
+************* ./reviewer/includes/app_pregnancy.php ***********
+************* ./reviewer/includes/review.php ***********
+************* ./reviewer/includes/rev_my_reviewed.php ***********
+************* ./reviewer/includes/sec_rev_results.php ***********
+************* ./reviewer/includes/rev_results.php ***********
+************* ./reviewer/includes/insert_consolidate2.php ***********
+************* ./reviewer/logout.php ***********
+************* ./reviewer/review_p1.php ***********
+************* ./pih/includes/nav_sub.php ***********
+************* ./pih/includes/display_login_info.php ***********
+************* ./pih/includes/lab_new.php ***********
+Files ./pih/includes/lab_new.php and ../dumi/3rdlineart5/./pih/includes/lab_new.php differ
+************* ./pih/includes/nav_main.php ***********
+************* ./pih/includes/rev_new.php ***********
+************* ./pih/includes/insert_lab_vl_repeat.php ***********
+Files ./pih/includes/insert_lab_vl_repeat.php and ../dumi/3rdlineart5/./pih/includes/insert_lab_vl_repeat.php differ
+************* ./pih/includes/lab_vl_done.php ***********
+************* ./pih/includes/footer.php ***********
+************* ./pih/includes/lab_sample.php ***********
+************* ./pih/logout.php ***********
+************* ./pih/pih_p1.php ***********
+Files ./pih/pih_p1.php and ../dumi/3rdlineart5/./pih/pih_p1.php differ
+************* ./pih/review_p1.php ***********
+************* ./app.php ***********
+Files ./app.php and ../dumi/3rdlineart5/./app.php differ
+************* ./phpinfo.php ***********
+************* ./form_complete.php ***********
+Files ./form_complete.php and ../dumi/3rdlineart5/./form_complete.php differ
+************* ./login.php ***********
+Files ./login.php and ../dumi/3rdlineart5/./login.php differ
+************* ./complete_form.php ***********
+Files ./complete_form.php and ../dumi/3rdlineart5/./complete_form.php differ
+************* ./dashboard.php ***********
+************* ./reports.php ***********
+************* ./logout.php ***********
+************* ./admin/includes/nav_sub.php ***********
+************* ./admin/includes/send_user_email.php ***********
+Files ./admin/includes/send_user_email.php and ../dumi/3rdlineart5/./admin/includes/send_user_email.php differ
+************* ./admin/includes/insert_lab_user.php ***********
+************* ./admin/includes/crypt_function.php ***********
+************* ./admin/includes/create_drug.php ***********
+************* ./admin/includes/man_drugs.php ***********
+************* ./admin/includes/insert_sec.php ***********
+Files ./admin/includes/insert_sec.php and ../dumi/3rdlineart5/./admin/includes/insert_sec.php differ
+************* ./admin/includes/create_sec.php ***********
+Files ./admin/includes/create_sec.php and ../dumi/3rdlineart5/./admin/includes/create_sec.php differ
+************* ./admin/includes/clinician.php ***********
+Files ./admin/includes/clinician.php and ../dumi/3rdlineart5/./admin/includes/clinician.php differ
+************* ./admin/includes/reviewer_edit.php ***********
+Files ./admin/includes/reviewer_edit.php and ../dumi/3rdlineart5/./admin/includes/reviewer_edit.php differ
+************* ./admin/includes/nav_main.php ***********
+************* ./admin/includes/admin_facilities.php ***********
+************* ./admin/includes/insert_drug.php ***********
+************* ./admin/includes/create_affliate.php ***********
+************* ./admin/includes/create_clin.php ***********
+************* ./admin/includes/sec.php ***********
+Files ./admin/includes/sec.php and ../dumi/3rdlineart5/./admin/includes/sec.php differ
+************* ./admin/includes/insert_reviewer.php ***********
+Files ./admin/includes/insert_reviewer.php and ../dumi/3rdlineart5/./admin/includes/insert_reviewer.php differ
+************* ./admin/includes/review.php ***********
+************* ./admin/includes/create_lab.php ***********
+************* ./admin/includes/insert_clinician.php ***********
+Files ./admin/includes/insert_clinician.php and ../dumi/3rdlineart5/./admin/includes/insert_clinician.php differ
+************* ./admin/includes/lab_staff.php ***********
+************* ./admin/includes/reviewer_new.php ***********
+************* ./admin/includes/keys/key.php ***********
+************* ./admin/includes/insert_facility.php ***********
+************* ./admin/includes/man_affliates.php ***********
+************* ./admin/includes/reviewer.php ***********
+Files ./admin/includes/reviewer.php and ../dumi/3rdlineart5/./admin/includes/reviewer.php differ
+************* ./admin/includes/insert_affliates.php ***********
+************* ./admin/includes/create_facility.php ***********
+************* ./admin/dash.php ***********
+Files ./admin/dash.php and ../dumi/3rdlineart5/./admin/dash.php differ
+************* ./admin/login.php ***********
+Files ./admin/login.php and ../dumi/3rdlineart5/./admin/login.php differ
+************* ./admin/logout.php ***********
+************* ./admin/new_user.php ***********
+Files ./admin/new_user.php and ../dumi/3rdlineart5/./admin/new_user.php differ
+************* ./admin/review_p1.php ***********
+Files ./admin/review_p1.php and ../dumi/3rdlineart5/./admin/review_p1.php differ
+************* ./admin/index.php ***********
+Files ./admin/index.php and ../dumi/3rdlineart5/./admin/index.php differ
+************* ./check_point/includes/sec_pending_sample.php ***********
+Files ./check_point/includes/sec_pending_sample.php and ../dumi/3rdlineart5/./check_point/includes/sec_pending_sample.php differ
+************* ./check_point/includes/insert_assign_reviewer.php ***********
+Files ./check_point/includes/insert_assign_reviewer.php and ../dumi/3rdlineart5/./check_point/includes/insert_assign_reviewer.php differ
+************* ./check_point/includes/nav_sub.php ***********
+************* ./check_point/includes/sec_consolidate2.php ***********
+Files ./check_point/includes/sec_consolidate2.php and ../dumi/3rdlineart5/./check_point/includes/sec_consolidate2.php differ
+************* ./check_point/includes/sec_pending_result.php ***********
+Files ./check_point/includes/sec_pending_result.php and ../dumi/3rdlineart5/./check_point/includes/sec_pending_result.php differ
+************* ./check_point/includes/sec_rev.php ***********
+Files ./check_point/includes/sec_rev.php and ../dumi/3rdlineart5/./check_point/includes/sec_rev.php differ
+************* ./check_point/includes/sec_reviewed_app.php ***********
+Files ./check_point/includes/sec_reviewed_app.php and ../dumi/3rdlineart5/./check_point/includes/sec_reviewed_app.php differ
+************* ./check_point/includes/sec_reminder.php ***********
+Files ./check_point/includes/sec_reminder.php and ../dumi/3rdlineart5/./check_point/includes/sec_reminder.php differ
+************* ./check_point/includes/sec_attach_resultpdf.php ***********
+Files ./check_point/includes/sec_attach_resultpdf.php and ../dumi/3rdlineart5/./check_point/includes/sec_attach_resultpdf.php differ
+************* ./check_point/includes/sec_reviewed_result.php ***********
+Files ./check_point/includes/sec_reviewed_result.php and ../dumi/3rdlineart5/./check_point/includes/sec_reviewed_result.php differ
+************* ./check_point/includes/sec_consolidate1.php ***********
+************* ./check_point/includes/sec_results_under_rev.php ***********
+Files ./check_point/includes/sec_results_under_rev.php and ../dumi/3rdlineart5/./check_point/includes/sec_results_under_rev.php differ
+************* ./check_point/includes/nav_main.php ***********
+************* ./check_point/includes/insert_consolidate1.php ***********
+Files ./check_point/includes/insert_consolidate1.php and ../dumi/3rdlineart5/./check_point/includes/insert_consolidate1.php differ
+************* ./check_point/includes/insert_attach_result.php ***********
+Files ./check_point/includes/insert_attach_result.php and ../dumi/3rdlineart5/./check_point/includes/insert_attach_result.php differ
+************* ./check_point/includes/sec_assign_reviewer.php ***********
+Files ./check_point/includes/sec_assign_reviewer.php and ../dumi/3rdlineart5/./check_point/includes/sec_assign_reviewer.php differ
+************* ./check_point/includes/footer.php ***********
+************* ./check_point/includes/app_form.php ***********
+Files ./check_point/includes/app_form.php and ../dumi/3rdlineart5/./check_point/includes/app_form.php differ
+************* ./check_point/includes/sec_new.php ***********
+Files ./check_point/includes/sec_new.php and ../dumi/3rdlineart5/./check_point/includes/sec_new.php differ
+************* ./check_point/includes/insert_consolidate2.php ***********
+Files ./check_point/includes/insert_consolidate2.php and ../dumi/3rdlineart5/./check_point/includes/insert_consolidate2.php differ
+************* ./check_point/cp_p1.php ***********
+Files ./check_point/cp_p1.php and ../dumi/3rdlineart5/./check_point/cp_p1.php differ
+************* ./check_point/logout.php ***********
+************* ./index.php ***********
+Files ./index.php and ../dumi/3rdlineart5/./index.php differ
+************* ./includes/nav_sub.php ***********
+************* ./includes/app_clinic_status.php ***********
+************* ./includes/display_login_info.php ***********
+************* ./includes/app_dashboard.php ***********
+************* ./includes/crypt_function.php ***********
+************* ./includes/app_patientdetails.php ***********
+************* ./includes/app_consolidated2_view.php ***********
+************* ./includes/app_pedriatric.php ***********
+************* ./includes/app_treatment1_edit.php ***********
+Files ./includes/app_treatment1_edit.php and ../dumi/3rdlineart5/./includes/app_treatment1_edit.php differ
+************* ./includes/db_operations/insert_treatment.php ***********
+************* ./includes/db_operations/insert_adherence_lab.php ***********
+Files ./includes/db_operations/insert_adherence_lab.php and ../dumi/3rdlineart5/./includes/db_operations/insert_adherence_lab.php differ
+************* ./includes/db_operations/update_patient.php ***********
+Files ./includes/db_operations/update_patient.php and ../dumi/3rdlineart5/./includes/db_operations/update_patient.php differ
+************* ./includes/db_operations/update_clinic_status.php ***********
+Files ./includes/db_operations/update_clinic_status.php and ../dumi/3rdlineart5/./includes/db_operations/update_clinic_status.php differ
+************* ./includes/db_operations/insert_clinic_status.php ***********
+Files ./includes/db_operations/insert_clinic_status.php and ../dumi/3rdlineart5/./includes/db_operations/insert_clinic_status.php differ
+************* ./includes/db_operations/insert_treatment3.php ***********
+Files ./includes/db_operations/insert_treatment3.php and ../dumi/3rdlineart5/./includes/db_operations/insert_treatment3.php differ
+************* ./includes/db_operations/insert_treatment2.php ***********
+Files ./includes/db_operations/insert_treatment2.php and ../dumi/3rdlineart5/./includes/db_operations/insert_treatment2.php differ
+************* ./includes/db_operations/update_pediatric.php ***********
+Files ./includes/db_operations/update_pediatric.php and ../dumi/3rdlineart5/./includes/db_operations/update_pediatric.php differ
+************* ./includes/db_operations/insert_patient.php ***********
+Files ./includes/db_operations/insert_patient.php and ../dumi/3rdlineart5/./includes/db_operations/insert_patient.php differ
+************* ./includes/db_operations/insert_sample.php ***********
+Files ./includes/db_operations/insert_sample.php and ../dumi/3rdlineart5/./includes/db_operations/insert_sample.php differ
+************* ./includes/db_operations/update_treatment2.php ***********
+Files ./includes/db_operations/update_treatment2.php and ../dumi/3rdlineart5/./includes/db_operations/update_treatment2.php differ
+************* ./includes/db_operations/update_pregnancy.php ***********
+************* ./includes/db_operations/update_treatment1.php ***********
+Files ./includes/db_operations/update_treatment1.php and ../dumi/3rdlineart5/./includes/db_operations/update_treatment1.php differ
+************* ./includes/db_operations/insert_pediatric.php ***********
+************* ./includes/db_operations/insert_pregnancy.php ***********
+************* ./includes/db_operations/update_adherence_lab.php ***********
+Files ./includes/db_operations/update_adherence_lab.php and ../dumi/3rdlineart5/./includes/db_operations/update_adherence_lab.php differ
+************* ./includes/db_operations/insert_treatment1.php ***********
+Files ./includes/db_operations/insert_treatment1.php and ../dumi/3rdlineart5/./includes/db_operations/insert_treatment1.php differ
+************* ./includes/db_operations/update_treatment3.php ***********
+Files ./includes/db_operations/update_treatment3.php and ../dumi/3rdlineart5/./includes/db_operations/update_treatment3.php differ
+************* ./includes/app_edit_menu.php ***********
+************* ./includes/app_facility.php ***********
+Files ./includes/app_facility.php and ../dumi/3rdlineart5/./includes/app_facility.php differ
+************* ./includes/app_pregnancy_edit.php ***********
+************* ./includes/nav_main.php ***********
+************* ./includes/app_treatment3_edit.php ***********
+************* ./includes/config.php ***********
+Files ./includes/config.php and ../dumi/3rdlineart5/./includes/config.php differ
+************* ./includes/app_consolidated1_view.php ***********
+************* ./includes/app_adherence.php ***********
+Files ./includes/app_adherence.php and ../dumi/3rdlineart5/./includes/app_adherence.php differ
+************* ./includes/app_consolidated1.php ***********
+************* ./includes/app_treatment3.php ***********
+************* ./includes/app_clinic_status_edit.php ***********
+Files ./includes/app_clinic_status_edit.php and ../dumi/3rdlineart5/./includes/app_clinic_status_edit.php differ
+************* ./includes/footer.php ***********
+************* ./includes/app_treatment.php ***********
+Files ./includes/app_treatment.php and ../dumi/3rdlineart5/./includes/app_treatment.php differ
+************* ./includes/email_templates.php ***********
+************* ./includes/app_patientdetails_edit.php ***********
+************* ./includes/app_form.php ***********
+************* ./includes/app_pregnancy.php ***********
+************* ./includes/app_treatment1/app_treatment_row1.php ***********
+Files ./includes/app_treatment1/app_treatment_row1.php and ../dumi/3rdlineart5/./includes/app_treatment1/app_treatment_row1.php differ
+************* ./includes/app_adherence_edit.php ***********
+Files ./includes/app_adherence_edit.php and ../dumi/3rdlineart5/./includes/app_adherence_edit.php differ
+************* ./includes/app_treatment1.php ***********
+Files ./includes/app_treatment1.php and ../dumi/3rdlineart5/./includes/app_treatment1.php differ
+************* ./includes/app_treatment2_edit.php ***********
+Files ./includes/app_treatment2_edit.php and ../dumi/3rdlineart5/./includes/app_treatment2_edit.php differ
+************* ./includes/app_treatment2.php ***********
+Files ./includes/app_treatment2.php and ../dumi/3rdlineart5/./includes/app_treatment2.php differ
+************* ./includes/app_edit_first.php ***********
+************* ./includes/app_edit_last.php ***********
+************* ./includes/test.php ***********
+************* ./includes/app_consolidated2.php ***********
+************* ./includes/app_pedriatric_edit.php ***********
+************* ./includes/keys/key.php ***********
+************* ./includes/head.php ***********
+Files ./includes/head.php and ../dumi/3rdlineart5/./includes/head.php differ
+************* ./reviewer/includes/nav_sub.php ***********
+************* ./reviewer/includes/display_login_info.php ***********
+************* ./reviewer/includes/sec_consolidate2.php ***********
+************* ./reviewer/includes/app_patientdetails.php ***********
+************* ./reviewer/includes/sec_rev.php ***********
+************* ./reviewer/includes/sec_reviewed_app.php ***********
+************* ./reviewer/includes/app_pedriatric.php ***********
+************* ./reviewer/includes/resultpdf_view.php ***********
+************* ./reviewer/includes/sec_consolidate1.php ***********
+************* ./reviewer/includes/nav_main.php ***********
+************* ./reviewer/includes/insert_consolidate1.php ***********
+************* ./reviewer/includes/review_form.php ***********
+Files ./reviewer/includes/review_form.php and ../dumi/3rdlineart5/./reviewer/includes/review_form.php differ
+************* ./reviewer/includes/rev_new.php ***********
+************* ./reviewer/includes/insert_review.php ***********
+Files ./reviewer/includes/insert_review.php and ../dumi/3rdlineart5/./reviewer/includes/insert_review.php differ
+************* ./reviewer/includes/review_result.php ***********
+************* ./reviewer/includes/insert_reviewed_result.php ***********
+Files ./reviewer/includes/insert_reviewed_result.php and ../dumi/3rdlineart5/./reviewer/includes/insert_reviewed_result.php differ
+************* ./reviewer/includes/footer.php ***********
+************* ./reviewer/includes/app_form.php ***********
+************* ./reviewer/includes/app_pregnancy.php ***********
+************* ./reviewer/includes/review.php ***********
+************* ./reviewer/includes/rev_my_reviewed.php ***********
+************* ./reviewer/includes/sec_rev_results.php ***********
+************* ./reviewer/includes/rev_results.php ***********
+************* ./reviewer/includes/insert_consolidate2.php ***********
+************* ./reviewer/logout.php ***********
+************* ./reviewer/review_p1.php ***********
+************* ./pih/includes/nav_sub.php ***********
+************* ./pih/includes/display_login_info.php ***********
+************* ./pih/includes/lab_new.php ***********
+Files ./pih/includes/lab_new.php and ../dumi/3rdlineart5/./pih/includes/lab_new.php differ
+************* ./pih/includes/nav_main.php ***********
+************* ./pih/includes/rev_new.php ***********
+************* ./pih/includes/insert_lab_vl_repeat.php ***********
+Files ./pih/includes/insert_lab_vl_repeat.php and ../dumi/3rdlineart5/./pih/includes/insert_lab_vl_repeat.php differ
+************* ./pih/includes/lab_vl_done.php ***********
+************* ./pih/includes/footer.php ***********
+************* ./pih/includes/lab_sample.php ***********
+************* ./pih/logout.php ***********
+************* ./pih/pih_p1.php ***********
+Files ./pih/pih_p1.php and ../dumi/3rdlineart5/./pih/pih_p1.php differ
+************* ./pih/review_p1.php ***********
+************* ./app.php ***********
+Files ./app.php and ../dumi/3rdlineart5/./app.php differ
+************* ./phpinfo.php ***********
+************* ./form_complete.php ***********
+Files ./form_complete.php and ../dumi/3rdlineart5/./form_complete.php differ
+************* ./login.php ***********
+************* ./complete_form.php ***********
+Files ./complete_form.php and ../dumi/3rdlineart5/./complete_form.php differ
+************* ./dashboard.php ***********
+************* ./reports.php ***********
+************* ./logout.php ***********
+************* ./admin/includes/nav_sub.php ***********
+************* ./admin/includes/send_user_email.php ***********
+Files ./admin/includes/send_user_email.php and ../dumi/3rdlineart5/./admin/includes/send_user_email.php differ
+************* ./admin/includes/insert_lab_user.php ***********
+************* ./admin/includes/crypt_function.php ***********
+************* ./admin/includes/create_drug.php ***********
+************* ./admin/includes/man_drugs.php ***********
+************* ./admin/includes/insert_sec.php ***********
+************* ./admin/includes/create_sec.php ***********
+************* ./admin/includes/clinician.php ***********
+************* ./admin/includes/reviewer_edit.php ***********
+************* ./admin/includes/nav_main.php ***********
+************* ./admin/includes/admin_facilities.php ***********
+************* ./admin/includes/insert_drug.php ***********
+************* ./admin/includes/create_affliate.php ***********
+************* ./admin/includes/create_clin.php ***********
+************* ./admin/includes/sec.php ***********
+************* ./admin/includes/insert_reviewer.php ***********
+************* ./admin/includes/review.php ***********
+************* ./admin/includes/create_lab.php ***********
+************* ./admin/includes/insert_clinician.php ***********
+Files ./admin/includes/insert_clinician.php and ../dumi/3rdlineart5/./admin/includes/insert_clinician.php differ
+************* ./admin/includes/lab_staff.php ***********
+************* ./admin/includes/reviewer_new.php ***********
+************* ./admin/includes/keys/key.php ***********
+************* ./admin/includes/insert_facility.php ***********
+************* ./admin/includes/man_affliates.php ***********
+************* ./admin/includes/reviewer.php ***********
+************* ./admin/includes/insert_affliates.php ***********
+************* ./admin/includes/create_facility.php ***********
+************* ./admin/dash.php ***********
+************* ./admin/login.php ***********
+Files ./admin/login.php and ../dumi/3rdlineart5/./admin/login.php differ
+************* ./admin/logout.php ***********
+************* ./admin/new_user.php ***********
+Files ./admin/new_user.php and ../dumi/3rdlineart5/./admin/new_user.php differ
+************* ./admin/review_p1.php ***********
+Files ./admin/review_p1.php and ../dumi/3rdlineart5/./admin/review_p1.php differ
+************* ./admin/index.php ***********
+Files ./admin/index.php and ../dumi/3rdlineart5/./admin/index.php differ
+************* ./check_point/includes/sec_pending_sample.php ***********
+Files ./check_point/includes/sec_pending_sample.php and ../dumi/3rdlineart5/./check_point/includes/sec_pending_sample.php differ
+************* ./check_point/includes/insert_assign_reviewer.php ***********
+Files ./check_point/includes/insert_assign_reviewer.php and ../dumi/3rdlineart5/./check_point/includes/insert_assign_reviewer.php differ
+************* ./check_point/includes/nav_sub.php ***********
+************* ./check_point/includes/sec_app_reject.php ***********
+************* ./check_point/includes/sec_consolidate2.php ***********
+************* ./check_point/includes/sec_pending_result.php ***********
+Files ./check_point/includes/sec_pending_result.php and ../dumi/3rdlineart5/./check_point/includes/sec_pending_result.php differ
+************* ./check_point/includes/sec_rev.php ***********
+Files ./check_point/includes/sec_rev.php and ../dumi/3rdlineart5/./check_point/includes/sec_rev.php differ
+************* ./check_point/includes/sec_reviewed_app.php ***********
+Files ./check_point/includes/sec_reviewed_app.php and ../dumi/3rdlineart5/./check_point/includes/sec_reviewed_app.php differ
+************* ./check_point/includes/sec_reminder.php ***********
+Files ./check_point/includes/sec_reminder.php and ../dumi/3rdlineart5/./check_point/includes/sec_reminder.php differ
+************* ./check_point/includes/sec_attach_resultpdf.php ***********
+Files ./check_point/includes/sec_attach_resultpdf.php and ../dumi/3rdlineart5/./check_point/includes/sec_attach_resultpdf.php differ
+************* ./check_point/includes/sec_reviewed_result.php ***********
+Files ./check_point/includes/sec_reviewed_result.php and ../dumi/3rdlineart5/./check_point/includes/sec_reviewed_result.php differ
+************* ./check_point/includes/sec_consolidate1.php ***********
+************* ./check_point/includes/sec_results_under_rev.php ***********
+Files ./check_point/includes/sec_results_under_rev.php and ../dumi/3rdlineart5/./check_point/includes/sec_results_under_rev.php differ
+************* ./check_point/includes/nav_main.php ***********
+************* ./check_point/includes/insert_consolidate1.php ***********
+Files ./check_point/includes/insert_consolidate1.php and ../dumi/3rdlineart5/./check_point/includes/insert_consolidate1.php differ
+************* ./check_point/includes/insert_attach_result.php ***********
+Files ./check_point/includes/insert_attach_result.php and ../dumi/3rdlineart5/./check_point/includes/insert_attach_result.php differ
+************* ./check_point/includes/sec_assign_reviewer.php ***********
+Files ./check_point/includes/sec_assign_reviewer.php and ../dumi/3rdlineart5/./check_point/includes/sec_assign_reviewer.php differ
+************* ./check_point/includes/footer.php ***********
+************* ./check_point/includes/app_form.php ***********
+************* ./check_point/includes/sec_new.php ***********
+Files ./check_point/includes/sec_new.php and ../dumi/3rdlineart5/./check_point/includes/sec_new.php differ
+************* ./check_point/includes/insert_consolidate2.php ***********
+Files ./check_point/includes/insert_consolidate2.php and ../dumi/3rdlineart5/./check_point/includes/insert_consolidate2.php differ
+************* ./check_point/cp_p1.php ***********
+Files ./check_point/cp_p1.php and ../dumi/3rdlineart5/./check_point/cp_p1.php differ
+************* ./check_point/logout.php ***********
+************* ./index.php ***********
+Files ./index.php and ../dumi/3rdlineart5/./index.php differ
+************* ./includes/nav_sub.php ***********
+************* ./includes/app_clinic_status.php ***********
+************* ./includes/display_login_info.php ***********
+************* ./includes/app_dashboard.php ***********
+************* ./includes/crypt_function.php ***********
+************* ./includes/app_patientdetails.php ***********
+************* ./includes/app_consolidated2_view.php ***********
+************* ./includes/app_pedriatric.php ***********
+************* ./includes/app_treatment1_edit.php ***********
+************* ./includes/db_operations/insert_treatment.php ***********
+************* ./includes/db_operations/insert_adherence_lab.php ***********
+************* ./includes/db_operations/update_patient.php ***********
+************* ./includes/db_operations/update_clinic_status.php ***********
+************* ./includes/db_operations/insert_clinic_status.php ***********
+************* ./includes/db_operations/insert_treatment3.php ***********
+************* ./includes/db_operations/insert_treatment2.php ***********
+************* ./includes/db_operations/update_pediatric.php ***********
+************* ./includes/db_operations/insert_patient.php ***********
+************* ./includes/db_operations/insert_sample.php ***********
+************* ./includes/db_operations/update_treatment2.php ***********
+************* ./includes/db_operations/update_pregnancy.php ***********
+************* ./includes/db_operations/update_treatment1.php ***********
+************* ./includes/db_operations/insert_pediatric.php ***********
+************* ./includes/db_operations/insert_pregnancy.php ***********
+************* ./includes/db_operations/update_adherence_lab.php ***********
+************* ./includes/db_operations/insert_treatment1.php ***********
+************* ./includes/db_operations/update_treatment3.php ***********
+************* ./includes/app_edit_menu.php ***********
+************* ./includes/app_facility.php ***********
+************* ./includes/app_pregnancy_edit.php ***********
+************* ./includes/nav_main.php ***********
+************* ./includes/app_treatment3_edit.php ***********
+************* ./includes/config.php ***********
+************* ./includes/app_consolidated1_view.php ***********
+************* ./includes/app_adherence.php ***********
+************* ./includes/app_consolidated1.php ***********
+************* ./includes/app_treatment3.php ***********
+************* ./includes/app_clinic_status_edit.php ***********
+************* ./includes/footer.php ***********
+************* ./includes/app_treatment.php ***********
+************* ./includes/email_templates.php ***********
+************* ./includes/app_patientdetails_edit.php ***********
+************* ./includes/app_form.php ***********
+************* ./includes/app_pregnancy.php ***********
+************* ./includes/app_treatment1/app_treatment_row1.php ***********
+************* ./includes/app_adherence_edit.php ***********
+************* ./includes/app_treatment1.php ***********
+************* ./includes/app_treatment2_edit.php ***********
+************* ./includes/app_treatment2.php ***********
+************* ./includes/app_edit_first.php ***********
+************* ./includes/app_edit_last.php ***********
+************* ./includes/test.php ***********
+************* ./includes/app_consolidated2.php ***********
+************* ./includes/app_pedriatric_edit.php ***********
+************* ./includes/keys/key.php ***********
+************* ./includes/head.php ***********
+************* ./reviewer/includes/nav_sub.php ***********
+************* ./reviewer/includes/display_login_info.php ***********
+************* ./reviewer/includes/sec_consolidate2.php ***********
+************* ./reviewer/includes/app_patientdetails.php ***********
+************* ./reviewer/includes/sec_rev.php ***********
+************* ./reviewer/includes/sec_reviewed_app.php ***********
+************* ./reviewer/includes/app_pedriatric.php ***********
+************* ./reviewer/includes/resultpdf_view.php ***********
+************* ./reviewer/includes/sec_consolidate1.php ***********
+************* ./reviewer/includes/nav_main.php ***********
+************* ./reviewer/includes/insert_consolidate1.php ***********
+************* ./reviewer/includes/review_form.php ***********
+************* ./reviewer/includes/rev_new.php ***********
+************* ./reviewer/includes/insert_review.php ***********
+************* ./reviewer/includes/review_result.php ***********
+************* ./reviewer/includes/insert_reviewed_result.php ***********
+************* ./reviewer/includes/footer.php ***********
+************* ./reviewer/includes/app_form.php ***********
+************* ./reviewer/includes/app_pregnancy.php ***********
+************* ./reviewer/includes/review.php ***********
+************* ./reviewer/includes/rev_my_reviewed.php ***********
+************* ./reviewer/includes/sec_rev_results.php ***********
+************* ./reviewer/includes/rev_results.php ***********
+************* ./reviewer/includes/insert_consolidate2.php ***********
+************* ./reviewer/logout.php ***********
+************* ./reviewer/review_p1.php ***********
+************* ./pih/includes/nav_sub.php ***********
+************* ./pih/includes/display_login_info.php ***********
+************* ./pih/includes/lab_new.php ***********
+************* ./pih/includes/nav_main.php ***********
+************* ./pih/includes/rev_new.php ***********
+************* ./pih/includes/insert_lab_vl_repeat.php ***********
+************* ./pih/includes/lab_vl_done.php ***********
+************* ./pih/includes/footer.php ***********
+************* ./pih/includes/lab_sample.php ***********
+************* ./pih/logout.php ***********
+************* ./pih/pih_p1.php ***********
+************* ./pih/review_p1.php ***********
+************* ./app.php ***********
+************* ./phpinfo.php ***********
+************* ./form_complete.php ***********
+************* ./login.php ***********
+************* ./complete_form.php ***********
+************* ./dashboard.php ***********
+************* ./reports.php ***********
+************* ./logout.php ***********
+************* ./admin/includes/nav_sub.php ***********
+************* ./admin/includes/send_user_email.php ***********
+************* ./admin/includes/insert_lab_user.php ***********
+************* ./admin/includes/crypt_function.php ***********
+************* ./admin/includes/create_drug.php ***********
+************* ./admin/includes/man_drugs.php ***********
+************* ./admin/includes/insert_sec.php ***********
+************* ./admin/includes/create_sec.php ***********
+************* ./admin/includes/clinician.php ***********
+************* ./admin/includes/reviewer_edit.php ***********
+************* ./admin/includes/nav_main.php ***********
+************* ./admin/includes/admin_facilities.php ***********
+************* ./admin/includes/insert_drug.php ***********
+************* ./admin/includes/create_affliate.php ***********
+************* ./admin/includes/create_clin.php ***********
+************* ./admin/includes/sec.php ***********
+************* ./admin/includes/insert_reviewer.php ***********
+************* ./admin/includes/review.php ***********
+************* ./admin/includes/create_lab.php ***********
+************* ./admin/includes/insert_clinician.php ***********
+************* ./admin/includes/lab_staff.php ***********
+************* ./admin/includes/reviewer_new.php ***********
+************* ./admin/includes/keys/key.php ***********
+************* ./admin/includes/insert_facility.php ***********
+************* ./admin/includes/man_affliates.php ***********
+************* ./admin/includes/reviewer.php ***********
+************* ./admin/includes/insert_affliates.php ***********
+************* ./admin/includes/create_facility.php ***********
+************* ./admin/dash.php ***********
+************* ./admin/login.php ***********
+************* ./admin/logout.php ***********
+************* ./admin/new_user.php ***********
+************* ./admin/review_p1.php ***********
+************* ./admin/index.php ***********
+************* ./check_point/includes/sec_pending_sample.php ***********
+************* ./check_point/includes/insert_assign_reviewer.php ***********
+************* ./check_point/includes/nav_sub.php ***********
+************* ./check_point/includes/sec_app_reject.php ***********
+************* ./check_point/includes/sec_consolidate2.php ***********
+************* ./check_point/includes/sec_pending_result.php ***********
+************* ./check_point/includes/sec_rev.php ***********
+************* ./check_point/includes/sec_reviewed_app.php ***********
+************* ./check_point/includes/sec_reminder.php ***********
+************* ./check_point/includes/sec_attach_resultpdf.php ***********
+************* ./check_point/includes/sec_reviewed_result.php ***********
+************* ./check_point/includes/sec_consolidate1.php ***********
+************* ./check_point/includes/sec_results_under_rev.php ***********
+************* ./check_point/includes/nav_main.php ***********
+************* ./check_point/includes/insert_consolidate1.php ***********
+************* ./check_point/includes/insert_attach_result.php ***********
+************* ./check_point/includes/sec_assign_reviewer.php ***********
+************* ./check_point/includes/footer.php ***********
+************* ./check_point/includes/app_form.php ***********
+************* ./check_point/includes/sec_new.php ***********
+************* ./check_point/includes/insert_consolidate2.php ***********
+************* ./check_point/cp_p1.php ***********
+************* ./check_point/logout.php ***********
+************* ./index.php ***********
+************* ./includes/nav_sub.php ***********
+************* ./includes/app_clinic_status.php ***********
+************* ./includes/display_login_info.php ***********
+************* ./includes/app_dashboard.php ***********
+************* ./includes/crypt_function.php ***********
+************* ./includes/app_patientdetails.php ***********
+************* ./includes/app_consolidated2_view.php ***********
+************* ./includes/app_pedriatric.php ***********
+************* ./includes/app_treatment1_edit.php ***********
+Files ../dumi/3rdlineart5/./includes/app_treatment1_edit.php and ./includes/app_treatment1_edit.php differ
+************* ./includes/db_operations/insert_treatment.php ***********
+************* ./includes/db_operations/insert_adherence_lab.php ***********
+Files ../dumi/3rdlineart5/./includes/db_operations/insert_adherence_lab.php and ./includes/db_operations/insert_adherence_lab.php differ
+************* ./includes/db_operations/update_patient.php ***********
+Files ../dumi/3rdlineart5/./includes/db_operations/update_patient.php and ./includes/db_operations/update_patient.php differ
+************* ./includes/db_operations/update_clinic_status.php ***********
+Files ../dumi/3rdlineart5/./includes/db_operations/update_clinic_status.php and ./includes/db_operations/update_clinic_status.php differ
+************* ./includes/db_operations/insert_clinic_status.php ***********
+Files ../dumi/3rdlineart5/./includes/db_operations/insert_clinic_status.php and ./includes/db_operations/insert_clinic_status.php differ
+************* ./includes/db_operations/insert_treatment3.php ***********
+Files ../dumi/3rdlineart5/./includes/db_operations/insert_treatment3.php and ./includes/db_operations/insert_treatment3.php differ
+************* ./includes/db_operations/insert_treatment2.php ***********
+Files ../dumi/3rdlineart5/./includes/db_operations/insert_treatment2.php and ./includes/db_operations/insert_treatment2.php differ
+************* ./includes/db_operations/update_pediatric.php ***********
+Files ../dumi/3rdlineart5/./includes/db_operations/update_pediatric.php and ./includes/db_operations/update_pediatric.php differ
+************* ./includes/db_operations/insert_patient.php ***********
+Files ../dumi/3rdlineart5/./includes/db_operations/insert_patient.php and ./includes/db_operations/insert_patient.php differ
+************* ./includes/db_operations/insert_sample.php ***********
+Files ../dumi/3rdlineart5/./includes/db_operations/insert_sample.php and ./includes/db_operations/insert_sample.php differ
+************* ./includes/db_operations/update_treatment2.php ***********
+Files ../dumi/3rdlineart5/./includes/db_operations/update_treatment2.php and ./includes/db_operations/update_treatment2.php differ
+************* ./includes/db_operations/update_pregnancy.php ***********
+************* ./includes/db_operations/update_treatment1.php ***********
+Files ../dumi/3rdlineart5/./includes/db_operations/update_treatment1.php and ./includes/db_operations/update_treatment1.php differ
+************* ./includes/db_operations/insert_pediatric.php ***********
+************* ./includes/db_operations/insert_pregnancy.php ***********
+************* ./includes/db_operations/update_adherence_lab.php ***********
+Files ../dumi/3rdlineart5/./includes/db_operations/update_adherence_lab.php and ./includes/db_operations/update_adherence_lab.php differ
+************* ./includes/db_operations/insert_treatment1.php ***********
+Files ../dumi/3rdlineart5/./includes/db_operations/insert_treatment1.php and ./includes/db_operations/insert_treatment1.php differ
+************* ./includes/db_operations/update_treatment3.php ***********
+Files ../dumi/3rdlineart5/./includes/db_operations/update_treatment3.php and ./includes/db_operations/update_treatment3.php differ
+************* ./includes/app_edit_menu.php ***********
+************* ./includes/app_facility.php ***********
+Files ../dumi/3rdlineart5/./includes/app_facility.php and ./includes/app_facility.php differ
+************* ./includes/app_pregnancy_edit.php ***********
+************* ./includes/nav_main.php ***********
+************* ./includes/app_treatment3_edit.php ***********
+************* ./includes/config.php ***********
+Files ../dumi/3rdlineart5/./includes/config.php and ./includes/config.php differ
+************* ./includes/app_consolidated1_view.php ***********
+************* ./includes/app_adherence.php ***********
+Files ../dumi/3rdlineart5/./includes/app_adherence.php and ./includes/app_adherence.php differ
+************* ./includes/app_consolidated1.php ***********
+************* ./includes/app_treatment3.php ***********
+************* ./includes/app_clinic_status_edit.php ***********
+Files ../dumi/3rdlineart5/./includes/app_clinic_status_edit.php and ./includes/app_clinic_status_edit.php differ
+************* ./includes/footer.php ***********
+************* ./includes/app_treatment.php ***********
+Files ../dumi/3rdlineart5/./includes/app_treatment.php and ./includes/app_treatment.php differ
+************* ./includes/email_templates.php ***********
+************* ./includes/app_patientdetails_edit.php ***********
+************* ./includes/app_form.php ***********
+************* ./includes/app_pregnancy.php ***********
+************* ./includes/app_treatment1/app_treatment_row1.php ***********
+Files ../dumi/3rdlineart5/./includes/app_treatment1/app_treatment_row1.php and ./includes/app_treatment1/app_treatment_row1.php differ
+************* ./includes/app_adherence_edit.php ***********
+Files ../dumi/3rdlineart5/./includes/app_adherence_edit.php and ./includes/app_adherence_edit.php differ
+************* ./includes/app_treatment1.php ***********
+Files ../dumi/3rdlineart5/./includes/app_treatment1.php and ./includes/app_treatment1.php differ
+************* ./includes/app_treatment2_edit.php ***********
+Files ../dumi/3rdlineart5/./includes/app_treatment2_edit.php and ./includes/app_treatment2_edit.php differ
+************* ./includes/app_treatment2.php ***********
+Files ../dumi/3rdlineart5/./includes/app_treatment2.php and ./includes/app_treatment2.php differ
+************* ./includes/app_edit_first.php ***********
+************* ./includes/app_edit_last.php ***********
+************* ./includes/test.php ***********
+************* ./includes/app_consolidated2.php ***********
+************* ./includes/app_pedriatric_edit.php ***********
+************* ./includes/keys/key.php ***********
+************* ./includes/head.php ***********
+Files ../dumi/3rdlineart5/./includes/head.php and ./includes/head.php differ
+************* ./reviewer/includes/nav_sub.php ***********
+************* ./reviewer/includes/display_login_info.php ***********
+************* ./reviewer/includes/sec_consolidate2.php ***********
+************* ./reviewer/includes/app_patientdetails.php ***********
+************* ./reviewer/includes/sec_rev.php ***********
+************* ./reviewer/includes/sec_reviewed_app.php ***********
+************* ./reviewer/includes/app_pedriatric.php ***********
+************* ./reviewer/includes/resultpdf_view.php ***********
+************* ./reviewer/includes/sec_consolidate1.php ***********
+************* ./reviewer/includes/nav_main.php ***********
+************* ./reviewer/includes/insert_consolidate1.php ***********
+************* ./reviewer/includes/review_form.php ***********
+Files ../dumi/3rdlineart5/./reviewer/includes/review_form.php and ./reviewer/includes/review_form.php differ
+************* ./reviewer/includes/rev_new.php ***********
+************* ./reviewer/includes/insert_review.php ***********
+Files ../dumi/3rdlineart5/./reviewer/includes/insert_review.php and ./reviewer/includes/insert_review.php differ
+************* ./reviewer/includes/review_result.php ***********
+************* ./reviewer/includes/insert_reviewed_result.php ***********
+Files ../dumi/3rdlineart5/./reviewer/includes/insert_reviewed_result.php and ./reviewer/includes/insert_reviewed_result.php differ
+************* ./reviewer/includes/footer.php ***********
+************* ./reviewer/includes/app_form.php ***********
+************* ./reviewer/includes/app_pregnancy.php ***********
+************* ./reviewer/includes/review.php ***********
+************* ./reviewer/includes/rev_my_reviewed.php ***********
+************* ./reviewer/includes/sec_rev_results.php ***********
+************* ./reviewer/includes/rev_results.php ***********
+************* ./reviewer/includes/insert_consolidate2.php ***********
+************* ./reviewer/logout.php ***********
+************* ./reviewer/review_p1.php ***********
+************* ./pih/includes/nav_sub.php ***********
+************* ./pih/includes/display_login_info.php ***********
+************* ./pih/includes/lab_new.php ***********
+Files ../dumi/3rdlineart5/./pih/includes/lab_new.php and ./pih/includes/lab_new.php differ
+************* ./pih/includes/nav_main.php ***********
+************* ./pih/includes/rev_new.php ***********
+************* ./pih/includes/insert_lab_vl_repeat.php ***********
+Files ../dumi/3rdlineart5/./pih/includes/insert_lab_vl_repeat.php and ./pih/includes/insert_lab_vl_repeat.php differ
+************* ./pih/includes/lab_vl_done.php ***********
+************* ./pih/includes/footer.php ***********
+************* ./pih/includes/lab_sample.php ***********
+************* ./pih/logout.php ***********
+************* ./pih/pih_p1.php ***********
+Files ../dumi/3rdlineart5/./pih/pih_p1.php and ./pih/pih_p1.php differ
+************* ./pih/review_p1.php ***********
+************* ./app.php ***********
+Files ../dumi/3rdlineart5/./app.php and ./app.php differ
+************* ./phpinfo.php ***********
+************* ./form_complete.php ***********
+Files ../dumi/3rdlineart5/./form_complete.php and ./form_complete.php differ
+************* ./login.php ***********
+************* ./complete_form.php ***********
+Files ../dumi/3rdlineart5/./complete_form.php and ./complete_form.php differ
+************* ./dashboard.php ***********
+************* ./reports.php ***********
+************* ./logout.php ***********
+************* ./admin/includes/nav_sub.php ***********
+************* ./admin/includes/send_user_email.php ***********
+Files ../dumi/3rdlineart5/./admin/includes/send_user_email.php and ./admin/includes/send_user_email.php differ
+************* ./admin/includes/insert_lab_user.php ***********
+************* ./admin/includes/crypt_function.php ***********
+************* ./admin/includes/create_drug.php ***********
+************* ./admin/includes/man_drugs.php ***********
+************* ./admin/includes/insert_sec.php ***********
+************* ./admin/includes/create_sec.php ***********
+************* ./admin/includes/clinician.php ***********
+************* ./admin/includes/reviewer_edit.php ***********
+************* ./admin/includes/nav_main.php ***********
+************* ./admin/includes/admin_facilities.php ***********
+************* ./admin/includes/insert_drug.php ***********
+************* ./admin/includes/create_affliate.php ***********
+************* ./admin/includes/create_clin.php ***********
+************* ./admin/includes/sec.php ***********
+************* ./admin/includes/insert_reviewer.php ***********
+************* ./admin/includes/review.php ***********
+************* ./admin/includes/create_lab.php ***********
+************* ./admin/includes/insert_clinician.php ***********
+Files ../dumi/3rdlineart5/./admin/includes/insert_clinician.php and ./admin/includes/insert_clinician.php differ
+************* ./admin/includes/lab_staff.php ***********
+************* ./admin/includes/reviewer_new.php ***********
+************* ./admin/includes/keys/key.php ***********
+************* ./admin/includes/insert_facility.php ***********
+************* ./admin/includes/man_affliates.php ***********
+************* ./admin/includes/reviewer.php ***********
+************* ./admin/includes/insert_affliates.php ***********
+************* ./admin/includes/create_facility.php ***********
+************* ./admin/dash.php ***********
+************* ./admin/login.php ***********
+Files ../dumi/3rdlineart5/./admin/login.php and ./admin/login.php differ
+************* ./admin/logout.php ***********
+************* ./admin/new_user.php ***********
+Files ../dumi/3rdlineart5/./admin/new_user.php and ./admin/new_user.php differ
+************* ./admin/review_p1.php ***********
+Files ../dumi/3rdlineart5/./admin/review_p1.php and ./admin/review_p1.php differ
+************* ./admin/index.php ***********
+Files ../dumi/3rdlineart5/./admin/index.php and ./admin/index.php differ
+************* ./check_point/includes/sec_pending_sample.php ***********
+Files ../dumi/3rdlineart5/./check_point/includes/sec_pending_sample.php and ./check_point/includes/sec_pending_sample.php differ
+************* ./check_point/includes/insert_assign_reviewer.php ***********
+Files ../dumi/3rdlineart5/./check_point/includes/insert_assign_reviewer.php and ./check_point/includes/insert_assign_reviewer.php differ
+************* ./check_point/includes/nav_sub.php ***********
+************* ./check_point/includes/sec_app_reject.php ***********
+************* ./check_point/includes/sec_consolidate2.php ***********
+************* ./check_point/includes/sec_pending_result.php ***********
+Files ../dumi/3rdlineart5/./check_point/includes/sec_pending_result.php and ./check_point/includes/sec_pending_result.php differ
+************* ./check_point/includes/sec_rev.php ***********
+Files ../dumi/3rdlineart5/./check_point/includes/sec_rev.php and ./check_point/includes/sec_rev.php differ
+************* ./check_point/includes/sec_reviewed_app.php ***********
+Files ../dumi/3rdlineart5/./check_point/includes/sec_reviewed_app.php and ./check_point/includes/sec_reviewed_app.php differ
+************* ./check_point/includes/sec_reminder.php ***********
+Files ../dumi/3rdlineart5/./check_point/includes/sec_reminder.php and ./check_point/includes/sec_reminder.php differ
+************* ./check_point/includes/sec_attach_resultpdf.php ***********
+Files ../dumi/3rdlineart5/./check_point/includes/sec_attach_resultpdf.php and ./check_point/includes/sec_attach_resultpdf.php differ
+************* ./check_point/includes/sec_reviewed_result.php ***********
+Files ../dumi/3rdlineart5/./check_point/includes/sec_reviewed_result.php and ./check_point/includes/sec_reviewed_result.php differ
+************* ./check_point/includes/sec_consolidate1.php ***********
+************* ./check_point/includes/sec_results_under_rev.php ***********
+Files ../dumi/3rdlineart5/./check_point/includes/sec_results_under_rev.php and ./check_point/includes/sec_results_under_rev.php differ
+************* ./check_point/includes/nav_main.php ***********
+************* ./check_point/includes/insert_consolidate1.php ***********
+Files ../dumi/3rdlineart5/./check_point/includes/insert_consolidate1.php and ./check_point/includes/insert_consolidate1.php differ
+************* ./check_point/includes/insert_attach_result.php ***********
+Files ../dumi/3rdlineart5/./check_point/includes/insert_attach_result.php and ./check_point/includes/insert_attach_result.php differ
+************* ./check_point/includes/sec_assign_reviewer.php ***********
+Files ../dumi/3rdlineart5/./check_point/includes/sec_assign_reviewer.php and ./check_point/includes/sec_assign_reviewer.php differ
+************* ./check_point/includes/footer.php ***********
+************* ./check_point/includes/app_form.php ***********
+************* ./check_point/includes/sec_new.php ***********
+Files ../dumi/3rdlineart5/./check_point/includes/sec_new.php and ./check_point/includes/sec_new.php differ
+************* ./check_point/includes/insert_consolidate2.php ***********
+Files ../dumi/3rdlineart5/./check_point/includes/insert_consolidate2.php and ./check_point/includes/insert_consolidate2.php differ
+************* ./check_point/cp_p1.php ***********
+Files ../dumi/3rdlineart5/./check_point/cp_p1.php and ./check_point/cp_p1.php differ
+************* ./check_point/logout.php ***********
+************* ./index.php ***********
+Files ../dumi/3rdlineart5/./index.php and ./index.php differ
+************* ./includes/nav_sub.php ***********
+************* ./includes/app_clinic_status.php ***********
+************* ./includes/display_login_info.php ***********
+************* ./includes/app_dashboard.php ***********
+************* ./includes/crypt_function.php ***********
+************* ./includes/app_patientdetails.php ***********
+************* ./includes/app_consolidated2_view.php ***********
+************* ./includes/app_pedriatric.php ***********
+************* ./includes/app_treatment1_edit.php ***********
+Files ./includes/app_treatment1_edit.php and ../dumi/3rdlineart5/./includes/app_treatment1_edit.php differ
+************* ./includes/db_operations/insert_treatment.php ***********
+************* ./includes/db_operations/insert_adherence_lab.php ***********
+Files ./includes/db_operations/insert_adherence_lab.php and ../dumi/3rdlineart5/./includes/db_operations/insert_adherence_lab.php differ
+************* ./includes/db_operations/update_patient.php ***********
+Files ./includes/db_operations/update_patient.php and ../dumi/3rdlineart5/./includes/db_operations/update_patient.php differ
+************* ./includes/db_operations/update_clinic_status.php ***********
+Files ./includes/db_operations/update_clinic_status.php and ../dumi/3rdlineart5/./includes/db_operations/update_clinic_status.php differ
+************* ./includes/db_operations/insert_clinic_status.php ***********
+Files ./includes/db_operations/insert_clinic_status.php and ../dumi/3rdlineart5/./includes/db_operations/insert_clinic_status.php differ
+************* ./includes/db_operations/insert_treatment3.php ***********
+Files ./includes/db_operations/insert_treatment3.php and ../dumi/3rdlineart5/./includes/db_operations/insert_treatment3.php differ
+************* ./includes/db_operations/insert_treatment2.php ***********
+Files ./includes/db_operations/insert_treatment2.php and ../dumi/3rdlineart5/./includes/db_operations/insert_treatment2.php differ
+************* ./includes/db_operations/update_pediatric.php ***********
+Files ./includes/db_operations/update_pediatric.php and ../dumi/3rdlineart5/./includes/db_operations/update_pediatric.php differ
+************* ./includes/db_operations/insert_patient.php ***********
+Files ./includes/db_operations/insert_patient.php and ../dumi/3rdlineart5/./includes/db_operations/insert_patient.php differ
+************* ./includes/db_operations/insert_sample.php ***********
+Files ./includes/db_operations/insert_sample.php and ../dumi/3rdlineart5/./includes/db_operations/insert_sample.php differ
+************* ./includes/db_operations/update_treatment2.php ***********
+Files ./includes/db_operations/update_treatment2.php and ../dumi/3rdlineart5/./includes/db_operations/update_treatment2.php differ
+************* ./includes/db_operations/update_pregnancy.php ***********
+************* ./includes/db_operations/update_treatment1.php ***********
+Files ./includes/db_operations/update_treatment1.php and ../dumi/3rdlineart5/./includes/db_operations/update_treatment1.php differ
+************* ./includes/db_operations/insert_pediatric.php ***********
+************* ./includes/db_operations/insert_pregnancy.php ***********
+************* ./includes/db_operations/update_adherence_lab.php ***********
+Files ./includes/db_operations/update_adherence_lab.php and ../dumi/3rdlineart5/./includes/db_operations/update_adherence_lab.php differ
+************* ./includes/db_operations/insert_treatment1.php ***********
+Files ./includes/db_operations/insert_treatment1.php and ../dumi/3rdlineart5/./includes/db_operations/insert_treatment1.php differ
+************* ./includes/db_operations/update_treatment3.php ***********
+Files ./includes/db_operations/update_treatment3.php and ../dumi/3rdlineart5/./includes/db_operations/update_treatment3.php differ
+************* ./includes/app_edit_menu.php ***********
+************* ./includes/app_facility.php ***********
+Files ./includes/app_facility.php and ../dumi/3rdlineart5/./includes/app_facility.php differ
+************* ./includes/app_pregnancy_edit.php ***********
+************* ./includes/nav_main.php ***********
+************* ./includes/app_treatment3_edit.php ***********
+************* ./includes/config.php ***********
+Files ./includes/config.php and ../dumi/3rdlineart5/./includes/config.php differ
+************* ./includes/app_consolidated1_view.php ***********
+************* ./includes/app_adherence.php ***********
+Files ./includes/app_adherence.php and ../dumi/3rdlineart5/./includes/app_adherence.php differ
+************* ./includes/app_consolidated1.php ***********
+************* ./includes/app_treatment3.php ***********
+************* ./includes/app_clinic_status_edit.php ***********
+Files ./includes/app_clinic_status_edit.php and ../dumi/3rdlineart5/./includes/app_clinic_status_edit.php differ
+************* ./includes/footer.php ***********
+************* ./includes/app_treatment.php ***********
+Files ./includes/app_treatment.php and ../dumi/3rdlineart5/./includes/app_treatment.php differ
+************* ./includes/email_templates.php ***********
+************* ./includes/app_patientdetails_edit.php ***********
+************* ./includes/app_form.php ***********
+************* ./includes/app_pregnancy.php ***********
+************* ./includes/app_treatment1/app_treatment_row1.php ***********
+Files ./includes/app_treatment1/app_treatment_row1.php and ../dumi/3rdlineart5/./includes/app_treatment1/app_treatment_row1.php differ
+************* ./includes/app_adherence_edit.php ***********
+Files ./includes/app_adherence_edit.php and ../dumi/3rdlineart5/./includes/app_adherence_edit.php differ
+************* ./includes/app_treatment1.php ***********
+Files ./includes/app_treatment1.php and ../dumi/3rdlineart5/./includes/app_treatment1.php differ
+************* ./includes/app_treatment2_edit.php ***********
+Files ./includes/app_treatment2_edit.php and ../dumi/3rdlineart5/./includes/app_treatment2_edit.php differ
+************* ./includes/app_treatment2.php ***********
+Files ./includes/app_treatment2.php and ../dumi/3rdlineart5/./includes/app_treatment2.php differ
+************* ./includes/app_edit_first.php ***********
+************* ./includes/app_edit_last.php ***********
+************* ./includes/test.php ***********
+************* ./includes/app_consolidated2.php ***********
+************* ./includes/app_pedriatric_edit.php ***********
+************* ./includes/keys/key.php ***********
+************* ./includes/head.php ***********
+Files ./includes/head.php and ../dumi/3rdlineart5/./includes/head.php differ
+************* ./reviewer/includes/nav_sub.php ***********
+************* ./reviewer/includes/display_login_info.php ***********
+************* ./reviewer/includes/sec_consolidate2.php ***********
+************* ./reviewer/includes/app_patientdetails.php ***********
+************* ./reviewer/includes/sec_rev.php ***********
+************* ./reviewer/includes/sec_reviewed_app.php ***********
+************* ./reviewer/includes/app_pedriatric.php ***********
+************* ./reviewer/includes/resultpdf_view.php ***********
+************* ./reviewer/includes/sec_consolidate1.php ***********
+************* ./reviewer/includes/nav_main.php ***********
+************* ./reviewer/includes/insert_consolidate1.php ***********
+************* ./reviewer/includes/review_form.php ***********
+Files ./reviewer/includes/review_form.php and ../dumi/3rdlineart5/./reviewer/includes/review_form.php differ
+************* ./reviewer/includes/rev_new.php ***********
+************* ./reviewer/includes/insert_review.php ***********
+Files ./reviewer/includes/insert_review.php and ../dumi/3rdlineart5/./reviewer/includes/insert_review.php differ
+************* ./reviewer/includes/review_result.php ***********
+************* ./reviewer/includes/insert_reviewed_result.php ***********
+Files ./reviewer/includes/insert_reviewed_result.php and ../dumi/3rdlineart5/./reviewer/includes/insert_reviewed_result.php differ
+************* ./reviewer/includes/footer.php ***********
+************* ./reviewer/includes/app_form.php ***********
+************* ./reviewer/includes/app_pregnancy.php ***********
+************* ./reviewer/includes/review.php ***********
+************* ./reviewer/includes/rev_my_reviewed.php ***********
+************* ./reviewer/includes/sec_rev_results.php ***********
+************* ./reviewer/includes/rev_results.php ***********
+************* ./reviewer/includes/insert_consolidate2.php ***********
+************* ./reviewer/logout.php ***********
+************* ./reviewer/review_p1.php ***********
+************* ./pih/includes/nav_sub.php ***********
+************* ./pih/includes/display_login_info.php ***********
+************* ./pih/includes/lab_new.php ***********
+Files ./pih/includes/lab_new.php and ../dumi/3rdlineart5/./pih/includes/lab_new.php differ
+************* ./pih/includes/nav_main.php ***********
+************* ./pih/includes/rev_new.php ***********
+************* ./pih/includes/insert_lab_vl_repeat.php ***********
+Files ./pih/includes/insert_lab_vl_repeat.php and ../dumi/3rdlineart5/./pih/includes/insert_lab_vl_repeat.php differ
+************* ./pih/includes/lab_vl_done.php ***********
+************* ./pih/includes/footer.php ***********
+************* ./pih/includes/lab_sample.php ***********
+************* ./pih/logout.php ***********
+************* ./pih/pih_p1.php ***********
+Files ./pih/pih_p1.php and ../dumi/3rdlineart5/./pih/pih_p1.php differ
+************* ./pih/review_p1.php ***********
+************* ./app.php ***********
+Files ./app.php and ../dumi/3rdlineart5/./app.php differ
+************* ./phpinfo.php ***********
+************* ./form_complete.php ***********
+Files ./form_complete.php and ../dumi/3rdlineart5/./form_complete.php differ
+************* ./login.php ***********
+************* ./complete_form.php ***********
+Files ./complete_form.php and ../dumi/3rdlineart5/./complete_form.php differ
+************* ./dashboard.php ***********
+************* ./reports.php ***********
+************* ./logout.php ***********
+************* ./admin/includes/nav_sub.php ***********
+************* ./admin/includes/send_user_email.php ***********
+Files ./admin/includes/send_user_email.php and ../dumi/3rdlineart5/./admin/includes/send_user_email.php differ
+************* ./admin/includes/insert_lab_user.php ***********
+************* ./admin/includes/crypt_function.php ***********
+************* ./admin/includes/create_drug.php ***********
+************* ./admin/includes/man_drugs.php ***********
+************* ./admin/includes/insert_sec.php ***********
+************* ./admin/includes/create_sec.php ***********
+************* ./admin/includes/clinician.php ***********
+************* ./admin/includes/reviewer_edit.php ***********
+************* ./admin/includes/nav_main.php ***********
+************* ./admin/includes/admin_facilities.php ***********
+************* ./admin/includes/insert_drug.php ***********
+************* ./admin/includes/create_affliate.php ***********
+************* ./admin/includes/create_clin.php ***********
+************* ./admin/includes/sec.php ***********
+************* ./admin/includes/insert_reviewer.php ***********
+************* ./admin/includes/review.php ***********
+************* ./admin/includes/create_lab.php ***********
+************* ./admin/includes/insert_clinician.php ***********
+Files ./admin/includes/insert_clinician.php and ../dumi/3rdlineart5/./admin/includes/insert_clinician.php differ
+************* ./admin/includes/lab_staff.php ***********
+************* ./admin/includes/reviewer_new.php ***********
+************* ./admin/includes/keys/key.php ***********
+************* ./admin/includes/insert_facility.php ***********
+************* ./admin/includes/man_affliates.php ***********
+************* ./admin/includes/reviewer.php ***********
+************* ./admin/includes/insert_affliates.php ***********
+************* ./admin/includes/create_facility.php ***********
+************* ./admin/dash.php ***********
+************* ./admin/login.php ***********
+Files ./admin/login.php and ../dumi/3rdlineart5/./admin/login.php differ
+************* ./admin/logout.php ***********
+************* ./admin/new_user.php ***********
+Files ./admin/new_user.php and ../dumi/3rdlineart5/./admin/new_user.php differ
+************* ./admin/review_p1.php ***********
+Files ./admin/review_p1.php and ../dumi/3rdlineart5/./admin/review_p1.php differ
+************* ./admin/index.php ***********
+Files ./admin/index.php and ../dumi/3rdlineart5/./admin/index.php differ
+************* ./check_point/includes/sec_pending_sample.php ***********
+Files ./check_point/includes/sec_pending_sample.php and ../dumi/3rdlineart5/./check_point/includes/sec_pending_sample.php differ
+************* ./check_point/includes/insert_assign_reviewer.php ***********
+Files ./check_point/includes/insert_assign_reviewer.php and ../dumi/3rdlineart5/./check_point/includes/insert_assign_reviewer.php differ
+************* ./check_point/includes/nav_sub.php ***********
+************* ./check_point/includes/sec_app_reject.php ***********
+************* ./check_point/includes/sec_consolidate2.php ***********
+************* ./check_point/includes/sec_pending_result.php ***********
+Files ./check_point/includes/sec_pending_result.php and ../dumi/3rdlineart5/./check_point/includes/sec_pending_result.php differ
+************* ./check_point/includes/sec_rev.php ***********
+Files ./check_point/includes/sec_rev.php and ../dumi/3rdlineart5/./check_point/includes/sec_rev.php differ
+************* ./check_point/includes/sec_reviewed_app.php ***********
+Files ./check_point/includes/sec_reviewed_app.php and ../dumi/3rdlineart5/./check_point/includes/sec_reviewed_app.php differ
+************* ./check_point/includes/sec_reminder.php ***********
+Files ./check_point/includes/sec_reminder.php and ../dumi/3rdlineart5/./check_point/includes/sec_reminder.php differ
+************* ./check_point/includes/sec_attach_resultpdf.php ***********
+Files ./check_point/includes/sec_attach_resultpdf.php and ../dumi/3rdlineart5/./check_point/includes/sec_attach_resultpdf.php differ
+************* ./check_point/includes/sec_reviewed_result.php ***********
+Files ./check_point/includes/sec_reviewed_result.php and ../dumi/3rdlineart5/./check_point/includes/sec_reviewed_result.php differ
+************* ./check_point/includes/sec_consolidate1.php ***********
+************* ./check_point/includes/sec_results_under_rev.php ***********
+Files ./check_point/includes/sec_results_under_rev.php and ../dumi/3rdlineart5/./check_point/includes/sec_results_under_rev.php differ
+************* ./check_point/includes/nav_main.php ***********
+************* ./check_point/includes/insert_consolidate1.php ***********
+Files ./check_point/includes/insert_consolidate1.php and ../dumi/3rdlineart5/./check_point/includes/insert_consolidate1.php differ
+************* ./check_point/includes/insert_attach_result.php ***********
+Files ./check_point/includes/insert_attach_result.php and ../dumi/3rdlineart5/./check_point/includes/insert_attach_result.php differ
+************* ./check_point/includes/sec_assign_reviewer.php ***********
+Files ./check_point/includes/sec_assign_reviewer.php and ../dumi/3rdlineart5/./check_point/includes/sec_assign_reviewer.php differ
+************* ./check_point/includes/footer.php ***********
+************* ./check_point/includes/app_form.php ***********
+************* ./check_point/includes/sec_new.php ***********
+Files ./check_point/includes/sec_new.php and ../dumi/3rdlineart5/./check_point/includes/sec_new.php differ
+************* ./check_point/includes/insert_consolidate2.php ***********
+Files ./check_point/includes/insert_consolidate2.php and ../dumi/3rdlineart5/./check_point/includes/insert_consolidate2.php differ
+************* ./check_point/cp_p1.php ***********
+Files ./check_point/cp_p1.php and ../dumi/3rdlineart5/./check_point/cp_p1.php differ
+************* ./check_point/logout.php ***********
+************* ./index.php ***********
+Files ./index.php and ../dumi/3rdlineart5/./index.php differ
+************* ./includes/nav_sub.php ***********
+************* ./includes/app_clinic_status.php ***********
+************* ./includes/display_login_info.php ***********
+************* ./includes/app_dashboard.php ***********
+************* ./includes/crypt_function.php ***********
+************* ./includes/app_patientdetails.php ***********
+************* ./includes/app_consolidated2_view.php ***********
+************* ./includes/app_pedriatric.php ***********
+************* ./includes/app_treatment1_edit.php ***********
+Files ./includes/app_treatment1_edit.php and ../dumi/3rdlineart5/./includes/app_treatment1_edit.php differ
+************* ./includes/db_operations/insert_treatment.php ***********
+************* ./includes/db_operations/insert_adherence_lab.php ***********
+Files ./includes/db_operations/insert_adherence_lab.php and ../dumi/3rdlineart5/./includes/db_operations/insert_adherence_lab.php differ
+************* ./includes/db_operations/update_patient.php ***********
+Files ./includes/db_operations/update_patient.php and ../dumi/3rdlineart5/./includes/db_operations/update_patient.php differ
+************* ./includes/db_operations/update_clinic_status.php ***********
+Files ./includes/db_operations/update_clinic_status.php and ../dumi/3rdlineart5/./includes/db_operations/update_clinic_status.php differ
+************* ./includes/db_operations/insert_clinic_status.php ***********
+Files ./includes/db_operations/insert_clinic_status.php and ../dumi/3rdlineart5/./includes/db_operations/insert_clinic_status.php differ
+************* ./includes/db_operations/insert_treatment3.php ***********
+Files ./includes/db_operations/insert_treatment3.php and ../dumi/3rdlineart5/./includes/db_operations/insert_treatment3.php differ
+************* ./includes/db_operations/insert_treatment2.php ***********
+Files ./includes/db_operations/insert_treatment2.php and ../dumi/3rdlineart5/./includes/db_operations/insert_treatment2.php differ
+************* ./includes/db_operations/update_pediatric.php ***********
+Files ./includes/db_operations/update_pediatric.php and ../dumi/3rdlineart5/./includes/db_operations/update_pediatric.php differ
+************* ./includes/db_operations/insert_patient.php ***********
+Files ./includes/db_operations/insert_patient.php and ../dumi/3rdlineart5/./includes/db_operations/insert_patient.php differ
+************* ./includes/db_operations/insert_sample.php ***********
+Files ./includes/db_operations/insert_sample.php and ../dumi/3rdlineart5/./includes/db_operations/insert_sample.php differ
+************* ./includes/db_operations/update_treatment2.php ***********
+Files ./includes/db_operations/update_treatment2.php and ../dumi/3rdlineart5/./includes/db_operations/update_treatment2.php differ
+************* ./includes/db_operations/update_pregnancy.php ***********
+************* ./includes/db_operations/update_treatment1.php ***********
+Files ./includes/db_operations/update_treatment1.php and ../dumi/3rdlineart5/./includes/db_operations/update_treatment1.php differ
+************* ./includes/db_operations/insert_pediatric.php ***********
+************* ./includes/db_operations/insert_pregnancy.php ***********
+************* ./includes/db_operations/update_adherence_lab.php ***********
+Files ./includes/db_operations/update_adherence_lab.php and ../dumi/3rdlineart5/./includes/db_operations/update_adherence_lab.php differ
+************* ./includes/db_operations/insert_treatment1.php ***********
+Files ./includes/db_operations/insert_treatment1.php and ../dumi/3rdlineart5/./includes/db_operations/insert_treatment1.php differ
+************* ./includes/db_operations/update_treatment3.php ***********
+Files ./includes/db_operations/update_treatment3.php and ../dumi/3rdlineart5/./includes/db_operations/update_treatment3.php differ
+************* ./includes/app_edit_menu.php ***********
+************* ./includes/app_facility.php ***********
+Files ./includes/app_facility.php and ../dumi/3rdlineart5/./includes/app_facility.php differ
+************* ./includes/app_pregnancy_edit.php ***********
+************* ./includes/nav_main.php ***********
+************* ./includes/app_treatment3_edit.php ***********
+************* ./includes/config.php ***********
+Files ./includes/config.php and ../dumi/3rdlineart5/./includes/config.php differ
+************* ./includes/app_consolidated1_view.php ***********
+************* ./includes/app_adherence.php ***********
+Files ./includes/app_adherence.php and ../dumi/3rdlineart5/./includes/app_adherence.php differ
+************* ./includes/app_consolidated1.php ***********
+************* ./includes/app_treatment3.php ***********
+************* ./includes/app_clinic_status_edit.php ***********
+Files ./includes/app_clinic_status_edit.php and ../dumi/3rdlineart5/./includes/app_clinic_status_edit.php differ
+************* ./includes/footer.php ***********
+************* ./includes/app_treatment.php ***********
+Files ./includes/app_treatment.php and ../dumi/3rdlineart5/./includes/app_treatment.php differ
+************* ./includes/email_templates.php ***********
+************* ./includes/app_patientdetails_edit.php ***********
+************* ./includes/app_form.php ***********
+************* ./includes/app_pregnancy.php ***********
+************* ./includes/app_treatment1/app_treatment_row1.php ***********
+Files ./includes/app_treatment1/app_treatment_row1.php and ../dumi/3rdlineart5/./includes/app_treatment1/app_treatment_row1.php differ
+************* ./includes/app_adherence_edit.php ***********
+Files ./includes/app_adherence_edit.php and ../dumi/3rdlineart5/./includes/app_adherence_edit.php differ
+************* ./includes/app_treatment1.php ***********
+Files ./includes/app_treatment1.php and ../dumi/3rdlineart5/./includes/app_treatment1.php differ
+************* ./includes/app_treatment2_edit.php ***********
+Files ./includes/app_treatment2_edit.php and ../dumi/3rdlineart5/./includes/app_treatment2_edit.php differ
+************* ./includes/app_treatment2.php ***********
+Files ./includes/app_treatment2.php and ../dumi/3rdlineart5/./includes/app_treatment2.php differ
+************* ./includes/app_edit_first.php ***********
+************* ./includes/app_edit_last.php ***********
+************* ./includes/test.php ***********
+************* ./includes/app_consolidated2.php ***********
+************* ./includes/app_pedriatric_edit.php ***********
+************* ./includes/keys/key.php ***********
+************* ./includes/head.php ***********
+Files ./includes/head.php and ../dumi/3rdlineart5/./includes/head.php differ
+************* ./reviewer/includes/nav_sub.php ***********
+************* ./reviewer/includes/display_login_info.php ***********
+************* ./reviewer/includes/sec_consolidate2.php ***********
+************* ./reviewer/includes/app_patientdetails.php ***********
+************* ./reviewer/includes/sec_rev.php ***********
+************* ./reviewer/includes/sec_reviewed_app.php ***********
+************* ./reviewer/includes/app_pedriatric.php ***********
+************* ./reviewer/includes/resultpdf_view.php ***********
+************* ./reviewer/includes/sec_consolidate1.php ***********
+************* ./reviewer/includes/nav_main.php ***********
+************* ./reviewer/includes/insert_consolidate1.php ***********
+************* ./reviewer/includes/review_form.php ***********
+Files ./reviewer/includes/review_form.php and ../dumi/3rdlineart5/./reviewer/includes/review_form.php differ
+************* ./reviewer/includes/rev_new.php ***********
+************* ./reviewer/includes/insert_review.php ***********
+Files ./reviewer/includes/insert_review.php and ../dumi/3rdlineart5/./reviewer/includes/insert_review.php differ
+************* ./reviewer/includes/review_result.php ***********
+************* ./reviewer/includes/insert_reviewed_result.php ***********
+Files ./reviewer/includes/insert_reviewed_result.php and ../dumi/3rdlineart5/./reviewer/includes/insert_reviewed_result.php differ
+************* ./reviewer/includes/footer.php ***********
+************* ./reviewer/includes/app_form.php ***********
+************* ./reviewer/includes/app_pregnancy.php ***********
+************* ./reviewer/includes/review.php ***********
+************* ./reviewer/includes/rev_my_reviewed.php ***********
+************* ./reviewer/includes/sec_rev_results.php ***********
+************* ./reviewer/includes/rev_results.php ***********
+************* ./reviewer/includes/insert_consolidate2.php ***********
+************* ./reviewer/logout.php ***********
+************* ./reviewer/review_p1.php ***********
+************* ./pih/includes/nav_sub.php ***********
+************* ./pih/includes/display_login_info.php ***********
+************* ./pih/includes/lab_new.php ***********
+Files ./pih/includes/lab_new.php and ../dumi/3rdlineart5/./pih/includes/lab_new.php differ
+************* ./pih/includes/nav_main.php ***********
+************* ./pih/includes/rev_new.php ***********
+************* ./pih/includes/insert_lab_vl_repeat.php ***********
+Files ./pih/includes/insert_lab_vl_repeat.php and ../dumi/3rdlineart5/./pih/includes/insert_lab_vl_repeat.php differ
+************* ./pih/includes/lab_vl_done.php ***********
+************* ./pih/includes/footer.php ***********
+************* ./pih/includes/lab_sample.php ***********
+************* ./pih/logout.php ***********
+************* ./pih/pih_p1.php ***********
+Files ./pih/pih_p1.php and ../dumi/3rdlineart5/./pih/pih_p1.php differ
+************* ./pih/review_p1.php ***********
+************* ./app.php ***********
+Files ./app.php and ../dumi/3rdlineart5/./app.php differ
+************* ./phpinfo.php ***********
+************* ./form_complete.php ***********
+Files ./form_complete.php and ../dumi/3rdlineart5/./form_complete.php differ
+************* ./login.php ***********
+************* ./complete_form.php ***********
+Files ./complete_form.php and ../dumi/3rdlineart5/./complete_form.php differ
+************* ./dashboard.php ***********
+************* ./reports.php ***********
+************* ./logout.php ***********
+************* ./admin/includes/nav_sub.php ***********
+************* ./admin/includes/send_user_email.php ***********
+Files ./admin/includes/send_user_email.php and ../dumi/3rdlineart5/./admin/includes/send_user_email.php differ
+************* ./admin/includes/insert_lab_user.php ***********
+************* ./admin/includes/crypt_function.php ***********
+************* ./admin/includes/create_drug.php ***********
+************* ./admin/includes/man_drugs.php ***********
+************* ./admin/includes/insert_sec.php ***********
+************* ./admin/includes/create_sec.php ***********
+************* ./admin/includes/clinician.php ***********
+************* ./admin/includes/reviewer_edit.php ***********
+************* ./admin/includes/nav_main.php ***********
+************* ./admin/includes/admin_facilities.php ***********
+************* ./admin/includes/insert_drug.php ***********
+************* ./admin/includes/create_affliate.php ***********
+************* ./admin/includes/create_clin.php ***********
+************* ./admin/includes/sec.php ***********
+************* ./admin/includes/insert_reviewer.php ***********
+************* ./admin/includes/review.php ***********
+************* ./admin/includes/create_lab.php ***********
+************* ./admin/includes/insert_clinician.php ***********
+Files ./admin/includes/insert_clinician.php and ../dumi/3rdlineart5/./admin/includes/insert_clinician.php differ
+************* ./admin/includes/lab_staff.php ***********
+************* ./admin/includes/reviewer_new.php ***********
+************* ./admin/includes/keys/key.php ***********
+************* ./admin/includes/insert_facility.php ***********
+************* ./admin/includes/man_affliates.php ***********
+************* ./admin/includes/reviewer.php ***********
+************* ./admin/includes/insert_affliates.php ***********
+************* ./admin/includes/create_facility.php ***********
+************* ./admin/dash.php ***********
+************* ./admin/login.php ***********
+Files ./admin/login.php and ../dumi/3rdlineart5/./admin/login.php differ
+************* ./admin/logout.php ***********
+************* ./admin/new_user.php ***********
+Files ./admin/new_user.php and ../dumi/3rdlineart5/./admin/new_user.php differ
+************* ./admin/review_p1.php ***********
+Files ./admin/review_p1.php and ../dumi/3rdlineart5/./admin/review_p1.php differ
+************* ./admin/index.php ***********
+Files ./admin/index.php and ../dumi/3rdlineart5/./admin/index.php differ
+************* ./check_point/includes/sec_pending_sample.php ***********
+Files ./check_point/includes/sec_pending_sample.php and ../dumi/3rdlineart5/./check_point/includes/sec_pending_sample.php differ
+************* ./check_point/includes/insert_assign_reviewer.php ***********
+Files ./check_point/includes/insert_assign_reviewer.php and ../dumi/3rdlineart5/./check_point/includes/insert_assign_reviewer.php differ
+************* ./check_point/includes/nav_sub.php ***********
+************* ./check_point/includes/sec_app_reject.php ***********
+************* ./check_point/includes/sec_consolidate2.php ***********
+************* ./check_point/includes/sec_pending_result.php ***********
+Files ./check_point/includes/sec_pending_result.php and ../dumi/3rdlineart5/./check_point/includes/sec_pending_result.php differ
+************* ./check_point/includes/sec_rev.php ***********
+Files ./check_point/includes/sec_rev.php and ../dumi/3rdlineart5/./check_point/includes/sec_rev.php differ
+************* ./check_point/includes/sec_reviewed_app.php ***********
+Files ./check_point/includes/sec_reviewed_app.php and ../dumi/3rdlineart5/./check_point/includes/sec_reviewed_app.php differ
+************* ./check_point/includes/sec_reminder.php ***********
+Files ./check_point/includes/sec_reminder.php and ../dumi/3rdlineart5/./check_point/includes/sec_reminder.php differ
+************* ./check_point/includes/sec_attach_resultpdf.php ***********
+Files ./check_point/includes/sec_attach_resultpdf.php and ../dumi/3rdlineart5/./check_point/includes/sec_attach_resultpdf.php differ
+************* ./check_point/includes/sec_reviewed_result.php ***********
+Files ./check_point/includes/sec_reviewed_result.php and ../dumi/3rdlineart5/./check_point/includes/sec_reviewed_result.php differ
+************* ./check_point/includes/sec_consolidate1.php ***********
+************* ./check_point/includes/sec_results_under_rev.php ***********
+Files ./check_point/includes/sec_results_under_rev.php and ../dumi/3rdlineart5/./check_point/includes/sec_results_under_rev.php differ
+************* ./check_point/includes/nav_main.php ***********
+************* ./check_point/includes/insert_consolidate1.php ***********
+Files ./check_point/includes/insert_consolidate1.php and ../dumi/3rdlineart5/./check_point/includes/insert_consolidate1.php differ
+************* ./check_point/includes/insert_attach_result.php ***********
+Files ./check_point/includes/insert_attach_result.php and ../dumi/3rdlineart5/./check_point/includes/insert_attach_result.php differ
+************* ./check_point/includes/sec_assign_reviewer.php ***********
+Files ./check_point/includes/sec_assign_reviewer.php and ../dumi/3rdlineart5/./check_point/includes/sec_assign_reviewer.php differ
+************* ./check_point/includes/footer.php ***********
+************* ./check_point/includes/app_form.php ***********
+************* ./check_point/includes/sec_new.php ***********
+Files ./check_point/includes/sec_new.php and ../dumi/3rdlineart5/./check_point/includes/sec_new.php differ
+************* ./check_point/includes/insert_consolidate2.php ***********
+Files ./check_point/includes/insert_consolidate2.php and ../dumi/3rdlineart5/./check_point/includes/insert_consolidate2.php differ
+************* ./check_point/cp_p1.php ***********
+Files ./check_point/cp_p1.php and ../dumi/3rdlineart5/./check_point/cp_p1.php differ
+************* ./check_point/logout.php ***********
+************* ./index.php ***********
+Files ./index.php and ../dumi/3rdlineart5/./index.php differ

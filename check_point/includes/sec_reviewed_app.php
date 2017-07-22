@@ -1,5 +1,3 @@
-
-
 <form id="edit-profile" class="form-horizontal" action="app.php" method="post">
 	<h2 style="background-color:#e1f408; text-align:center; color:#000000">Reviewed Applications</h2>
 	<hr style=" border: 1px solid #cbe509;" />
@@ -31,7 +29,6 @@
 				</tr> 
 
 				';
-
 			}
 			?>
 		</tbody>

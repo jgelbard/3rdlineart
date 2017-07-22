@@ -11,6 +11,7 @@ if(isset($_POST['register_sec'])){
     $password= mysql_real_escape_string(htmlspecialchars($_POST['password']));
     $password_confirm= mysql_real_escape_string(htmlspecialchars($_POST['confirm_pswd']));
     
+    $fullname = $fname.' '.$lname;
     $role ='Secretary';
     
     $date_created= date('Y/m/d');

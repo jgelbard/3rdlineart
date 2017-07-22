@@ -42,7 +42,7 @@ $clinician=mysqli_query($bd, "SELECT * FROM clinician");
                     <td><p style="text-align:center"><strong>'.$email.'</strong></p></td>
                     <td><p style="text-align:center"><strong>'.$phone.'</strong></p> </td>
                     <td class="td-actions"><a href="dash.php?clin_edit&id='.$id.'"> Edit </i></a></td>
-                    <td class="td-actions"><a href="dash.php?clin_remove&id='.$id.'" style="color:#f00"> Remove </i></a></td>
+                    <td class="td-actions"><a href="dash.php?del_user&page=clin&id='.$user_id.'" style="color:#f00" onclick ="return confirm (\'Are you sure you want to delete?\')"> Remove </i></a></td>
                   </tr> 
         
         ';

@@ -14,6 +14,8 @@ if(isset($_POST['register_rev'])){
     $password_confirm= mysql_real_escape_string(htmlspecialchars($_POST['confirm_pswd']));
     $affiliate_institution= mysql_real_escape_string(htmlspecialchars($_POST['affiliate_institution']));
     $snapshot= mysql_real_escape_string(htmlspecialchars($_POST['snapshot']));
+    
+    $fullname = $title.' '.$fname.' '.$lname;
     $role ='Reviewer';
     
     $date_created= date('Y/m/d');

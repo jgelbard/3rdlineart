@@ -79,7 +79,7 @@ VALUES (
 mysqli_query( $bd,$insert_current_clinical_status_details);	
        
     
-echo(" INSERT  INTO patient_side_effects (patient_id,PeripheralNeuropathy,Jaundice,Lipodystrophy,Psychosis,Gynecomastia,Anemia,other) VALUES ('$patient_id', '$Jaundice', '$Lipodystrophy', '$KidneyFailure', '$Psychosis', '$Gynecomastia','$Anemia','$other')");
+// echo(" INSERT  INTO patient_side_effects (patient_id,PeripheralNeuropathy,Jaundice,Lipodystrophy,Psychosis,Gynecomastia,Anemia,other) VALUES ('$patient_id', '$Jaundice', '$Lipodystrophy', '$KidneyFailure', '$Psychosis', '$Gynecomastia','$Anemia','$other')");
     
 $insert_pat_side_effect=" INSERT  INTO patient_side_effects (patient_id,PeripheralNeuropathy,Jaundice,Lipodystrophy,KidneyFailure,Psychosis,Gynecomastia,Anemia,other)
 VALUES (
@@ -121,8 +121,8 @@ $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$patient_id' ");
         $dob =$row_pat['dob'];
         $vl_sample_id =$row_pat['vl_sample_id'];
     
-// echo"<meta http-equiv=\"Refresh\" content=\"1; url=app.php?back_3&pat_id=".$patient_id."&g=".$gender."&xx=".$age."\">";
-	echo('submit_clinicstatus end!!!');    
+echo "<meta http-equiv=\"Refresh\" content=\"1; url=app.php?back_3&pat_id=".$patient_id."&g=".$gender."&xx=".$age."\">";
+//	echo('submit_clinicstatus end!!!');    
 }
 
 

@@ -116,6 +116,26 @@
 	});
 	</script>
 
+<?php
+if(isset($_GET['comment'])){ 
+    $fno= $_GET['form_id'];
+    $form_rejected=mysqli_query( $bd,"SELECT * FROM form_rejected where form_id =$fno "); 
+    $row_form_rejected=mysqli_fetch_array($form_rejected);
+        
+        $sec_comment =$row_form_rejected['comment'];
+   
+
+echo '			
+<div class="alert alert-primary" style="color:#000; background-color:rgba(253, 247, 98, 0.79); height:100px;">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <p><u>Comments from Secretary </u></p>
+   '.$sec_comment.'
+    
+                           </div>';
+        }
+
+?>
+                           
 <table style="width:100%; background-color:#f8f7f7;  " >
     <tr><td>
 <form id="search_art" action="app.php" method="post" style="float:right; padding:10px; height:20px;">
@@ -231,6 +251,7 @@ if(isset($_GET['pat_id'])){
 
 $facility=mysqli_query( $bd,"SELECT * FROM facility"); 
     while ($row_facility=mysqli_fetch_array($facility)){
+        
         $facility_name =$row_facility['facilityName'];
         
         echo '<option>'.$facility_name.'</option>';

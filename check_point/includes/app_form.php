@@ -194,26 +194,22 @@ echo '
                                                                                                                                                    <div class="span3">             
              <a href="#myModal" role="button" data-toggle="modal" class="btn btn-small btn-danger"><i class="btn-icon-only icon-remove">Form Not Complete </i></a> 
   
-												
-													<!--  Button to trigger modal 
-                                                    <a href="#myModal" role="button" class="btn">Launch demo modal</a>
-                                                     -->
-                                                    <!-- Modal -->
+
                                                     <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                       <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         <h4 style="text-align:center">Compose Message</h3>
                                                       </div>
                                                       <div class="modal-body"> 
-                                                      <form >
+                                                      <form id="#" action="cp_p1.php?p&notcomplete&form_id='.$form_id.'" method="post">
                                                       <p>To:'.$email.'</p>
-                                                      <input type="text" name="subject" Value ="This form is not complete" style="width:93%" />
+                                                      <input type="hidden" name="email_address" Value ="'.$email.'" />
                                                       <h4>Compose Message</h4>
-                                                      <textarea style="width:93%" rows="8">
+                                                      <textarea style="width:93%" rows="8" name="comment" value="">
                                                       
                                                       </textarea>
                                                        <div style="width:90%; background-color:#f2f2f2; border-radius: 5px; padding:5px; text-align:center; margin:5px;" >
-                                                      <a href="cp_p1.php?p&notcomplete&form_id='.$form_id.'" class="btn btn-warning" style="width:90%;"><i class="btn-icon-only icon-remove" >Form Not Complete </i></a>  
+                                                      <button type="submit" name="submit_reject" class="btn btn-warning" style="width:90%;"><i class="btn-icon-only icon-remove" >Form Not Complete </i></button>  
                                                       
                                                 
                                                        </div>

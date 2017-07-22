@@ -1,10 +1,4 @@
 
-<div class="span2">
-    .
-</div>
-
-        
-        <div class="span8">
             	<h1 style="text-align:center">Create Secretary Account</h1>	
         <hr />
 	
@@ -23,12 +17,12 @@
     <h4>Phone Number</h4> 
                               <input type="text" class="span4" id="phone"   name="phone" style="margin:5px"><br />
     <h4>Password</h4> 
-                              <input type="text" class="span4" id="firstname"   name="password" style="margin:5px"><br />
+                              <input type="password" class="span4" id="firstname"   name="password" style="margin:5px"><br />
     <h4>Confirm Password</h4> 
-                              <input type="text" class="span4" id="firstname"  name="confirm_pswd" style="margin:5px"><br />
+                              <input type="password" class="span4" id="firstname"  name="confirm_pswd" style="margin:5px"><br />
                          
-                                                                                                                                       <div class="form-actions">
-                                                                                                                                                   <div class="span4">
+                                                                                                                    <div class="form-actions">
+                                                                                                                        <div class="span4">
                <button class="btn" style="padding:10px; font-size:180%">Cancel</button>                                                                                                                                    </div>
                                  
                                             <div class="span4">
@@ -38,4 +32,3 @@
     
                            
 </form>
-    </div>

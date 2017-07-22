@@ -234,6 +234,8 @@ if (isset($_SESSION['identification'])) {
 		</div>
 
 	</div> <!-- /main -->
+        
+<?php /*include ('includes/footer.php');*/ ?>  
 
 <!-- Le javascript
 	================================================== -->

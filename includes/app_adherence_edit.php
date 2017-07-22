@@ -495,7 +495,7 @@ if (!empty ($taken_meds_past_weekend)) { if ($taken_meds_past_weekend =='No') { 
                     <div style="width:150px; float:left" class="radio_sty">
     <input type="radio" id="f-3months_days_not_taken_meds"    name="3months_days_not_taken_meds"  value="< 2days"   <?php 
 
-if (!empty ($_3months_days_not_taken_meds)) { if ($_3months_days_not_taken_meds =='&lt; 2days') { echo  'checked="checked"';} } ?> required>
+if (!empty ($_3months_days_not_taken_meds)) { if ($_3months_days_not_taken_meds =='< 2days') { echo  'checked="checked"';} } ?> required>
     <label for="f-3months_days_not_taken_meds"><2days</label>
     
     <div class="check">
@@ -504,7 +504,7 @@ if (!empty ($_3months_days_not_taken_meds)) { if ($_3months_days_not_taken_meds 
     <div style="width:170px; float:left" class="radio_sty">
     <input type="radio" id="n-3months_days_not_taken_meds" name="3months_days_not_taken_meds" value="> 2days"   <?php 
 
-if (!empty ($_3months_days_not_taken_meds)) { if ($_3months_days_not_taken_meds =='&gt; 2days') { echo  'checked="checked"';} } ?> >
+if (!empty ($_3months_days_not_taken_meds)) { if ($_3months_days_not_taken_meds =='> 2days') { echo  'checked="checked"';} } ?> >
     <label for="n-3months_days_not_taken_meds">>2 days </label>
     
     <div class="check">
