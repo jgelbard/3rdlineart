@@ -1,7 +1,13 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-    $('input[type="radio"]').click(function(){
+    if ($('input[id="yes_pregnant"]').attr("checked") == 'checked') {
+        $(".box").not(".yes").hide();
+        $(".yes").show();
+    } else {
+        $(".yes").hide();
+    }
+     $('input[type="radio"]').click(function(){
         if($(this).attr("value")=="Yes_preg"){
             $(".box").not(".yes").hide();
             $(".yes").show();
@@ -27,20 +33,16 @@ $(document).ready(function(){
 		$("#commentForm").validate();
 
         $("#search_art").validate({
-            
             rules: {
 				
 				id: {
 					required: true,
-					
-				},
-                
+				},                
 			},
 			messages: {
 				id: {
 					required: "",
 				},
-				
 			}
 		});
 
@@ -51,12 +53,10 @@ $(document).ready(function(){
 				lastname: "required",
 				              
                 who_stage: {
-					required: true,
-					
+					required: true,					
 				},
                 curr_who_stage: {
-					required: true,
-					
+					required: true,					
 				},
                 weight: {
 					required: true,
@@ -67,8 +67,7 @@ $(document).ready(function(){
 					required: true,
 					minlength: 3,
 					maxlength: 3
-				},
-			
+				},			
 			},
 			messages: {
 				firstname: "Please enter Client's firstname",
@@ -83,20 +82,15 @@ $(document).ready(function(){
                 weight: {
 					required: "Curr Weight",
 					minlength: "Under weight",
-					maxlength: "Over weight"
-					
+					maxlength: "Over weight"					
 				}, 
                 height: {
 					required: "Curr Weight",
 					minlength: "Under Height",
-					maxlength: "Over Height"
-					
-				},
-               
+					maxlength: "Over Height"					
+				},               
 			}
 		});
-
-	
 	});
 	</script>
 
@@ -107,7 +101,6 @@ $pat_id= $_GET['pat_id'];
 
 $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
     $row_pat=mysqli_fetch_array($patient);
-        
         $art_id_num =$row_pat['art_id_num'];
         $firstname =$row_pat['firstname'];
         $lastname =$row_pat['lastname'];
@@ -247,3 +240,4 @@ echo '
                           </div>
     
 </form>
+                                      
