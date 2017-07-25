@@ -33,10 +33,13 @@
     </div>
 
 <form id="edit-profile" class="form-horizontal" action="app.php" method="post">
-    <div class="span3">
-											<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="submit_facility">New Referral</button> 
+    <div class="span2">
+											<button type="submit" class="btn btn-success" style="padding:10px; font-size:150%" name="submit_facility">New Referral</button> 
                                             
-    </div>
+        </div><div class="span2">
+<a type="submit"  href="app.php?rejec" class="btn btn-danger" style="padding:10px; font-size:150%" name="submit_facility">Rejected forms</a>
+
+        </div>
 </form>
 <?php if ($tot_number!="0") {
 
@@ -52,7 +55,6 @@
 											<a type="submit" class="btn btn-revert" style="padding:10px; font-size:180%" href="app.php?conso2">Genotype Results</a> <strong><?php echo '['.$tot_number_conso2.'] ';?></strong>
                                             
     </div>
-
 
                  
  
