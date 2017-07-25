@@ -173,6 +173,7 @@ echo '
 								$(".box1").show();
 
 							}
+			
 							if($(this).attr("name")=="row7"){
 								$(".box2").not(".row7").hide();
 								$(".row8").not(".row7").hide();
@@ -192,6 +193,7 @@ echo '
 								$(".box4").not(".row9").hide();
 								$(".row9").show();
 							}
+			
 							if($(this).attr("name")=="endline"){           
 								$(".box1").not(".endline").hide();
 								$(".box2").not(".endline").hide();
@@ -205,17 +207,6 @@ echo '
 
 				<?php 
 				include ('app_treatment1/app_treatment_row1.php');
-/*
-				include ('app_treatment1/app_treatment_row2.php');    
-				include ('app_treatment1/app_treatment_row3.php');    
-				include ('app_treatment1/app_treatment_row4.php');    
-				include ('app_treatment1/app_treatment_row5.php');    
-				include ('app_treatment1/app_treatment_row6.php');    
-				include ('app_treatment1/app_treatment_row7.php');    
-				include ('app_treatment1/app_treatment_row8.php');    
-				include ('app_treatment1/app_treatment_row9.php');    
-				include ('app_treatment1/app_treatment_row10.php');
-*/
 				?>
 
 			</tbody>
@@ -228,7 +219,6 @@ echo '
 		</div> 
 		<div class="span3">
 		</div>
-
 		<div class="span3">
 			<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="update_treatment1">Next</button> 
 		</div>
@@ -248,57 +238,5 @@ echo '
 	}";
     $dp += 2;
     }
-
-/*
-    function updatedate(){ 
-		datepicker7 = document.getElementById("datepicker7").value;         
-		document.getElementById("datepicker8").value = datepicker7;  
-	}
-	function updatedate2(){ 
-		datepicker9 = document.getElementById("datepicker9").value;         
-		document.getElementById("datepicker10").value = datepicker9; 
-
-	} 
-	function updatedate3(){ 
-		datepicker11 = document.getElementById("datepicker11").value;         
-		document.getElementById("datepicker12").value = datepicker11; 
-
-	} 
-	function updatedate4(){ 
-		datepicker13 = document.getElementById("datepicker13").value;         
-		document.getElementById("datepicker14").value = datepicker13; 
-
-	} 
-	function updatedate5(){ 
-		datepicker15 = document.getElementById("datepicker15").value;         
-		document.getElementById("datepicker16").value = datepicker15; 
-
-	}  
-	function updatedate6(){ 
-		datepicker17 = document.getElementById("datepicker17").value;         
-		document.getElementById("datepicker18").value = datepicker17; 
-
-	} 
-	function updatedate7(){ 
-		datepicker19 = document.getElementById("datepicker19").value;         
-		document.getElementById("datepicker20").value = datepicker19; 
-
-	}   
-	function updatedate8(){ 
-		datepicker21 = document.getElementById("datepicker21").value;         
-		document.getElementById("datepicker22").value = datepicker21; 
-
-	}    
-	function updatedate9(){ 
-		datepicker23 = document.getElementById("datepicker23").value;         
-		document.getElementById("datepicker24").value = datepicker23; 
-	} 
-*/
 ?>
 </script>
-
-
-
-
-
-

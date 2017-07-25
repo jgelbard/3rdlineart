@@ -76,12 +76,10 @@
 								
                 datepicker16: {
 					required: "Please Select ART drug"
-				}, 
-                
+				},                 
                 art_drug2: {
 					required: "Please Select ART drug"
-				},
-                
+				},              
                 art_drug3: {
 					required: "Please Select ART drug"
 				},
