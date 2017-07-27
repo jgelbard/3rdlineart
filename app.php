@@ -535,7 +535,7 @@ include ('includes/head.php');
 
 	</script>
 	<script src="js/jquery-1.12.4.js"></script><!--//jquery for clinic status datepicker-->
-	<script src="validation/lib/jquery.js"></script>
+	<!-- <script src="validation/lib/jquery.js"></script> -->
 	<script src="js/jquery.min.js"></script> <!--/jquerry for patientdetails datepicker-->
 	<script src="dist/jquery.date-dropdowns.js"></script>
 	<script src="js/jquery-ui.js"></script><!--//jquery for clinic status datepicker-->
@@ -557,7 +557,7 @@ include ('includes/head.php');
 			});
 		} );
 	</script>
-	<script src="validation/dist/jquery.validate.js"></script>  
+	<script src="validation/dist/jquery.validate.js"></script>
 </body>
 
 </html>
