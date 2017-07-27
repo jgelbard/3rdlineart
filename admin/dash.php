@@ -91,7 +91,7 @@ include ('includes/insert_affliates.php');
                   <a href="dash.php?sec" class="button btn btn-invert btn-large" style="margin:2px">Secretary </a>
 
                  
-                  <a href="../reports.php" target="_blank" class="button btn btn-primary btn-large" style="margin:2px">Reports </a> </div>
+                  <a href="../reports.php" target="_blank" class="button btn btn-invert btn-large" style="margin:2px">Reports </a> </div>
 
             
 					  ';   
