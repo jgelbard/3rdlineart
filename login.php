@@ -42,12 +42,29 @@ echo('salt is '.$salt);
 			
     $num_rows = mysqli_num_rows($result);
     echo $username;
+    
+     //checking login attempts
+    global $attempts,$row_id;
+        
+        $select_login_attempts = "SELECT * FROM login_attempts WHERE username=$username";   
+        $result_login_attempts = mysqli_query($bd,$select_login_attempts);
+        $exist_attempts = mysqli_num_rows($result_login_attempts);
+        $row_login_attempts = mysqli_fetch_array($result_login_attempts);
+        $row_id =$row_login_attempts['id'];
+        $attempts =$row_login_attempts['attempts'];
+    
+    //end checking login attempts
 
-    if($num_rows!=0){
+
+    if($num_rows!=0 && $attempts <5){
         $SQL_user = "SELECT * FROM users WHERE username='$username'";                
         $user = mysqli_query($bd,$SQL_user);
                 
 	while($row_user = mysqli_fetch_array($user)) {
+        
+        //reset login attempts 
+        $reset_login_attempts = "DELETE FROM login_attempts WHERE username=$username";
+        mysqli_query($bd, $reset_login_attempts);
                     
                     $role = decrypt ($row_user['role'], $key);
                     $user_id = $row_user['id'];
@@ -132,10 +149,54 @@ echo('salt is '.$salt);
 			}
 		
 	
-	if ($num_rows== 0) {
-	   $error="fail" ;
-	   //header ("Location: index.php?error=$error&use=$use");
-	   echo"<meta http-equiv=\"Refresh\" content=\"3; url=index.php?error=$error&sub=login\">";
-	}	
+	if ($num_rows== 0 || $attempts >=5)
+	{
+        
+        $date = date (Y/m/d);
+        
+        if ($exist_attempts > 0){
+            
+            
+        $attempts =  $attempts+1; 
+        echo $row_id.$attempts;
+                
+        $update_login_attempts = "UPDATE login_attempts ".
+                                    "SET attempts='$attempts'
+                                    WHERE id='$row_id'" ;
+
+                                    mysqli_select_db($bd, '3rdlineart_db');
+                                    mysqli_query($bd, $update_login_attempts);    
+            
+           
+        }
+        
+        else {
+        $attempts =0;
+        $insert_login_attempts="INSERT  INTO login_attempts (username,attempts, date)
+                                VALUES ('$use', '$attempts','$date' )";
+                                mysqli_query( $bd,$insert_login_attempts);	
+           
+        }
+        echo $attempts;
+	       if ($attempts >=5){
+                
+                $error ="blocked";
+            }
+            else {
+                
+                $error="fail";
+            }
+    
+	//header ("Location: index.php?error=$error&use=$use");
+	echo"<meta http-equiv=\"Refresh\" content=\"3; url=index.php?error=$error&sub=login\">";
+		}
+	
+	
 }
+		
+		
+	
+
+
+
 ?>

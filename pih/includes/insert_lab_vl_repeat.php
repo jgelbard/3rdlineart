@@ -3,12 +3,12 @@
 if(isset($_POST['submit_vl_done'])){ 
     
     
-    $sampleid= mysqli_real_escape_string($bd, htmlspecialchars($_POST['sampleid']));
+    $sampleid= mysqli_real_escape_string($bd, htmlspecialchars( $bd,  $_POST ['sampleid']));
     $form_id= mysqli_real_escape_string($bd, htmlspecialchars($_GET['formID']));
-    $receive_date= mysqli_real_escape_string($bd, htmlspecialchars($_POST['receive_date']));
-    $vl_result= mysqli_real_escape_string($bd, htmlspecialchars($_POST['vl_result']));
-    $dispatch_date= mysqli_real_escape_string($bd, htmlspecialchars($_POST['dispatch_date']));
-    $nhls_receive_date= mysqli_real_escape_string($bd, htmlspecialchars($_POST['nhls_receive_date']));
+    $receive_date= mysqli_real_escape_string($bd, htmlspecialchars( $bd,  $_POST ['receive_date']));
+    $vl_result= mysqli_real_escape_string($bd, htmlspecialchars( $bd,  $_POST ['vl_result']));
+    $dispatch_date= mysqli_real_escape_string($bd, htmlspecialchars( $bd,  $_POST ['dispatch_date']));
+    $nhls_receive_date= mysqli_real_escape_string($bd, htmlspecialchars( $bd,  $_POST ['nhls_receive_date']));
     $date_created = date ('Y-m-d  h:m:s');
  	
 $insert_lab_vl_repeat=" INSERT  INTO  lab_vl_repeat (form_id,receive_date,vl_result,dispatch_date,nhls_receive_date,lab_personel_id,date_record_created)

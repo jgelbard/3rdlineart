@@ -82,7 +82,7 @@ include ('includes/insert_affliates.php');
 
  echo ' <div class="span11" style="border-bottom:3px solid #535469; margin:3px 0;">
        <h3>Manage Menu</h3>   
-                  <a href="dash.php?man_facility" class="button btn btn-invert btn-large" style="margin:2px">Facility </a>
+                  <a href="dash.php?man_facility" class="button btn btn-invert btn-large" active="active" style="margin:2px">Facility </a>
                   <a href="dash.php?man_drugs" class="button btn btn-invert btn-large" style="margin:2px">Drugs </a>
                   <a href="dash.php?man_affliates" class="button btn btn-invert btn-large" style="margin:2px">Affliates </a>
                   <a href="dash.php?rev" class="button btn btn-invert btn-large" style="margin:2px">Reviewers </a>

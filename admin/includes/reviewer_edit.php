@@ -26,9 +26,7 @@ $id = $_GET['id'];
 
        <h2 style="background-color:#fff; text-align:center; color:#000000">Edit Reviewer Details</h2>	
         <hr />
-</div>
         
-        <div class="span11">
 	
 <form id="edit-profile" class="form-horizontal" action="dash.php" method="post">
 

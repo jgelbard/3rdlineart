@@ -22,15 +22,15 @@ if(isset($_POST['update_user'])){
     $email= mysqli_real_escape_string($bd,$_POST['email']);
     $phone= mysqli_real_escape_string($bd,$_POST['phone']);
    
-     $title= mysql_real_escape_string(htmlspecialchars($_POST['title']));
+     $title= mysqli_real_escape_string(htmlspecialchars( $bd,  $_POST ['title']));
 
-    $fname= mysql_real_escape_string(htmlspecialchars($_POST['fname']));
-    $lname= mysql_real_escape_string(htmlspecialchars($_POST['lname']));
-    $email= mysql_real_escape_string(htmlspecialchars($_POST['email']));
-    $phone= mysql_real_escape_string(htmlspecialchars($_POST['phone']));
+    $fname= mysqli_real_escape_string(htmlspecialchars( $bd,  $_POST ['fname']));
+    $lname= mysqli_real_escape_string(htmlspecialchars( $bd,  $_POST ['lname']));
+    $email= mysqli_real_escape_string(htmlspecialchars( $bd,  $_POST ['email']));
+    $phone= mysqli_real_escape_string(htmlspecialchars( $bd,  $_POST ['phone']));
 
-    $affiliate_institution= mysql_real_escape_string(htmlspecialchars($_POST['affiliate_institution']));
-    $snapshot= mysql_real_escape_string(htmlspecialchars($_POST['snapshot']));
+    $affiliate_institution= mysqli_real_escape_string(htmlspecialchars( $bd,  $_POST ['affiliate_institution']));
+    $snapshot= mysqli_real_escape_string(htmlspecialchars( $bd,  $_POST ['snapshot']));
     
 $sql_form_creation = "UPDATE user ".
        "SET 

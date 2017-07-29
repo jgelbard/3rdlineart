@@ -4,8 +4,8 @@ if(isset($_POST['submit_review'])){
     
     $formID= $_GET ['formid'];
     
-    $genotyping= mysqli_real_escape_string($bd, htmlspecialchars($_POST['genotyping']));
-    $comment_to_clinician= mysqli_real_escape_string($bd, htmlspecialchars($_POST['comment_to_clinician']));
+    $genotyping= mysqli_real_escape_string($bd, htmlspecialchars( $bd,  $_POST ['genotyping']));
+    $comment_to_clinician= mysqli_real_escape_string($bd, htmlspecialchars( $bd,  $_POST ['comment_to_clinician']));
     $date_reviewed= date('Y/m/d');
     
  	

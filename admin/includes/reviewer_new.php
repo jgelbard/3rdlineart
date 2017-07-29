@@ -1,23 +1,27 @@
 
-
-       	<h1 style="text-align:center; background-color:#e8e8e8">New Reviewer Registration</h1>	
+<h2 style="background-color:#fff; text-align:left; color:#000000">New Reviewer Registration</h2>
         <hr />
 
 	
 <form id="edit-profile" class="form-horizontal" action="dash.php" method="post">
-
-    <select class="span4" id="title"name="title" style="margin:5px; width:150px;">
+    
+<div class="control-group">											
+				<label class="control-label" for="firstname">Title</label>
+				<div class="controls">
+				<select class="span4" id="title"name="title" style="margin:5px; width:150px;">
                               <option>Choose Title</option>
                               <option>Prof</option>
                               <option>Dr</option>
                               <option>Mr</option>
                               <option>Ms</option>
                               <option>Mrs</option>
-                              </select><br />
-    
-   <span></span>												
-                              
-      <select name="affiliate_institution" required id="affiliate_institution" style="margin:5px">
+                </select><br />
+   	            </div>			
+</div>    
+<div class="control-group">											
+				<label class="control-label" for="firstname">Affliated Institution</label>
+				<div class="controls">
+				     <select name="affiliate_institution" required id="affiliate_institution" style="margin:5px">
                               <option selected="selected" value="">select Affliated Institution</option>
                               <?php
 //facility
@@ -32,23 +36,69 @@ $partner_org=mysqli_query( $bd,"SELECT * FROM partner_org");
     }
 ?>
                               </select><br />
-                              <input type="text" class="span4" id="firstname" placeholder="username" name="username" style="margin:5px"><br />
-                            
-                              
-                              <input type="text" class="span4" id="fname" placeholder="First Name"  name="fname" style="margin:5px"><br />
-                              <input type="text" class="span4" id="lname" placeholder="Last Name"  name="lname" style="margin:5px"><br />
-                              <input type="email" class="span4" id="email" placeholder="Email"  name="email" style="margin:5px"><br />
-                              <input type="text" class="span4" id="phone" placeholder="Phone Number"  name="phone" style="margin:5px"><br />
-                              <input type="password" class="span4" id="firstname" placeholder="Password"  name="password" style="margin:5px"><br />
-                              <input type="password" class="span4" id="firstname" placeholder="Confirm Password"  name="confirm_pswd" style="margin:5px"><br />
+   	            </div>			
+</div> 
+ 
+<div class="control-group">											
+				<label class="control-label" for="firstname">Username</label>
+				<div class="controls">
+				 <input type="text" class="span4" id="firstname" name="username" style="margin:5px"><br />
+   	            </div>			
+</div>
+
+<div class="control-group">											
+				<label class="control-label" for="firstname">Firstname</label>
+				<div class="controls">
+				 <input type="text" class="span4" id="fname"  name="fname" style="margin:5px"><br />
+   	            </div>			
+</div>
+        
+<div class="control-group">											
+				<label class="control-label" for="firstname">Lastname</label>
+				<div class="controls">
+				  <input type="text" class="span4" id="lname" name="lname" style="margin:5px"><br />
+   	            </div>			
+</div>
+                          
+              
+<div class="control-group">											
+				<label class="control-label" for="firstname">Email</label>
+				<div class="controls">
+				  <input type="email" class="span4" id="email"  name="email" style="margin:5px"><br />
+   	            </div>			
+</div>                       
+              
+<div class="control-group">											
+				<label class="control-label" for="firstname">Tel</label>
+				<div class="controls">
+				  <input type="tel" class="span4" id="phone"  name="phone" style="margin:5px"><br />
+   	            </div>			
+</div>
+                          
+                    
+<div class="control-group">											
+				<label class="control-label" for="firstname">Password</label>
+				<div class="controls">
+				   <input type="password" class="span4" id="firstname"  name="password" style="margin:5px"><br />
+   	            </div>			
+</div>
+                               
+<div class="control-group">											
+				<label class="control-label" for="firstname">Confirm Password</label>
+				<div class="controls">
+				 <input type="password" class="span4" id="firstname"  name="confirm_pswd" style="margin:5px"><br />
+   	            </div>			
+</div>
     
-    
-                              <h4>Expert Snapshot</h4>
-                                <textarea type="text" id="email" rows="18" cols="20" name="snapshot"  style="width:100%; margin:5px">
+<div class="control-group">											
+				<label class="control-label" for="firstname">Expert Snapshot</label>
+				<div class="controls">
+				        <textarea type="text" id="email" rows="8" cols="20" name="snapshot"  style="width:100%; margin:5px">
      
       </textarea> 
-    
-                                                                                                                                       <div class="form-actions">
+       </div>			
+</div>
+                                                                                                                               <div class="form-actions">
                                                                                                                                                    <div class="span2">
                <button class="btn" style="padding:10px; font-size:180%">Cancel</button>                                                                                                                                    </div>
                                  

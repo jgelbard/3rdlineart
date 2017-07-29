@@ -3,13 +3,13 @@
 if(isset($_POST['register_sec'])){ 
 	
    
-    $username= mysql_real_escape_string(htmlspecialchars($_POST['username']));
-    $fname= mysql_real_escape_string(htmlspecialchars($_POST['fname']));
-    $lname= mysql_real_escape_string(htmlspecialchars($_POST['lname']));
-    $email= mysql_real_escape_string(htmlspecialchars($_POST['email']));
-    $phone= mysql_real_escape_string(htmlspecialchars($_POST['phone']));
-    $password= mysql_real_escape_string(htmlspecialchars($_POST['password']));
-    $password_confirm= mysql_real_escape_string(htmlspecialchars($_POST['confirm_pswd']));
+    $username= mysqli_real_escape_string(htmlspecialchars( $bd,  $_POST ['username']));
+    $fname= mysqli_real_escape_string(htmlspecialchars( $bd,  $_POST ['fname']));
+    $lname= mysqli_real_escape_string(htmlspecialchars( $bd,  $_POST ['lname']));
+    $email= mysqli_real_escape_string(htmlspecialchars( $bd,  $_POST ['email']));
+    $phone= mysqli_real_escape_string(htmlspecialchars( $bd,  $_POST ['phone']));
+    $password= mysqli_real_escape_string(htmlspecialchars( $bd,  $_POST ['password']));
+    $password_confirm= mysqli_real_escape_string(htmlspecialchars( $bd,  $_POST ['confirm_pswd']));
     
     $fullname = $fname.' '.$lname;
     $role ='Secretary';

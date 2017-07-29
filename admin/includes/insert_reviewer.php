@@ -4,16 +4,16 @@ include ("crypt_function.php");
 
 if(isset($_POST['register_rev'])){ 
 	
-    $title= mysql_real_escape_string(htmlspecialchars($_POST['title']));
-    $username= mysql_real_escape_string(htmlspecialchars($_POST['username']));
-    $fname= mysql_real_escape_string(htmlspecialchars($_POST['fname']));
-    $lname= mysql_real_escape_string(htmlspecialchars($_POST['lname']));
-    $email= mysql_real_escape_string(htmlspecialchars($_POST['email']));
-    $phone= mysql_real_escape_string(htmlspecialchars($_POST['phone']));
-    $password= mysql_real_escape_string(htmlspecialchars($_POST['password']));
-    $password_confirm= mysql_real_escape_string(htmlspecialchars($_POST['confirm_pswd']));
-    $affiliate_institution= mysql_real_escape_string(htmlspecialchars($_POST['affiliate_institution']));
-    $snapshot= mysql_real_escape_string(htmlspecialchars($_POST['snapshot']));
+    $title= mysqli_real_escape_string($bd,$_POST ['title']);
+    $username= mysqli_real_escape_string($bd,$_POST['username']);
+    $fname= mysqli_real_escape_string($bd,$_POST ['fname']);
+    $lname= mysqli_real_escape_string($bd,$_POST ['lname']);
+    $email= mysqli_real_escape_string($bd,$_POST ['email']);
+    $phone= mysqli_real_escape_string($bd,$_POST ['phone']);
+    $password= mysqli_real_escape_string($bd,$_POST['password']);
+    $password_confirm= mysqli_real_escape_string($bd,$_POST['confirm_pswd']);
+    $affiliate_institution= mysqli_real_escape_string($bd,$_POST ['affiliate_institution']);
+    $snapshot= mysqli_real_escape_string($bd,$_POST['snapshot']);
     
     $fullname = $title.' '.$fname.' '.$lname;
     $role ='Reviewer';
@@ -24,7 +24,7 @@ if(isset($_POST['register_rev'])){
     $getusers = mysqli_num_rows ($find_users);
     
     $pswd_size = strlen($password);
-    echo $pswd_size;
+    echo $username. $pswd_size.$fullname;
     
     if ($password!=$password_confirm){
       echo '<div class="alert alert-warning">
@@ -46,7 +46,7 @@ if(isset($_POST['register_rev'])){
                            </div>
    ';
         
-        echo"<meta http-equiv=\"Refresh\" content=\"2; url=dash.php?reviewer\">";     
+        //echo"<meta http-equiv=\"Refresh\" content=\"2; url=dash.php?reviewer\">";     
     }
         else {
     
@@ -58,7 +58,7 @@ if(isset($_POST['register_rev'])){
                            </div>
    ';
         
-        echo"<meta http-equiv=\"Refresh\" content=\"2; url=dash.php?reviewer\">"; 
+       // echo"<meta http-equiv=\"Refresh\" content=\"2; url=dash.php?reviewer\">"; 
     }
     else {
         
