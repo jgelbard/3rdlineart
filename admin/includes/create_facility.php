@@ -1,23 +1,34 @@
 
 
-       	<h1 style="text-align:center; background-color:#e8e8e8">New Facility</h1>	
+<h2 style="background-color:#fff; text-align:left; color:#000000">New Facility</h2>
         <hr />
 
 	
 <form id="edit-profile" class="form-horizontal" action="dash.php" method="post">
-    
-   <span></span>												
-                              <input type="text" class="span3" id="facilityName" placeholder="Facility Name" name="facilityName" style="margin:5px" >
-                              <input type="text" class="span3" id="location" placeholder="Address" name="location" style="margin:5px" ><br />
+<div class="control-group">											
+			<label class="control-label" for="firstname">Facility Name</label>
+			<div class="controls">							
+                              <input type="text" class="span3" id="facilityName" name="facilityName" style="margin:5px" >
+			</div>			
+</div>
+
+<div class="control-group">											
+			<label class="control-label" for="firstname">Address</label>
+			<div class="controls">
+                              <input type="text" class="span3" id="location" name="location" style="margin:5px" ><br />
+			</div>			
+</div>
                    
-                                                                                                                                       <div class="form-actions">
-                                                                                                                                                   <div class="span2">
-               <button class="btn" style="padding:10px; font-size:180%">Cancel</button>                                                                                                                                    </div>
+<div class="form-actions">
+		<div class="span2">
+               		<a href="dash.php?p" class="btn" style="padding:10px; font-size:180%">Cancel</a>
+		</div>
                                  
-                                            <div class="span2">
-											<button type="submit" class="button btn btn-primary btn-large" style="padding:10px; font-size:180%" name="register_facility">Register</button>
-                                            </div>
-                          </div>
+
+		<div class="span2">
+			<button type="submit" class="button btn btn-primary btn-large" style="padding:10px; font-size:180%" name="register_facility">Register</button>
+ 		</div>
+</div>
     
                            
 </form>

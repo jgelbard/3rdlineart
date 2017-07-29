@@ -111,12 +111,19 @@ if(isset($_GET['man_facility'])){
 if(isset($_GET['create_facility'])){ 
  include ('includes/create_facility.php');   
 }
+if(isset($_GET['facility_edit'])){ 
+ include ('includes/facility_edit.php');   
+}
 if(isset($_GET['man_drugs'])){ 
  include ('includes/man_drugs.php');   
 }
 if(isset($_GET['create_drug'])){ 
  include ('includes/create_drug.php');   
 }
+                if(isset($_GET['drug_edit'])){ 
+                                include ('includes/drug_edit.php');   
+                }
+                            
 if(isset($_GET['man_affliates'])){ 
  include ('includes/man_affliates.php');   
 }
