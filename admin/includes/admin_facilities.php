@@ -36,7 +36,7 @@ $facility=mysqli_query( $bd,"SELECT * FROM facility");
                     <td> <p style="text-align:center"><strong>'.$facility_name.' </strong></p></td>
                     <td> <p style="text-align:center"><strong>'.$location.'</strong></p> </td>
                     <td class="td-actions"><a href="dash.php?facility_edit&id='.$facility_id.'"> Edit </i></a></td>
-                    <td class="td-actions"><a href="dash.php?facility_remove&id='.$facility_id.'" style="color:#f00"> Remove </i></a></td>
+                    <td class="td-actions"><a href="dash.php?remove_x&page=man_facility&id='.$facility_id.'" style="color:#f00" onclick ="return confirm (\'Are you sure you want to delete? You should know what you are doing.\')"> Remove </i></a></td>
                   </tr> 
         
         ';

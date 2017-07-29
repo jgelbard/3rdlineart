@@ -12,8 +12,8 @@ $drugs=mysqli_query( $bd,"SELECT * FROM drugs where id =$drug_id");
 <h2 style="background-color:#fff; text-align:left; color:#000000">Edit Drug</h2>
         <hr /> 
 
-<form id="edit-profile" class="form-horizontal" action="dash.php" method="post">
-    
+<form id="edit-profile" class="form-horizontal" action="dash.php?update" method="post">
+<input type="hidden" class="span3" id="id" name="id" value="<?php echo $drug_id; ?>" style="margin:5px" >   
 <div class="control-group">											
 			<label class="control-label" for="firstname">Regimen Line</label>
 			<div class="controls">
@@ -49,7 +49,7 @@ $drugs=mysqli_query( $bd,"SELECT * FROM drugs where id =$drug_id");
     </div>
                                  
     <div class="span2">
-                <button type="submit" class="button btn btn-primary btn-large" style="padding:10px; font-size:180%" name="register_drug">Register</button>
+                <button type="submit" class="button btn btn-primary btn-large" style="padding:10px; font-size:180%" name="update_drug">Register</button>
     </div>
 </div>                 
 </form>

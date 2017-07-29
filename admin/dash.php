@@ -71,6 +71,7 @@ include ('../includes/head.php');
                       <?php
 
 include ('includes/delete_user.php');                             
+include ('includes/delete_facility_drug_affliates.php');                                                        
 include ('includes/insert_reviewer.php'); 
 include ('includes/insert_clinician.php'); 
 include ('includes/insert_lab_user.php'); 
@@ -78,8 +79,8 @@ include ('includes/insert_sec.php');
 include ('includes/insert_drug.php'); 
 include ('includes/insert_facility.php'); 
 include ('includes/insert_affliates.php'); 
-
-
+include ('includes/update_facility_drug_affliates.php');  
+                            
 /* echo ' <div class="span11" style="border-bottom:3px solid #535469; margin:3px 0;">
        <h3>Manage Menu</h3>   
                   <a href="dash.php?man_facility" class="button btn btn-invert btn-large" active="active" style="margin:2px">Facility </a>
@@ -120,9 +121,9 @@ if(isset($_GET['man_drugs'])){
 if(isset($_GET['create_drug'])){ 
  include ('includes/create_drug.php');   
 }
-                if(isset($_GET['drug_edit'])){ 
-                                include ('includes/drug_edit.php');   
-                }
+if(isset($_GET['drug_edit'])){ 
+include ('includes/drug_edit.php');   
+}
                             
 if(isset($_GET['man_affliates'])){ 
  include ('includes/man_affliates.php');   
@@ -130,6 +131,11 @@ if(isset($_GET['man_affliates'])){
 if(isset($_GET['create_affliate'])){ 
  include ('includes/create_affliate.php');   
 }
+                            
+if(isset($_GET['affliate_edit'])){ 
+ include ('includes/affliate_edit.php');   
+}
+                            
 if(isset($_GET['clin'])){ 
  include ('includes/clinician.php');   
 }
@@ -147,6 +153,9 @@ if(isset($_GET['rev'])){
 if(isset($_GET['create_clin'])){ 
  include ('includes/create_clin.php');   
 }
+if(isset($_GET['clin_edit'])){ 
+ include ('includes/clinician_edit.php');   
+}
 
 if(isset($_GET['create_sec'])){ 
  include ('includes/create_sec.php');   
@@ -163,9 +172,6 @@ if(isset($_GET['reviewer'])){
 if(isset($_GET['rev_edit'])){ 
  include ('includes/reviewer_edit.php');   
 }
-
-
-
 
 ?>
                             

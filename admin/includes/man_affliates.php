@@ -31,7 +31,7 @@ $partner_org=mysqli_query( $bd,"SELECT * FROM partner_org");
                     <td> <p style="text-align:center"><strong> 3rdLPartner#0'.$partner_org_id.'</strong></p> </td>
                     <td> <p style="text-align:center"><strong>'.$partner_org_name.' </strong></p></td>
                     <td class="td-actions"><a href="dash.php?affliate_edit&id='.$partner_org_id.'"> Edit </i></a></td>
-                    <td class="td-actions"><a href="dash.php?affliate_remove&id='.$partner_org_id.'" style="color:#f00"> Remove </i></a></td>
+                    <td class="td-actions"><a href="dash.php?remove_x&page=man_affliates&id='.$partner_org_id.'" style="color:#f00" onclick ="return confirm (\'Are you sure you want to delete?\')"> Remove </i></a></td>
                   </tr> 
         
         ';

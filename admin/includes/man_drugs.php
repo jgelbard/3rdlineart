@@ -35,7 +35,7 @@ $drugs=mysqli_query( $bd,"SELECT * FROM drugs");
                     <td> <p style="text-align:center"><strong>'.$line.' </strong></p></td>
                    
                     <td class="td-actions"><a href="dash.php?drug_edit&id='.$drug_id.'"> Edit </i></a></td>
-                    <td class="td-actions"><a href="dash.php?drug_remove&id='.$drug_id.'" style="color:#f00"> Remove </i></a></td>
+                    <td class="td-actions"><a href="dash.php?remove_x&page=man_drugs&id='.$drug_id.'" style="color:#f00" onclick ="return confirm (\'Are you sure you want to delete this drug?\')"> Remove </i></a></td>
                   </tr> 
         
         ';
