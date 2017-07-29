@@ -178,11 +178,6 @@ $(document).ready(function(){
            $(".r1row4").show();
            
         }
-       /* if($(this).attr("name")=="row2"){
-           $(".row1").not(".row2").hide();
-           $(".sec1").show();
-           
-        }*/
         if($(this).attr("name")=="r2row1"){
            $(".sec3").not(".r2row1").hide();
            $(".r2row2").not(".r2row1").hide();
@@ -279,12 +274,6 @@ $(document).ready(function(){
            $(".mdr_row4").show();
            
         }
-       /* if($(this).attr("name")=="mdr_row2"){
-           $(".mdr_row").not(".mdr_row2").hide();
-           $(".sec_mdr").show();
-           
-        }
-        */
         if($(this).attr("name")=="row2"){
             $(".box2").not(".row7").hide();
             $(".row8").not(".row7").hide();
