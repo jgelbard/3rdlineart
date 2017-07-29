@@ -88,17 +88,6 @@ echo('salt is '.$salt);
                         $_SESSION['art_clinic'] = $row_clinician['art_clinic'];
                     echo"<meta http-equiv=\"Refresh\" content=\"0; url=app.php?p\">";
                 }
-        
-               /* if ($role=='Admin'){
-                     $SQL_admin = "SELECT * FROM admin WHERE user_id=$user_id";
-                    $admin = mysqli_query($bd,$SQL_admin);
-                    
-                    $row_admin = mysqli_fetch_array($admin);                
-                        $_SESSION['id'] = $row_admin['id'];
-                        $_SESSION['fname'] = $row_admin['fname'];
-                        $_SESSION['lname'] = $row_admin['lname'];
-                     echo"<meta http-equiv=\"Refresh\" content=\"0; url=admin/dash.php?p\">";    
-                     }*/
 	
                 if ($role=='Reviewer'){
                 $SQL_reviewer = "SELECT * FROM reviewer WHERE user_id=$user_id";

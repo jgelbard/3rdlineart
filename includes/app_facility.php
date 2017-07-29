@@ -9,7 +9,7 @@
                               <h4><u><?php echo $facility ?></u></h4> 
                           </td>
                     <td>
-                             <h3><?php echo $fullname ?></h4>
+                             <h3><?php echo $fullname ?></h3>
                           </td>
                 
             </tr></table>
@@ -56,11 +56,3 @@
 											<a type="submit" class="btn btn-revert" style="padding:10px; font-size:180%" href="app.php?conso2">Genotype Results</a> <strong><?php echo '['.$tot_number_conso2.'] ';?></strong>
                                             
     </div>
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 6180365104985e36685b02d7ce57aba484daba0d
-                 
- 
