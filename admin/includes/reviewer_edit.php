@@ -6,13 +6,6 @@ $id = $_GET['id'];
     $row_reviewer=mysqli_fetch_array($reviewer);
         
         $user_id =$row_reviewer['user_id'];
-
-    $user = mysqli_query( $bd,"SELECT * FROM users where id='$user_id' "); 
-    $row_user=mysqli_fetch_array($user);
-
-        $username =$row_user['username'];
-        $password =$row_user['password'];
-
         $title =$row_reviewer['title'];
         $fname =$row_reviewer['fname'];
         $lname =$row_reviewer['lname'];
@@ -20,13 +13,18 @@ $id = $_GET['id'];
         $phone =$row_reviewer['phone'];
         $affiliate_institution =$row_reviewer['affiliate_institution'];
         $snapshot =$row_reviewer['snapshot'];
+
+        $users=mysqli_query($bd, "SELECT * FROM users where id='$user_id'"); 
+        $row_users=mysqli_fetch_array($users);
+        $username =$row_users['username'];
+        $username = decrypt ($username, $key);
        
 ?>
         
 <h2 style="background-color:#fff; text-align:left; color:#000000">Edit Reviewer Details</h2>
         <hr />
 	
-<form id="edit-profile" class="form-horizontal" action="dash.php" method="post">
+<form id="edit-profile" class="form-horizontal" action="dash.php?update_user" method="post">
 
     
 <div class="control-group">											
@@ -70,6 +68,8 @@ $id = $_GET['id'];
 <div class="control-group">											
 			<label class="control-label" for="firstname">Username</label>
 			<div class="controls">
+                <input type="hidden" class="span3" id="id" name="id" value="<?php echo $id; ?>" style="margin:5px" >
+                <input type="hidden" class="span3" id="id" name="user_id" value="<?php echo $user_id; ?>" style="margin:5px" >
 				 <input type="text" class="span4" id="firstname" name="username" value="<?php echo $username; ?>" style="margin:5px"><br />
    	            	</div>			
 </div>
@@ -107,14 +107,14 @@ $id = $_GET['id'];
 <div class="control-group">											
 			<label class="control-label" for="firstname">Password</label>
 			<div class="controls">
-				   <input type="password" class="span4" id="firstname"  name="password" value="<?php echo  $password; ?>" style="margin:5px"><br />
+				   <input type="password" class="span4" id="firstname"  name="password"  style="margin:5px"><br />
    	            	</div>			
 </div>
           
 <div class="control-group">											
 			<label class="control-label" for="firstname">Confirm Password</label>
 			<div class="controls">
-				 <input type="password" class="span4" id="firstname"  name="confirm_pswd" style="margin:5px" value="<?php echo  $password; ?>"><br />
+				 <input type="password" class="span4" id="firstname"  name="confirm_pswd" style="margin:5px" ><br />
    	            	</div>			
 </div>
 

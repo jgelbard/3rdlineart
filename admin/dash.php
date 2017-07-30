@@ -80,6 +80,7 @@ include ('includes/insert_drug.php');
 include ('includes/insert_facility.php'); 
 include ('includes/insert_affliates.php'); 
 include ('includes/update_facility_drug_affliates.php');  
+include ('includes/update_user.php');  
                             
 /* echo ' <div class="span11" style="border-bottom:3px solid #535469; margin:3px 0;">
        <h3>Manage Menu</h3>   
@@ -160,9 +161,17 @@ if(isset($_GET['clin_edit'])){
 if(isset($_GET['create_sec'])){ 
  include ('includes/create_sec.php');   
 }
+                            
+if(isset($_GET['sec_edit'])){ 
+ include ('includes/sec_edit.php');   
+}
 
 if(isset($_GET['create_lab_user'])){ 
  include ('includes/create_lab.php');   
+}
+                            
+if(isset($_GET['lab_edit'])){ 
+ include ('includes/labuser_edit.php');   
 }
 
 if(isset($_GET['reviewer'])){ 

@@ -145,7 +145,7 @@ echo '
 
    global $num_newforms; 
 
-$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where status='Not Complete' or complete ='Rejected' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
+$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where (status='Not Complete' or complete ='Rejected') and clinician_id='$clinicianID' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
 
 $num_newforms = mysqli_num_rows ($form_creation);
 
@@ -156,7 +156,7 @@ $num_newforms = mysqli_num_rows ($form_creation);
         $patient_id =$row_form_creation['patient_id'];
         
         $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$patient_id' "); 
-    $row_pat=mysqli_fetch_array($patient);
+        $row_pat=mysqli_fetch_array($patient);
         
         $art_id_num =$row_pat['art_id_num'];
         $firstname =$row_pat['firstname'];

@@ -31,7 +31,8 @@ $(document).ready(function(){
             rules: {
 				
 				id: {
-					required: true,					
+					required: true,
+					
 				},
                 
 			},
@@ -62,7 +63,7 @@ $(document).ready(function(){
 					minlength: 2,
 					maxlength: 3
 				},
-                height: {
+			 height: {
 					required: true,
 					minlength: 3,
 					maxlength: 3
@@ -205,7 +206,7 @@ echo '
 <tr>
     <td><h4>WHO stage at start of Treatment</h4> <br /></td>
     <td>
-                              <select name="who_stage" id="who_stage" style="width:180px;height:50px;" required tabindex="1">
+                              <select name="who_stage" id="who_stage" style="width:180px;height:50px;" required>
                               <option value="<?php echo $who_stage ?>"><?php echo $who_stage ?></option>
                               <option value="1">1</option>
                               <option value="2">2</option>
@@ -218,7 +219,7 @@ echo '
                               <h4>Current WHO stage (+defining condition)</h4>  <br />
                         </td>
                           <td>
-                            <select name="curr_who_stage" style="width:200px; height:50px;" tabindex="2">
+                            <select name="curr_who_stage" style="width:200px; height:50px;">
                              <option><?php echo $curr_who_stage?></option>
                               <option>1</option>
                               <option>2</option>
@@ -232,12 +233,12 @@ echo '
      <tr><td> <br /></td></tr>
      <tr>
     <td><h4>Curr Weight<label><span><i>*kg</i></span></label></h4></td>
-    <td><input type="number" class="span4" id="weight" value="<?php echo $weight ?>" placeholder="kg" name="weight" required style="width:100px; height:50px; font-size:130%" tabindex="3">
+    <td><input type="number" class="span4" id="weight" value="<?php echo $weight ?>" placeholder="kg" name="weight" required style="width:100px; height:50px; font-size:130%">
          <br />
          </td>
   
     <td> <h4>Curr Height <label><span><i>*cm</i></span></label></h4></td>
-    <td><input type="number" class="span4" id="height" value="<?php echo $height ?>" placeholder="cm" name="height" required style="width:100px; height:50px; font-size:130%" tabindex="4">
+    <td><input type="number" class="span4" id="height" value="<?php echo $height ?>" placeholder="cm" name="height" required style="width:100px; height:50px; font-size:130%">
          <br />
          </td>
      
@@ -264,7 +265,7 @@ echo '
                          <tr>
                             
                                <td>
-                            <h4 tabindex="5">ART Interruptions?</h4>
+                            <h4>ART Interruptions?</h4>
                                    <?php 
          if ($art_interrup=='Yes'){
             
@@ -313,7 +314,7 @@ else {
 		</div>
   </div>
     <div style="width:100px; float:left" class="radio_sty">
-    <input type="radio" id="nart_interrup" name="art_interrup" value="intr_No" checked="checked" tabindex="1">
+    <input type="radio" id="nart_interrup" name="art_interrup" value="intr_No" checked="checked">
     <label for="nart_interrup">No</label>
     
     <div class="check">
@@ -339,6 +340,7 @@ else {
                                   </tr>
   
   ';
+
 }
         
          ?>
@@ -348,21 +350,20 @@ else {
      </div>
        </table>
      </fieldset>
-<fieldset>
-<h2 style="background-color:#f8f7f7; text-align:center">History of serious side effects</h2>
+ <fieldset>
+      <h2 style="background-color:#f8f7f7; text-align:center">History of serious side effects</h2>
 <table style="width:100%" border="0" cellspacing="10px">
-   <tr>   
-    <td>
-      <h4 style="color:#fff" tabindex="6">History of serious side effects</h4>
+                    
+          <tr>   
+                          <td>
+                            <h4 style="color:#fff">History of serious side effects</h4>
                         </td>
                           <td>
-<table>
-<<<<<<< HEAD
-                                                                              
+                              <table>
                               <tr>
                        
                                   <td> 
-                                   <label tabindex="7" class="control-label">Peripheral Neuropathy</label>
+                                   <label class="control-label">Peripheral Neuropathy</label>
                                       <?php 
 
                                        if ($PeripheralNeuropathy=='Yes'){
@@ -412,7 +413,7 @@ else {
                        
                                    <td> </td>
                                   <td> 
-                                   <label tabindex="8" class="control-label">Jaundice</label>
+                                   <label class="control-label">Jaundice</label>
                                       
                                       <?php 
 
@@ -463,7 +464,7 @@ else {
                        
                                    <td> </td>
                                   <td>
-                                      <label tabindex="9" class="control-label">Lipodystrophy</label>
+                                      <label class="control-label">Lipodystrophy</label>
                                       
                                       
                                       <?php 
@@ -515,14 +516,23 @@ else {
                                           ?>
                                       
                                       
-
+                                 <!--  <label class="control-label">Lipodystrophy</label>
+                                      <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="Lipodystrophy" value="Yes" id="app_radio"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="Lipodystrophy" value="No" id="app_radio"> No
+                                            </label>
+                                          </div>	 /controls 	-->
                                   </td>
                                   </tr>
                               <tr>
                        
                                    <td> </td>
                                   <td> 
-                                   <label tabindex="10" class="control-label">Kidney Failure</label>
+                                   <label class="control-label">Kidney Failure</label>
                                        <?php 
 
                                        if ($KidneyFailure=='Yes'){
@@ -579,7 +589,7 @@ else {
                        
                                    <td> </td>
                                   <td> 
-                                   <label tabindex="11" class="control-label">Psychosis</label>
+                                   <label class="control-label">Psychosis</label>
                                       
                                       <?php 
 
@@ -630,73 +640,124 @@ else {
                                    
                                   </td>
                                   </tr>
-   <tr>
-
+                              <tr>
+                       
                                    <td> </td>
-
                                   <td> 
                                       
-                                   <label tabindex="12" class="control-label">Gynecomastia</label>
+                                   <label class="control-label">Gynecomastia</label>
                                       
-<?php
-echo '                                   
-  <div style="width:110px; float:left" class="radio_sty">                                          
-    <input type="radio" id="Gynecomastia-yes" name="Gynecomastia" value="Yes"'.($Gynecomastia=='Yes'?'checked="checked"':'').'>
-    <label for="Gynecomastia-yes">Yes</label>    
-    <div class="check"></div>
+                                      <?php
+
+                                       if ($Gynecomastia=='Yes'){
+                                           
+                                           echo '
+                                      
+                                      <div style="width:110px; float:left" class="radio_sty">
+                                          
+    <input type="radio" id="Gynecomastia-yes" name="Gynecomastia" value="Yes" checked="checked">
+    <label for="Gynecomastia-yes">Yes</label>
+    
+    <div class="check">
+		</div>
   </div>
     <div style="width:100px; float:left" class="radio_sty">
-    <input type="radio" id="Gynecomastia-no" name="Gynecomastia" value="No"'.($Gynecomastia=='No'?'checked="checked"':'').'>
+    <input type="radio" id="Gynecomastia-no" name="Gynecomastia" value="No"  >
     <label for="Gynecomastia-no">No</label>
-    <div class="check"></div>
-';
-?>                                    
+    
+    <div class="check">
+		</div>
+  </div> 
+                                      ';
+                                          }
+                                       if ($Gynecomastia=='No'){
+                                           
+                                           echo '
+                                      
+                                      <div style="width:110px; float:left" class="radio_sty">
+                                          
+    <input type="radio" id="Gynecomastia-yes" name="Gynecomastia" value="Yes" ">
+    <label for="Gynecomastia-yes">Yes</label>
+    
+    <div class="check">
+		</div>
+  </div>
+    <div style="width:100px; float:left" class="radio_sty">
+    <input type="radio" id="Gynecomastia-no" name="Gynecomastia" value="No" checked="checked >
+    <label for="Gynecomastia-no">No</label>
+    
+    <div class="check">
+		</div>
+  </div> 
+                                      ';
+                                          }
+                                          ?>
+                                      
                    
                                   </td>
                                   </tr>
                               <tr>
                        
                                    <td> </td>
-
                                   <td> 
-                                   <label tabindex="13" class="control-label">Anemia</label>
+                                   <label class="control-label">Anemia</label>
                                        <?php 
-=======
-<?php
->>>>>>> 6180365104985e36685b02d7ce57aba484daba0d
 
-$condition = [
-"PeripheralNeuropathy"=>'Perpheral Neuropathy',
-"Jaundice"=>'Jaundice',
-"Lipodystrophy"=>'Lipodystrophy',
-"KidneyFailure"=>'Kidney Failure',
-"Psychosis"=>'Psychosis',
-"Gynecomastia"=>'Gynecomastia',
-"Anemia"=>'Anemia'];
-
-foreach ($condition as $key => $value) {
-	eval("\$yeschecked = (\$$key=='Yes')?'checked=\"checked\"':'';");
-	$nochecked = ($yeschecked == '')?'checked="checked"':'';
-	echo "<tr>        
-
-	<td></td>
-	<td> 
-		<label class=\"control-label\">$value</label>
-		<div style=\"width:110px; float:left\" class=\"radio_sty\">                                          
-			<input type=\"radio\" id=\"$key-yes\" name=\"$key\" value=\"Yes\" $yeschecked>
-			<label for=\"$key-yes\">Yes</label>    
-			<div class=\"check\"></div>
+                                       if ($Anemia=='Yes'){
+                                           
+                                           echo '
+                                      
+                                      <div style="width:110px; float:left" class="radio_sty">
+                                          
+    <input type="radio" id="Anemia-yes"  name="Anemia" value="Yes" checked="checked">
+    <label for="Anemia-yes">Yes</label>
+    
+    <div class="check">
 		</div>
-		<div style=\"width:100px; float:left\" class=\"radio_sty\">
-			<input type=\"radio\" id=\"$key-no\" name=\"$key\" value=\"No\" $nochecked>
-			<label for=\"$key-no\">No</label>
-			<div class=\"check\"></div>
-		</td>
-	</tr>";
-}
-?>
-                                                                              
-                                                                              
+  </div>
+    <div style="width:100px; float:left" class="radio_sty">
+    <input type="radio" id="Anemia-no"  name="Anemia" value="No" >
+    <label for="Anemia-no">No</label>
+    
+    <div class="check">
+		</div>
+  </div> 
+                                      ';
+                                          }
+                                       if ($Anemia=='No'){
+                                           
+                                           echo '
+                                      
+                                      <div style="width:110px; float:left" class="radio_sty">
+                                          
+    <input type="radio" id="Anemia-yes"  name="Anemia" value="Yes" >
+    <label for="Anemia-yes">Yes</label>
+    
+    <div class="check">
+		</div>
+  </div>
+    <div style="width:100px; float:left" class="radio_sty">
+    <input type="radio" id="Anemia-no"  name="Anemia" value="No" checked="checked">
+    <label for="Anemia-no">No</label>
+    
+    <div class="check">
+		</div>
+  </div> 
+                                      ';
+                                          }
+                                          ?>
+                                       
+                                     <!-- <div class="controls">
+                                            <label class="radio inline">
+                                              <input type="radio"  name="Anemia" value="Yes" id="app_radio"> Yes
+                                            </label>
+                                            
+                                            <label class="radio inline">
+                                              <input type="radio" name="Anemia" value="No" id="app_radio"> No
+                                            </label>
+                                          </div>	 /controls -->	
+                                  </td>
+                                  </tr>
                                 <tr>
                        
                                    <td> </td>
@@ -706,7 +767,7 @@ foreach ($condition as $key => $value) {
                               <tr>
                                 
                                   <td>Other</td>
-                                  <td> <input type="text" class="span4" name ="sdef_other"  value="<?php echo $other ?>" tabindex="14"></td>
+                                  <td> <input type="text" class="span4" name ="sdef_other"  value="<?php echo $other ?>" ></td>
                                   </tr>
                                   
                               </table>
@@ -879,48 +940,365 @@ foreach ($condition as $key => $value) {
 
 
      <table style="width:100%" border="0">
-<?php
-$condition = [
-"sig_diarrhea_vom"=>"Significant diarrhea or vomiting?",
-"alco_drug_consump"=>"Alcohol or drug consumption?",
-"trad_med"=>"Traditional medicine?",
-"co_medi"=>"Current co-medications (Antiepileptic, Steroids, Warfarin, Statins)?",
-"other_curr_problem"=>"Other current clinical problems?"
-];
+                          
+                                <tr>
+                         <td> 
+                                   <label class="control-label">Significant diarrhea or vomiting?</label>
+                             
+                              <?php 
+                                       if ($sig_diarrhea_vom=='Yes'){
+                                           
+                                           echo '
+                                      
+                                      <div style="width:110px; float:left" class="radio_sty">
+                                          
+    <input type="radio" id="sig_diarrhea_vom-yes" name="sig_diarrhea_vom" value="Yes" checked="checked" >
+    <label for="sig_diarrhea_vom-yes">Yes</label>
+    
+    <div class="check">
+		</div>
+  </div>
+    <div style="width:100px; float:left" class="radio_sty">
+    <input type="radio" id="sig_diarrhea_vom-no" name="sig_diarrhea_vom" value="No" >
+    <label for="sig_diarrhea_vom-no">No</label>
+    
+    <div class="check">
+		</div>
+  </div> 
+      
+                                  </td>
+                           <td>
+                              Details
+                          </td>
+                          <td>
+                              <input type="text" class="span4" id="sig_diarrhea_vom_details" name="sig_diarrhea_vom_details" value="'.$sig_diarrhea_vom_details.'">
+                          </td> 
+                                   
+                                      ';
+                                          } 
+                                    if ($sig_diarrhea_vom=='No'){
+                                           
+                                           echo '
+                                      
+                                      <div style="width:110px; float:left" class="radio_sty">
+                                          
+    <input type="radio" id="sig_diarrhea_vom-yes" name="sig_diarrhea_vom" value="Yes"  >
+    <label for="sig_diarrhea_vom-yes">Yes</label>
+    
+    <div class="check">
+		</div>
+  </div>
+    <div style="width:100px; float:left" class="radio_sty">
+    <input type="radio" id="sig_diarrhea_vom-no" name="sig_diarrhea_vom" value="No" checked="checked">
+    <label for="sig_diarrhea_vom-no">No</label>
+    
+    <div class="check">
+		</div>
+  </div> 
+      
+                                  </td>
+                           <td>
+                              Details
+                          </td>
+                          <td>
+                              <input type="text" class="span4" id="sig_diarrhea_vom_details" name="sig_diarrhea_vom_details">
+                          </td> 
+                                   
+                                      ';
+                                          }
+                                          ?>
+                           
+                          </tr> 
+                               
+                        <tr>
+                          <td> 
+                                   <label class="control-label">Alcohol or drug consumption?</label>
+                              
+                              <?php 
 
-foreach ($condition as $key => $value) {
-	eval("\$yeschecked = (\$$key=='Yes')?'checked=\"checked\"':'';");
-	$nochecked = ($yeschecked == '')?'checked="checked"':'';
-	eval("\$detailval = \$$key"."_details;");
-	eval("\$details = (\$$key=='Yes')?'value=\"$detailval\"':'';");
-	echo "
-	<tr>
-		<td> 
-			<label class=\"control-label\">$value</label>  
-			<div style=\"width:200px; float:left\" class=\"radio_sty\">
-				<input type=\"radio\" id=\"$key-yes\" name=\"$key\" value=\"Yes\" $yeschecked >
-				<label for=\"$key-yes\">Yes</label>
-				<div class=\"check\"></div>
-			</div>
+                                       if ($alco_drug_consump=='Yes'){
+                                           
+                                           echo '
+                                      
+                                      <div style="width:110px; float:left" class="radio_sty">
+                                          
+    <input type="radio" id="alco_drug_consump-yes" name="alco_drug_consump" value="Yes" checked="checked" >
+    <label for="alco_drug_consump-yes">Yes</label>
+    
+    <div class="check">
+		</div>
+  </div>
+    <div style="width:100px; float:left" class="radio_sty">
+    <input type="radio" id="alco_drug_consump-no" name="alco_drug_consump" value="No" >
+    <label for="alco_drug_consump-no">No</label>
+    
+    <div class="check">
+		</div>
+  </div>    
+      
+                            
+                                  </td>
+                            <td>
+                              Details
+                          </td>
+                          <td>
+                              <input type="text" class="span4" id="alco_drug_consump_details" name="alco_drug_consump_details" value="'.$alco_drug_consump_details.'">
+                          </td>    
+                                   
+                                      ';
+                                          }
+                                       if ($alco_drug_consump=='No'){
+                                           
+                                           echo '
+                                      
+                                      <div style="width:110px; float:left" class="radio_sty">
+                                          
+    <input type="radio" id="alco_drug_consump-yes" name="alco_drug_consump" value="Yes"  >
+    <label for="alco_drug_consump-yes">Yes</label>
+    
+    <div class="check">
+		</div>
+  </div>
+    <div style="width:100px; float:left" class="radio_sty">
+    <input type="radio" id="alco_drug_consump-no" name="alco_drug_consump" value="No" checked="checked">
+    <label for="alco_drug_consump-no">No</label>
+    
+    <div class="check">
+		</div>
+  </div>    
+      
+                            
+                                  </td>
+                            <td>
+                              Details
+                          </td>
+                          <td>
+                              <input type="text" class="span4" id="alco_drug_consump_details" name="alco_drug_consump_details">
+                          </td>    
+                                   
+                                      ';
+                                          }
+                                          ?>
+                                
+                          </tr> 
+                             
+                          <tr>
+                         <td> 
+                                   <label class="control-label">Traditional medicine?</label>
+                             
+                              <?php 
 
-			<div style=\"width:100px; float:left\" class=\"radio_sty\">
-				<input type=\"radio\" id=\"$key-no\" name=\"$key\" value=\"No\" $nochecked >
-				<label for=\"$key-no\">No</label>
-				<div class=\"check\"></div>
-			</div> 
-		</td>
-		<td>
-			Details
-		</td>
-		<td>
-			<input type=\"text\" class=\"span4\" id=\"$key"."_details\" name=\"$key"."_details\" $details>
-		</td> 
-	</tr>
-	";
-	
-}
-?>              
-                           </table>
+                                       if ($trad_med=='Yes'){
+                                           
+                                           echo '
+                                      
+                                     <div style="width:110px; float:left" class="radio_sty">
+                                          
+    <input type="radio" id="trad_med-yes" name="trad_med" value="Yes" checked="checked" >
+    <label for="trad_med-yes">Yes</label>
+    
+    <div class="check">
+		</div>
+  </div>
+    <div style="width:100px; float:left" class="radio_sty">
+    <input type="radio" id="trad_med-no" name="trad_med" value="No" >
+    <label for="trad_med-no">No</label>
+    
+    <div class="check">
+		</div>
+  </div>    
+  
+                                  </td>
+                          <td>
+                              Details
+                          </td>
+                          <td>
+                              <input type="text" class="span4" id="trad_med_details" name="trad_med_details" value="'.$trad_med_details.'">
+                          </td>    
+                    
+                                   
+                                      ';
+                                          }
+                                       if ($trad_med=='No'){
+                                           
+                                           echo '
+                                      
+                                     <div style="width:110px; float:left" class="radio_sty">
+                                          
+    <input type="radio" id="trad_med-yes" name="trad_med" value="Yes"  >
+    <label for="trad_med-yes">Yes</label>
+    
+    <div class="check">
+		</div>
+  </div>
+    <div style="width:100px; float:left" class="radio_sty">
+    <input type="radio" id="trad_med-no" name="trad_med" value="No" checked="checked" >
+    <label for="trad_med-no">No</label>
+    
+    <div class="check">
+		</div>
+  </div>    
+  
+                                  </td>
+                          <td>
+                              Details
+                          </td>
+                          <td>
+                              <input type="text" class="span4" id="trad_med_details" name="trad_med_details">
+                          </td>    
+                    
+                                   
+                                      ';
+                                          }
+                                          ?>
+                             
+                                
+                          </tr> 
+                               <tr>
+                        <td> 
+                                   <label class="control-label">Current co-medications (Antiepileptic, Steroids, Warfarin, Statins)?</label>
+                            <?php 
+
+                                       if ($co_medi=='Yes'){
+                                           
+                                           echo '
+                                      
+                                     <div style="width:110px; float:left" class="radio_sty">
+                                          
+    <input type="radio" id="co_medi-yes"  name="co_medi" value="Yes" checked="checked"  >
+    <label for="co_medi-yes">Yes</label>
+    
+    <div class="check">
+		</div>
+  </div>
+    <div style="width:100px; float:left" class="radio_sty">
+    <input type="radio" id="co_medi-no" name="co_medi" value="No" >
+    <label for="co_medi-no">No</label>
+    
+    <div class="check">
+		</div>
+  </div>  
+  
+                                  </td>
+                           <td>
+                              Details
+                          </td>        
+                          <td>
+                              <input type="text" class="span4" name="co_medi_details" id="co_medi_details" value="'.$co_medi_details.'">
+                          </td>    
+                    
+                                   
+                                      ';
+                                          }
+                                       if ($co_medi=='No'){
+                                           
+                                           echo '
+                                      
+                                     <div style="width:110px; float:left" class="radio_sty">
+                                          
+    <input type="radio" id="co_medi-yes"  name="co_medi" value="Yes"  >
+    <label for="co_medi-yes">Yes</label>
+    
+    <div class="check">
+		</div>
+  </div>
+    <div style="width:100px; float:left" class="radio_sty">
+    <input type="radio" id="co_medi-no" name="co_medi" value="No" checked="checked" >
+    <label for="co_medi-no">No</label>
+    
+    <div class="check">
+		</div>
+  </div>  
+  
+                                  </td>
+                           <td>
+                              Details
+                          </td>        
+                          <td>
+                              <input type="text" class="span4" name="co_medi_details" id="co_medi_details">
+                          </td>    
+                    
+                                   
+                                      ';
+                                          }
+                                          ?>
+                             
+                    
+                          </tr> 
+         
+                        <tr>
+                        <td> 
+                                   <label class="control-label">Other current clinical problems?</label>
+                            
+                            <?php 
+
+                                       if ($other_curr_problem=='Yes'){
+                                           
+                                           echo '
+                                      
+                                      <div style="width:110px; float:left" class="radio_sty">
+                                          
+    <input type="radio" id="other_curr_problem-yes"  name="other_curr_problem" value="Yes" checked="checked"  >
+    <label for="other_curr_problem-yes">Yes</label>
+    
+    <div class="check">
+		</div>
+  </div>
+    <div style="width:100px; float:left" class="radio_sty">
+    <input type="radio" id="other_curr_problem-no" name="other_curr_problem" value="No" >
+    <label for="other_curr_problem-no">No</label>
+    
+    <div class="check">
+		</div>
+  </div>    
+  
+                                  </td>
+                           <td>
+                              Details
+                          </td>        
+                          <td>
+                              <input type="text" class="span4" name="other_curr_problem_details" id="other_curr_problem_details" style="height: 40px;" value="'.$other_curr_problem_details.'">
+                          </td>    
+                    
+                                   
+                                      ';
+                                          }
+                                       if ($other_curr_problem=='No'){
+                                           
+                                           echo '
+                                      
+                                      <div style="width:110px; float:left" class="radio_sty">
+                                          
+    <input type="radio" id="other_curr_problem-yes"  name="other_curr_problem" value="Yes"  >
+    <label for="other_curr_problem-yes">Yes</label>
+    
+    <div class="check">
+		</div>
+  </div>
+    <div style="width:100px; float:left" class="radio_sty">
+    <input type="radio" id="other_curr_problem-no" name="other_curr_problem" value="No" checked="checked" >
+    <label for="other_curr_problem-no">No</label>
+    
+    <div class="check">
+		</div>
+  </div>    
+  
+                                  </td>
+                           <td>
+                              Details
+                          </td>        
+                          <td>
+                              <input type="text" class="span4" name="other_curr_problem_details" id="other_curr_problem_details" style="height: 40px;">
+                          </td>    
+                    
+                                   
+                                      ';
+                                          }
+                                          ?>
+                            
+                    
+                          </tr> 
+                          </table>
 </fieldset>
      <div class="form-actions">
                                                                                                                                                     <div class="span3">

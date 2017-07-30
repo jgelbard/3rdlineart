@@ -36,13 +36,13 @@
 <div class="control-group">											
 				<label class="control-label" for="firstname">Password</label>
 				<div class="controls">
-                              <input type="text" class="span4" id="firstname"   name="password" style="margin:5px"><br />
+                              <input type="password" class="span4" id="firstname"   name="password" style="margin:5px"><br />
                  </div>			
 </div>
 <div class="control-group">											
 				<label class="control-label" for="firstname">Confirm Password</label>
 				<div class="controls">
-                        <input type="text" class="span4" id="firstname"  name="confirm_pswd" style="margin:5px"><br />
+                        <input type="password" class="span4" id="firstname"  name="confirm_pswd" style="margin:5px"><br />
                  </div>			
 </div>
                          
@@ -51,9 +51,9 @@
                <a href="dash.php?p" class="btn" style="padding:10px; font-size:180%">Cancel</a>
         </div>
                                  
-  <div class="span3">
-											<button type="submit" class="button btn btn-primary btn-large" style="padding:10px; font-size:180%" name="register_lab_user">Register</button>
-                                            </div>
+        <div class="span3">
+				<button type="submit" class="button btn btn-primary btn-large" style="padding:10px; font-size:180%" name="register_lab_user">Register</button>
+        </div>
 </div>
     
                            

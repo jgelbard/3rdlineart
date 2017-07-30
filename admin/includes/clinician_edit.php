@@ -22,7 +22,7 @@ $clinician=mysqli_query($bd, "SELECT * FROM clinician where id='$id'");
         <hr />
 
 	
-<form id="edit-profile" class="form-horizontal" action="dash.php" method="post">
+<form id="edit-profile" class="form-horizontal" action="dash.php?update_user" method="post">
 
     
 <div class="control-group">											
@@ -48,10 +48,12 @@ $facility=mysqli_query( $bd,"SELECT * FROM facility");
 </div> 
 <div class="control-group">											
 			<label class="control-label" for="firstname">Username</label>
-		  	<div class="controls">   
-                              <input type="text" class="span4" id="firstname" name="username" value="<?php echo $username; ?>"  style="margin:5px"><br />
+		  	<div class="controls">
+                <input type="hidden" class="span3" id="id" name="id" value="<?php echo $id; ?>" style="margin:5px" >
+                <input type="hidden" class="span3" id="id" name="user_id" value="<?php echo $user_id; ?>" style="margin:5px" >
+                <input type="text" class="span4" id="firstname" name="username" value="<?php echo $username; ?>"  style="margin:5px"><br />
                             
-   	            	</div>			
+   	        </div>			
 </div>                           
 <div class="control-group">											
 			<label class="control-label" for="firstname">Full Name</label>

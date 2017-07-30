@@ -11,8 +11,8 @@ if (isset($_SESSION['identification'])){
 
 	$clinicianID = $_SESSION['id'];
 
-	$fullname =$_SESSION['name'];
-	$clin_phone= $_SESSION['phone'];
+	$fullname = $_SESSION['name'];
+	$clin_phone = $_SESSION['phone'];
 	$clin_email= $_SESSION['email'];
 	$facility = $_SESSION['art_clinic'];
 
