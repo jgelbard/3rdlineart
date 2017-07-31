@@ -10,32 +10,24 @@
 				$(".box").not(".no").hide();
 				$(".no").show();
 			}
-			
 		});
 	});
 </script>
-
 <script>
 
 	$().ready(function() {
 		// validate the comment form when it is submitted
 		$("#commentForm").validate();
-
 		$("#search_art").validate({
-			
-			rules: {
-				
+			rules: {	
 				id: {
-					required: true,
-					
-				},
-				
+					required: true,		
+				},			
 			},
 			messages: {
 				id: {
 					required: "",
 				},
-				
 			}
 		});
 
@@ -62,8 +54,7 @@
 					required: true,
 					minlength: 3,
 					maxlength: 3
-				},
-				
+				},	
 			},
 			messages: {
 				firstname: "Please enter Client's firstname",
@@ -78,26 +69,20 @@
 				weight: {
 					required: "Curr Weight",
 					minlength: "Under weight",
-					maxlength: "Over weight"
-					
+					maxlength: "Over weight"			
 				}, 
 				height: {
 					required: "Curr Height",
 					minlength: "Under Height",
 					maxlength: "Over Height"
-					
 				},
-				
 			}
 		});
-
-		
 	});
 </script>
 
 
 <?php
-
 global $pat_id;
 if(isset($_GET['pat_id'])){ 
 	$pat_id= $_GET['pat_id'];
@@ -122,7 +107,7 @@ echo '
 <form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'" method="post">
 	<h2 style="background-color:#f8f7f7; text-align:center">Current Clinic Status and history</h2>
 	<hr style=" border: 1px solid #12c3f8;" />
-	';                   
+	';
 	?>
 	<!--    <input type="text" name="pat_id" valu" style=" position:relative; top:-00px" />-->
 	<h3>Client Name: <strong><i style="background-color:#f8f7f7; color:red"><?php echo $client_name; ?></i></strong></h3>
@@ -228,6 +213,7 @@ echo '
 				<td>
 					<table>
 						<?php
+
 						$condition = [
 						"PeripheralNeuropathy"=>'Perpheral Neuropathy',
 						"Jaundice"=>'Jaundice',
@@ -238,26 +224,26 @@ echo '
 						"Anemia"=>'Anemia'];
 						$first=1;
 						foreach ($condition as $key => $value) {
-							echo "                                                                                  
-							<tr>							
+							echo "
+							<tr>
 								<td></td>
 								<td>
 									<label class=\"control-label\">$value</label>
 									<div style=\"width:110px; float:left\" class=\"radio_sty\">
-										<input type=\"radio\" id=\"f-option\"   name=\"$key\" value=\"Yes\" required>
-										<label for=\"f-option\">Yes</label>									
+										<input type=\"radio\" id=\"$key-yes\" name=\"$key\" value=\"Yes\" required>
+										<label for=\"$key-yes\">Yes</label>
 										<div class=\"check\">
 										</div>
 									</div>
 									<div style=\"width:100px; float:left\" class=\"radio_sty\">
-										<input type=\"radio\" id=\"n-option\" name=\"$key\" value=\"No\" >
-										<label for=\"n-option\">No</label>									
+										<input type=\"radio\" id=\"$key-no\" name=\"$key\" value=\"No\" >
+										<label for=\"$key-no\">No</label>
 										<div class=\"check\">
 										</div>
 									</div>
 								</td>
 							</tr>";
-							if ($first == 2) {
+							if ($first == 1) {
 								echo "</table>
 							</td>";
 							$first = 0;
@@ -265,9 +251,7 @@ echo '
 					}
 					?> 
 					<tr>
-						
 						<td> </td>
-						
 						<td>
 							<table>
 								<tr>
@@ -336,213 +320,68 @@ echo '
 				
 				
 			</table>
-			
 			<script type="text/javascript">
-				jQuery(document).ready(function ($) {
-					$('input[name="sig_diarrhea_vom"]').on('click', function () {
-						if ($(this).val() === 'Yes') {
-							$('#sig_diarrhea_vom_details').prop("disabled", false);
-						} else {
-							$('#sig_diarrhea_vom_details').prop("disabled", "disabled");
-						}
-					});
-				});
-				
-				jQuery(document).ready(function ($) {
-					$('input[name="alco_drug_consump"]').on('click', function () {
-						if ($(this).val() === 'Yes') {
-							$('#alco_drug_consump_details').prop("disabled", false);
-						} else {
-							$('#alco_drug_consump_details').prop("disabled", "disabled");
-						}
-					});
-				});   
-				
-				jQuery(document).ready(function ($) {
-					$('input[name="trad_med"]').on('click', function () {
-						if ($(this).val() === 'Yes') {
-							$('#trad_med_details').prop("disabled", false);
-						} else {
-							$('#trad_med_details').prop("disabled", "disabled");
-						}
-					});
-				});   
-				
-				
-				jQuery(document).ready(function ($) {
-					$('input[name="co_medi"]').on('click', function () {
-						if ($(this).val() === 'Yes') {
-							$('#co_medi_details').prop("disabled", false);
-						} else {
-							$('#co_medi_details').prop("disabled", "disabled");
-						}
-					});
-				});    
-				
-				jQuery(document).ready(function ($) {
-					$('input[name="other_curr_problem"]').on('click', function () {
-						if ($(this).val() === 'Yes') {
-							$('#other_curr_problem_details').prop("disabled", false);
-						} else {
-							$('#other_curr_problem_details').prop("disabled", "disabled");
-						}
-					});
-				});    
+				<?php
+				$condition = [
+				"sig_diarrhea_vom"=>"Significant diarrhea or vomiting?",
+				"alco_drug_consump"=>"Alcohol or drug consumption?",
+				"trad_med"=>"Traditional medicine?",
+				"co_medi"=>"Current co-medications (Antiepileptic, Steroids, Warfarin, Statins)?",
+				"other_curr_problem"=>"Other current clinical problems?"
+				];
+
+				foreach ($condition as $key => $value) {
+					echo "jQuery(document).ready(function ($) {
+						$('input[name=\"$key\"]').on('click', function () {
+							if ($(this).val() === 'Yes') {
+								$('#".$key."_details').prop(\"disabled\", false);
+							} else {
+								$('#".$key."_details').prop(\"disabled\", \"disabled\");
+							}
+						});
+					});";
+				}
+				echo "
 			</script>
+			<table style=\"width:100%\" border=\"0\">";
 
-
-			<table style="width:100%" border="0">
-				
-				<tr>
-					<td> 
-						<label class="control-label">Significant diarrhea or vomiting?</label>
-						
-						<div style="width:110px; float:left" class="radio_sty">
-							
-							<input type="radio" id="sig_diarrhea_vom-yes" name="sig_diarrhea_vom" value="Yes" required >
-							<label for="sig_diarrhea_vom-yes">Yes</label>
-							
-							<div class="check">
-							</div>
-						</div>
-						<div style="width:100px; float:left" class="radio_sty">
-							<input type="radio" id="sig_diarrhea_vom-no" name="sig_diarrhea_vom" value="No" >
-							<label for="sig_diarrhea_vom-no">No</label>
-							
-							<div class="check">
-							</div>
-						</div> 
-					</td>
-					<td>
-						Details
-					</td>
-					<td>
-						<input type="text" class="span4" id="sig_diarrhea_vom_details" name="sig_diarrhea_vom_details">
-					</td> 
-				</tr> 
-				
-				<tr>
-					<td> 
-						<label class="control-label">Alcohol or drug consumption?</label>
-						<div style="width:110px; float:left" class="radio_sty">
-							
-							<input type="radio" id="alco_drug_consump-yes" name="alco_drug_consump" value="Yes" required >
-							<label for="alco_drug_consump-yes">Yes</label>
-							
-							<div class="check">
-							</div>
-						</div>
-						<div style="width:100px; float:left" class="radio_sty">
-							<input type="radio" id="alco_drug_consump-no" name="alco_drug_consump" value="No" >
-							<label for="alco_drug_consump-no">No</label>
-							
-							<div class="check">
-							</div>
-						</div>    
-						
-						<td>
-							Details
-						</td>
-						<td>
-							<input type="text" class="span4" id="alco_drug_consump_details" name="alco_drug_consump_details">
-						</td>    
-					</tr> 
-					
+				foreach ($condition as $key => $value) {
+					echo "				
 					<tr>
 						<td> 
-							<label class="control-label">Traditional medicine?</label>
-							
-							<div style="width:110px; float:left" class="radio_sty">
-								
-								<input type="radio" id="trad_med-yes" name="trad_med" value="Yes" required >
-								<label for="trad_med-yes">Yes</label>
-								
-								<div class="check">
+							<label class=\"control-label\">$value</label>
+							<div style=\"width:110px; float:left\" class=\"radio_sty\">
+								<input type=\"radio\" id=\"$key-yes\" name=\"$key\" value=\"Yes\" required >
+								<label for=\"$key-yes\">Yes</label>
+								<div class=\"check\">
 								</div>
 							</div>
-							<div style="width:100px; float:left" class="radio_sty">
-								<input type="radio" id="trad_med-no" name="trad_med" value="No" >
-								<label for="trad_med-no">No</label>
-								
-								<div class="check">
+							<div style=\"width:100px; float:left\" class=\"radio_sty\">
+								<input type=\"radio\" id=\"$key-no\" name=\"$key\" value=\"No\" >
+								<label for=\"$key-no\">No</label>
+								<div class=\"check\">
 								</div>
-							</div>    
+							</div> 
 						</td>
 						<td>
 							Details
 						</td>
 						<td>
-							<input type="text" class="span4" id="trad_med_details" name="trad_med_details">
-						</td>    
-						
-					</tr> 
-					<tr>
-						<td> 
-							<label class="control-label">Current co-medications (Antiepileptic, Steroids, Warfarin, Statins)?</label>
-							<div style="width:110px; float:left" class="radio_sty">
-								
-								<input type="radio" id="co_medi-yes"  name="co_medi" value="Yes" required >
-								<label for="co_medi-yes">Yes</label>
-								
-								<div class="check">
-								</div>
-							</div>
-							<div style="width:100px; float:left" class="radio_sty">
-								<input type="radio" id="co_medi-no" name="co_medi" value="No" >
-								<label for="co_medi-no">No</label>
-								
-								<div class="check">
-								</div>
-							</div>    
-						</td>
-						<td>
-							Details
-						</td>        
-						<td>
-							<input type="text" class="span4" name="co_medi_details" id="co_medi_details">
-						</td>    
-						
-					</tr> 
-					
-					<tr>
-						<td> 
-							<label class="control-label">Other current clinical problems?</label>
-							
-							<div style="width:110px; float:left" class="radio_sty">
-								
-								<input type="radio" id="other_curr_problem-yes"  name="other_curr_problem" value="Yes" required >
-								<label for="other_curr_problem-yes">Yes</label>
-								
-								<div class="check">
-								</div>
-							</div>
-							<div style="width:100px; float:left" class="radio_sty">
-								<input type="radio" id="other_curr_problem-no" name="other_curr_problem" value="No" >
-								<label for="other_curr_problem-no">No</label>
-								
-								<div class="check">
-								</div>
-							</div>    
-						</td>
-						<td>
-							Details
-						</td>        
-						<td>
-							<input type="text" class="span4" name="other_curr_problem_details" id="other_curr_problem_details" style="height: 40px;">
-						</td>    
-						
-					</tr> 
-				</table>
-			</fieldset>
-			<div class="form-actions">
+							<input type=\"text\" class=\"span4\" id=\"".$key."_details\" name=\"".$key."_details\">
+						</td> 
+					</tr> ";
+				}
+				?>
+			</table>
+		</fieldset>
+		<div class="form-actions">
+			<div class="span3">
+				<a href="app.php?back&part_1<?php echo '&pat_id='.$pat_id.'' ?>" class="btn" style="padding:10px; font-size:180%">Back</a>\</div>
 				<div class="span3">
-					<a href="app.php?back&part_1<?php echo '&pat_id='.$pat_id.'' ?>" class="btn" style="padding:10px; font-size:180%">Back</a>                                                                                                                                    </div>
-					<div class="span3">
-					</div>
-					
-					<div class="span3">
-						<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="submit_clinicstatus">Next</button> 
-					</div>
 				</div>
-				
-			</form>
+				<div class="span3">
+					<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="submit_clinicstatus">Next</button> 
+				</div>
+			</div>
+
+		</form>
