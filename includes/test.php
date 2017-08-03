@@ -1,11 +1,10 @@
 <?php
 
-// test data
+/* test data
 $PeripheralNeuropathy='Yes';
-$Jaundice_x='No';
+$Jaundice='No';
 $Lipodystrophy='No';
-echo "foo$Jaundice_x-yes";
-exit();
+*/
 
 $condition = [
 "PeripheralNeuropathy"=>'Perpheral Neuropathy',

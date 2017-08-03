@@ -303,7 +303,7 @@ echo '
                    
                     <div style="width:150px; float:left" class="radio_sty">
     <input type="radio" id="f-3months_days_not_taken_meds"    name="3months_days_not_taken_meds"  value="< 2days" required>
-    <label for="f-3months_days_not_taken_meds"><2 days</label>
+    <label for="f-3months_days_not_taken_meds"><2days</label>
     
     <div class="check">
 		</div>

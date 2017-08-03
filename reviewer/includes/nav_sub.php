@@ -2,7 +2,7 @@
   <div class="subnavbar-inner">
     <div class="container">
       <ul class="mainnav">
-           <li><a href="review_p1.php?p"><img src="img/app_log.png" width="100px"></a></li> 
+           <li><a href="review_p1.php?p"><img src="../img/app_log.png" width="100px"></a></li> 
           <?php
 global $num_forms,$num_forms_lead,$num_forms_my_rev, $num_forms_aap_results; 
 

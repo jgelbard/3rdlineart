@@ -2,7 +2,7 @@
   <div class="subnavbar-inner">
     <div class="container">
       <ul class="mainnav">
-          <li><a href="cp_p1.php?p"><img src="img/app_log.png" width="100px"></a></li> 
+          <li><a href="cp_p1.php?p"><img src="../img/app_log.png" width="100px"></a></li> 
            <?php
 global $num_newforms; 
 $form_creation=mysqli_query($bd, "SELECT * FROM form_creation where status='Complete' and complete !='Rejected' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 

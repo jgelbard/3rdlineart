@@ -1,6 +1,4 @@
 
- 
-
 <h2 style="background-color:#f8f7f7; text-align:center"> ART Adherence</h2>
                           <!-- <hr style=" border: 2px solid #1c952f;" />-->
                                 
@@ -447,7 +445,7 @@ if (!empty ($not_taken_meds)) { if ($not_taken_meds =='3-5') { echo  'checked="c
     <div style="width:100px; float:left" class="radio_sty">
     <input type="radio" id="5-not_taken_meds" name="not_taken_meds" value="> 5"  <?php 
 
-if (!empty ($not_taken_meds)) { if ($not_taken_meds =='&gt; 5') { echo  'checked="checked"';} } ?> >
+if (!empty ($not_taken_meds)) { if ($not_taken_meds =='> 5') { echo  'checked="checked"';} } ?> >
     <label for="5-not_taken_meds">>5</label>
     
     <div class="check">

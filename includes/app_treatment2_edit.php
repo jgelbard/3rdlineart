@@ -245,7 +245,7 @@ echo '
 			<tbody>
 				<?php
 				$i = 0;
-                $box = 1;
+				$box = 1;
 				for($date_i=16; $date_i<=25; $date_i++) {
 					$i_1 = $i+1;
 					$i_2 = $i+2;
@@ -256,7 +256,7 @@ echo '
 					$reasonval = !empty ( $reason_4_detectable_vl[$i]) ? $reason_4_detectable_vl[$i] : '';
 					$weightval = !empty  ( $weight[$i]) ? $weight[$i] : '';
 
-                    $rowclass = ($i > 5) ? "row$i box" : '';
+					$rowclass = ($i > 5) ? "row$i box" : '';
 					echo "
 					<tr class=\"$rowclass\">
 						<td> <input type=\"text\" name=\"monito_date$i_1\" id=\"datepicker$date_i\" value=\"$dateval\"/></td>
@@ -265,47 +265,43 @@ echo '
 						<td><textarea name=\"reason_4_detectable_vl$i_1\">$reasonval</textarea></td>
 						<td> <input type=\"number\" name=\"weight$i_1\" value=\"$weightval\"/> </td>";
 
-					if ($i == 5) 
-						echo "
-					<td><form action=\"#\">
-						<div class=\"box$box\">
-						<input type=\"button\" name=\"row$i_1\" class=\"btn btn-success\" value=\"+\" />";
-
-                    if ($i > 5) 
-                        echo
-                            "<td><div class=\"box$box\">
+						if ($i == 5) 
+							echo "
+						<td><form action=\"#\">
+							<div class=\"box$box\">
+								<input type=\"button\" name=\"row$i_1\" class=\"btn btn-success\" value=\"+\" />";
+								if ($i > 5) 
+									echo
+								"<td><div class=\"box$box\">
 								<input type=\"button\" name=\"row$i_2\" class=\"btn btn-success\" value=\"+\" />
 								<input type=\"button\" name=\"row$i\" class=\"btn btn-danger\" value=\"-\" />";
-					if ($i >= 5) {
-                        echo
-                            "</div>
-				    </form></td>";
-                        $box += 1;
-                    }
-					if ($i > 10)
-						echo '
-					<tr class="endline box">
-						<td><p style="color:#f00">Max numbr reached</p> </td>';
-                  
-					echo '</tr>';
-                    $i++;
-				}
-				?>                    
-			</tbody>
-		</table>
-	</fieldset>
+								if ($i >= 5) {
+									echo
+									"</div>
+								</form></td>";
+								$box += 1;
+							}
+							if ($i > 10)
+								echo '
+							<tr class="endline box">
+								<td><p style="color:#f00">Max numbr reached</p> </td>';
+								echo '</tr>';
+								$i++;
+							}
+							?>
+						</tbody>
+					</table>
+				</fieldset>
 
-	<div class="form-actions">
-		<div class="span3">
-			<a class="btn" href="app.php?back_treatment1<?php echo '&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'' ?>" style="padding:10px; font-size:180%">Back</a>                                                                                                                                    </div> 
-                                                                                                                                                   <div class="span3"><!--
-                                                                                                                                                   	<button type="submit" class="btn btn-primary" style="padding:10px; font-size:180%">Save</button> -->.
-
-                                                                                                                                                   </div>
-
-                                                                                                                                                   <div class="span3">
-                                                                                                                                                   	<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="update_treatment2">Next</button> 
-                                                                                                                                                   </div>
-                                                                                                                                               </div>
-
-                                                                                                                                           </form>
+				<div class="form-actions">
+					<div class="span3">
+						<a class="btn" href="app.php?back_treatment1<?php echo '&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'' ?>" style="padding:10px; font-size:180%">Back</a>
+					</div>
+					<div class="span3">
+                    <?php include ('includes/app_edit_menu.php'); ?>
+					</div>
+					<div class="span3">
+						<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="update_treatment2">Next</button> 
+					</div>
+				</div>
+			</form>

@@ -107,7 +107,7 @@ include ('includes/head.php');
 
 	}
 	.radio {
-		font-size:115%;
+		font-size:125%;
 	}
 
 	.radio_sty {
@@ -129,7 +129,7 @@ include ('includes/head.php');
 		display: block;
 		position: relative;
 		font-weight: 300;
-		font-size: 1.35em;
+		font-size: 1.25em;
 		padding: 25px 25px 25px 80px;
 		margin: 10px auto;
 		height: 30px;
@@ -203,10 +203,8 @@ include ('includes/head.php');
 	}
 	.control-label {
 		position:relative; top:30px;
-
-
 		font-family: 'Lato', sans-serif;
-		font-size:110%;
+		font-size:120%;
 
 	}
 
@@ -355,10 +353,11 @@ include ('includes/head.php');
 								}
 
 								if(isset($_POST['submit_clinicstatus']) || isset($_POST['update_clinicstatus']) || isset($_GET['back_3'])) {
-                                    //insert updated clinic status records 
+                                    //insert updated clinic status records
+                                    include ('includes/db_operations/update_clinic_status.php');
+                                    
 									if (isset($_POST['update_clinicstatus'])) { 
 										include ('includes/db_operations/update_clinic_status.php');  
-
 									}
 
 									if (isset($_POST['submit_clinicstatus'])) { 
@@ -388,7 +387,7 @@ include ('includes/head.php');
 										}
 									} 
 
-									else {
+									else if (isset($_GET['part_2']) === false) {
 										include ('includes/app_treatment1_edit.php');
 									}
 								}
@@ -439,8 +438,10 @@ include ('includes/head.php');
 									include ('includes/db_operations/update_patient.php');   
 								}
 
-								if(isset($_GET['part_2'])){ 
-									include ('includes/app_clinic_status_edit.php');   
+								if(isset($_GET['part_2'])){
+                                    // echo 'HEEEEEEEEEEEEEEEEEEEEEEEEEEEY!!!!!!';
+									include ('includes/app_clinic_status_edit.php');
+                                    exit();
 								}
 
 								if(isset($_POST['update_pediatric'])){ 
@@ -456,7 +457,7 @@ include ('includes/head.php');
 									include ('includes/app_treatment2_edit.php');
 								}
 
-								if(isset($_GET['back_treatment1'])){ 
+								if(isset($_GET['back_treatment1'])){
 									include ('includes/app_treatment1_edit.php');
 								}
 

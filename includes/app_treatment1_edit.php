@@ -107,8 +107,9 @@ $vl_sample_id = $row_pat['vl_sample_id'];
 $client_name = $firstname.' '.$lastname;
 
 //get age or calc age
-if(isset($_GET['xx'])){ 
+if(isset($_GET['xx']) and $_GET['XX'] != ''){ 
 	$age= $_GET['xx'];
+    echo "GOT AGE $age";
 }
 else {
 	function CalcAge($dob) 
@@ -122,7 +123,7 @@ else {
 			$age--; 
 		return $age; 
 	}
-	$age =CalcAge($dob);
+	$age = CalcAge($dob);
 }
 
 //treatement history
@@ -133,8 +134,7 @@ while ($row_treatment_history=mysqli_fetch_array($treatment_history)) {
 	$treat_stop_date [] = $row_treatment_history['stop_date'];
 	$treat_reason_for_change [] = $row_treatment_history['reason_for_change'];
 }
-echo "$treat_start_date[0];<br>";
-echo "$treat_start_date[1];<br>";
+
 
 echo '
 <form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$pat_id.'" method="post">';
@@ -171,7 +171,6 @@ echo '
 							if($(this).attr("name")=="row5"){
 								$(".row6").not(".row5").hide();
 								$(".box1").show();
-
 							}
 			
 							if($(this).attr("name")=="row7"){
@@ -215,10 +214,12 @@ echo '
 
 	<div class="form-actions">
 		<div class="span3">
-			<a class="btn" href="app.php?back&back_3<?php echo '&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'' ?>" style="padding:10px; font-size:180%">Back</a>           
+			<a class="btn" href="app.php?back&back_3&part_2<?php echo '&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'' ?>" style="padding:10px; font-size:180%">Back</a>           
 		</div> 
-		<div class="span3">
-		</div>
+    <div class="span3">
+         <?php include ('includes/app_edit_menu.php'); ?>
+    </div>
+    <div>
 		<div class="span3">
 			<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="update_treatment1">Next</button> 
 		</div>

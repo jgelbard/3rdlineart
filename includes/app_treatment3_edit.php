@@ -351,12 +351,56 @@ for($i=21; $i<=29; $i+=2) {
 ?>
 </script>
 
-$color = ["red"=>"#d7f76d", "green"=>"#f7cc6d", "blue"=>"#6decf7"];
-$startdate = 12;
+<?php
+/*
+$colors = ["red", "green", "blue"];
+$colorcodes = ["#d7f76d", "#f7cc6d", "#6decf7"];
+$regimens = ['2RHZE/4RH', '2SRHZE/1RHZE/5RH', 'Km-Et-Z-Of-Cs'];
+$startdate = 1;
+$datepicker = 21;
 $row = 1;
-// $box = row1,r1row1,r1row2,r1row3,r1row4   r2row1,r2row2,r2row3,r2row4  mdr_row1...
+$row_1 = 0;
+$regimen = 1;
+    
+$i = 0;
+for($regimen=1; $regimen<=3; $regimen++) {
+    $regname_cl = $regimen<3 ? "r$regimen" : 'mdr_';
+    $regname = $regimen<3 ? "$regimen" : 'mdr_';
+    $regrow = 0;
+    for ($col=1; $col<=5; $col++) {
+        $cols = $col>1 ? $col : '';
+        $datepicker_2 = $datepicker + 1;
+        $color = $colors[$regimen-1];
+        $regrow_1 = $regname_cl.'row'.($regrow*2);
+        $regrow_2 = $regname_cl.'row'.($regrow*2+1); // was $regname-1
 
-foreach($color as $name => $value) { 
+        eval("\$reg_name = !empty (\$reg$regimen"."_name [$i]) ? \$reg$regimen"."_name [$i] : '2RHZE/4RH';");
+        eval("\$start_date = !empty(\$start_date$regimen [$i]) ? \$start_date$regimen [$i] : '';");
+        eval("\$stop_date = !empty (\$stop_date$regimen [$i]) ? \$stop_date$regimen [$i] : '';");
+        eval("\$reason = !empty (\$reason_for_change$regimen [$i]) ? \$reason_for_change$regimen [$i] : '';");
+
+        $class = $col==1 ? "$color sec": "$regname_cl"."row$regrow box";
+        echo "\n<tr class=\"$class\">
+        <td style=\"background-color:#d7f76d; color:#000; min-width:110px\"><h4>Regimen. $regimen </h4></td>
+        <td><input type=\"text\" name=\"regname$cols\" value=\"$reg_name\" style=\"width:150px\" id=\"td_treatment21\" /></td>
+		<td> <input type=\"text\" name=\"tbstart_date$regname$cols\" value=\"$start_date\" id=\"datepicker$datepicker\" /> </td>
+        <td> <input type=\"text\" name=\"tbstop_date$regname$cols\" value=\"$stop_date\" id=\"datepicker$datepicker_2\"/> </td>
+        <td><textarea name=\"reason_o_changes$regname$cols\" id=\"reason_o_changes$regimen\">$reason</textarea></td>
+        <td style=\"background-color:#f7cc6d; color:#000; min-width:110px\">
+        <div class=\"sec$cols\">
+        <input type=\"button\" class=\"btn btn-success\" name=\"$regrow_1\" value=\"+\" />\n\t".
+        ($regrow>0?"<input type=\"button\" class=\"btn btn-danger\" name=\"$regrow_2\"  value=\"-\" />":"").
+        "</div>
+        </td>
+        </tr>";
+        $regrow++;
+        $datepicker++;
+    }
+    $i++;
+}
+*/
+?>
+
 <tr class="red sec">
         <td style="background-color:#d7f76d; color:#000; min-width:110px"><h4>Regimen. 1 </h4></td>
         <td><input type="text" name="reg1" value="<?php 
@@ -374,7 +418,7 @@ foreach($color as $name => $value) {
         <input type="button" class="btn btn-success"  name="row1"  value="+" />
         </div>
         </td>
-</tr>
+</tr>        
 <tr class="row1 box">
         <td style="background-color:#d7f76d; color:#000; min-width:110px"><h4>Regimen. 1 </h4></td>
         <td><input type="text" name="reg12" value="<?php 
@@ -453,7 +497,6 @@ foreach($color as $name => $value) {
 </textarea></td>
 <td style="background-color:#f7cc6d; color:#000; min-width:110px">
         <div class="r1sec4">
-        <!--         <input type="button" name="r1row5" class="btn btn-success" value="+" />-->
         <input type="button" class="btn btn-danger"  name="r1row2"  value="-" />
 
         </div>
