@@ -227,7 +227,7 @@
 			}
 			else { 
 				echo '<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="submit_patD">Next</button> '; }
-			?>    
+				?>    
 			</div>
 		</div>
 	</form>

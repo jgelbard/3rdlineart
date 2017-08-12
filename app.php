@@ -352,6 +352,8 @@ include ('includes/head.php');
 									include ('includes/db_operations/insert_patient.php');   
 								}
 
+								$age=$_GET['xx'];
+
 								if(isset($_POST['submit_clinicstatus']) || isset($_POST['update_clinicstatus']) || isset($_GET['back_3'])) {
                                     //insert updated clinic status records
                                     include ('includes/db_operations/update_clinic_status.php');
@@ -364,9 +366,7 @@ include ('includes/head.php');
 										include ('includes/db_operations/insert_clinic_status.php'); 
 									}
 
-									$age=$_GET['xx'];
-
-									if  ($gender=='Female' && $age >'10'){
+									if  ($gender=='Female' && $age >'10') {
 										if (isset($_POST['update_clinicstatus']) || isset($_GET['back_3'])) { 
 											include ('includes/app_pregnancy_edit.php'); 
 										}
@@ -376,7 +376,7 @@ include ('includes/head.php');
 										}
 									} 
 
-									else if ($age <='3'){
+									else if ($age <='3') {
 										/*echo 'age'. $gender;*/
 										if (isset($_POST['update_clinicstatus']) || isset($_GET['back_3'])) { 
 											include ('includes/app_pedriatric_edit.php');  
@@ -387,7 +387,7 @@ include ('includes/head.php');
 										}
 									} 
 
-									else if (isset($_GET['part_2']) === false) {
+									else { // if (!isset($_GET['part_2'])) {
 										include ('includes/app_treatment1_edit.php');
 									}
 								}
@@ -433,15 +433,13 @@ include ('includes/head.php');
 									include ('includes/db_operations/insert_sample.php'); 
 									echo"<meta http-equiv=\"Refresh\" content=\"1; url=app.php?p\">";
 								}
-                                //update form processes
+                                // update form processes
 								if(isset($_POST['update_patD'])){ 
 									include ('includes/db_operations/update_patient.php');   
 								}
 
-								if(isset($_GET['part_2'])){
-                                    // echo 'HEEEEEEEEEEEEEEEEEEEEEEEEEEEY!!!!!!';
+                                if(isset($_GET['part_2']) and !isset($_GET['back_3'])) { // ($gender=='Female' and $age >'10') and !($age < '3')  ){
 									include ('includes/app_clinic_status_edit.php');
-                                    exit();
 								}
 
 								if(isset($_POST['update_pediatric'])){ 

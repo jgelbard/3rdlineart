@@ -1,5 +1,76 @@
 <?php
 
+$colors = ["red", "green", "blue"];
+/*
+for($regimen=1; $regimen<=3; $regimen++) {
+    $regnamecl = $regimen<3 ? "r$regimen" : 'mdr_';
+    $regname = $regimen<3 ? "$regimen" : 'mdr_';
+    $regrow = 0;
+
+    for ($col=1; $col<=5; $col++) {
+        $color = $colors[$regimen-1];
+
+        $regrowm1 = $regrow - 1;
+        $regrowp1 = $regrow + 1;
+        $regrowm2 = $regrowp1 - 1;
+        
+        $regrow1 = $regnamecl.'+row'.($regrow+1);
+        $regrow2 = $regnamecl.'-row'.($regrow); // was $regname-1
+        if ($regrow < 4) {
+            echo "\nif($(this).attr(\"name\")==\"$regnamecl+row$regrowp1\"){
+                $(\".sec$regrowp1\").not(\".row$regrowp1\").hide();
+                $(\".$regnamecl"."row$regrowp1\").show();".
+                ($regrow > 0 ? "
+                $(\".$regnamecl"."sec$regrowm2\").hide();
+                $(\".$regnamecl"."sec$regrowp1\").show();":"").
+            "\n}";
+        }
+        if ($regrow > 0) {
+            $reshow = ($regrowm1 == 0) ? "sec1" : $regnamecl."sec$regrowm1";
+            echo "\nif($(this).attr(\"name\")==\"$regnamecl-row$regrow\"){
+                $(\".$regnamecl"."row$regrow\").hide();
+                $(\".$reshow\").show();
+            }";
+        }
+        $regrow++;
+    }
+}
+*/
+for($regimen=1; $regimen<=3; $regimen++) {
+    $regnamecl = $regimen<3 ? "r$regimen" : 'mdr_';
+    $regname = $regimen<3 ? "$regimen" : 'mdr_';
+    $regrow = 0;
+
+    for ($col=0; $col<5; $col++) {
+        $cols = $col ? $col : '';
+        // $datepicker_2 = $datepicker + 1;
+        $color = $colors[$regimen-1];
+
+        $regrowp1 = $regrow+1;
+        $regrowp2 = $regrowp1+1;
+
+        $regrow1 = $regnamecl.'+row'.($regrowp1);
+        $regrow2 = $regnamecl.'-row'.($regrow); // was $regname-1
+        if ($regrow < 5) {
+            echo "if($(this).attr(\"name\")==\"$regnamecl+row$regrow\"){
+                 $(\".$regnamecl"."row$regrowp1\").show();
+                 $(\".$regnamecl"."butts$col\").hide();
+                 $(\".$regnamecl"."butts$regrow\").show();
+            }";
+        }
+        if ($regrow > 0) {
+            echo "if($(this).attr(\"name\")==\"$regnamecl-row$regrow\"){
+                $(\".$regnamecl$regrow\").hide();
+                $(\".$regnamecl"."butts$cols\").show();
+                $(\".$regnamecl"."butts$regrowp2\").hide();
+            }";
+        }
+        $regrow++;
+    }
+}
+
+exit();
+
 /* test data
 $PeripheralNeuropathy='Yes';
 $Jaundice='No';

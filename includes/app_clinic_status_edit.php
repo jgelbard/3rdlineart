@@ -99,9 +99,11 @@ global $pat_id;
 if(isset($_GET['pat_id'])){ 
 	$pat_id= $_GET['pat_id'];
 
-}if(isset($_GET['xx'])){ 
-	$age= $_GET['xx'];
 }
+if(isset($_POST['xx'])){ 
+	$age= $_POST['xx'];
+}
+echo 'clinic_status_edit says age='.$age;
 
 $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
 $row_pat=mysqli_fetch_array($patient);
@@ -113,16 +115,12 @@ $gender =$row_pat['gender'];
 $dob =$row_pat['dob'];
 $vl_sample_id =$row_pat['vl_sample_id'];
 
-
 $client_name = $firstname.' '.$lastname;
 
-
 $current_clinical_status=mysqli_query( $bd,"SELECT * FROM current_clinical_status where patient_id='$pat_id' ");
-
 $if_exist_current_clinical_status = mysqli_num_rows ($current_clinical_status);
 
 while ($row_clinic_status=mysqli_fetch_array($current_clinical_status)){
-
 	$who_stage =$row_clinic_status['who_stage'];
 	$curr_who_stage =$row_clinic_status['curr_who_stage'];
 	$weight =$row_clinic_status['weight'];
@@ -175,7 +173,6 @@ $alco_drug_consump_details =$row_current_clinical_status_details['alco_drug_cons
 $trad_med_details =$row_current_clinical_status_details['trad_med_details'];
 $co_medi_details =$row_current_clinical_status_details['co_medi_details'];
 $other_curr_problem_details =$row_current_clinical_status_details['other_curr_problem_details'];
-
 
 echo '
 <form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'" method="post">
@@ -590,8 +587,8 @@ echo '
 	<div class="span3">
 		<a href="app.php?back&part_1<?php echo '&pat_id='.$pat_id.'' ?>" class="btn" style="padding:10px; font-size:180%">Back</a>                                                            </div>
     <div class="span3">
+        <?php include ('includes/app_edit_menu.php'); ?>            
    </div>
-
    <div class="span3">
 	<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="update_clinicstatus">Next</button> 
  </div>

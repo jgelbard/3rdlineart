@@ -4,21 +4,20 @@ global $now,$expire,$user_id,$fullname;
 if (isset($_SESSION['identification'])) {
 
 	/* global  $fullname;*/
-	$fname= $_SESSION['fname'];
-	$lname= $_SESSION['lname'];
-	$fullname =$fname . " " .$lname;
+	$fname = $_SESSION['fname'];
+	$lname = $_SESSION['lname'];
+	$fullname = $fname . " " .$lname;
 
 	/*$fname= $_SESSION['fname'];*/
-	$sec_id= $_SESSION['id'];
-	$user_id=$_SESSION['identification'];
+	$sec_id = $_SESSION['id'];
+	$user_id = $_SESSION['identification'];
 
 	/*$fullname =$_SESSION['name'];*/
-	$phone= $_SESSION['phone'];
-	$email= $_SESSION['email'];
-
-
+	$phone = $_SESSION['phone'];
+	$email = $_SESSION['email'];
+    
 	$now = time(); 
-	$expire= $_SESSION['expire'];
+	$expire = $_SESSION['expire'];
 }
 
 ?>
@@ -31,7 +30,6 @@ if (isset($_SESSION['identification'])) {
 
 	<?php 
 	include ('../includes/head.php');
-
 	?>
 
 	<style type="text/css">

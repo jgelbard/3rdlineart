@@ -1,0 +1,115 @@
+
+if($(this).attr("name")=="r1+row1"){
+                $(".sec1").not(".row1").hide();
+                $(".r1row1").show();
+}
+if($(this).attr("name")=="r1+row2"){
+                $(".sec2").not(".row2").hide();
+                $(".r1row2").show();
+                $(".r1sec1").hide();
+                $(".r1sec2").show();
+}
+if($(this).attr("name")=="r1-row1"){
+                $(".r1row1").hide();
+                $(".r1sec0").show();
+            }
+if($(this).attr("name")=="r1+row3"){
+                $(".sec3").not(".row3").hide();
+                $(".r1row3").show();
+                $(".r1sec2").hide();
+                $(".r1sec3").show();
+}
+if($(this).attr("name")=="r1-row2"){
+                $(".r1row2").hide();
+                $(".r1sec1").show();
+            }
+if($(this).attr("name")=="r1+row4"){
+                $(".sec4").not(".row4").hide();
+                $(".r1row4").show();
+                $(".r1sec3").hide();
+                $(".r1sec4").show();
+}
+if($(this).attr("name")=="r1-row3"){
+                $(".r1row3").hide();
+                $(".r1sec2").show();
+            }
+if($(this).attr("name")=="r1-row4"){
+                $(".r1row4").hide();
+                $(".r1sec3").show();
+            }
+if($(this).attr("name")=="r2+row1"){
+                $(".sec1").not(".row1").hide();
+                $(".r2row1").show();
+}
+if($(this).attr("name")=="r2+row2"){
+                $(".sec2").not(".row2").hide();
+                $(".r2row2").show();
+                $(".r2sec1").hide();
+                $(".r2sec2").show();
+}
+if($(this).attr("name")=="r2-row1"){
+                $(".r2row1").hide();
+                $(".r2sec0").show();
+            }
+if($(this).attr("name")=="r2+row3"){
+                $(".sec3").not(".row3").hide();
+                $(".r2row3").show();
+                $(".r2sec2").hide();
+                $(".r2sec3").show();
+}
+if($(this).attr("name")=="r2-row2"){
+                $(".r2row2").hide();
+                $(".r2sec1").show();
+            }
+if($(this).attr("name")=="r2+row4"){
+                $(".sec4").not(".row4").hide();
+                $(".r2row4").show();
+                $(".r2sec3").hide();
+                $(".r2sec4").show();
+}
+if($(this).attr("name")=="r2-row3"){
+                $(".r2row3").hide();
+                $(".r2sec2").show();
+            }
+if($(this).attr("name")=="r2-row4"){
+                $(".r2row4").hide();
+                $(".r2sec3").show();
+            }
+if($(this).attr("name")=="mdr_+row1"){
+                $(".sec1").not(".row1").hide();
+                $(".mdr_row1").show();
+}
+if($(this).attr("name")=="mdr_+row2"){
+                $(".sec2").not(".row2").hide();
+                $(".mdr_row2").show();
+                $(".mdr_sec1").hide();
+                $(".mdr_sec2").show();
+}
+if($(this).attr("name")=="mdr_-row1"){
+                $(".mdr_row1").hide();
+                $(".mdr_sec0").show();
+            }
+if($(this).attr("name")=="mdr_+row3"){
+                $(".sec3").not(".row3").hide();
+                $(".mdr_row3").show();
+                $(".mdr_sec2").hide();
+                $(".mdr_sec3").show();
+}
+if($(this).attr("name")=="mdr_-row2"){
+                $(".mdr_row2").hide();
+                $(".mdr_sec1").show();
+            }
+if($(this).attr("name")=="mdr_+row4"){
+                $(".sec4").not(".row4").hide();
+                $(".mdr_row4").show();
+                $(".mdr_sec3").hide();
+                $(".mdr_sec4").show();
+}
+if($(this).attr("name")=="mdr_-row3"){
+                $(".mdr_row3").hide();
+                $(".mdr_sec2").show();
+            }
+if($(this).attr("name")=="mdr_-row4"){
+                $(".mdr_row4").hide();
+                $(".mdr_sec3").show();
+            }

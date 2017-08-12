@@ -1,6 +1,6 @@
 <form id="edit-profile" class="form-horizontal" action="app.php" method="post">
 
-	<h2 style="background-color:#e1f408; text-align:center; color:#000000">Reveiwed Applications & Pending Samples</h2>
+	<h2 style="background-color:#e1f408; text-align:center; color:#000000">Reviewed Applications & Pending Samples</h2>
 	<hr style=" border: 1px solid #cbe509;" />
 
 	<table class="table table-striped table-bordered">

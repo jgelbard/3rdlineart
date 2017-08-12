@@ -119,9 +119,9 @@ for($i=0; $i<10; $i++) {
     <td><form action=\"#\">
         <div class=\"box$drug\">
     <input type=\"button\" name=\"row$drug\" class=\"btn btn-success\" value=\"+\" />";
-    if ($i > ($numvisrows + 1))
-        echo "<input type=\"button\" name=\"row$drug_2\" class=\"btn btn-danger\" value=\"-\" />";
-    echo "
+            if ($i > ($numvisrows + 1))
+                echo "<input type=\"button\" name=\"row$drug_2\" class=\"btn btn-danger\" value=\"-\" />";
+            echo "
         </div>
     </form></td>";
     $visrow += 1;

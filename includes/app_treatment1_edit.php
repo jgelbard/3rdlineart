@@ -109,7 +109,7 @@ $client_name = $firstname.' '.$lastname;
 //get age or calc age
 if(isset($_GET['xx']) and $_GET['XX'] != ''){ 
 	$age= $_GET['xx'];
-    echo "GOT AGE $age";
+//    echo "GOT AGE $age";
 }
 else {
 	function CalcAge($dob) 
@@ -172,7 +172,7 @@ echo '
 								$(".row6").not(".row5").hide();
 								$(".box1").show();
 							}
-			
+							
 							if($(this).attr("name")=="row7"){
 								$(".box2").not(".row7").hide();
 								$(".row8").not(".row7").hide();
@@ -192,7 +192,7 @@ echo '
 								$(".box4").not(".row9").hide();
 								$(".row9").show();
 							}
-			
+							
 							if($(this).attr("name")=="endline"){           
 								$(".box1").not(".endline").hide();
 								$(".box2").not(".endline").hide();
@@ -214,30 +214,30 @@ echo '
 
 	<div class="form-actions">
 		<div class="span3">
-			<a class="btn" href="app.php?back&back_3&part_2<?php echo '&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'' ?>" style="padding:10px; font-size:180%">Back</a>           
+			<a class="btn" href="app.php?back_3&part_2<?php echo '&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'' ?>" style="padding:10px; font-size:180%">Back</a>           
 		</div> 
-    <div class="span3">
-         <?php include ('includes/app_edit_menu.php'); ?>
-    </div>
-    <div>
 		<div class="span3">
-			<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="update_treatment1">Next</button> 
+			<?php include ('includes/app_edit_menu.php'); ?>
 		</div>
-	</div>
+		<div>
+			<div class="span3">
+				<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="update_treatment1">Next</button> 
+			</div>
+		</div>
 
-</form>
-<script type="text/javascript" charset="utf-8">   
+	</form>
+	<script type="text/javascript" charset="utf-8">   
 
-<?php
-    $dp = 7;
-    for($i=1; $i<10; $i++) {
-        $dp2 = $dp + 1;
-        echo "
-	function updatedate$i(){ 
-		datepicker = document.getElementById(\"datepicker$dp\").value;         
-		document.getElementById(\"datepicker$dp2\").value = datepicker;  
-	}";
-    $dp += 2;
-    }
-?>
-</script>
+		<?php
+		$dp = 7;
+		for($i=1; $i<10; $i++) {
+			$dp2 = $dp + 1;
+			echo "
+			function updatedate$i(){ 
+				datepicker = document.getElementById(\"datepicker$dp\").value;         
+				document.getElementById(\"datepicker$dp2\").value = datepicker;  
+			}";
+			$dp += 2;
+		}
+		?>
+	</script>

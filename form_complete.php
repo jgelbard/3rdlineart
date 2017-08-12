@@ -12,23 +12,9 @@ $lastname =$row_pat['lastname'];
 $gender =$row_pat['gender'];
 $dob =$row_pat['dob'];
 $vl_sample_id =$row_pat['vl_sample_id'];
-/*
-//
-// //calculating age of patient 
-//function GetAge($dob) 
-//{ 
-//        $dob=explode("/",$dob); 
-//        $curMonth = date("m");
-//        $curDay = date("j");
-//        $curYear = date("Y");
-//        $age = $curYear - $dob[0]; 
-//        if($curMonth<$dob[1] || ($curMonth==$dob[1] && $curDay<$dob[2])) 
-//                $age--; 
-//        return $age; 
-//}
-*/
 
-     //calculating age of patient 
+
+//calculating age of patient 
 function GetAge($dob) 
 { 
   $dob=explode("/",$dob); 
@@ -241,7 +227,6 @@ include ('includes/app_edit_menu.php');
   <table style="width:100%;border-color:#f5f0f0" border="0" cellpadding="4px">
     <tr>
       <td><h4>First Name : </h4> 
-
       </td>
       <td>
        <p style="text-align:center"><strong><?php echo  $firstname; ?></strong></p>
@@ -249,9 +234,7 @@ include ('includes/app_edit_menu.php');
      <td><h4>Surname :</h4> 									
      </td>    
      <td>       
-
       <p style="text-align:center"><strong><?php echo  $lastname; ?></strong></p>
-
     </td>    
   </tr> 
   <tr>
@@ -260,13 +243,11 @@ include ('includes/app_edit_menu.php');
    </td>
    <td>
     <p style="text-align:center"><strong><?php echo   $art_id_num; ?></strong></p>     
-
   </td>    
   <td>
     <h4>Gender :</h4>
   </td>    
   <td>
-
     <p><?php echo '<p style="text-align:center"><strong>'. $gender. '</strong></p>'; ?></p>
   </td>    
 </tr> 
@@ -289,7 +270,6 @@ include ('includes/app_edit_menu.php');
 <h3 style="background-color:#111; text-align:center; color:#ffffff">Current Clinic Status and history</h3>
 <fieldset>
   <table style="width:100%; border-color:#f5f0f0; border:0px;" border="1">
-
     <tr>
       <td>
         <h4>WHO stage at start of Treatment :</h4> 
@@ -352,12 +332,11 @@ include ('includes/app_edit_menu.php');
     if ($art_interrup=='Yes'){
 
       $art_interruption = mysqli_query($bd, "SELECT * FROM art_interruption where patient_id='$pat_id' "); 
-      $row_art_interruption=mysqli_fetch_array($art_interruption);
+      $row_art_interruption = mysqli_fetch_array($art_interruption);
+      $interupt_reason = $row_art_interruption['reason'];
+      $interup_date = $row_art_interruption['date'];
 
-      $interupt_reason =$row_art_interruption['reason'];
-      $interup_date =$row_art_interruption['date'];
-
-      echo   ' <table>
+      echo ' <table>
       <tr>
         <td>if Yes, Date:</td>
         <td>    <p style="text-align:center"><strong>'.$interup_date.'</strong></p></td>
@@ -373,12 +352,10 @@ include ('includes/app_edit_menu.php');
   }
   else { echo '
     <table>
-
       <tr>
         <td></td>
       </tr>
     </table>';
-
   }
   ?>
 
@@ -393,58 +370,52 @@ include ('includes/app_edit_menu.php');
   <td>
     <table>
       <tr>
-
         <td> 
-
         </td>
       </tr>
     </table>
   </td>    
-
 </tr> 
 <tr>
 
- <td> </td>
+<td> </td>
  <td> 
    <p style="text-align:center"><strong> Peripheral Neuropathy : <?php echo '<u>'. $PeripheralNeuropathy. '</u>'; ?></strong></p>
  </td>
 </tr>
 <tr>
 
- <td> </td>
+<td> </td>
  <td> 
   <p style="text-align:center"><strong>Jaundice : <?php echo '<u>'. $Jaundice. '</u>'; ?></strong></p>
 </td>
 </tr>
 <tr>
 
- <td> </td>
+<td> </td>
  <td> 
   <p style="text-align:center"><strong>Lipodystrophy : <?php echo '<u>'. $Lipodystrophy. '</u>'; ?></strong></p>
-
 </td>
 </tr>
 <tr>
 
- <td> </td>
+<td> </td>
  <td> 
   <p style="text-align:center"><strong>Kidney Failure : <?php echo '<u>'. $KidneyFailure. '</u>'; ?></strong></p>
 </td>
 </tr>
-<tr>
 
+<tr>
  <td> </td>
  <td> 
   <p style="text-align:center"><strong>Psychosis : <?php echo '<u>'. $Psychosis. '</u>'; ?></strong></p>
-
 </td>
 </tr>
-<tr>
 
+<tr>
  <td> </td>
  <td> 
   <p style="text-align:center"><strong>Gynecomastia : <?php echo '<u>'. $Gynecomastia. '</u>'; ?></strong></p>
-
 </td>
 </tr>
 <tr>
@@ -452,7 +423,6 @@ include ('includes/app_edit_menu.php');
  <td> </td>
  <td> 
   <p style="text-align:center"><strong>Anemia : <?php echo '<u>'. $Anemia. '</u>'; ?></strong></p>
-
 </td>
 </tr> 
 <tr>
@@ -808,7 +778,7 @@ echo '
 
     //tb_treat_regimen1
 
-      $tb_treat_regimen1=mysqli_query($bd, "SELECT * FROM tb_treat_regimen1 where pat_id='$pat_id' "); 
+      $tb_treat_regimen1=mysqli_query($bd, "SELECT * FROM tb_treat_regimen1 where pat_id = '$pat_id' and start_date != ''"); 
       while ( $row_tb_treat_regimen1=mysqli_fetch_array($tb_treat_regimen1)){
 
         $reg_name =$row_tb_treat_regimen1['reg_name'];
@@ -836,8 +806,8 @@ echo '
        ';
      }
 
-//tb_treat_regimen2
-     $tb_treat_regimen2=mysqli_query($bd, "SELECT * FROM tb_treat_regimen2 where pat_id='$pat_id' "); 
+// tb_treat_regimen2
+     $tb_treat_regimen2=mysqli_query($bd, "SELECT * FROM tb_treat_regimen2 where pat_id='$pat_id' and start_date != ''"); 
      while ( $row_tb_treat_regimen2=mysqli_fetch_array($tb_treat_regimen2)){
 
       $reg_name =$row_tb_treat_regimen2['reg_name'];
@@ -858,8 +828,8 @@ echo '
       ';
     }
 
-//tb_treat_MDR
-    $tb_treat_mdr=mysqli_query($bd, "SELECT * FROM tb_treat_mdr where pat_id='$pat_id' "); 
+// tb_treat_MDR
+    $tb_treat_mdr=mysqli_query($bd, "SELECT * FROM tb_treat_mdr where pat_id='$pat_id' and start_date != ''"); 
     while ( $row_tb_treat_mdr=mysqli_fetch_array($tb_treat_mdr)){
 
       $reg_name =$row_tb_treat_mdr['reg_name'];
@@ -940,7 +910,6 @@ echo '
                         <td>    
                           <p style="text-align:center"><strong><?php echo  $pill_count3; ?> %</strong></p> 
                           <?php /*echo '<p style="text-align:center"><strong>'. $pill_count3. '%</strong></p>';*/ ?> </td>
-
                         </tr> 
 
                       </tbody>

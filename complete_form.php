@@ -18,6 +18,7 @@ $facility = $_SESSION['art_clinic'];
 $now = time(); 
 $expire= $_SESSION['expire'];}
 
+include 'includes/email_templates.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
