@@ -1,6 +1,6 @@
-<script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+        // $('#edit-profile').parsley(); 
 		$('input[type="radio"]').click(function(){
 			if($(this).attr("value")=="intr_Yes"){
 				$(".box").not(".yes").hide();
@@ -19,15 +19,11 @@
 	$().ready(function() {
 		// validate the comment form when it is submitted
 		$("#commentForm").validate();
-
 		$("#search_art").validate({
-
 			rules: {
-				
 				id: {
 					required: true,					
 				},
-
 			},
 			messages: {
 				id: {
@@ -88,10 +84,9 @@
 			}
 		});
 
-
 	});
-</script>
 
+</script>
 
 <?php
 
@@ -145,12 +140,9 @@ while ($row_clinic_status=mysqli_fetch_array($current_clinical_status)){
 		$row_ol_6months_details=mysqli_fetch_array($ol_6months_details);
 		$ol_6months_dign =$row_ol_6months_details['ol_6months_dign'];
 		$ol_6months_date =$row_ol_6months_details['ol_6months_date'];
-
-
 	}
-
-
 }
+
 //side effects 
 $patient_side_effects=mysqli_query( $bd,"SELECT * FROM patient_side_effects where patient_id='$pat_id' "); 
 $row_patient_side_effects=mysqli_fetch_array($patient_side_effects);
@@ -230,17 +222,7 @@ echo '
 			<tr><td> <br /></td></tr>
 		</table>
 	</fieldset>
-<!--<script type="text/javascript">
-      jQuery(document).ready(function ($) {
-    $('input[name="art_interrup"]').on('click', function () {
-        if ($(this).val() === 'Yes') {
-            $('#datepicker,#art_interupt_reason').prop("disabled", false);
-        } else {
-            $('#datepicker,#art_interupt_reason').prop("disabled", "disabled");
-        }
-    });
-});
-</script>-->
+
 <fieldset>
 	<h2 style="background-color:#f8f7f7; text-align:center">ART Interruptions</h2>
 	<table style="width:100%" border="0" cellspacing="10px">
@@ -344,8 +326,8 @@ echo '
 						<td></td>
 						<td> 
 							<label class=\"control-label\">$value</label>
-							<div style=\"width:110px; float:left\" class=\"radio_sty\">                                          
-								<input type=\"radio\" id=\"$key-yes\" name=\"$key\" value=\"Yes\" $yeschecked>
+							<div style=\"width:110px; float:left\" class=\"radio_sty\">
+								<input type=\"radio\" id=\"$key-yes\" name=\"$key\" value=\"Yes\" $yeschecked data-parsley-type=\"radio\" required>
 								<label for=\"$key-yes\">Yes</label>    
 								<div class=\"check\"></div>
 							</div>

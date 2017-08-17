@@ -1,5 +1,4 @@
 <form id="edit-profile" class="form-horizontal" action="app.php" method="post">
-
 	<a href="dash.php?create_facility" class="btn btn-small btn-success" style="padding:5px; font-size:120%; float:right"> Create New </a>
 	<h2 style="background-color:#fff; text-align:center; color:#000000">Registered Facilities</h2>
 	<hr style=" border: 1px solid #cbe509;" />

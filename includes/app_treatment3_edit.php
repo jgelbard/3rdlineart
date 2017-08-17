@@ -60,14 +60,22 @@ echo '<form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$
 <input type="hidden" name="pat_id" value="<?php echo $pat_id; ?>" style="background-color:#fff; border:none; height:20px; color:#fff; position:relative; top:-300px;"/>
 <input type="hidden" name="dob" value="<?php echo $dob; ?>" style="background-color:#fff; border:none; height:20px; color:#fff; position:relative; top:-300px;" /> 
 
+    
 <script type="text/javascript">
+ 
 	$(document).ready(function(){
+        // $("#edit-profile").parsley();
 		if ($('input[id="tb_treat-yes"]').attr("checked") == 'checked') {
 			$(".box").not(".yes").hide();
 			$(".yes").show();
 		} else
 		$(".yes").hide();
-
+        $( "input[type=text][name^=tbstart_date][value!='']").parents("tr" ).show();
+        <?php
+        echo "$( \"input[type=checkbox][name=regimen1_checked]\" ).prop('checked',".(count($start_date1) > 0 ? 'true':'false').");";
+        echo "$( \"input[type=checkbox][name=regimen2_checked]\" ).prop('checked',".(count($start_date2) > 0 ? 'true':'false').");"; 
+        echo "$( \"input[type=checkbox][name=mdr_checked]\" ).prop('checked',".(count($start_date_mdr) > 0 ? 'true':'false').");";
+        ?>
 		$('input[type="radio"]').click(function(){
 			if($(this).attr("value")=="Yes"){
 				$(".box").not(".yes").hide();
@@ -170,7 +178,7 @@ echo '<form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$
 				<script>
 					<?php
 					for($i=21; $i<=29; $i+=2) {
-						$i_1 = $i+1;
+						$i1 = $i+1;
 						echo "
 						$( function() {
 							$( \"#datepicker$i\" ).datepicker({
@@ -178,14 +186,14 @@ echo '<form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$
 								maxDate: '0', 
 								beforeShow : function()
 								{
-									jQuery( this ).datepicker('option','maxDate', jQuery('#datepicker$i_1').val() );
+									jQuery( this ).datepicker('option','maxDate', jQuery('#datepicker$i1').val() );
 								},
 								changeYear: true
 							});
 						} );
 
 						$( function() {
-							$( \"#datepicker$i_1\" ).datepicker({
+							$( \"#datepicker$i1\" ).datepicker({
 								changeMonth: true,
 								changeYear: true
 							});
@@ -243,7 +251,7 @@ for($regimen=1; $regimen<=3; $regimen++) {
         $class_sec = $regrow==0 ? "$regnamecl"."butts" : $regnamecl."butts$regrow"; // sec$cols
         echo "\n<tr class=\"$class\">
         <td style=\"background-color:$color; color:#000; min-width:110px\"><h4>Regimen. $regimen </h4></td>
-        <td><input type=\"text\" name=\"regregname$cols\" value=\"$reg_name\" style=\"width:150px\" id=\"td_treatment21\" /></td>
+        <td><input type=\"text\" name=\"reg$regname$cols\" value=\"$reg_name\" style=\"width:150px\" id=\"tb_treatment$regname$cols\" /></td>
         <td> <input type=\"text\" name=\"tbstart_date$regname$cols\" value=\"$start_date\" id=\"datepicker$datepicker\" /> </td>
         <td> <input type=\"text\" name=\"tbstop_date$regname$cols\" value=\"$stop_date\" id=\"datepicker$datepicker2\"/> </td>
         <td><textarea name=\"reason_o_changes$regname$cols\" id=\"reason_o_changes$regname$cols\">$reason</textarea></td>

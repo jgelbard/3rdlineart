@@ -1,24 +1,20 @@
-
 <script>
-	$().ready(function() {
+
+$().ready(function() {
+    // $('#edit-profile').parsley();  // and in input elements, add  <required data-parsley-type="integer"> or whatever
 		// validate the comment form when it is submitted
+       
 		$("#commentForm").validate();
-
 		$("#search_art").validate({
-
 			rules: {
-				
 				id: {
-					required: true,
-					
+					required: true,					
 				},
-
 			},
 			messages: {
 				id: {
 					required: "",
 				},
-				
 			}
 		});
 
@@ -29,40 +25,13 @@
 				lastname: "required",
 
 				datepicker16: {
-					required: true,
-					
-				},
-				art_drug2: {
-					required: true,
-					
-				},
-				art_drug3: {
-					required: true,
-					
-				},
-				art_drug4: {
-					required: true,
-					
-				},
-				art_drug5: {
-					required: true,
-					
-				},
-				curr_who_stage: {
-					required: true,
-					
+					required: true,			
 				},
 				weight: {
 					required: true,
 					minlength: 2,
 					maxlength: 6
 				},
-				height: {
-					required: true,
-					minlength: 3,
-					maxlength: 3
-				},
-
 			},
 			messages: {
 				firstname: "Please enter Client's firstname",
@@ -71,40 +40,21 @@
 				datepicker16: {
 					required: "Please Select ART drug"
 				},                 
-				art_drug2: {
-					required: "Please Select ART drug"
-				},              
-				art_drug3: {
-					required: "Please Select ART drug"
-				},
-				art_drug4: {
-					required: "Please Select ART drug"
-				},
-				art_drug5: {
-					required: "Please Select ART drug"
-				},
-				curr_who_stage: {
-					required: "Please Select Current WHO stage"
-				},
 				weight: {
 					required: "Curr Weight",
 					minlength: "Under weight",
 					maxlength: "Over weight"
 					
 				}, 
-				height: {
-					required: "Curr Height",
-					minlength: "Under Height",
-					maxlength: "Over Height"
-					
-				},
-
 			}
 		});
-
-
+       
+        // deal with the form +/- buttons
+        $( "tr:gt(5)" ).hide();  // of course this needs to change if more than 5 rows are shown by default
+        $( "input[type=number][name^=cd4][value!='']").parents("tr").show();
 	});
 </script>
+
 <h2 style="background-color:#f8f7f7; text-align:center">CD4 &VL Monitoring</h2>
 <!--   <hr style=" border: 2px solid #1c952f;" />  --> 
 <?php
@@ -148,7 +98,7 @@ echo '
 	<input type="hidden" name="pat_id" value="<?php echo $pat_id; ?>" />
 	<input type="hidden" name="dob" value="<?php echo $dob; ?>"  /> 
 
-	<script type="text/javascript">
+    <script type="text/javascript">
 		$( function() {
 			$( "#datepicker16" ).datepicker({
 				changeMonth: true,
@@ -163,10 +113,10 @@ echo '
 
 		<?php
 		for ($i=16; $i<24; $i++) {
-			$i_1=$i+1;
+			$i1=$i+1;
 			echo "
 			$( function() {
-				$( \"#datepicker$i_1\" ).datepicker({
+				$( \"#datepicker$i1\" ).datepicker({
 					changeMonth: true,
 					maxDate: '0', 
 					beforeShow : function()
@@ -176,36 +126,9 @@ echo '
 					changeYear: true
 				});
 			} );";
-
 		}
-		?>
-
-		$(document).ready(function(){
-            $( "tr:gt(5)" ).hide();  // of course this needs to change if more than 5 ros are filled...
-            $( "input[type=number][name^=cd4][value!='']").parents("tr" ).show();
-            // $( "input[type=text][name^=cd4][:!empty]").parents("tr").show();
-            // $( ":empty" ).hide();
-            // $("tr td :input.hasDatepicker").color('red');
-			$('input[type="button"]').click(function(){
-                <?php
-                $i=1;
-                for($row=6; $row<=10; $row++) {
-                    $i1 = $i + 1;
-                    echo "if($(this).attr(\"name\")==\"row+$row\") {
-                        $(\".box$row\").show();
-                        $(\".butts$i\").hide();
-                        $(\".butts$i1\").show();
-                    }
-                    if($(this).attr(\"name\")==\"row-$row\") {
-                        $(\".box$row\").hide();
-                        $(\".butts$i\").show();
-                    }";
-                    $i++;
-                }
-                ?>
-			});
-		});
-	</script>
+        ?>
+ 	</script>
 
 	<fieldset>
 		<table style="width:90%" border="0">
@@ -237,8 +160,8 @@ echo '
  					echo "
 					<tr class=\"$rowclass\">
 						<td> <input type=\"text\" name=\"monito_date$i1\" id=\"datepicker$date_i\" value=\"$dateval\"/> </td>
-						<td> <input type=\"number\" name=\"cd4$i1\" style=\"width:120px\" value=\"$cd4val\"/> </td>
-						<td> <input type=\"number\" name=\"vl$i1\" style=\"width:120px\" value=\"$vlval\"/> </td>
+						<td> <input type=\"number\" name=\"cd4$i1\" style=\"width:120px\" value=\"$cd4val\""."/> </td>
+						<td> <input type=\"number\" name=\"vl$i1\" style=\"width:120px\" value=\"$vlval\""."/> </td>
 						<td> <textarea name=\"reason_4_detectable_vl$i1\">$reasonval</textarea> </td>
 						<td> <input type=\"number\" name=\"weight$i1\" value=\"$weightval\"/> </td>";
 
@@ -260,6 +183,28 @@ echo '
 					$i++;
 				}
 ?>
+<script type="text/javascript">
+     $('input[type="button"]').click(function(){
+            alert('click!');
+<?php
+            $i=1;
+            for($row=6; $row<=10; $row++) {
+                $i1 = $i + 1;
+                echo "if($(this).attr(\"name\")==\"row+$row\") {
+                        $(\".box$row\").show();
+                        $(\".butts$i\").hide();
+                        $(\".butts$i1\").show();
+                    }
+                    if($(this).attr(\"name\")==\"row-$row\") {
+                        $(\".box$row\").hide();
+                        $(\".butts$i\").show();
+                    }";
+                $i++;
+            }
+?>
+        });
+</script>
+
 						</tbody>
 					</table>
 				</fieldset>

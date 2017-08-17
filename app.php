@@ -3,7 +3,6 @@ session_start();
 global $now,$expire,$user_id, $clinicianID;
 if (isset($_SESSION['identification'])){
 
-	
 	global  $fullname;
 	$fname= $_SESSION['username'];
 	/* $lname= $_SESSION['lname'];*/
@@ -18,8 +17,7 @@ if (isset($_SESSION['identification'])){
 
 	$now = time(); 
 	$expire= $_SESSION['expire'];}
-
-	?>
+?>
 	<!DOCTYPE html>
 	<html lang="en">
 
@@ -27,6 +25,7 @@ if (isset($_SESSION['identification'])){
 		<meta charset="utf-8">
 		<title>Application Form</title>
 		<script language=JavaScript>
+
 //Disable right click script
 var message = "";
 ///////////////////////////////////
@@ -55,10 +54,7 @@ if (document.layers) {
 
 document.oncontextmenu = new Function("return false")
 </script>  
-<?php 
-
-include ('includes/head.php');
-
+<?php include ('includes/head.php');
 ?>
 
 <style>
@@ -127,10 +123,10 @@ include ('includes/head.php');
 
 	.radio_sty label{
 		display: block;
-		position: relative;
+		position: absolute;
 		font-weight: 300;
 		font-size: 1.25em;
-		padding: 25px 25px 25px 80px;
+        padding: 25px 25px 25px 80px;
 		margin: 10px auto;
 		height: 30px;
 		z-index: 9;
@@ -191,27 +187,29 @@ include ('includes/head.php');
 		font-family: 'Lato';
 		font-style: normal;
 		font-weight: 400;
-
 	}
 	/* latin */
 	@font-face {
 		font-family: 'Lato';
 		font-style: normal;
 		font-weight: 400;
-
-
 	}
+
 	.control-label {
-		position:relative; top:30px;
+      position:relative; top:30px;
 		font-family: 'Lato', sans-serif;
 		font-size:120%;
-
 	}
 
 	form .error, .error {
-
 		color: #ff0000;
 	}
+
+input.parsley-error {
+  color: #B94A48 !important;
+    background-color: #F2DEDE !important;
+    border: 1px solid #EED3D7 !important;
+}
 
 </style>
 
@@ -503,8 +501,7 @@ include ('includes/head.php');
 <!-- Le javascript
 	================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="js/jquery-1.7.2.min.js"></script>
-
+	<!-- <script src="js/jquery-1.7.2.min.js"></script> -->
 	<script src="js/bootstrap.js"></script>
 	<script src="js/base.js"></script>
 	<SCRIPT language="javascript">
@@ -533,11 +530,11 @@ include ('includes/head.php');
 		});
 
 	</script>
-	<script src="js/jquery-1.12.4.js"></script><!--//jquery for clinic status datepicker-->
+	<!-- <script src="js/jquery-1.12.4.js"></script> --> <!--//jquery for clinic status datepicker-->
 	<!-- <script src="validation/lib/jquery.js"></script> -->
-	<script src="js/jquery.min.js"></script> <!--/jquerry for patientdetails datepicker-->
-	<script src="dist/jquery.date-dropdowns.js"></script>
-	<script src="js/jquery-ui.js"></script><!--//jquery for clinic status datepicker-->
+	<!-- <script src="js/jquery.min.js"></script> --> <!--/jquerry for patientdetails datepicker-->
+	<!-- <script src="dist/jquery.date-dropdowns.js"> </script> -->
+	<!-- <script src="js/jquery-ui.js"></script> --> <!--//jquery for clinic status datepicker-->
 	<script>
 		$( function() {
 			$( "#datepicker" ).datepicker({
@@ -556,7 +553,7 @@ include ('includes/head.php');
 			});
 		} );
 	</script>
-	<script src="validation/dist/jquery.validate.js"></script>
+	<!-- <script src="validation/dist/jquery.validate.js"></script> -->
 </body>
 
 </html>

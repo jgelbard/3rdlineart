@@ -34,6 +34,7 @@ if (isset($_SESSION['identification'])){
 </style>
 </head>
 <body>
+
 	<?php
 	include ('../includes/nav_main.php');
 	include ('includes/nav_sub.php');
@@ -53,16 +54,15 @@ if (isset($_SESSION['identification'])){
 
 							<div class="widget-content">
 								
-								<div class="pricing-plans plans-3">
+								<div> <!-- class="pricing-plans plans-3"> -->
 									<?php
-        include ('../includes/email_templates.php');
-
+                                    include ('../includes/email_templates.php');
 									include ('includes/delete_user.php');                             
 									include ('includes/delete_facility_drug_affliates.php');
 									include ('includes/insert_reviewer.php'); 
 									include ('includes/insert_clinician.php'); 
 									include ('includes/insert_lab_user.php'); 
-									include ('includes/insert_sec.php'); 
+									include ('includes/insert_sec.php');
 									include ('includes/insert_drug.php'); 
 									include ('includes/insert_facility.php'); 
 									include ('includes/insert_affliates.php'); 
@@ -73,11 +73,12 @@ if (isset($_SESSION['identification'])){
 										echo '<div class="span11" style="padding:200px 50px">
 										<h1 style="font-size:1000%; color:#efeded">Admin Page</h1>
 									</div>
-									';    
+									';
 								}
 
 								echo '<div class="span11">';
-								if(isset($_GET['man_facility'])){ 
+  
+								if(isset($_GET['man_facility'])){
 									include ('includes/admin_facilities.php');   
 								}
 

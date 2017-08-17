@@ -1,6 +1,6 @@
-<script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+        // $('#edit-profile').parsley();        
 		$('input[type="radio"]').click(function(){
 			if($(this).attr("value")=="intr_Yes"){
 				$(".box").not(".yes").hide();
@@ -14,9 +14,9 @@
 	});
 </script>
 <script>
-
 	$().ready(function() {
 		// validate the comment form when it is submitted
+       
 		$("#commentForm").validate();
 		$("#search_art").validate({
 			rules: {	
@@ -26,7 +26,7 @@
 			},
 			messages: {
 				id: {
-					required: "",
+					required: "need this!",
 				},
 			}
 		});
@@ -78,9 +78,9 @@
 				},
 			}
 		});
+       
 	});
 </script>
-
 
 <?php
 global $pat_id;
@@ -230,14 +230,14 @@ echo '
 								<td></td>
 								<td>
 									<label class=\"control-label\">$value</label>
-									<div style=\"width:110px; float:left\" class=\"radio_sty\">
-										<input type=\"radio\" id=\"$key-yes\" name=\"$key\" value=\"Yes\" required>
+									<div style=\"width:120px; float:left\" class=\"radio_sty\">
+										<input type=\"radio\" id=\"$key-yes\" name=\"$key\" value=\"Yes\" required >
 										<label for=\"$key-yes\">Yes</label>
 									    <div class=\"check\">
 										</div>
 									</div>
 									<div style=\"width:100px; float:left\" class=\"radio_sty\">
-										<input type=\"radio\" id=\"$key-no\" name=\"$key\" value=\"No\" >
+										<input type=\"radio\" id=\"$key-no\" name=\"$key\" value=\"No\"">
 										<label for=\"$key-no\">No</label>
 										<div class=\"check\">
 										</div>

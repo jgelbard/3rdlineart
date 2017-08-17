@@ -12,9 +12,9 @@ function phpmailer($to, $subject, $body) {
     $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
 
-    // PUT THE CREDENTIALS HERE - ultimately they will come from the databse !!!
-    $mail->Username = '';                           // SMTP username
-    $mail->Password = '';                           // SMTP password
+    // PUT THE CREDENTIALS HERE - ultimately they will come from the database !!!
+    $mail->Username = '3rdlineartmalawi';                           // SMTP username
+    $mail->Password = 'g3n0typ3';                           // SMTP password
 
     $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 587;                                    // TCP port to connect to
@@ -212,7 +212,7 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
 		break;
 
 	case 'send_user_email':
-        // echo 'send_user_email: '.$to.', username: '.$username.', key: '.$key;
+        echo 'send_user_email: '.$to.', username: '.$username.', key: '.$key;
 		$subject = "New Member";
 		$message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<html xmlns="http://www.w3.org/1999/xhtml">
@@ -224,7 +224,7 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
 		<body>
 			<p>Welcome '.$fullname.'!</p>
 			<p>You have been registered as a '.$role.' in the 3<sup>rd</sup> Line ART Expert Committee Malawi. Follow the link to complete your registration:</p>
-			<a href="http://localhost/3rdlineart6/admin/new_user.php?'.encrypt ($username, $key).'"></a>
+			<a href="http://localhost/3rdlineart6/admin/new_user.php?'.encrypt ($username, $key).'">Click Here</a>
 			<p>&nbsp;</p>
 			<p>Regards</p>
 			<p>Admin</p>
@@ -232,9 +232,9 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
 		</html>
 		';
         // cc;
+        echo 'encrypt: '.encrypt ($username, $key);
 		$retval = phpmailer ($to,$subject,$message);
         echo 'phpmailer returned: '.$retval;
-        exit();
 		break;
 
 	case 'insert_sample':

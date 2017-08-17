@@ -1,4 +1,3 @@
-
 <h2 style="background-color:#f8f7f7; text-align:center"> ART Adherence</h2>
 
 <?php 
@@ -32,48 +31,47 @@ $client_name = $firstname.' '.$lastname;
 
 
 //adherence
-$adherence=mysqli_query( $bd,"SELECT * FROM adherence where pat_id='$pat_id' "); 
-$row_adherence=mysqli_fetch_array($adherence);
+$adherence = mysqli_query( $bd,"SELECT * FROM adherence where pat_id='$pat_id' "); 
+$row_adherence = mysqli_fetch_array($adherence);
 
-$scheduled_visit_date1 =$row_adherence['scheduled_visit_date1'];
-$actual_visit_date1 =$row_adherence['actual_visit_date1'];
-$pill_count1 =$row_adherence['pill_count1'];
+$scheduled_visit_date1 = $row_adherence['scheduled_visit_date1'];
+$actual_visit_date1 = $row_adherence['actual_visit_date1'];
+$pill_count1 = $row_adherence['pill_count1'];
 
-$scheduled_visit_date2 =$row_adherence['scheduled_visit_date2'];
-$actual_visit_date2 =$row_adherence['actual_visit_date2'];
-$pill_count2 =$row_adherence['pill_count2'];
+$scheduled_visit_date2 = $row_adherence['scheduled_visit_date2'];
+$actual_visit_date2 = $row_adherence['actual_visit_date2'];
+$pill_count2 = $row_adherence['pill_count2'];
 
-$scheduled_visit_date3 =$row_adherence['scheduled_visit_date3'];
-$actual_visit_date3 =$row_adherence['actual_visit_date3'];
-$pill_count3 =$row_adherence['pill_count3'];
+$scheduled_visit_date3 = $row_adherence['scheduled_visit_date3'];
+$actual_visit_date3 = $row_adherence['actual_visit_date3'];
+$pill_count3 = $row_adherence['pill_count3'];
 
 
- //adherence_questions
-$adherence_questions=mysqli_query( $bd,"SELECT * FROM adherence_questions where pat_id='$pat_id' "); 
-$row_adherence_questions=mysqli_fetch_array($adherence_questions);
+//adherence_questions
+$adherence_questions = mysqli_query( $bd,"SELECT * FROM adherence_questions where pat_id='$pat_id' "); 
+$row_adherence_questions = mysqli_fetch_array($adherence_questions);
 
-$ever_forget_2_take_meds =$row_adherence_questions['ever_forget_2_take_meds'];
-$careless_taking_meds =$row_adherence_questions['careless_taking_meds'];
-$stop_taking_meds =$row_adherence_questions['stop_taking_meds'];
-$not_taken_meds =$row_adherence_questions['not_taken_meds'];
-$taken_meds_past_weekend =$row_adherence_questions['taken_meds_past_weekend'];
-$_3months_days_not_taken_meds =$row_adherence_questions['3months_days_not_taken_meds'];
-
+$ever_forget_2_take_meds = $row_adherence_questions['ever_forget_2_take_meds'];
+$careless_taking_meds = $row_adherence_questions['careless_taking_meds'];
+$stop_taking_meds = $row_adherence_questions['stop_taking_meds'];
+$not_taken_meds = $row_adherence_questions['not_taken_meds'];
+$taken_meds_past_weekend = $row_adherence_questions['taken_meds_past_weekend'];
+$_3months_days_not_taken_meds = $row_adherence_questions['3months_days_not_taken_meds'];
 
 
   //lab
 $lab=mysqli_query( $bd,"SELECT * FROM lab where pat_id='$pat_id' "); 
 $row_lab=mysqli_fetch_array($lab);
 
-$creatinine =$row_lab['creatinine'];
-$hb =$row_lab['hb'];
-$alt =$row_lab['alt'];
-$bilirubin =$row_lab['bilirubin'];
-$hepbag =$row_lab['hepbag'];
+$creatinine = $row_lab['creatinine'];
+$hb = $row_lab['hb'];
+$alt = $row_lab['alt'];
+$bilirubin = $row_lab['bilirubin'];
+$hepbag = $row_lab['hepbag'];
 
 
 echo '
-<form id="edit-profile" class="form-horizontal" action="'.$location.'?pat_id='.$pat_id.'" method="post">
+<form id="edit-profile" class="form-horizontal" action="'.$location.'?pat_id='.$pat_id.'" method="post" >
 
 	';
 	?> 
@@ -160,7 +158,11 @@ echo '
 	</script> 
 
 	<script>
+
+
 		$().ready(function() {
+            // $("#edit-profile").parsley();
+
 		// validate the comment form when it is submitted
 		$("#commentForm").validate();
 
@@ -169,16 +171,13 @@ echo '
 			rules: {
 				
 				id: {
-					required: true,
-					
-				},
-				
+					required: true,					
+				},				
 			},
 			messages: {
 				id: {
 					required: "",
-				},
-				
+				},				
 			}
 		});
 
@@ -243,6 +242,8 @@ echo '
 
 		
 	});
+*/
+	
 </script>
 <fieldset>
 	<h3>Adherence Section <i>(Patient adherence in the last 3 visits)</i></h3>
@@ -291,7 +292,7 @@ echo '
 					if (!empty ($ever_forget_2_take_meds)) {
 						if ($ever_forget_2_take_meds =='Yes') 
 							{ echo  'checked="checked"'; } 
-					} ?> required>
+					} ?> required="">
 					<label for="f-ever_forget_2_take_meds">Yes</label>
 					
 					<div class="check">
@@ -315,7 +316,7 @@ echo '
 				<div style="width:110px; float:left" class="radio_sty">
 					<input type="radio" id="f-careless_taking_meds"   name="careless_taking_meds" value="Yes" <?php 
 
-					if (!empty ($careless_taking_meds)) { if ($careless_taking_meds =='Yes') { echo  'checked="checked"';} } ?> required>
+					if (!empty ($careless_taking_meds)) { if ($careless_taking_meds =='Yes') { echo  'checked="checked"';} } ?> required="">
 					<label for="f-careless_taking_meds">Yes</label>
 					
 					<div class="check">
