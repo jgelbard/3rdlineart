@@ -255,8 +255,8 @@ for($regimen=1; $regimen<=3; $regimen++) {
         <td> <input type=\"text\" name=\"tbstart_date$regname$cols\" value=\"$start_date\" id=\"datepicker$datepicker\" /> </td>
         <td> <input type=\"text\" name=\"tbstop_date$regname$cols\" value=\"$stop_date\" id=\"datepicker$datepicker2\"/> </td>
         <td><textarea name=\"reason_o_changes$regname$cols\" id=\"reason_o_changes$regname$cols\">$reason</textarea></td>
-        <td style=\"background-color:#f7cc6d; color:#000; min-width:110px\">
 
+        <td style=\"background-color:#f7cc6d; color:#000; min-width:110px\">
         	<div class=\"$class_sec\">".
         		($regrow<4?"<input type=\"button\" class=\"btn btn-success\" name=\"$regrow1\" value=\"+\" />\n\t":"").
         		($regrow>0?"<input type=\"button\" class=\"btn btn-danger\" name=\"$regrow2\"  value=\"-\" />":"").

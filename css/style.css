@@ -124,7 +124,7 @@ textarea {
 .subnavbar .container > ul {
 	display: inline-block;
 	height: 80px;
-	padding: 60px; /* was 0 */
+	padding: 60px 0 100px; /* was 0 */
 	margin: 0;	
 }
 

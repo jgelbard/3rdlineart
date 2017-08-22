@@ -2,38 +2,31 @@
                           <!-- <hr style=" border: 2px solid #1c952f;" />-->
                                 
 <?php 
-
 global $pat_id;
 $pat_id= $_GET['pat_id'];
-/*
-echo $pat_id;
-*/
 
 global $location;
 if(isset($_POST['submit_clinicstatus'])){ 
- $location ="app.php";  
-}
-
-else {
- $location ="complete_form.php";  
+    $location ="app.php";  
+} else {
+    $location ="complete_form.php";  
 }
 
 $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
-    $row_pat=mysqli_fetch_array($patient);
-        
-        $art_id_num =$row_pat['art_id_num'];
-        $firstname =$row_pat['firstname'];
-        $lastname =$row_pat['lastname'];
-        $gender =$row_pat['gender'];
-        $dob =$row_pat['dob'];
-        $vl_sample_id =$row_pat['vl_sample_id'];
+$row_pat=mysqli_fetch_array($patient);
+
+$art_id_num =$row_pat['art_id_num'];
+$firstname =$row_pat['firstname'];
+$lastname =$row_pat['lastname'];
+$gender =$row_pat['gender'];
+$dob =$row_pat['dob'];
+$vl_sample_id =$row_pat['vl_sample_id'];
 
 $client_name = $firstname.' '.$lastname;
 
-
+echo 'action="'.$location.'?pat_id='.$pat_id.'"';
 echo '
 <form id="edit-profile" class="form-horizontal" action="'.$location.'?pat_id='.$pat_id.'" method="post">
-
 ';
 ?> 
 
@@ -93,35 +86,23 @@ echo '
     <h3>Adherence Section <i>(Patient adherence in the last 3 visits)</i></h3>
     <table style="width:100%" border="0">
                 <tbody>
-                    
-                  <tr>
-                      <td> <h4>Schedule visit date:</h4> </td>
-                    <td> <input type="text" name="scheduled_visit_date1" id="datepickersVis_Date1" required /> </td>
-                      <td> <h4>Actual visit date </h4></td>
-                    <td> <input type="text" name="actual_visit_date1" id="datepickeraVis_Date1" required /> </td>
-                      <td> <h4>Pill Count (%) </h4> </td>
-                    <td> <input type="number" name="pill_count1" style="width:80px; height:50px;" required /> </td>
-                  
-                  </tr> 
-                     <tr>
-                         <td><h4> Schedule visit date:</h4> </td>
-                    <td> <input type="text" name="scheduled_visit_date2" id="datepickersVis_Date2" required /> </td>
-                         <td><h4> Actual visit date </h4> </td>
-                    <td> <input type="text" name="actual_visit_date2" id="datepickeraVis_Date2" required/> </td>
-                         <td><h4> Pill Count (%) </h4></td>
-                    <td> <input type="number" name="pill_count2" style="width:80px; height:50px;" required/> </td>
-                  
-                  </tr> 
-                    <tr>
-                        <td> <h4>Schedule visit date: </h4></td>
-                    <td> <input type="text" name="scheduled_visit_date3" id="datepickersVis_Date3" required /> </td>
-                        <td> <h4>Actual visit date </h4></td>
-                    <td> <input type="text" name="actual_visit_date3" id="datepickeraVis_Date3"  required/> </td>
-                        <td> <h4>Pill Count (%)</h4> </td>
-                    <td> <input type="number" name="pill_count3" size="3" style="width:80px; height:50px;" required /> </td>
-                  
-                  </tr> 
-                    
+			<?php     
+			for($i=1; $i<=3; $i++) {
+				eval("\$scheduled_visit_date = !empty ( \$scheduled_visit_date$i) ? \$scheduled_visit_date$i : '';");
+				eval("\$actual_visit_date = !empty ( \$actual_visit_date$i) ? \$actual_visit_date$i : '';");
+				eval("\$pill_count = !empty ( \$pill_count$i) ? \$pill_count$i : '';");
+				echo "date is ".$scheduled_visit_date;
+        $svd = $scheduled_visit_date; // if I dont do this, the code doesn't work
+        echo "<tr>
+        <td> <h4>Schedule visit date:</h4><label><i>(dd/mm/yyyy)</i></label> </td>
+        <td> <input type=\"text\" name=\"scheduled_visit_date$i\" id=\"datepickersVis_Date$i\"  value=\"$svd\" onchange=\"updatedate();\"/> </td>
+        <td> <h4>Actual visit date </h4><label><i>(dd/mm/yyyy)</i></td>
+        <td> <input type=\"text\" name=\"actual_visit_date$i\" id=\"datepickeraVis_Date$i"."2\" required value=\"$actual_visit_date\" /> </td>
+        <td> <h4>Pill Count (%) </h4> </td>
+        <td> <input type=\"number\" name=\"pill_count$i\" id=\"pill_count$i\" style=\"width:80px; height:50px;\"  value=\"$pill_count\"/> </td>
+    </tr>";
+}
+?>
         </tbody>
     </table>
 </fieldset>

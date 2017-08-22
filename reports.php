@@ -25,28 +25,28 @@
     <meta charset="utf-8">
     <title>Application Form</title>
     
-   <?php 
-    
+<?php    
 include ('includes/head.php');
-    
-    ?>
-    
-    <style>
-    input[type="text"] {
-    height: 25px; 
-    }
-        fieldset {
-        margin: 20px;
-        padding: 30px;
-        margin-top: 20px;
-        border: 1px solid #000;
-    }
-   /* input[type="submit"] {
-    width: 200px;
-        
-    }
-    */
-    </style>
+?>
+
+<style>
+input[type="text"] {
+  height: 25px; 
+}
+
+fieldset {
+  margin: 20px;
+  padding: 30px;
+    margin-top: 20px;
+  border: 1px solid #000;
+        }
+
+/* input[type="submit"] {
+   width: 200px;   
+   }
+*/
+</style>
+
 </head>
 <body>
 <?php

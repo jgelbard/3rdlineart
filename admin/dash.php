@@ -23,23 +23,23 @@ if (isset($_SESSION['identification'])){
 		<meta charset="utf-8">
 		<title>Application Form</title>
 
-		<?php 
+<?php 
     include ('../includes/head.php');
-		?>
+?>
 
-		<style>
-			input[type="text"] {
-				height: 35px; 
-			}
+<style>
+input[type="text"] {
+  height: 35px; 
+}
 </style>
+
 </head>
 <body>
 
-	<?php
-	include ('../includes/nav_main.php');
-	include ('includes/nav_sub.php');
-	?>
-    
+<?php
+include ('../includes/nav_main.php');
+include ('includes/nav_sub.php');
+?>    
 	<div class="main">
 
 		<div class="main-inner">
@@ -56,7 +56,7 @@ if (isset($_SESSION['identification'])){
 								
 								<div> <!-- class="pricing-plans plans-3"> -->
 									<?php
-                                    include ('../includes/email_templates.php');
+
 									include ('includes/delete_user.php');                             
 									include ('includes/delete_facility_drug_affliates.php');
 									include ('includes/insert_reviewer.php'); 
@@ -90,11 +90,11 @@ if (isset($_SESSION['identification'])){
 									include ('includes/facility_edit.php');   
 								}
 
-								if(isset($_GET['man_drugs'])){ 
+								if(isset($_GET['man_drugs'])){
 									include ('includes/man_drugs.php');   
 								}
 
-								if(isset($_GET['create_drug'])){ 
+								if(isset($_GET['create_drug'])){
 									include ('includes/create_drug.php');   
 								}
 
@@ -186,10 +186,8 @@ if (isset($_SESSION['identification'])){
 <!-- Le javascript
 	================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="js/jquery-1.7.2.min.js"></script>
-	<script src="js/bootstrap.js"></script>
-	<script src="js/base.js"></script>
-
+<!--	<script src="js/jquery-1.7.2.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/base.js"></script> -->
 </body>
-
 </html>

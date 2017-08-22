@@ -104,6 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
 
         if ($role=='Secretary'){
+            echo 'got a secretary!';
             $SQL_secretary = "SELECT * FROM secretary WHERE user_id=$user_id";
             $secretary = mysqli_query($bd,$SQL_secretary);
             $row_secretary = mysqli_fetch_array($secretary);
@@ -113,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_SESSION['lname'] = $row_secretary['lname'];
             $_SESSION['phone'] = $row_secretary['phone'];
             $_SESSION['email'] = $row_secretary['email'];
-
+            echo 'secretary: '. $_SESSION['fname'].' '.$_SESSION['lname'];
             echo"<meta http-equiv=\"Refresh\" content=\"0; url=check_point/cp_p1.php?p\">";
         }
 
@@ -152,7 +153,7 @@ if ($num_rows== 0 || $attempts >=5)
     }
 
     else {
-        $attempts =0;
+        $attempts = 0;
         $insert_login_attempts="INSERT  INTO login_attempts (username,attempts, date)
         VALUES ('$use', '$attempts','$date' )";
         mysqli_query( $bd,$insert_login_attempts);	
@@ -164,7 +165,7 @@ if ($num_rows== 0 || $attempts >=5)
     else {
         $error="fail";
     }
-
+    echo 'error: '.$error;
 	//header ("Location: index.php?error=$error&use=$use");
     echo"<meta http-equiv=\"Refresh\" content=\"3; url=index.php?error=$error&sub=login\">";
 }

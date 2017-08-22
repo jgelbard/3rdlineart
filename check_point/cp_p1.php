@@ -1,4 +1,5 @@
-<?php 
+<?php
+   echo '######';
 session_start();
 global $now,$expire,$user_id,$fullname;
 if (isset($_SESSION['identification'])) {
@@ -19,7 +20,6 @@ if (isset($_SESSION['identification'])) {
 	$now = time(); 
 	$expire = $_SESSION['expire'];
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -165,9 +165,10 @@ if (isset($_SESSION['identification'])) {
 <body>
 
 	<?php
+        // echo '######';
 	include ('../includes/nav_main.php');
 	include ('includes/nav_sub.php');
-	?>
+ 	?>
 
 	<div class="main">
 
@@ -192,10 +193,11 @@ if (isset($_SESSION['identification'])) {
 										$formID= $_POST['formID']; 
 										$date_assigned = date ('Y/m/d');
 										$rev_lead = $_POST['rev_lead'];
-										$insert_reviewer_team_lead =" INSERT  INTO  reviewer_team_lead (rev_id,form_id,sec_id)
+										$insert_reviewer_team_lead =" INSERT INTO reviewer_team_lead (rev_id,form_id,sec_id)
 										VALUES (
 										'$rev_lead', '$formID', '$sec_id')";
-
+                                        echo $insert_reviewer_team_lead;
+                                        
 										mysqli_query( $bd,$insert_reviewer_team_lead);	
 
 										$sql_form_creation4review = "UPDATE form_creation ".
@@ -213,8 +215,10 @@ if (isset($_SESSION['identification'])) {
 													$rev_id = $checkbox[$i];
 												}
 
-												$insert_assigned_forms=" INSERT  INTO  assigned_forms (form_id,sec_id,rev_id,date_assigned)
+												$insert_assigned_forms=" INSERT INTO assigned_forms (form_id,sec_id,rev_id,date_assigned)
 												VALUES ('$formID', '$sec_id', '$rev_id', '$date_assigned')";
+
+                                                echo $insert_assigned;
 
 												mysqli_query( $bd,$insert_assigned_forms);                     
 												$SQL_reviewer = "SELECT * FROM reviewer WHERE id=$rev_id";
@@ -224,7 +228,7 @@ if (isset($_SESSION['identification'])) {
 												$rev_title = $row_reviewer['title'];
 												$rev_lname = $row_reviewer['lname'];
 
-                                                include_once('includes/email_templates');
+                                                include_once('../includes/email_templates.php');
                                                 email_msg('cp_p1', $rev_email_address);
 
                                                 /*  moved to email_templates
@@ -262,10 +266,9 @@ if (isset($_SESSION['identification'])) {
 												$header .= "Content-type: text/html\r\n";
 												$retval = mail ($to,$subject,$message,$header);    
                                                 */
-												echo"<meta http-equiv=\"Refresh\" content=\"1; url=cp_p1.php?p\">";   
 											}
 										}
-
+                                        echo"<meta http-equiv=\"Refresh\" content=\"1; url=cp_p1.php?p\">";   
 									}
 
 									if(isset($_POST['submit_consolidate1'])){ 
@@ -288,25 +291,14 @@ if (isset($_SESSION['identification'])) {
 										$form_submited_complete = mysqli_query( $bd , $sql_form_creation_complete);   
 
 									}
-                                    /* 
-									if(isset($_GET['notcomplete'])){ 
-
-										$form_ID= $_GET['form_id'];
-
-										$sql_form_creation_not_complete = "UPDATE form_creation ".
-										"SET complete='Rejected'".
-										"WHERE 3rdlineart_form_id='$form_ID'" ;
-
-										$form_submited_not_complete = mysqli_query( $bd , $sql_form_creation_not_complete);   
-
-									}
-                                    */
+                                   
                                     if(isset($_GET['notcomplete'])){ 
                                         include ('includes/sec_app_reject.php');   
                                     }
 
 									if(isset($_GET['p'])){ 
-										include ('includes/sec_new.php');   
+										include ('includes/sec_new.php');
+                                        exit();
 									}
 
 									if(isset($_GET['view'])){ 
@@ -376,10 +368,10 @@ if (isset($_SESSION['identification'])) {
 
 <!-- Le javascript
 	================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
+	<!-- Placed at the end of the document so the pages load faster
 	<script src="../js/jquery-1.7.2.min.js"></script>
 	<script src="../js/bootstrap.js"></script>
-	<script src="../js/base.js"></script>
+	<script src="../js/base.js"></script> -->
 
 </body>
 

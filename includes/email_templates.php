@@ -1,11 +1,18 @@
 <?php
-require '../includes/vendor/autoload.php';
-require_once '../includes/crypt_function.php';
+if (file_exists('../includes/vendor/autoload.php'))
+    require '../includes/vendor/autoload.php';    
+else
+    require 'includes/vendor/autoload.php';
+
+if (file_exists('../includes/crypt_function.php'))
+    require_once '../includes/crypt_function.php';
+else
+    require 'includes/crypt_function.php';
 
 function phpmailer($to, $subject, $body) {
     $mail = new PHPMailer;
 
-    // $mail->SMTPDebug = 3;                               // Enable verbose debug output
+    //  $mail->SMTPDebug = 3;                               // Enable verbose debug output
     // $mail->SMTPDebug = 2;                               // Enable less verbose debug output
     
     $mail->isSMTP();                                      // Set mailer to use SMTP
@@ -13,8 +20,8 @@ function phpmailer($to, $subject, $body) {
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
 
     // PUT THE CREDENTIALS HERE - ultimately they will come from the database !!!
-    $mail->Username = '3rdlineartmalawi';                           // SMTP username
-    $mail->Password = 'g3n0typ3';                           // SMTP password
+    $mail->Username = '3rdlineartmalawi';                 // SMTP username
+    $mail->Password = 'g3n0typ3';                         // SMTP password
 
     $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 587;                                    // TCP port to connect to
@@ -27,8 +34,8 @@ function phpmailer($to, $subject, $body) {
     // $mail->addCC('cc@example.com');
     // $mail->addBCC('bcc@example.com');
 
-    // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+    // $mail->addAttachment('/var/tmp/file.tar.gz');      // Add attachments
+    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg'); // Optional name
     
     $mail->isHTML(true);                                  // Set email format to HTML
 
@@ -53,14 +60,17 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
     $from3rdlineemail = "From:3rdlineartmalawi@gmail.com\r\n";
     $ccemail = ""; // "Cc:j.dumisani7291@gmail.com\r\n";
     $bccemail = ""; // "Bcc:dumi_ndhlovu@lighthouse.org.mw\r\n";
-    
+
+    echo 'email: '.$email_template;
+    echo 'email: to: '.$to;
+    echo 'email: facility: '.$facility;
     switch ($email_template) {
 	case 'test':
 		$subject = "New 3rd Line ART Application";
 		$message = "<p>Dear 3<sup>rd</sup> Line ART Secretary,</p>
 		<p>&nbsp;</p>
 		<p>You have a new 3<sup>rd</sup> Line ART Expert committee application form from $facility.</p>
-		<p>Kindly check its completeness and do following the SOP.</p>
+		<p>Kindly check its completeness and follow the SOP.</p>
 		<p>&nbsp;</p>
 		<p>Regards</p>
 		<p>System email Notification &nbsp;</p>";
@@ -72,12 +82,12 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
 		$message = "<p>Dear 3<sup>rd</sup> Line ART Secretary,</p>
 		<p>&nbsp;</p>
 		<p>You have a new 3<sup>rd</sup> Line ART Expert committee application form from $facility.</p>
-		<p>Kindly check its completeness and do following the SOP.</p>
+		<p>Kindly check its completeness and follow the SOP.</p>
 		<p>&nbsp;</p>
 		<p>Regards</p>
 		<p>System email Notification &nbsp;</p>";
         // bcc;
-		$retval = phpmailer ($to,$subject,$message);
+		$retval = phpmailer($to,$subject,$message);
 		break;
 
 	case 'cp_p1':
@@ -106,7 +116,7 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
 		</html>
 		';
         // cc;
-		$retval = phpmailer ($to,$subject,$message);
+		$retval = phpmailer($to,$subject,$message);
 		break;
 
 	case 'insert_consolidate1':
@@ -125,7 +135,7 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
 		</html>
 		';   
 		// cc
-		$retval = phpmailer ($to,$subject,$message);        
+		$retval = phpmailer($to,$subject,$message);        
 		break;
 
 	case 'insert_consolidate2':
@@ -145,7 +155,7 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
 		</html>
 		';
         // cc;
-		$retval = phpmailer ($to,$subject,$message);
+		$retval = phpmailer($to,$subject,$message);
 		break;
 
 	case 'insert_attach_result':
@@ -180,7 +190,7 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
 		</html>
 		';
         // cc;
-		$retval = phpmailer ($to,$subject,$message);    
+		$retval = phpmailer($to,$subject,$message);    
 		break;
 
 	case 'insert_assign_reviewer':
@@ -208,7 +218,7 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
 		</html>
 		';
         // cc;
-		$retval = phpmailer ($to,$subject,$message);
+		$retval = phpmailer($to,$subject,$message);
 		break;
 
 	case 'send_user_email':
@@ -260,12 +270,12 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
 		</html>
 		';
         // cc;
-		$retval = phpmailer ($to,$subject,$message);    
+		$retval = phpmailer($to,$subject,$message);    
 		break;
     }
     return $retval;
 }
-// echo email_msg('send_user_email', 'jeffgelbard@gmail.com');
+// echo email_msg('complete_form', 'jeffgelbard@gmail.com');
 // phpmailertest();
 ?>
 

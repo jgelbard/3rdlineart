@@ -11,7 +11,7 @@ while($drug_row = mysqli_fetch_array($drugs)) {
     $druglist .= '<option value="'.$drug_name.'">'.$drug_name.'</option>';
 }
 
-$numvisrows = 10;
+$numvisrows = 5;
 $visrow = 1;
 for($i=0; $i<10; $i++) {
     $i_1 = $i - 1;
@@ -52,11 +52,11 @@ for($i=0; $i<10; $i++) {
 		} );
 	</script>";
 
-    if ($i > $numvisrows)
-        $rowclass = "class=\"row$drug box\""; 
+    if ($i >= $numvisrows)
+        $rowclass = "row$drug box"; 
 
 	echo "
-	<tr $rowclass>
+	<tr class=\"$rowclass\">
 		<td> 		
 			<select name=\"art_drug$drug\" $required id=\"art_drug$drug\" style=\"width:120px\">";
 				if (!empty ($art_drug["$i"])) {
@@ -113,6 +113,20 @@ for($i=0; $i<10; $i++) {
                         }
                         echo "
 				 </textarea></td>";
+                        
+                        $regrow = $i;
+                        $regrow1 = '+row'.($regrow+1);
+                        $regrow2 = '-row'.($regrow);
+                        $class_sec = "butts$regrow";
+
+             echo "
+             <td style=\"color:#000; min-width:110px\">
+             <div class=\"$class_sec\">".
+        		($regrow>=4?"<input type=\"button\" class=\"btn btn-success\" name=\"$regrow1\" value=\"+\" />\n\t":"").
+        		($regrow>4?"<input type=\"button\" class=\"btn btn-danger\" name=\"$regrow2\"  value=\"-\" />":"").
+        		"</div>
+        	</td>";
+                        
 // comment this if broken
     if ($drug > $numvisrows) {
         echo "

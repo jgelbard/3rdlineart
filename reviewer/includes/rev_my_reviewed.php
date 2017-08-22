@@ -42,7 +42,8 @@ echo '<p>Total forms: [ <i>'. $num_forms .'</i> ]</p>';
          <tr>
                     <td> <p style="text-align:center"><strong> 3rdLForm#'.$form_id.'</strong></p> </td>
                     <td> <p style="text-align:center"><strong>'.$date_assigned.' </strong></p></td>
-                    <td> <p style="text-align:center"><strong><a href="#">View</a></strong></p> </td>
+                    <!-- <td> <p style="text-align:center"><strong><a href="#">View</a></strong></p> </td> -->
+                    <td class="td-actions"><div style="text-align:center"> <a href="review_p1.php?review&id='.$form_id.'&reviewed=1" class="btn btn-small btn-warning"><i class="btn-icon-only icon-ok">View</i></a></div></td>
                   </tr> 
         
         ';

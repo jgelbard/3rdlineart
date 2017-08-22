@@ -1,7 +1,7 @@
 <?php
 echo 'send_user_email!';
 email_msg('send_user_email', $email);
-exit();
+
 /*    
 $to = $email;
 $subject = "New Member";

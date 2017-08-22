@@ -1,14 +1,12 @@
 <?php
-
+echo 'top';
 if(isset($_POST['update_adher'])){ 
     $patient_id= mysqli_real_escape_string($bd, $_GET['pat_id']);
     
     $sql_delete_lab = "DELETE FROM lab where pat_id =$patient_id";
     mysqli_query( $bd,$sql_delete_lab);
-    
     $sql_delete_adherence = "DELETE FROM adherence where pat_id =$patient_id";
     mysqli_query( $bd,$sql_delete_adherence);
-    
     $sql_delete_adherence_questions = "DELETE FROM adherence_questions where pat_id =$patient_id";
     mysqli_query( $bd,$sql_delete_adherence_questions);
 	
@@ -22,7 +20,7 @@ if(isset($_POST['update_adher'])){
    ';
     }
     
-    
+    echo 'here!';
  	$scheduled_visit_date1= mysqli_real_escape_string($bd, $_POST['scheduled_visit_date1']);
  	$actual_visit_date1= mysqli_real_escape_string($bd, $_POST['actual_visit_date1']);
 	$pill_count1=mysqli_real_escape_string($bd, $_POST['pill_count1']);

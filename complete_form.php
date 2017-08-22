@@ -1,24 +1,32 @@
 <?php
+include ('includes/head.php');
 
 session_start();
 global $now,$expire,$user_id;
+echo 'fuck me!';
 if (isset($_SESSION['identification'])){
+    global  $fullname;
+    $fname= $_SESSION['username'];
+    $user_id=$_SESSION['identification'];
+    
+    $fullname =$_SESSION['name'];
+    $phone= $_SESSION['phone'];
+    $email= $_SESSION['email'];
+    $facility = $_SESSION['art_clinic'];
+    
+    $now = time(); 
+    $expire= $_SESSION['expire'];
+}
 
+// print_r($bd);
 
-global  $fullname;
-$fname= $_SESSION['username'];
-/* $lname= $_SESSION['lname'];*/
-$user_id=$_SESSION['identification'];
+$SQL_secretary = "SELECT * FROM secretary limit 1";
+$secretary = mysqli_query($bd, $SQL_secretary);
+$row_secretary = mysqli_fetch_array($secretary);
+$email_secretary = $row_secretary['email'];
 
-$fullname =$_SESSION['name'];
-$phone= $_SESSION['phone'];
-$email= $_SESSION['email'];
-$facility = $_SESSION['art_clinic'];
-
-$now = time(); 
-$expire= $_SESSION['expire'];}
-
-include 'includes/email_templates.php';
+// include 'includes/email_templates.php';
+echo 'cf: '.$email_secretary;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,9 +36,7 @@ include 'includes/email_templates.php';
 	<title>Application Form</title>
 
 	<?php 
-
 	include ('includes/head.php');
-
 	?>
 
 	<style>
@@ -89,7 +95,7 @@ include 'includes/email_templates.php';
 										';
 									}
 
-
+                                        /*
 									echo '							
 									<div class="form-actions">
 										<form id="edit-profile" class="form-horizontal" action="logout.php" method="post"> 
@@ -106,6 +112,7 @@ include 'includes/email_templates.php';
 										</form>	 
 									</div>		
 									';   
+                                        */
 								}
 
 								if(isset($_POST['save_app'])){ 
@@ -121,23 +128,24 @@ include 'includes/email_templates.php';
 								if(!isset($_POST['complete_submit']) && !isset($_POST['cancel_app'])){ 
 									include ('form_complete.php');     
 									echo '              
+											<form id="edit-profile" class="form-horizontal" action="complete_form.php?pat_id='.$pat_id.'" method="post">     
 									<div class="form-actions">
-										<div class="span4">
-											<a class="btn" href="app.php?back_adherence&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'" style="padding:10px; margin:2px; font-size:180%">Back</a>        
-											';       
-
-											include ('includes/app_edit_menu.php'); 
-
-											echo '
+										<div class="span3">
+											<a class="btn" href="app.php?back_adherence&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'" style="padding:10px; margin:2px; font-size:180%">Back</a>   
+                                    </div>
+                                  
+                                    <div class="span3">';
+                                    
+                                    include ('includes/app_edit_menu.php'); 
+                                 
+                                    echo '
 										</div>
 
-										<div class="span4">
-											<form id="edit-profile" class="form-horizontal" action="complete_form.php?pat_id='.$pat_id.'" method="post">      
+										<div class="span3">
 												<button type="submit" class="btn btn-danger" style="padding:10px; font-size:120%; float:right" name="cancel_app">Cancel Application</button> 
-											</form>	
 										</div>
 									</div>				
-
+											</form>	
 									<div class="form-actions">
 										<form id="edit-profile" class="form-horizontal" action="complete_form.php?pat_id='.$pat_id.'" method="post">                
 											<div class="span10" align="center">
@@ -178,7 +186,7 @@ include 'includes/email_templates.php';
 									</div>				
 									';
 
-                                    email_msg('complete_form');
+                                    email_msg('complete_form', $email_secretary);
 
                                     /* moved to email_templates
 									$receiver ='3rdlineart@lighthouse.org.mw';
@@ -219,10 +227,11 @@ include 'includes/email_templates.php';
 
 <!-- Le javascript
 	================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="js/jquery-1.7.2.min.js"></script>
-	<script src="js/bootstrap.js"></script>
-	<script src="js/base.js"></script>
+	<!-- Placed at the end of the document so the pages load faster
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/base.js"></script>
+                                    -->
 
 </body>
 
