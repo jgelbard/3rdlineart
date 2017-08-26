@@ -4,26 +4,23 @@ if(isset($_POST['submit_review_result'])){
     
     $formID= $_GET ['formid'];
     
-    $pi_mutation= mysqli_real_escape_string($bd, htmlspecialchars( $bd,  $_POST ['pi_mutation']));
-    $switch= mysqli_real_escape_string($bd, htmlspecialchars( $bd,  $_POST ['switch']));
-    $drug1= mysqli_real_escape_string($bd, htmlspecialchars( $bd,  $_POST ['drug1']));
-    $drug2= mysqli_real_escape_string($bd, htmlspecialchars( $bd,  $_POST ['drug2']));
-    $drug3= mysqli_real_escape_string($bd, htmlspecialchars( $bd,  $_POST ['drug3']));
-    $drug4= mysqli_real_escape_string($bd, htmlspecialchars( $bd,  $_POST ['drug4']));
-    $drug5= mysqli_real_escape_string($bd, htmlspecialchars( $bd,  $_POST ['drug5']));
-    $comment= mysqli_real_escape_string($bd, htmlspecialchars( $bd,  $_POST ['comment_to_clinician']));
-    $feedback_to_clinician= mysqli_real_escape_string($bd, htmlspecialchars( $bd,  $_POST ['feedback_to_clinician']));
+    $pi_mutation = mysqli_real_escape_string($bd, $_POST ['pi_mutation']);
+    $switch = mysqli_real_escape_string($bd, $_POST ['switch']);
+    $drug1 = mysqli_real_escape_string($bd, $_POST ['drug1']);
+    $drug2 = mysqli_real_escape_string($bd, $_POST ['drug2']);
+    $drug3 = mysqli_real_escape_string($bd, $_POST ['drug3']);
+    $drug4 = mysqli_real_escape_string($bd, $_POST ['drug4']);
+    $drug5 = mysqli_real_escape_string($bd, $_POST ['drug5']);
+    $comment = mysqli_real_escape_string($bd,  $_POST ['comment_to_clinician']);
+    $feedback_to_clinician = mysqli_real_escape_string($bd, $_POST ['feedback_to_clinician']);
     
-    if ($switch=='SwitchYes'){
+    if ($switch == 'SwitchYes') {
     $switch ='Yes';
-    }
-    
-    else {
+    } else {
     $switch ='No';
     }
     
-    $date_reviewed= date('Y/m/d');
-    
+    $date_reviewed = date('Y/m/d'); 
  	echo $drug3;
      
 $insert_expert_review_result=" INSERT  INTO  expert_review_result (form_id,rev_id,pi_mutation,switch,drug1,drug2,drug3,drug4,drug5,comment,feedback_to_clinician)
@@ -56,9 +53,8 @@ $form_reviewed_result = mysqli_query( $bd , $sql_assigned_app_results);
                            </div>
                            
                             ';
-    
-      echo"<meta http-equiv=\"Refresh\" content=\"1; url=review_p1.php?result\">";   
-    
+
+      echo"<meta http-equiv=\"Refresh\" content=\"1; url=review_p1.php?result\">";       
 }
 
 ?>

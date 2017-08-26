@@ -60,11 +60,11 @@ document.oncontextmenu = new Function("return false")
 
 </head>
 <body>
-	<?php
-	include ('includes/nav_main.php');
-	include ('includes/nav_sub.php');
-	?>
 
+<?php
+	include ('includes/nav_main.php');
+include ('includes/nav_sub.php');
+?>
 	<div class="main">
 
 		<div class="main-inner">
@@ -344,9 +344,9 @@ document.oncontextmenu = new Function("return false")
 <!-- Le javascript
 	================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<!-- <script src="js/jquery-1.7.2.min.js"></script> -->
+	<!-- <script src="js/jquery-1.7.2.min.js"></script>
 	<script src="js/bootstrap.js"></script>
-	<script src="js/base.js"></script>
+	<script src="js/base.js"></script> -->
 	<SCRIPT language="javascript">
 
 		$(function()

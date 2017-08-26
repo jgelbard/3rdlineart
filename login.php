@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
    echo $username;
 
      //checking login attempts
-   global $attempts,$row_id;
+   global $attempts, $row_id;
 
    $select_login_attempts = "SELECT * FROM login_attempts WHERE username=$username";   
    $result_login_attempts = mysqli_query($bd,$select_login_attempts);
@@ -52,8 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
    $row_id =$row_login_attempts['id'];
    $attempts =$row_login_attempts['attempts'];
 
-    //end checking login attempts
-
+   // end checking login attempts
 
    if($num_rows!=0 && $attempts <5){
     $SQL_user = "SELECT * FROM users WHERE username='$username'";                

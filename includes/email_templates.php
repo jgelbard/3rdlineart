@@ -9,13 +9,53 @@ if (file_exists('../includes/crypt_function.php'))
 else
     require 'includes/crypt_function.php';
 
+function phpmailer2($to, $subject, $body) {
+    global $bd;
+    $curMonth = date("m");
+    $curDay = date("j");
+    $curYear = date("Y");
+    $date_sent = "$curYear/$curMonth/$curDay";
+    
+	$insert_email = "INSERT INTO email_log
+	(msg_from, msg_to, subject, body, date_sent)
+	VALUES (
+	'3rdlineartmalawi@gmail.com', '$to', '$subject', ?, '$date_sent')"; // get_file_contents
+
+    $stmt = mysqli_prepare($bd, $insert_email);
+    mysqli_stmt_bind_param($stmt, 'b', mysqli_stmt_send_long_data($stmt, 0, $body));
+    mysqli_stmt_execute($stmt);
+    
+    // mysqli_query( $bd, $insert_email);
+    echo $insert_email;
+    return;
+}
+
 function phpmailer($to, $subject, $body) {
+    global $bd;
+    $curMonth = date("m");
+    $curDay = date("j");
+    $curYear = date("Y");
+    $date_sent = "$curYear/$curMonth/$curDay";
+    
+	$insert_email = "INSERT INTO email_log
+	(msg_from, msg_to, subject, body, date_sent)
+	VALUES (
+	'3rdlineartmalawi@gmail.com', '$to', '$subject', '".base64_encode($body)."', '$date_sent')"; // get_file_contents
+
+    mysqli_query($bd, $insert_email);
+    return;
+}
+
+function phpmailer_send($to, $subject, $body, $from='3rdlineartmalawi@gmail.com') {    
     $mail = new PHPMailer;
 
-    //  $mail->SMTPDebug = 3;                               // Enable verbose debug output
-    // $mail->SMTPDebug = 2;                               // Enable less verbose debug output
+    // $mail->SMTPDebug = 3;                               // Enable verbose debug output
+    $mail->SMTPDebug = 2;                               // Enable less verbose debug output
     
     $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'ssl://email-smtp.us-west-2.amazonaws.com';
+
+    /*
     $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
 
@@ -25,8 +65,11 @@ function phpmailer($to, $subject, $body) {
 
     $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 587;                                    // TCP port to connect to
+    */
+    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted    
+    $mail->Port = 443;                                    // TCP port to connect to
 
-    $mail->setFrom('3rdlineartmalawi@gmail.com', '3rdlineart Mailer');
+    $mail->setFrom($from, '3rdlineart Mailer');
     $mail->addAddress($to);     // Add a recipient, Name (2nd arg) is optional
     // $mail->addReplyTo('info@example.com', 'Information');
 
@@ -42,7 +85,8 @@ function phpmailer($to, $subject, $body) {
     $mail->Subject = $subject;
     $mail->Body    = $body;
     $mail->AltBody = $body;
-
+    
+    // fastcgi_finish_request();
     $ret = $mail->send();
     if(!$ret) {
         echo 'Message could not be sent.';
@@ -56,7 +100,10 @@ function phpmailer($to, $subject, $body) {
 // $from3rdlineemail = "From:3rdlineart@lighthouse.org.mw\r\n";
 function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
     global $facility, $rev_title, $rev_lname, $fullname, $username, $key, $decision, $attachments;
-    
+    global $password, $role;
+    global $comment_to_clinician;
+    global $secretary_name, $email_secretary;
+
     $from3rdlineemail = "From:3rdlineartmalawi@gmail.com\r\n";
     $ccemail = ""; // "Cc:j.dumisani7291@gmail.com\r\n";
     $bccemail = ""; // "Bcc:dumi_ndhlovu@lighthouse.org.mw\r\n";
@@ -110,7 +157,7 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
 			<p>If genotyping is not indicated please additionally provide feedback to the clinician.</p>
 			<p>&nbsp;</p>
 			<p>Thank you very much,</p>
-			<p><strong>Mercy</strong></p>
+			<p><strong>$secretary_name</strong></p>
 			<p><span style="text-decoration: underline;"><strong>3<sup>rd</sup> line committee Secretary</strong></span></p>
 		</body>
 		</html>
@@ -129,13 +176,30 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		</head>
 		<body>
-			'.$comment_to_clinician.'
 
-		</body>
-		</html>
-		';   
-		// cc
-		$retval = phpmailer($to,$subject,$message);        
+<p>Dear '.$rev_title.' '.$rev_lname.',</p>
+<p>&nbsp;</p>
+<p>Please review the following results for genotyping for resistance mutations which was received from NHLS.</p>
+<p>Attached you will find:</p>
+<p>a) The original application form with the clinical information</p>
+<p>b) The result and documentation from NHLS.</p>
+<p>&nbsp;</p>
+<p>After your review please state:</p>
+<p>-PI mutation present yes/no</p>
+<p>-switch to 3rd line drug indicated yes/no</p>
+<p>&nbsp;</p>
+<p>If switch is not indicated please additionally provide feedback to the clinician.</p>
+<p>&nbsp;</p>
+<p>If switch is indicated, indicate suggested ART regimen (Drug 1,2,3).</p>
+<p>&nbsp;</p>
+<p>Thank you very much,</p>
+<p><strong>'.$secretary_name.'</strong></p>
+<p><span style="text-decoration: underline;"><strong>3<sup>rd</sup> line committee Secretary</strong></span></p>
+
+</body>
+</html>';
+        echo $message;
+		// $retval = phpmailer($to,$subject,$message);        
 		break;
 
 	case 'insert_consolidate2':
@@ -184,7 +248,7 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
 			<p>If switch is indicated, indicate suggested ART regimen (Drug 1,2,3).</p>
 			<p>&nbsp;</p>
 			<p>Thank you very much,</p>
-			<p><strong>Mercy</strong></p>
+			<p><strong>$secretary_name</strong></p>
 			<p><span style="text-decoration: underline;"><strong>3<sup>rd</sup> line committee Secretary</strong></span></p>
 		</body>
 		</html>
@@ -212,7 +276,7 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
 			<p>If genotyping is not indicated please additionally provide feedback to the clinician.</p>
 			<p>&nbsp;</p>
 			<p>Thank you very much,</p>
-			<p><strong>Mercy</strong></p>
+			<p><strong>$secretary_name</strong></p>
 			<p><span style="text-decoration: underline;"><strong>3<sup>rd</sup> line committee Secretary</strong></span></p>
 		</body>
 		</html>
@@ -222,8 +286,8 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
 		break;
 
 	case 'send_user_email':
-        echo 'send_user_email: '.$to.', username: '.$username.', key: '.$key;
-		$subject = "New Member";
+        echo 'send_user_email: '.$to.', username: '.$username.', key: '.$key.', role: '.$role;
+		$subject = "New MemberX";
 		$message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<html xmlns="http://www.w3.org/1999/xhtml">
 		<head>
@@ -233,20 +297,20 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
 		</head>
 		<body>
 			<p>Welcome '.$fullname.'!</p>
-			<p>You have been registered as a '.$role.' in the 3<sup>rd</sup> Line ART Expert Committee Malawi. Follow the link to complete your registration:</p>
-			<a href="http://localhost/3rdlineart6/admin/new_user.php?'.encrypt ($username, $key).'">Click Here</a>
+			<p>You have been registered as a '.$role.' user in the 3<sup>rd</sup> Line ART Expert Committee Malawi. Follow the link to complete your registration:</p>
+            <a href="http://localhost/3rdlineart6/new_user_account.php?x='.encrypt ($username, $key).'&y='.$role.'&z='.$password.'">Click Here</a>
 			<p>&nbsp;</p>
 			<p>Regards</p>
-			<p>Admin</p>
+			<p>Admin or '.$secretary_name.'</p>
 		</body>
 		</html>
 		';
         // cc;
-        echo 'encrypt: '.encrypt ($username, $key);
+        // echo 'encrypt: '.encrypt ($username, $key);
 		$retval = phpmailer ($to,$subject,$message);
         echo 'phpmailer returned: '.$retval;
 		break;
-
+        
 	case 'insert_sample':
         // $to = $email;
 		$subject = "New Patient Sample 3RD Line";
@@ -278,12 +342,3 @@ function email_msg($email_template, $to='3rdlineartmalawi@gmail.com') {
 // echo email_msg('complete_form', 'jeffgelbard@gmail.com');
 // phpmailertest();
 ?>
-
-
-
-
-
-
-
-
-

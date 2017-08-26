@@ -1,12 +1,11 @@
 <?php
 
-global $fullname, $username, $key;
-if(isset($_GET['update_user'])){ 
+global $fullname, $username, $role, $key;
+if(isset($_GET['update_user'])) {
 	$update_id = $_POST['id'];
 	$user_id = $_POST['user_id'];
 
-	if(isset($_POST['update_clinician'])){
-		
+	if(isset($_POST['update_clinician'])){		
 		$clin_art_clinic= mysqli_real_escape_string($bd,$_POST['art_clinic']);
 		$username= mysqli_real_escape_string($bd,$_POST['username']);
 		$fullname= mysqli_real_escape_string($bd,$_POST['name']);
@@ -16,60 +15,61 @@ if(isset($_GET['update_user'])){
 		$password_confirm= mysqli_real_escape_string($bd,$_POST['confirm_pswd']);
 		$pswd_size = strlen($password);
 		
-		if ($password!=$password_confirm){
+		if ($password!=$password_confirm) {
 			echo '<div class="alert alert-warning">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			<p style="color:#f00"><strong>Yoo!</strong> Passwords dont match </p>
-
-		</div>
-		';
-		echo"<meta http-equiv=\"Refresh\" content=\"2; url=dash.php?clin_edit&id='.$update_id.'\">";  
-	}
-
-	else {
-
-		if ($pswd_size < 6){
-			echo '<div class="alert alert-warning">
+		</div>';
+		echo"<meta http-equiv=\"Refresh\" content=\"2; url=".$main_page."?clin_edit".$source."&id='.$update_id.'\">";  
+        } else {
+            if ($pswd_size < 6) {
+                echo '<div class="alert alert-warning">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			<p style="color:#f00"><strong>Ooops!</strong>User creation failed, Password length less than 5 characters </p>
-
-		</div>
-		';
-
-		echo"<meta http-equiv=\"Refresh\" content=\"2; url=dash.php?clin_edit&id='.$update_id.'\">";     
-	}
-	else {
-		// echo "we are inww";
-		$password= hasword ($password, $salt);
-		$username = encrypt ($username, $key);
-		
-		$sql_update_user = "UPDATE users ".
-		"SET 
+		</div>';
+                if (isset($_GET['source_page'])) {             
+                    include ('includes/welcome_msg.php'); 
+                } else {
+                    email_msg('send_user_email', $email); 
+                    echo"<meta http-equiv=\"Refresh\" content=\"2; url=".$main_page."?clin_edit".$source."&id='.$update_id.'\">";
+                }
+            } else {
+                // echo "we are inww";
+                $password = hasword ($password, $salt);
+                $username = encrypt ($username, $key);
+                
+                $sql_update_user = "UPDATE users ".
+                    "SET 
 		username='$username',
+
 		password='$password'
 		WHERE id='$user_id'" ;
-		mysqli_query($bd, $sql_update_user);
-
-		$sql_update_clinician = "UPDATE clinician".
-		"SET 
+                mysqli_query($bd, $sql_update_user);
+                
+                $sql_update_clinician = "UPDATE clinician".
+                    "SET 
 		name ='$fullname',
 		phone='$phone',
 		email='$email',
 		art_clinic='$clin_art_clinic'
-		WHERE id='$update_id'" ;
-		if (mysqli_query($bd, $sql_update_clinician)){
-			echo '  <div class="alert alert-success">
+		WHERE id='$update_id'";
+                if (mysqli_query($bd, $sql_update_clinician)) {
+                    echo '  <div class="alert alert-success">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			<p style="color:#000">You have <strong> updated Clinician details </strong>. </p>
 		</div>';
-		echo"<meta http-equiv=\"Refresh\" content=\"2; url=dash.php?man_clin\">"; 
-
-	}
-}
-}
-}
-if(isset($_POST['update_lab_user'])){ 
-	
+                    if (isset($_GET['source_page'])){
+                        include ('includes/welcome_msg.php');                      
+                    } else {
+                        email_msg('send_user_email', $email); 
+                        echo"<meta http-equiv=\"Refresh\" content=\"2; url=".$main_page."?man_clin".$source."\">";
+                    }            
+                }
+            }
+        }
+    }
+    
+if(isset($_POST['update_lab_user'])) { 
 	$username= mysqli_real_escape_string($bd,$_POST['username']);
 	$fname= mysqli_real_escape_string($bd,$_POST['fname']);
 	$lname= mysqli_real_escape_string($bd,$_POST['lname']);
@@ -78,62 +78,61 @@ if(isset($_POST['update_lab_user'])){
 	$password= mysqli_real_escape_string($bd,$_POST['password']);
 	$password_confirm= mysqli_real_escape_string($bd,$_POST['confirm_pswd']);
 	$pswd_size = strlen($password);
-
-	if ($password!=$password_confirm){
+    $role = 'Lab';
+    
+	if ($password!=$password_confirm) {
 		echo '<div class="alert alert-warning">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
 		<p style="color:#f00"><strong>Yoo!</strong> Passwords dont match </p>
 
 	</div>
 	';
-	echo"<meta http-equiv=\"Refresh\" content=\"2; url=dash.php?lab_edit&id=$update_id\">";  
-}
-
-else {
-
-	if ($pswd_size < 6) {
-		echo '<div class="alert alert-warning">
+        echo"<meta http-equiv=\"Refresh\" content=\"2; url=".$main_page."?lab_edit".$source."&id=$update_id\">";  
+    } else {
+        if ($pswd_size < 6) {
+            echo '<div class="alert alert-warning">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
 		<p style="color:#f00"><strong>Ooops!</strong>User creation failed, Password length less than 5 characters </p>
 
 	</div>
 	';
-
-	echo"<meta http-equiv=\"Refresh\" content=\"2; url=dash.php?lab_edit&id=$update_id\">";     
-}
-else {
-
-	$password= hasword ($password, $salt);
-	$username = encrypt ($username, $key);
-
-	$sql_update_user =  "UPDATE users ".
-	"SET 
+            
+            echo"<meta http-equiv=\"Refresh\" content=\"2; url=".$main_page."?lab_edit".$source."&id=$update_id\">";     
+        } else {
+            $password= hasword ($password, $salt);
+            $username = encrypt ($username, $key);
+            
+            $sql_update_user =  "UPDATE users ".
+                "SET 
 	username='$username',
 	password='$password'
 	WHERE id='$user_id'" ;
-	mysqli_query($bd, $sql_update_user);
-    
-	$sql_update_pih_lab =  "UPDATE pih_lab ".
-	"SET 
+            mysqli_query($bd, $sql_update_user);
+            
+            $sql_update_pih_lab =  "UPDATE pih_lab ".
+                "SET 
 	fname ='$fname',
 	lname ='$lname',
 	phone='$phone',
 	email='$email'
 	WHERE id='$update_id'" ;
-	if (mysqli_query($bd, $sql_update_pih_lab)){
-		echo '  <div class="alert alert-success">
+            if (mysqli_query($bd, $sql_update_pih_lab)){
+                echo '<div class="alert alert-success">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
 		<p style="color:#000">You have <strong> updated User details </strong>. </p>
 	</div>';
-	echo"<meta http-equiv=\"Refresh\" content=\"2; url=dash.php?man_lab\">"; 
-}
-}
+                if (isset($_GET['source_page'])){                    
+                    include ('includes/welcome_msg.php'); 
+                } else {
+                    email_msg('send_user_email', $email); 
+                    echo"<meta http-equiv=\"Refresh\" content=\"2; url=".$main_page."?man_lab".$source."\">";
+                }
+            }
+        }
+    }
 }
 
-
-}    
 if(isset($_POST['update_sec'])) {
-	echo 'updating sec!! '.$update_id;
 	$username= mysqli_real_escape_string($bd,$_POST['username']);
 	$fname= mysqli_real_escape_string($bd,$_POST['fname']);
 	$lname= mysqli_real_escape_string($bd,$_POST['lname']);
@@ -142,20 +141,20 @@ if(isset($_POST['update_sec'])) {
 	$password= mysqli_real_escape_string($bd,$_POST['password']);
 	$password_confirm= mysqli_real_escape_string($bd,$_POST['confirm_pswd']);
 	$pswd_size = strlen($password);
-
+    $role = 'Secretary';
+    
 	if ($password!=$password_confirm) {
 		echo '<div class="alert alert-warning">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
 		<p style="color:#f00"><strong>Yoo!</strong> Passwords dont match </p></div>';
-		echo"<meta http-equiv=\"Refresh\" content=\"2; url=dash.php?sec_edit&id=$update_id\">";  
+		echo"<meta http-equiv=\"Refresh\" content=\"2; url=".$main_page."?sec_edit".$source."&id=$update_id\">";  
 	} else {
 		if ($pswd_size < 6) {
 			echo '<div class="alert alert-warning">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			<p style="color:#f00"><strong>Ooops!</strong>User creation failed, Password length less than 5 characters </p></div>';
-			echo"<meta http-equiv=\"Refresh\" content=\"2; url=dash.php?sec_edit&id=$update_id\">";     
-		}
-		else {
+			echo"<meta http-equiv=\"Refresh\" content=\"2; url=".$main_page."?sec_edit".$source."&id=$update_id\">";     
+		} else {
 			$password= hasword ($password, $salt);
 			$username = encrypt ($username, $key);
 
@@ -174,19 +173,24 @@ if(isset($_POST['update_sec'])) {
 			email='$email'
 			WHERE id='$update_id'" ;
 
-			if (mysqli_query($bd, $sql_update_secretary)){
+			if (mysqli_query($bd, $sql_update_secretary)) {
 				echo '  <div class="alert alert-success">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
 				<p style="color:#000">You have <strong> updated User details </strong>. </p>
 			</div>';
-			echo"<meta http-equiv=\"Refresh\" content=\"2; url=dash.php?man_sec\">"; 
 
-		}
-	}
-}
+                if (isset($_GET['source_page'])) {
+                    include ('includes/welcome_msg.php'); 
+                } else {
+                    email_msg('send_user_email', $email); 
+                    echo"<meta http-equiv=\"Refresh\" content=\"2; url=".$main_page."?man_sec".$source."\">"; 
+                }                
+            }
+        }
+    }
 } 
 
-if(isset($_POST['update_rev'])){ 
+if(isset($_POST['update_rev'])) { 
 	$title= mysqli_real_escape_string($bd,$_POST ['title']);
 	$username= mysqli_real_escape_string($bd,$_POST['username']);
 	$fname= mysqli_real_escape_string($bd,$_POST ['fname']);
@@ -199,38 +203,38 @@ if(isset($_POST['update_rev'])){
 	$snapshot= mysqli_real_escape_string($bd,$_POST['snapshot']);
 
 	$pswd_size = strlen($password);
-	if ($password!=$password_confirm){
+	if ($password!=$password_confirm) {
 		echo '<div class="alert alert-warning">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
 		<p style="color:#f00"><strong>Yoo!</strong> Passwords dont match </p>
-	</div>
-	';
-	echo"<meta http-equiv=\"Refresh\" content=\"2; url=dash.php?rev_edit&id=$update_id\">";  
-}
-
-else {
-
-	if ($pswd_size < 6){
-		echo '<div class="alert alert-warning">
+	</div>';
+        echo"<meta http-equiv=\"Refresh\" content=\"2; url=".$main_page."?rev_edit".$source."&id=$update_id\">";  
+    } else {
+        if ($pswd_size < 6) {
+            echo '<div class="alert alert-warning">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
 		<p style="color:#f00"><strong>Ooops!</strong>User creation failed, Password length less than 5 characters </p>
 	</div>
 	';
-	echo"<meta http-equiv=\"Refresh\" content=\"2; url=dash.php?rev_edit&id=$update_id\">";     
-}
-else {
-	$password = hasword ($password, $salt);
-	$username = encrypt ($username, $key);
-	
-	$sql_update_user =  "UPDATE users ".
-	"SET 
+            if (isset($_GET['source_page'])) {
+                include ('includes/welcome_msg.php'); 
+            } else {
+                email_msg('send_user_email', $email); 
+                echo"<meta http-equiv=\"Refresh\" content=\"2; url=".$main_page."?rev_edit".$source."&id=$update_id\">";
+            }
+        } else {
+            $password = hasword ($password, $salt);
+            $username = encrypt ($username, $key);
+            
+            $sql_update_user =  "UPDATE users ".
+                "SET 
 	username='$username',
 	password='$password'
-	WHERE id='$user_id'" ;
-
-	mysqli_query($bd, $sql_update_user);
-	$sql_update_reviewer =  "UPDATE reviewer ".
-	"SET 
+	WHERE id='$user_id'";
+            
+            mysqli_query($bd, $sql_update_user);
+            $sql_update_reviewer =  "UPDATE reviewer ".
+                "SET 
 	title ='$title',
 	fname ='$fname',
 	lname ='$lname',
@@ -238,24 +242,24 @@ else {
 	email='$email',
 	affiliate_institution='$affiliate_institution',
 	snapshot='$snapshot'
-	WHERE id='$update_id'" ;
-
-    $fullname = $title.' '.$fname.' '.$lname;
-    // echo "updating $update_id";
-	if (mysqli_query($bd, $sql_update_reviewer)){
-		echo '  <div class="alert alert-success">
+	WHERE id='$update_id'";
+            
+            $fullname = $title.' '.$fname.' '.$lname;
+            // echo "updating $update_id";
+            if (mysqli_query($bd, $sql_update_reviewer)) {
+                echo '  <div class="alert alert-success">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
 		<p style="color:#000">You have <strong> updated User details </strong>. </p>
-	</div>';
-    email_msg('send_user_email', $email);
-    echo"<meta http-equiv=\"Refresh\" content=\"2; url=dash.php?man_rev\">"; 
-
-}
-}
-}
-
+	</div>';                
+                if ($source=='source_page') {
+                    include ('includes/welcome_msg.php'); 
+                } else {
+                    email_msg('send_user_email', $email); 
+                    echo"<meta http-equiv=\"Refresh\" content=\"2; url=".$main_page."?man_rev".$source."\">"; 
+                }
+            }
+        }
+    }
 } 
-
 }
-
 ?>

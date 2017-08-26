@@ -1,4 +1,3 @@
-<!-- DB configuration-->
 <?php
 $mysql_hostname = "localhost";
 //$mysql_user = "3rdlineart_root";
@@ -12,9 +11,11 @@ or die("Oops some thing went very wrong");
 
 // echo mysqli_connect_errno();
 
+global $secretary_name, $email_secretary;
 $SQL_secretary = "SELECT * FROM secretary limit 1";
 $secretary = mysqli_query($bd, $SQL_secretary);
 $row_secretary = mysqli_fetch_array($secretary);
 // echo '>>>>>'.$row_secretary['email'];
 $email_secretary = $row_secretary['email'];
+$secretary_name = $row_secretary['fname'].' '.$row_secretary['lname'];
 ?>

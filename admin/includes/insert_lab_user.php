@@ -1,8 +1,7 @@
 <?php
 
 if(isset($_POST['register_lab_user'])){ 
-	
-	
+		
 	$username= mysqli_real_escape_string($bd,$_POST['username']);
 	$fname= mysqli_real_escape_string($bd,$_POST['fname']);
 	$lname= mysqli_real_escape_string($bd,$_POST['lname']);
@@ -83,8 +82,8 @@ else {
 	</div>
 	';
 	
-	include ('includes/send_user_email.php');
-	
+    email_msg('send_user_email', $email);
+    
 	echo"<meta http-equiv=\"Refresh\" content=\"2; url=dash.php?man_lab\">"; 
 	
 }

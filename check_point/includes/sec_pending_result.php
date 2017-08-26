@@ -1,11 +1,9 @@
 <form id="edit-profile" class="form-horizontal" action="app.php" method="post">
-
-
-	<h2 style="background-color:#8985f0; text-align:center; color:#000000">Pending NHLS Result</h2>
-	<hr style=" border: 1px solid #cbe509;" />
-
-	<table class="table table-striped table-bordered">
-		<thead>
+     <h2 style="background-color:#8985f0; text-align:center; color:#000000">Pending NHLS Result</h2>
+     <hr style=" border: 1px solid #cbe509;" />
+     
+     <table class="table table-striped table-bordered">
+     <thead>
 			<tr>
 				<th> <p style="text-align:center"><strong>Id NoR</strong></p> </th>
 				<th> <p style="text-align:center"><strong>Client BIO</strong></p></th>
@@ -16,10 +14,12 @@
 		</thead>
 		<tbody>
 			<?php
-			global $num_forms; 
-			$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation, lab_vl_repeat WHERE form_id not in (select form_id from app_results) and form_creation.3rdlineart_form_id=lab_vl_repeat.form_id ORDER BY `form_creation`.`3rdlineart_form_id` DESC"); 
+			global $num_forms;
+
+            $form_creation=mysqli_query( $bd,"SELECT * FROM form_creation, lab_vl_repeat WHERE form_id not in (select form_id from app_results) and form_creation.3rdlineart_form_id=lab_vl_repeat.form_id ORDER BY `form_creation`.`3rdlineart_form_id` DESC"); 
 			$num_forms = mysqli_num_rows ($form_creation);
 			echo '<p>Total forms: [ <i>'. $num_forms .'</i> ]</p>';
+
 			while ($row_form_creation=mysqli_fetch_array($form_creation)){
 
 				$_3rdlineart_form_id =$row_form_creation['3rdlineart_form_id'];
@@ -46,6 +46,7 @@
 				$dob = $row_patient['dob'];
 
 				$patient_name = $firstname .' '.$lastname;
+                
 				echo '
 				<tr>
 					<td> <p style="text-align:center"><a href="cp_p1.php?assign&id='.$_3rdlineart_form_id.'"><strong> 3rdLForm#'.$_3rdlineart_form_id.'</strong></a></p> </td>

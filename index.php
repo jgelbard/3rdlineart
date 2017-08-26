@@ -5,12 +5,10 @@
     <meta charset="utf-8">
     <title>Login - 3rd Line ART Expert Committee Malawi</title>
 <?php
-      echo 'here!!!';
 include ('includes/head.php');
-echo 'index!!!!';
-    ?>
-</head>
+?>
 
+</head>
 <body>
 	
 	<div class="navbar navbar-fixed-top">
@@ -28,6 +26,12 @@ echo 'index!!!!';
 				<ul class="nav pull-right">
 					<li class="">						
 						
+					</li>>
+					<li class="">						
+						<a href="admin" class="">
+							<i class="icon-chevron-left"></i>
+							admin
+      </a>
 					</li>
 					<li class="">						
 						<a href="#" class="">
@@ -35,7 +39,7 @@ echo 'index!!!!';
 							help
 						</a>
 					</li>
-				</ul>
+      </ul>
 			</div><!--/.nav-collapse -->	
 		</div> <!-- /container -->
 	</div> <!-- /navbar-inner -->
@@ -51,12 +55,11 @@ echo 'index!!!!';
 				
 				<p>Please provide your details</p>
                 <?php
-if(isset($_GET ['error'])){ 
+if(isset($_GET ['error'])) { 
 $_error = $_GET ['error'];
-if ($_error =='fail'){
-    echo'
-				<p style="color:#f00">You issued wrong Username or Password</p>
-                    ';}
+if ($_error =='fail') {
+    echo'<p style="color:#f00">You issued wrong Username or Password</p>';
+}
 }
                 ?>
 				<div class="field">
@@ -89,7 +92,6 @@ if ($_error =='fail'){
 </div> <!-- /login-extra -->
 <script src="js/jquery-1.7.2.min.js"></script>
 <script src="js/bootstrap.js"></script>
-
 <script src="js/signin.js"></script>
 
 </body>

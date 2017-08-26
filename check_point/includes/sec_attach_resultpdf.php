@@ -1,4 +1,3 @@
-
 <?php
 include ('includes/insert_attach_result.php');  
 
@@ -10,39 +9,31 @@ echo '
 <hr style=" border: 1px solid #cbe509;" />
 <form id="edit-profile" class="form-horizontal" action="cp_p1.php?received&id='.$formID.'" method="post" style="background-color:#fdfdfd; padding:20px;" enctype="multipart/form-data" >';
 
-
-	$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where 3rdlineart_form_id ='$formID'"); 
-
+$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where 3rdlineart_form_id ='$formID'"); 
 
 	while ($row_form_creation=mysqli_fetch_array($form_creation)){
-
 		$clinician_id =$row_form_creation['clinician_id'];
 		$patient_id =$row_form_creation['patient_id'];
-
-
+        
 		$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
 		$clinician = mysqli_query($bd,$SQL_clinician);
-
 		$row_clinician = mysqli_fetch_array($clinician);
 		$art_clinic = $row_clinician['art_clinic'];
 		$clinician_name = $row_clinician['name'];
 
 		$SQL_patient = "SELECT * FROM patient WHERE id=$patient_id";
 		$patient = mysqli_query($bd,$SQL_patient);
-
 		$row_patient = mysqli_fetch_array($patient);
 		$firstname = $row_patient['firstname'];
 		$lastname = $row_patient['lastname'];
 		$art_id_num = $row_patient['art_id_num'];
 		$gender = $row_patient['gender'];
 		$dob = $row_patient['dob'];
-
 		$patient_name = $firstname .' '.$lastname;
-
 	}
 
-	echo '<h2 style="background-color:#dedd6;  text-align:center; color:#000000">Assign Reveiwers</h2>
-	<i style="float:right    ">You have so much number of reviewers, Please TICK only <u>three reviewers </u>and Pick one as <u>Lead reveiwer</u></i>                 
+	echo '<h2 style="background-color:#dedd6;  text-align:center; color:#000000">Assign Reviewers</h2>
+	<i style="float:right    ">You have so much number of reviewers, Please TICK only <u>three reviewers </u>and Pick one as <u>Lead reviewer</u></i>                 
 	<form id="edit-profile" class="form-horizontal" action="cp_p1.php?p" method="post">
 		<h4 style="color:#69330c; padding:10px; background-color:#deed6;">3rdLineForm#: '. $formID.'</h4>
 		<table style="width:100%; background-color:#f7cf75; padding:5px;" >
@@ -74,19 +65,17 @@ echo '
 				$lname =$row_reviewer['lname'];
 				$email =$row_reviewer['email'];
 				$phone =$row_reviewer['phone'];
-
 				$rev_fullname =$title.'. '. $fname. ' '. $lname;
-
+                
 				$assigned_forms=mysqli_query( $bd,"SELECT * FROM assigned_app_results where rev_id=' $id'");
 				$count = mysqli_num_rows ($assigned_forms);
-
 				$assigned_forms_reviewed=mysqli_query( $bd,"SELECT * FROM assigned_app_results where status = 'Reviewed' and rev_id=' $id'");
 				$rev_count = mysqli_num_rows ($assigned_forms_reviewed);
 				$pending = $count - $rev_count;
 
 				echo '<tr><td>
 				<label class="checkbox ">
-					<input type="checkbox" name="checkbox[]" id="checkbox[]" value="'.$id.'" style="transform:scale(2, 2); margin: 3px;" ><p>'.'__'.$rev_fullname.'</p> <span style="color:#0b13d0">Assig <i>('.$count.')</i> Pending <i>('.$pending.')</i></span>
+					<input type="checkbox" name="checkbox[]" id="checkbox[]" value="'.$id.'" style="transform:scale(2, 2); margin: 3px;" ><p>&nbsp&nbsp'.$rev_fullname.'</p> <span style="color:#0b13d0">Assig <i>('.$count.')</i> Pending <i>('.$pending.')</i></span>
 				</label></td><td><div style="width:110px; float:left" class="radio_sty">
 				<input type="radio" id="yes_'.$id.'" name="rev_lead" value="'.$id.'" required>
 				<label for="yes_'.$id.'">Yes</label>
@@ -96,12 +85,13 @@ echo '
 			</div>
 		</div></td></tr>';
 	}
-	?>
+?>
+
 </tbody></table>
 <input type="hidden" name="formID" value="<?php echo $formID; ?>" /> 
 
 <div class="form-actions">  
-	<h3 style="color:#689d04"><span>Attach Result : </span><input type="file" name="file" value="Attach Result" required /></h3>
+	<h3 style="color:#689d04"><span>Attach Result : </span><input type="file" name="file" value="Attach Result" required /></h3>                
 </div>
 
 <div class="form-actions">

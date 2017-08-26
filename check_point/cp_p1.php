@@ -1,5 +1,5 @@
 <?php
-   echo '######';
+
 session_start();
 global $now,$expire,$user_id,$fullname;
 if (isset($_SESSION['identification'])) {
@@ -20,6 +20,7 @@ if (isset($_SESSION['identification'])) {
 	$now = time(); 
 	$expire = $_SESSION['expire'];
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,144 +29,17 @@ if (isset($_SESSION['identification'])) {
 	<meta charset="utf-8">
 	<title>Application Form</title>
 
-	<?php 
+	<?php
 	include ('../includes/head.php');
 	?>
 
-	<style type="text/css">
-		.box{
-			padding: 20px;
-			display: none;
-			margin-top: 20px;
-			border: 1px solid #000;
-		}
-		.red{ background: #ff0000; }
-		.green{ background: #00ff00; }
-		.blue{ background: #0000ff; }
-
-		input[type="text"] {
-			height: 35px; 
-		}
-
-		fieldset {
-			margin: 20px;
-			padding: 30px;
-			margin-top: 20px;
-			border: 1px solid #000;
-		}  
-
-		.radio {
-			font-size:115%;
-		}
-
-		.radio_sty {
-			color: #AAAAAA;
-			display: inline;
-			position: relative;
-			float: left;
-			width: 100%;
-			height: 100px;
-
-		}
-
-		.radio_sty input[type=radio]{
-			position: absolute;
-			visibility: hidden;
-		}
-
-		.radio_sty label{
-			display: block;
-			position: relative;
-			font-weight: 300;
-			font-size: 1.35em;
-			padding: 25px 25px 25px 80px;
-			margin: 10px auto;
-			height: 30px;
-			z-index: 9;
-			cursor: pointer;
-			-webkit-transition: all 0.25s linear;
-		}
-
-		.radio_sty:hover label{
-			color: #47aa12;
-			font-weight:800;
-		}
-
-		.radio_sty .check{
-			display: block;
-			position: absolute;
-			border: 5px solid #AAAAAA;
-			border-radius: 100%;
-			height: 20px;
-			width: 20px;
-			top: 30px;
-			left: 20px;
-			z-index: 5;
-			transition: border .25s linear;
-			-webkit-transition: border .25s linear;
-		}
-
-		.radio_sty:hover .check {
-			border: 5px solid #47aa12;
-		}
-
-		.radio_sty .check::before {
-			display: block;
-			position: absolute;
-			content: '';
-			border-radius: 100%;
-			height: 15px;
-			width: 15px;
-			top: 2.5px;
-			left: 3px;
-			margin: auto;
-			transition: background 0.25s linear;
-			-webkit-transition: background 0.25s linear;
-		}
-
-		input[type=radio]:checked ~ .check {
-			border: 5px solid #0cde80;
-		}
-
-		input[type=radio]:checked ~ .check::before{
-			background: #0DFF92;
-		}
-
-		input[type=radio]:checked ~ label{
-			color: #0cde80;
-		}
-		/* latin-ext */
-		@font-face {
-			font-family: 'Lato';
-			font-style: normal;
-			font-weight: 400;
-
-		}
-		/* latin */
-		@font-face {
-			font-family: 'Lato';
-			font-style: normal;
-			font-weight: 400;
-
-
-		}
-		.control-label {
-			position:relative; top:30px;
-			font-family: 'Lato', sans-serif;
-			font-size:110%;
-		}
-
-		form .error, .error {
-			color: #ff0000;
-		}
-
-	</style>
-
+<link rel="stylesheet" href="../css/app.css">
+<!--    <link rel="stylesheet" href="../css/cp.css"> -->
 </head>
 <body>
 
-	<?php
-        // echo '######';
+<?php
+        global $rev_title, $rev_lname, $comment_to_clinician;
 	include ('../includes/nav_main.php');
 	include ('includes/nav_sub.php');
  	?>
@@ -193,7 +67,7 @@ if (isset($_SESSION['identification'])) {
 										$formID= $_POST['formID']; 
 										$date_assigned = date ('Y/m/d');
 										$rev_lead = $_POST['rev_lead'];
-										$insert_reviewer_team_lead =" INSERT INTO reviewer_team_lead (rev_id,form_id,sec_id)
+										$insert_reviewer_team_lead = "INSERT INTO reviewer_team_lead (rev_id,form_id,sec_id)
 										VALUES (
 										'$rev_lead', '$formID', '$sec_id')";
                                         echo $insert_reviewer_team_lead;
@@ -209,13 +83,13 @@ if (isset($_SESSION['identification'])) {
 										if(!empty($_POST['checkbox'])){   
 											$checkbox = $_POST['checkbox'];
 
-											for($i=0;$i<count($_POST['checkbox']);$i++){
+											for($i=0; $i<count($_POST['checkbox']); $i++){
 
 												if(!empty($checkbox[$i])){  
 													$rev_id = $checkbox[$i];
 												}
 
-												$insert_assigned_forms=" INSERT INTO assigned_forms (form_id,sec_id,rev_id,date_assigned)
+												$insert_assigned_forms = "INSERT INTO assigned_forms (form_id,sec_id,rev_id,date_assigned)
 												VALUES ('$formID', '$sec_id', '$rev_id', '$date_assigned')";
 
                                                 echo $insert_assigned;
@@ -228,44 +102,8 @@ if (isset($_SESSION['identification'])) {
 												$rev_title = $row_reviewer['title'];
 												$rev_lname = $row_reviewer['lname'];
 
-                                                include_once('../includes/email_templates.php');
+                                                // include_once('../includes/email_templates.php');
                                                 email_msg('cp_p1', $rev_email_address);
-
-                                                /*  moved to email_templates
-												$to = 'j.dumisani7291@gmail.com';
-												$subject = "3RD Line Expert Application form review";
-												$message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-												<html xmlns="http://www.w3.org/1999/xhtml">
-
-												<head>
-													<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-													<title>New form to review</title>
-													<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-												</head>
-												<body>
-
-													<p>Dear '.$rev_title.' '.$rev_lname.',</p>
-													<p>&nbsp;</p>
-													<p>Please review the following application for genotyping for resistance mutations.</p>
-													<p>After review please state:</p>
-													<p>-Genotyping indicated yes/no.</p>
-													<p>&nbsp;</p>
-													<p>If genotyping is not indicated please additionally provide feedback to the clinician.</p>
-													<p>&nbsp;</p>
-													<p>Thank you very much,</p>
-													<p><strong>Mercy</strong></p>
-													<p><span style="text-decoration: underline;"><strong>3<sup>rd</sup> line committee Secretary</strong></span></p>
-
-												</body>
-												</html>
-												'; 
-
-												$header = "From:dumi_ndhlovu@lighthouse.org.mw\r\n";
-												$header .= "Cc:j.dumisani7291@gmail.com\r\n";
-												$header .= "MIME-Version: 1.0\r\n";
-												$header .= "Content-type: text/html\r\n";
-												$retval = mail ($to,$subject,$message,$header);    
-                                                */
 											}
 										}
                                         echo"<meta http-equiv=\"Refresh\" content=\"1; url=cp_p1.php?p\">";   
@@ -298,7 +136,6 @@ if (isset($_SESSION['identification'])) {
 
 									if(isset($_GET['p'])){ 
 										include ('includes/sec_new.php');
-                                        exit();
 									}
 
 									if(isset($_GET['view'])){ 
@@ -306,14 +143,14 @@ if (isset($_SESSION['identification'])) {
 									}
 
 									if(isset($_GET['received'])){ 
-										include ('includes/sec_attach_resultpdf.php');   
+										include ('includes/sec_attach_resultpdf.php');  
 									}
 
 									if(isset($_GET['pending'])){ 
 										include ('includes/sec_results_under_rev.php');   
 									}
 
-									if(isset($_GET['pending_result'])){ 
+ 									if(isset($_GET['pending_result'])){
 										include ('includes/sec_pending_result.php');   
 									}
 
@@ -344,6 +181,7 @@ if (isset($_SESSION['identification'])) {
 									if(isset($_GET['consolidate'])){ 
 										include ('includes/sec_consolidate1.php');   
 									}
+
 									if(isset($_GET['consolidate_result'])){ 
 										include ('includes/sec_consolidate2.php');   
 									}

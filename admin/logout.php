@@ -12,7 +12,7 @@
 	
 	session_unset();
 	session_destroy();
-	echo"<meta http-equiv=\"Refresh\" content=\"1; url=index.php\">";
+	echo"<meta http-equiv=\"Refresh\" content=\"1; url=../index.php\">";
 	//header ("Location: $path");
 	
 ?>

@@ -24,8 +24,8 @@ $num_forms_aap_results = mysqli_num_rows ($form_assigned_app_results);
 $review_panel = '<li class="active"><a href="review_p1.php?p"><i>('.$num_forms_new.')</i><span>New Reviews</span></a></li>
 				<li class=""><a href="review_p1.php?lead_reviewer"><i>('.$num_forms_lead.')</i><span>Lead App Reviewer</span></a></li>
 				<li class=""><a href="review_p1.php?rev"><i>('.$num_forms_my_rev.')</i><span>My Reviewed Forms</span></a></li>
-				<li class=""><a href="review_p1.php?lead_result"><i>('.$lead_num_forms.')</i><span>Lead Results Reviewer</span></a></li>
 				<li class=""><a href="review_p1.php?result"><i>('.$num_forms_aap_results.')</i><span>Review Results</span></a></li>
+				<li class=""><a href="review_p1.php?lead_result"><i>('.$lead_num_forms.')</i><span>Lead Results Reviewer</span></a></li>
 				';
 
 if(isset($_GET['p']))
@@ -43,7 +43,7 @@ if(isset($_GET['lead_result']))
 if(isset($_GET['rev']))
     echo $review_panel;
 ?>
-<li><a href="../../reports.php" target="_blank"><i class="icon-bar-chart"></i><span>Reports</span> </a> </li>               
+<li><a href="../reports.php" target="_blank"><i class="icon-bar-chart"></i><span>Reports</span> </a> </li>               
 </ul>
 </div>
 </div>

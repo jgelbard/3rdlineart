@@ -2,7 +2,6 @@
 global $id;
 $id = $_GET['id'];
 
-
 $pih_lab=mysqli_query($bd, "SELECT * FROM pih_lab  where id='$id'"); 
 $row_pih_lab=mysqli_fetch_array($pih_lab);
 
@@ -17,15 +16,13 @@ $users=mysqli_query($bd, "SELECT * FROM users where id='$user_id'");
 $row_users=mysqli_fetch_array($users);
 $username =$row_users['username'];
 $username = decrypt ($username, $key);
-
 ?>
 
 
 <h2 style="background-color:#fff; text-align:left; color:#000000">Edit Lab User Registration</h2>
-<hr />
+<hr>
 
-
-<form id="edit-profile" class="form-horizontal" action="dash.php?update_user" method="post">
+<form id="edit-profile" class="form-horizontal" action="<?php echo $main_page; ?>?update_user<?php echo $source; ?>"  method="post">
 	<div class="control-group">											
 		<label class="control-label" for="firstname">Username</label>
 		<div class="controls">

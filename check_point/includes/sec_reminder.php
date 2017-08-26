@@ -1,4 +1,3 @@
-
 <form id="edit-profile" class="form-horizontal" action="app.php" method="post">
 
 	<h2 style="background-color:#98a31a; text-align:center; color:#000000">6 Months Reminder</h2>
@@ -15,15 +14,15 @@
 		<tbody>
 			<?php
 			global $num_newforms; 
-			$expert_review_consolidate2=mysqli_query( $bd,"SELECT * FROM expert_review_consolidate2 ORDER BY `expert_review_consolidate2`.`id` DESC "); 
+			$expert_review_consolidate2 = mysqli_query( $bd, "SELECT * FROM expert_review_consolidate2 ORDER BY `expert_review_consolidate2`.`id` DESC "); 
 			$num_newforms = mysqli_num_rows ($expert_review_consolidate2);
 			echo '<p>All reveiwed forms: [ <i>'. $num_newforms .'</i> ]</p>';
 			while ($row_expert_review_consolidate2=mysqli_fetch_array($expert_review_consolidate2)){
 
-				$form_id =$row_expert_review_consolidate2['form_id'];
-				$id =$row_expert_review_consolidate2['id'];
-				$date_reviewed =$row_expert_review_consolidate2['consolidate2_date'];
-				$date_rev=explode("/",$date_reviewed); 
+				$form_id = $row_expert_review_consolidate2['form_id'];
+				$id = $row_expert_review_consolidate2['id'];
+				$date_reviewed = $row_expert_review_consolidate2['consolidate2_date'];
+				$date_rev = explode("/",$date_reviewed); 
 
 				$curMonth = date("m");
 				$curDay = date("j");

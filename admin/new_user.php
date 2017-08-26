@@ -1,21 +1,3 @@
-<?php 
- session_start();
- global $now,$expire,$user_id,$fullname;
- if (isset($_SESSION['identification'])){
-
-	/* global  $fullname;*/
-       $fname= $_SESSION['fname'];
-       $lname= $_SESSION['lname'];
-       $fullname =$fname . " " .$lname;
-    
-       /*$fname= $_SESSION['fname'];*/
-      $rev_id= $_SESSION['id'];
-       $user_id=$_SESSION['identification'];
-     
-	   $now = time(); 
-	   $expire= $_SESSION['expire'];}
-	   
-	   ?>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -26,6 +8,7 @@
    <?php 
     
 include ('../includes/head.php');
+include ("includes/crypt_function.php");
     
     ?>
     
@@ -33,19 +16,13 @@ include ('../includes/head.php');
     input[type="text"] {
     height: 35px; 
     }
-   /* input[type="submit"] {
-    width: 200px;
-        
-    }
-    */
+
     </style>
 </head>
 <body>
 <?php
-    include ('../includes/nav_main.php');
-    include ('includes/nav_sub.php');
-    
-    ?>
+    include ('../includes/nav_main.php'); 
+?>
     
 <div class="main">
 	
@@ -58,39 +35,66 @@ include ('../includes/head.php');
 	      	<div class="span12">
 	      		
 	      		<div class="widget">
-						
-					<!--<div class="widget-header">
-						<i class="icon-th-large"></i>
-						<h3 style="text-align:right">3rd Line ART Application Form</h3>
-                        
-					</div>  /widget-header -->
-					
 					<div class="widget-content">
 						
 						<div class="pricing-plans plans-3">
-                      
-                            <div class="span11" style="padding:200px 50px">
-<h1 style="font-size:1000%; color:#efeded">Admin Page</h1>
-</div>
-                       
+                            <p><br /></p>
+
+                    <?php
+                        
+                        if(isset($_GET['u'])){ 
+                        $username =$_GET['u'];
+                        }
+                        if(isset($_GET['r'])){ 
+                        $role = $_GET['r'];
+                          
+                        }
+                        if(isset($_GET['source_page'])){ 
+                            $main_page ="new_user.php";   
+                            $source ="&source_page";   
+                            
+                        }
+                        else {
+                            $main_page ="dash.php";
+                            $source ="";
+                        } 
+                            
+                            if (($role=='Reviewer') or isset($_GET['rev_edit']) ){
+                        include ('includes/reviewer_edit.php');     
+                        }    
+                            if (($role=='Secretary') or isset($_GET['sec_edit']) ){
+                        include ('includes/sec_edit.php');      
+                        }    
+                            if (($role=='Clinician') or isset($_GET['clin_edit']) ){
+                        include ('includes/clinician_edit.php');    
+                        }
+                           if (($role=='Lab') or isset($_GET['lab_edit']) ){
+                        include ('includes/labuser_edit.php');     
+                        }
+                        
+                            
+                        include ('includes/update_user.php');  
+                            
+                            ?>
+ 
 	
                         </div>
-					</div> <!-- /pricing-plans -->
+					</div> 
 						
-					</div> <!-- /widget-content -->
+					</div>>
 						
-				</div> <!-- /widget -->					
+				</div>				
 				
-		    </div> <!-- /span12 -->     	
+		    </div>    	
 	      	
 	      	
-	      </div> <!-- /row -->
+	      </div>
 	
-	    </div> <!-- /container -->
+	    </div>
 	    
 	</div>
     
-</div> <!-- /main -->
+<!--/div> <!-- /main -->
     
 <!-- Le javascript
 ================================================== -->

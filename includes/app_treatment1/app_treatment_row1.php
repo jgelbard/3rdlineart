@@ -90,7 +90,7 @@ for($i=0; $i<10; $i++) {
 						}                        
 						echo "$druglist
 					</select> </td>
-				<td><input type=\"text\" name=\"start_date$date\"value=\"";
+				<td><input type=\"text\" name=\"start_date$date\" value=\"";
 						if (!empty ($treat_start_date["$i"])) {
 							echo $treat_start_date ["$i"];
 						}

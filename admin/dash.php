@@ -50,13 +50,20 @@ include ('includes/nav_sub.php');
 
 					<div class="span12">
 
-						<div class="widget">
+    <div class="widget">
 
 							<div class="widget-content">
 								
-								<div> <!-- class="pricing-plans plans-3"> -->
-									<?php
-
+								<div class="pricing-plans plans-3">
+<?php
+    global $username, $password, $role;
+                            if (isset($_GET['source_page'])) {
+    $main_page = 'new_user.php';
+    $source = '&source_page';
+} else {
+    $main_page = 'dash.php';
+    $source = '';
+}
 									include ('includes/delete_user.php');                             
 									include ('includes/delete_facility_drug_affliates.php');
 									include ('includes/insert_reviewer.php'); 

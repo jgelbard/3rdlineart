@@ -30,8 +30,7 @@ if (isset($_SESSION['identification'])) {
 <?php
     include ('../includes/head.php');
 ?>
-<link rel="stylesheet" href="../css/app.css">    
-    
+<link rel="stylesheet" href="../css/app.css">        
 </head>
 <body>
 <?php
@@ -51,10 +50,8 @@ include ('includes/nav_sub.php');
     <div class="span12">
         <div class="widget">
             <div class="widget-content">
-                <div class="pricing-plans plans-3">
-		   			
-							<?php
-
+                <div class="pricing-plans plans-3">		   			
+<?php
 							if(isset($_POST['submit_consolidate1'])){ 
 								include ('includes/insert_consolidate1.php');   
 							}
@@ -66,15 +63,16 @@ include ('includes/nav_sub.php');
 							include ('includes/insert_review.php');  
 							include ('includes/insert_reviewed_result.php');  
 
-							if(isset($_GET['result'])){ 
-								include ('includes/rev_results.php');   
+							if(isset($_GET['result'])){
+                                if (!isset($_GET['reviewed']))
+                                    include ('includes/rev_results.php');
 							}
 
 							if(isset($_GET['p'])){ 
 								include ('includes/rev_new.php');   
 							}
 
-							if(isset($_GET['lead_reviewer'])){ 
+							if(isset($_GET['lead_reviewer'])){
 								include ('includes/sec_rev.php');   
 							}
 
@@ -117,38 +115,37 @@ include ('includes/nav_sub.php');
 							if(isset($_GET['result'])){ 
 								$formID= $_GET ['id'];
 								$form_creation=mysqli_query($bd,"SELECT * FROM form_creation, app_results where form_creation.3rdlineart_form_id='$formID' and  form_creation.3rdlineart_form_id=app_results.form_id");
+                                if (mysqli_num_rows($form_creation) > 0) {
+                                    while ($row_form_creation=mysqli_fetch_array($form_creation)){
+                                        // echo '>> $row_form_creation';        
+                                        $_3rdlineart_form_id =$row_form_creation['3rdlineart_form_id'];
+                                        $clinician_id =$row_form_creation['clinician_id'];
+                                        $pat_id =$row_form_creation['patient_id'];
+                                        $status =$row_form_creation['status'];
+                                        $result_pdf =$row_form_creation['result_pdf'];
+                                        $date_created =$row_form_creation['date_created'];
+                                    
+                                        $SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+                                        $clinician = mysqli_query($bd, $SQL_clinician);
+                                        
+                                        $row_clinician = mysqli_fetch_array($clinician);
+                                        $facility = $row_clinician['art_clinic'];
+                                        $clinician_name = $row_clinician['name'];
+                                        $clinician_phone = $row_clinician['phone'];
+                                        $clinician_email = $row_clinician['email'];
+                                    }
 
-								while ($row_form_creation=mysqli_fetch_array($form_creation)){
-									// echo '>> $row_form_creation';        
-									$_3rdlineart_form_id =$row_form_creation['3rdlineart_form_id'];
-									$clinician_id =$row_form_creation['clinician_id'];
-									$pat_id =$row_form_creation['patient_id'];
-									$status =$row_form_creation['status'];
-									$result_pdf =$row_form_creation['result_pdf'];
-									$date_created =$row_form_creation['date_created'];
-
-									$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
-									$clinician = mysqli_query($bd,$SQL_clinician);
-
-									$row_clinician = mysqli_fetch_array($clinician);
-									$facility = $row_clinician['art_clinic'];
-									$clinician_name = $row_clinician['name'];
-									$clinician_phone = $row_clinician['phone'];
-									$clinician_email = $row_clinician['email'];
-								}
-
-								echo '
+                                    echo '
 								<div class="form-actions">
-
 									<div class="span3" style="float:right">
 										<a href="../documents/results/'.$result_pdf.'" target="_blank" class="btn btn-small btn-primary"> NHLS Patient Result</a>
 									</div>
 								</div>	
 								'; 
-								include ('includes/review_form.php');  
-								include ('includes/review_result.php');  
+                                    include ('includes/review_form.php');  
+                                    include ('includes/review_result.php');
+                                }
 							}
-
 
 							if(isset($_GET['consolidate'])){ 
 								include ('includes/sec_consolidate1.php');   
