@@ -10,13 +10,22 @@
 				$(".box").not(".no").hide();
 				$(".no").show();
 			}
-
 		});
+        if ($('input[id="art_interrup"]').attr("checked") == 'checked') {
+            $(".yes").show();            
+        } else {
+             $(".yes").hide();            
+        }        
 	});
-</script>
 
-<script>
-	$().ready(function() {
+    $('body').keypress(function(e) {
+        if (e.which == 13) {
+            e.preventDefault();
+            $('input[type="submit"]:last').click();
+        }
+    });
+
+    $().ready(function() {
 		// validate the comment form when it is submitted
 		$("#commentForm").validate();
 		$("#search_art").validate({
@@ -27,7 +36,7 @@
 			},
 			messages: {
 				id: {
-					required: "",
+					required: "need this!",
 				},
 			}
 		});
@@ -35,55 +44,44 @@
 		// validate clinic staus form on keyup and submit
 		$("#edit-profile").validate({
 			rules: {
-				firstname: "required",
-				lastname: "required",
-
 				who_stage: {
-					required: true,
+					required: false,
 					
 				},
 				curr_who_stage: {
-					required: true,
+					required: false,
 					
 				},
 				weight: {
 					required: true,
-					minlength: 2,
-					maxlength: 3
+                        range: [10, 250],
+
 				},
 				height: {
 					required: true,
-					minlength: 3,
-					maxlength: 3
+                        range: [30, 300],                        
 				},
 
 			},
 			messages: {
-				firstname: "Please enter Client's firstname",
-				lastname: "Please enter Client's lastname",
-
 				who_stage: {
-					required: "Please Select WHO stage"
+                  required: false,
 				},
 				curr_who_stage: {
-					required: "Please Select Current WHO stage"
+                  required: false,
 				},
 				weight: {
 					required: "Curr Weight",
-					minlength: "Under weight",
-					maxlength: "Over weight"
-					
+                        // min: "Under weight",
+                        // max: "Over weight"					
 				}, 
 				height: {
 					required: "Curr Height",
-					minlength: "Under Height",
-					maxlength: "Over Height"
-					
+                        // min: "Under Height",
+                        // max: "Over Height"					
 				},
-
 			}
 		});
-
 	});
 
 </script>
@@ -98,7 +96,6 @@ if(isset($_GET['pat_id'])){
 if(isset($_POST['xx'])){ 
 	$age= $_POST['xx'];
 }
-echo 'clinic_status_edit says age='.$age;
 
 $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
 $row_pat=mysqli_fetch_array($patient);
@@ -109,70 +106,67 @@ $lastname =$row_pat['lastname'];
 $gender =$row_pat['gender'];
 $dob =$row_pat['dob'];
 $vl_sample_id =$row_pat['vl_sample_id'];
-
 $client_name = $firstname.' '.$lastname;
 
-$current_clinical_status=mysqli_query( $bd,"SELECT * FROM current_clinical_status where patient_id='$pat_id' ");
+$current_clinical_status = mysqli_query( $bd,"SELECT * FROM current_clinical_status where patient_id='$pat_id' ");
 $if_exist_current_clinical_status = mysqli_num_rows ($current_clinical_status);
 
-while ($row_clinic_status=mysqli_fetch_array($current_clinical_status)){
-	$who_stage =$row_clinic_status['who_stage'];
-	$curr_who_stage =$row_clinic_status['curr_who_stage'];
-	$weight =$row_clinic_status['weight'];
-	$height =$row_clinic_status['height'];
-	$art_interrup =$row_clinic_status['art_interrup'];
-	$ol_6months =$row_clinic_status['ol_6months'];
-	$sig_diarrhea_vom =$row_clinic_status['sig_diarrhea_vom'];
-	$alco_drug_consump =$row_clinic_status['alco_drug_consump'];
-	$trad_med =$row_clinic_status['trad_med'];
-	$co_medi =$row_clinic_status['co_medi'];
-	$other_curr_problem =$row_clinic_status['other_curr_problem'];
+while ($row_clinic_status = mysqli_fetch_array($current_clinical_status)){
+	$who_stage = $row_clinic_status['who_stage'];
+	$curr_who_stage = $row_clinic_status['curr_who_stage'];
+	$weight = $row_clinic_status['weight'];
+	$height = $row_clinic_status['height'];
+	$art_interrup = $row_clinic_status['art_interrup'];
+	$ol_6months = $row_clinic_status['ol_6months'];
+	$sig_diarrhea_vom = $row_clinic_status['sig_diarrhea_vom'];
+	$alco_drug_consump = $row_clinic_status['alco_drug_consump'];
+	$trad_med = $row_clinic_status['trad_med'];
+	$co_medi = $row_clinic_status['co_medi'];
+	$other_curr_problem = $row_clinic_status['other_curr_problem'];
 
 	if ($art_interrup=='Yes'){
 		$art_interruption = mysqli_query( $bd,"SELECT * FROM art_interruption where patient_id='$pat_id' "); 
 		$row_art_interruption=mysqli_fetch_array($art_interruption);
-		$interupt_reason =$row_art_interruption['reason'];
-		$interup_date =$row_art_interruption['date'];
+		$interupt_reason = $row_art_interruption['reason'];
+		$interupt_date = $row_art_interruption['date'];
 	}
 
 	if ($ol_6months=='Yes'){
 		$ol_6months_details = mysqli_query( $bd,"SELECT * FROM ol_6months_details where patient_id='$pat_id' "); 
 		$row_ol_6months_details=mysqli_fetch_array($ol_6months_details);
-		$ol_6months_dign =$row_ol_6months_details['ol_6months_dign'];
-		$ol_6months_date =$row_ol_6months_details['ol_6months_date'];
+		$ol_6months_dign = $row_ol_6months_details['ol_6months_dign'];
+		$ol_6months_date = $row_ol_6months_details['ol_6months_date'];
 	}
 }
 
-//side effects 
+// side effects
 $patient_side_effects=mysqli_query( $bd,"SELECT * FROM patient_side_effects where patient_id='$pat_id' "); 
 $row_patient_side_effects=mysqli_fetch_array($patient_side_effects);
 
-$PeripheralNeuropathy =$row_patient_side_effects['PeripheralNeuropathy'];
-$Jaundice =$row_patient_side_effects['Jaundice'];
-$Lipodystrophy =$row_patient_side_effects['Lipodystrophy'];
-$KidneyFailure =$row_patient_side_effects['KidneyFailure'];
-$Psychosis =$row_patient_side_effects['Psychosis'];
-$Gynecomastia =$row_patient_side_effects['Gynecomastia'];
-$Anemia =$row_patient_side_effects['Anemia'];
-$other =$row_patient_side_effects['other'];
+$PeripheralNeuropathy = $row_patient_side_effects['PeripheralNeuropathy'];
+$Jaundice = $row_patient_side_effects['Jaundice'];
+$Lipodystrophy = $row_patient_side_effects['Lipodystrophy'];
+$KidneyFailure = $row_patient_side_effects['KidneyFailure'];
+$Psychosis = $row_patient_side_effects['Psychosis'];
+$Gynecomastia = $row_patient_side_effects['Gynecomastia'];
+$Anemia = $row_patient_side_effects['Anemia'];
+$other = $row_patient_side_effects['other'];
 
-//side effects details 
+// side effects details 
 $current_clinical_status_details=mysqli_query( $bd,"SELECT * FROM current_clinical_status_details where pat_id='$pat_id' "); 
 $row_current_clinical_status_details=mysqli_fetch_array($current_clinical_status_details);
 
-$sig_diarrhea_vom_details =$row_current_clinical_status_details['sig_diarrhea_vom_details'];
-$alco_drug_consump_details =$row_current_clinical_status_details['alco_drug_consump_details'];
-$trad_med_details =$row_current_clinical_status_details['trad_med_details'];
-$co_medi_details =$row_current_clinical_status_details['co_medi_details'];
-$other_curr_problem_details =$row_current_clinical_status_details['other_curr_problem_details'];
+$sig_diarrhea_vom_details = $row_current_clinical_status_details['sig_diarrhea_vom_details'];
+$alco_drug_consump_details = $row_current_clinical_status_details['alco_drug_consump_details'];
+$trad_med_details = $row_current_clinical_status_details['trad_med_details'];
+$co_medi_details = $row_current_clinical_status_details['co_medi_details'];
+$other_curr_problem_details = $row_current_clinical_status_details['other_curr_problem_details'];
 
-echo '
-<form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'" method="post">
+echo '<form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'" method="post">
 	<h2 style="background-color:#f8f7f7; text-align:center">Current Clinic Status and history</h2>
 	<hr style=" border: 1px solid #12c3f8;" />
 	';                   
 	?>
-	<!--    <input type="text" name="pat_id" valu" style=" position:relative; top:-00px" />-->
 	<h3>Client Name: <strong><i style="background-color:#f8f7f7; color:red"><?php echo $client_name; ?></i></strong></h3>
 	<input type="number" name="pat_id" value="<?php echo $pat_id; ?>" style="background-color:#fff; border:none; height:20px; color:#fff; position:relative; top:-300px;"  />
 
@@ -180,46 +174,48 @@ echo '
 	<fieldset>
 		<table style="width:100%" border="0"  style="cellpadding:10px; ">
 			<tr>
-				<td><h4>WHO stage at start of Treatment</h4> <br /></td>
+				<td><h4>WHO stage at start of Treatment</h4> <br/></td>
 				<td>
-					<select name="who_stage" id="who_stage" style="width:180px;height:50px;" required>
-						<option value="<?php echo $who_stage ?>"><?php echo $who_stage ?></option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-					</select> <br />
+                    <input name="who_stage" id="who_stage" style="width:200px; height:50px;" value="<?php echo $who_stage ?>" placeholder="Number or Text">    
+					<!-- <select name="who_stage" id="who_stage" style="width:180px;height:50px;" required>
+						<option><?php echo $who_stage ?></option>
+						<option>1</option>
+						<option>2</option>
+						<option>30</option>
+						<option>4</option>
+					</select>--> <br />
 				</td>    
 
 				<td>
-					<h4>Current WHO stage (+defining condition)</h4>  <br />
+					<h4>Current WHO stage (+defining condition)</h4>  <br/>
 				</td>
 				<td>
-					<select name="curr_who_stage" style="width:200px; height:50px;">
-						<option><?php echo $curr_who_stage?></option>
+                    <input name="curr_who_stage" id="curr_who_stage" style="width:200px; height:50px;" value="<?php echo $curr_who_stage ?>" placeholder="Number or Text">    
+					<!-- <select name="curr_who_stage" style="width:200px; height:50px;">
+						<option><?php echo $curr_who_stage ?></option>
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
 						<option>4</option>
-					</select> <br />
+					</select>--> <br />
 
 				</td>    
 
 			</tr>
-			<tr><td> <br /></td></tr>
+			<tr><td> <br/></td></tr>
 			<tr>
 				<td><h4>Curr Weight<label><span><i>*kg</i></span></label></h4></td>
 				<td><input type="number" class="span4" id="weight" value="<?php echo $weight ?>" placeholder="kg" name="weight" required style="width:100px; height:50px; font-size:130%">
-					<br />
+					<br/>
 				</td>
 
 				<td> <h4>Curr Height <label><span><i>*cm</i></span></label></h4></td>
 				<td><input type="number" class="span4" id="height" value="<?php echo $height ?>" placeholder="cm" name="height" required style="width:100px; height:50px; font-size:130%">
-					<br />
+					<br/>
 				</td>
 
 			</tr>
-			<tr><td> <br /></td></tr>
+			<tr><td> <br/></td></tr>
 		</table>
 	</fieldset>
 
@@ -230,9 +226,9 @@ echo '
 			<tr>
 				<td>
 					<h4>ART Interruptions?</h4>
-					<?php 
-					if ($art_interrup=='Yes'){
-						echo '<div style="width:110px; float:left" class="radio_sty">
+<?php 
+       if ($art_interrup=='Yes'){
+                        echo '<div style="width:110px; float:left" class="radio_sty">
 						<input type="radio" id="art_interrup" name="art_interrup" value="intr_Yes" checked="checked" >
 						<label for="art_interrup">Yes</label>
 						<div class="check">
@@ -250,15 +246,11 @@ echo '
 
 			<tr class="yes box">
 				<td> <p>Write ART interruption dates (or ranges)</p>
-					<textarea type="text" class="span4" rows="6"  name="art_interrup_date" value="">
-						'.$interupt_reason.'
-					</textarea>
+					<textarea type="text" class="span4" rows="6"  name="art_interrup_date" id="art_interrup_date">'.$interupt_date.'</textarea>
 				</td>
 
 				<td><p>Reason for interruption(s)</p>
-					<textarea type="text" class="span4" rows="6"  name="art_interrup_reason" id="art_interupt_reason">
-						'.$interup_date.'
-					</textarea>
+					<textarea type="text" class="span4" rows="6"  name="art_interrup_reason" id="art_interup_reason">'.$interupt_reason.'</textarea>
 				</td>
 			</tr>
 			';
@@ -289,7 +281,6 @@ echo '
 	</td>
 	<td><p>Reason for interruption(s)</p>
 		<textarea type="text" class="span4" rows="6"  name="art_interrup_reason" id="art_interupt_reason">
-
 		</textarea>
 	</td>
 </tr>
@@ -567,12 +558,13 @@ echo '
 </fieldset>
 <div class="form-actions">
 	<div class="span3">
-		<a href="app.php?back&part_1<?php echo '&pat_id='.$pat_id.'' ?>" class="btn" style="padding:10px; font-size:180%">Back</a>                                                            </div>
+         <a href="app.php?back&part_1<?php echo '&pat_id='.$pat_id.'' ?>" class="btn" style="padding:10px; font-size:180%">Back</a>
+    </div>
     <div class="span3">
         <?php include ('includes/app_edit_menu.php'); ?>            
-   </div>
-   <div class="span3">
-	<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="update_clinicstatus">Next</button> 
- </div>
+    </div>
+    <div class="span3">
+            <button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="update_clinicstatus">Next</button> 
+    </div>
  </div>
 </form>

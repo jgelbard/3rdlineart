@@ -21,10 +21,7 @@ $username = decrypt ($username, $key);
 <h2 style="background-color:#fff; text-align:left; color:#000000">Edit Clinician</h2>
 <hr />
 
-
 <form id="edit-profile" class="form-horizontal" action="dash.php?update_user" method="post">
-
-
 	<div class="control-group">											
 		<label class="control-label" for="firstname">ART Clinic</label>
 		<div class="controls">                          
@@ -35,11 +32,8 @@ $username = decrypt ($username, $key);
 //facility
 				$facility=mysqli_query( $bd,"SELECT * FROM facility"); 
 				while ($row_facility=mysqli_fetch_array($facility)){
-
 					$facility_name =$row_facility['facilityName'];
-
 					echo '<option>'.$facility_name.'</option>';
-
 				}
 				?>
 			</select><br />

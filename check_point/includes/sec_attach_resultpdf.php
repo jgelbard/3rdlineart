@@ -33,7 +33,7 @@ $form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where 3rdlineart_f
 	}
 
 	echo '<h2 style="background-color:#dedd6;  text-align:center; color:#000000">Assign Reviewers</h2>
-	<i style="float:right    ">You have so much number of reviewers, Please TICK only <u>three reviewers </u>and Pick one as <u>Lead reviewer</u></i>                 
+	<i style="float:right">Please TICK only <u>three reviewers </u>and Pick one as <u>Lead reviewer</u></i>                 
 	<form id="edit-profile" class="form-horizontal" action="cp_p1.php?p" method="post">
 		<h4 style="color:#69330c; padding:10px; background-color:#deed6;">3rdLineForm#: '. $formID.'</h4>
 		<table style="width:100%; background-color:#f7cf75; padding:5px;" >

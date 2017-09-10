@@ -55,7 +55,7 @@ $treatment_monitoring=mysqli_query( $bd,"SELECT * FROM  monitoring where pat_id=
 $if_exist_treatment_monitoring = mysqli_num_rows ($treatment_monitoring);
 if ($if_exist_treatment_monitoring != '0') {
 	echo ' <div style="width:90%; background-color:#f2f2f2; border-radius: 5px; padding:5px; text-align:center; margin:5px;" >
-	<a href="app.php?back&back_treatment2&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'" class="btn btn-warning"   style="width:90%;" >CD4 &VL Monitoring</a>
+	<a href="app.php?back&back_treatment2&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'" class="btn btn-warning"   style="width:90%;" >CD4 & VL Monitoring</a>
 </div>';
 
 }

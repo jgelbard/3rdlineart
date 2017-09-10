@@ -1,5 +1,5 @@
 <?php
-echo 'send_user_email!';
+// echo 'send_user_email!';
 email_msg('send_user_email', $email);
 
 /*    
@@ -15,7 +15,7 @@ $message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http
         <body>
         <p>Welcome '.$fullname.'!</p>
         <p>You have been registered as a '.$role.' in the 3<sup>rd</sup> Line ART Expert Committee Malawi. Follow the link to complete your registration:</p>
-        <a href="http://localhost/3rdline_git/3rdlineart5/admin/new_user.php?'.encrypt ($username, $key).'"></a>
+        <a href="$rooturl/3rdline_git/3rdlineart5/admin/new_user.php?'.encrypt ($username, $key).'"></a>
         <p>&nbsp;</p>
         <p>Regards</p>
         <p>Admin</p>

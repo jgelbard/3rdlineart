@@ -12,12 +12,11 @@ if(isset($_GET['lead'])){
 	$rev_title = $row_reviewer['title'];
 	$rev_lname = $row_reviewer['lname'];
 
-
+    email_msg('insert_reminder_consolidate', $rev_email_address);
 	echo '							
 	<div class="alert alert-success">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
 		<p style="color:#30af0a"><strong>Notification Send!</strong> Reviews sent for Consolidation.</p>
-
 	</div>';
 
 	echo"<meta http-equiv=\"Refresh\" content=\"6; url=cp_p1.php?rev\">";   
@@ -39,15 +38,12 @@ if(isset($_GET['lead'])){
 				<th class="td-actions" style="text-align:center"><p><strong>Reviewer 2</strong></p> </th>
 				<th class="td-actions" style="text-align:center"><p><strong>Reviewer 3</strong></p> </th>
 				<th class="td-actions" style="text-align:center"><p><strong>Team Lead</strong></p> </th>
-
 			</tr>
 		</thead>
 		<tbody>
 
-			<?php
-
-			$assigned_forms=mysqli_query( $bd,"SELECT distinct form_id,date_assigned FROM assigned_forms WHERE form_id not in (select form_id from expert_review_consolidate1) ORDER BY `assigned_forms`.`form_id` DESC"); 
-
+<?php
+            $assigned_forms=mysqli_query( $bd, $cp_query['select_assigned_forms']);
 			while ($row_assigned_forms=mysqli_fetch_array($assigned_forms)) {
 				$form_id =$row_assigned_forms['form_id'];
 				$date_assigned =$row_assigned_forms['date_assigned'];
@@ -59,9 +55,7 @@ if(isset($_GET['lead'])){
 					';
 
 					$assigned=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_forms where form_id='$form_id'"); 
-
 					$assigned_count=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_forms where form_id='$form_id' and status ='Reviewed'");
-
 					$complete_review = mysqli_num_rows ($assigned_count);
 
 					$select_team_lead=mysqli_query( $bd,"SELECT reviewer_team_lead.rev_id, reviewer.title, reviewer.fname, reviewer.lname FROM reviewer_team_lead, reviewer where reviewer_team_lead.form_id='$form_id' and reviewer_team_lead.rev_id =reviewer.id");
@@ -98,7 +92,7 @@ if(isset($_GET['lead'])){
 
 					if ($complete_review >='3'){
 						echo ' 
-						<td class="td-actions"><a href="cp_p1.php?rev&lead='.$team_leader_id.'&formid='.$form_id.'" class="btn btn-large btn-invert" style="color:#f00"><i class="btn-icon-only icon-ok"> '. $team_leader_id.'Notify Lead Expert </i></a></td>
+						<td class="td-actions"><a href="cp_p1.php?rev&lead='.$team_leader_id.'&formid='.$form_id.'" class="btn btn-large btn-invert" style="color:#f00"><i class="btn-icon-only icon-ok">Notify Lead Expert</i></a></td>
 					</tr>';
 				}
 

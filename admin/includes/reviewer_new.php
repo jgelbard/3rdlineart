@@ -2,7 +2,6 @@
 <h2 style="background-color:#fff; text-align:left; color:#000000">New Reviewer Registration</h2>
 <hr />
 
-
 <form id="edit-profile" class="form-horizontal" action="dash.php" method="post">
 
 	<div class="control-group">											
@@ -15,27 +14,23 @@
 				<option>Mr</option>
 				<option>Ms</option>
 				<option>Mrs</option>
-			</select><br />
+			</select><br/>
 		</div>			
-	</div>    
+	</div>
+     
 	<div class="control-group">											
 		<label class="control-label" for="firstname">Affliated Institution</label>
 		<div class="controls">
 			<select name="affiliate_institution" required id="affiliate_institution" style="margin:5px">
 				<option selected="selected" value="">select Affliated Institution</option>
 				<?php
-//facility
-
 				$partner_org=mysqli_query( $bd,"SELECT * FROM partner_org"); 
-				while ($row_partner_org=mysqli_fetch_array($partner_org)){
-
+				while ($row_partner_org=mysqli_fetch_array($partner_org)) {
 					$partner_org_name =$row_partner_org['partner_org_name'];
-
 					echo '<option>'.$partner_org_name.'</option>';
-
 				}
 				?>
-			</select><br />
+			</select><br/>
 		</div>			
 	</div> 
 
@@ -74,7 +69,6 @@
 		</div>			
 	</div>
 
-
 	<div class="control-group">	
 		<label class="control-label" for="firstname">Password</label>
 		<div class="controls">
@@ -96,6 +90,7 @@
 			</textarea> 
 		</div>			
 	</div>
+                    
 	<div class="form-actions">
 		<div class="span2">
 			<button class="btn" style="padding:10px; font-size:180%">Cancel</button>

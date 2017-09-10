@@ -12,6 +12,7 @@
 			}
 		});
 	});
+
 </script>
 <script>
 	$().ready(function() {
@@ -38,22 +39,18 @@
 				lastname: "required",
 				
 				who_stage: {
-					required: true,
-					
+					required: false,					
 				},
 				curr_who_stage: {
-					required: true,
-					
+					required: false,					
 				},
 				weight: {
 					required: true,
-					minlength: 2,
-					maxlength: 3
+                        range: [10, 250],
 				},
 				height: {
 					required: true,
-					minlength: 3,
-					maxlength: 3
+                        range: [30, 300],
 				},	
 			},
 			messages: {
@@ -67,18 +64,14 @@
 					required: "Please Select Current WHO stage"
 				},
 				weight: {
-					required: "Curr Weight",
-					minlength: "Under weight",
-					maxlength: "Over weight"			
+					required: "Curr Weight",			
 				}, 
 				height: {
 					required: "Curr Height",
-					minlength: "Under Height",
-					maxlength: "Over Height"
+
 				},
 			}
 		});
-       
 	});
 </script>
 
@@ -88,10 +81,8 @@ if(isset($_GET['pat_id'])){
 	$pat_id= $_GET['pat_id'];
 	
 }
-if(isset($_GET['xx'])){ 
-	$age= $_GET['xx'];
-}
 
+// echo "about to query $pat_id";
 $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
 $row_pat=mysqli_fetch_array($patient);
 
@@ -101,8 +92,9 @@ $lastname =$row_pat['lastname'];
 $gender =$row_pat['gender'];
 $dob =$row_pat['dob'];
 $vl_sample_id =$row_pat['vl_sample_id'];
-
 $client_name = $firstname.' '.$lastname;
+
+$age = GetAge($dob);
 
 echo '
 <form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'" method="post">
@@ -120,13 +112,14 @@ echo '
 			<tr>
 				<td><h4>WHO stage at start of Treatment</h4> <br /></td>
 				<td>
-					<select name="who_stage" id="who_stage" style="width:180px;height:50px;" required>
+                    <input name="who_stage" id="who_stage" style="width:200px; height:50px;" value="" placeholder="Number or Text">                    
+					<!-- <select name="who_stage" id="who_stage" style="width:180px;height:50px;">
 						<option value="">Select WHO stage</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
 						<option value="4">4</option>
-					</select> <br />
+					</select> --><br />
 					
 				</td>    
 				
@@ -134,13 +127,14 @@ echo '
 					<h4>Current WHO stage (+defining condition)</h4>  <br />
 				</td>
 				<td>
-					<select name="curr_who_stage" id="curr_who_stage" style="width:200px; height:50px;">
+                    <input name="curr_who_stage" id="curr_who_stage" style="width:200px; height:50px;" value="" placeholder="Number or Text">
+					<!-- <select name="curr_who_stage" id="curr_who_stage" style="width:200px; height:50px;">
 						<option value="">Current WHO stage</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
 						<option value="4">4</option>
-					</select> <br />
+					</select> --><br />
 					
 				</td>    
 				
@@ -237,7 +231,7 @@ echo '
 										</div>
 									</div>
 									<div style=\"width:100px; float:left\" class=\"radio_sty\">
-										<input type=\"radio\" id=\"$key-no\" name=\"$key\" value=\"No\"">
+										<input type=\"radio\" id=\"$key-no\" name=\"$key\" value=\"No\">
 										<label for=\"$key-no\">No</label>
 										<div class=\"check\">
 										</div>
@@ -377,7 +371,7 @@ echo '
 		</fieldset>
 		<div class="form-actions">
 			<div class="span3">
-				<a href="app.php?back&part_1<?php echo '&pat_id='.$pat_id.'' ?>" class="btn" style="padding:10px; font-size:180%">Back</a>\</div>
+				<a href="app.php?back&part_1<?php echo '&pat_id='.$pat_id.'' ?>" class="btn" style="padding:10px; font-size:180%">Back</a></div>
 				<div class="span3">
 				</div>
 				<div class="span3">

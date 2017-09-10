@@ -6,7 +6,7 @@ if (isset($_SESSION['identification'])) {
 	/* global  $fullname;*/
 	$fname= $_SESSION['fname'];
 	$lname= $_SESSION['lname'];
-	$fullname =$fname . " " .$lname;
+	$loginfullname =$fname . " " .$lname;
 
 	$user_id=$_SESSION['identification'];
 	$pih_staff_id = $_SESSION['id'];

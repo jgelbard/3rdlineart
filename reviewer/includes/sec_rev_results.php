@@ -1,5 +1,4 @@
 <form id="edit-profile" class="form-horizontal" action="#" method="post">
-	
 
 	<h2 style="background-color:#0eaff7; text-align:center; color:#000000">3rd Line Forms Under Review</h2>
 	<hr style=" border: 1px solid #cbe509;" />
@@ -8,10 +7,7 @@
 
 	$assigned_forms=mysqli_query( $bd,"SELECT distinct form_id,date_assigned FROM assigned_app_results WHERE form_id in (select form_id from reviewer_team_lead2 where reviewer_team_lead2.rev_id=$rev_id) and form_id not in (select form_id from expert_review_consolidate2) ORDER BY `assigned_app_results`.`form_id` DESC"); 
 
-
 	$num_forms = mysqli_num_rows ($assigned_forms);
-
-
 	echo '<p>Total forms: [ <i>'. $num_forms .'</i> ]</p>';
 	?>                         
 	<table class="table table-striped table-bordered">
@@ -63,16 +59,12 @@
 							$rev_fullname = $rev_title.'.  '.$rev_fname.' '.$rev_lname;
 							
 							if ($rev_status=='Not Reviewed'){
-								echo '
-								<b style="color:#d00">'.$rev_fullname.'   ; </b>                								
-								';
+								echo '<b style="color:#d00">'.$rev_fullname.'   ; </b>';
 							}
 							
 							else {
-								echo '
-								<u style="color:#30af0a">'.$rev_fullname.' ;    </u>                								
-								';								
-							}														
+								echo '<u style="color:#30af0a">'.$rev_fullname.' ; </u>';
+							}
 						}
 						
 						echo '</strong></p> </td>';
@@ -83,18 +75,18 @@
 						</tr> 
 						
 						';
-              }
-              
-              else {
-              	
-              	echo ' <td class="td-actions"> 2 Review days remaining   </td>';   
-              }
-              
-          }
+					}
+
+					else {
+
+						echo ' <td class="td-actions"> 2 Review days remaining   </td>';   
+					}
+
+				}
 
 
-          ?>
+				?>
 
-          
-      </tbody>
-  </table>
+
+			</tbody>
+		</table>

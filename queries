@@ -1,0 +1,465 @@
+./new_user_account.php:   $SQL = "SELECT * FROM users WHERE username='$username' AND role='$role' AND password='$pword';";    			   
+./new_user_account.php:            $SQL_clinician = "SELECT * FROM clinician WHERE user_id=$user_id";
+./new_user_account.php:            $SQL_reviewer = "SELECT * FROM reviewer WHERE user_id=$user_id";
+./new_user_account.php:            $SQL_secretary = "SELECT * FROM secretary WHERE user_id=$user_id";
+./new_user_account.php:            $SQL_pih_lab = "SELECT * FROM pih_lab WHERE user_id=$user_id";
+./includes/app_clinic_status.php:$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+./includes/app_patientdetails.php:				$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where (status='Not Complete' or complete ='Rejected') and clinician_id='$clinicianID' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
+./includes/app_patientdetails.php:					$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$patient_id' "); 
+./includes/app_patientdetails.php:					$facility=mysqli_query( $bd,"SELECT * FROM facility"); 
+./includes/app_consolidated2_view.php:$form_creation=mysqli_query( $bd,"SELECT * FROM patient, form_creation, expert_review_consolidate2 WHERE  form_creation.3rdlineart_form_id=expert_review_consolidate2.form_id and form_creation.clinician_id ='$clinicianID' and form_creation.patient_id=patient.id and expert_review_consolidate2.form_id ='$formID' ORDER BY `form_creation`.`3rdlineart_form_id` DESC"); 
+./includes/app_consolidated2_view.php:        $SQL_app_results = "SELECT * FROM app_results WHERE form_id=$_3rdlineart_form_id";
+./includes/app_consolidated2_view.php:        $SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./includes/app_consolidated2_view.php:         $SQL_patient = "SELECT * FROM patient WHERE id=$patient_id";
+./includes/app_pedriatric.php: $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+./includes/app_treatment1_edit.php:$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+./includes/app_treatment1_edit.php:$treatment_history=mysqli_query( $bd,"SELECT * FROM treatment_history where pat_id='$pat_id' "); 
+./includes/db_operations/update_patient.php:$current_clinical_status=mysqli_query( $bd,"SELECT * FROM current_clinical_status where patient_id='$pat_id' ");
+./includes/db_operations/update_clinic_status.php:		$current_clinical_status=mysqli_query( $bd,"SELECT * FROM current_clinical_status where patient_id='$pat_id' ");
+./includes/db_operations/insert_clinic_status.php:	$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$patient_id' "); 
+./includes/db_operations/insert_patient.php:   $check_patient=mysqli_query( $bd,"SELECT * FROM patient where art_id_num='$art_id_num' "); 
+./includes/db_operations/insert_patient.php:   	$patient=mysqli_query( $bd,"SELECT * FROM patient where art_id_num ='$art_id_num' "); 
+./includes/app_edit_menu.php:$patient_table=mysqli_query( $bd,"SELECT id FROM  patient where id='$pat_id' ");
+./includes/app_edit_menu.php:$current_clinical_status=mysqli_query( $bd,"SELECT * FROM current_clinical_status where patient_id='$pat_id' ");
+./includes/app_edit_menu.php:$pediatric_section=mysqli_query( $bd,"SELECT * FROM  pediatric where pat_id='$pat_id' ");
+./includes/app_edit_menu.php:$pregnancy=mysqli_query( $bd,"SELECT * FROM  pregnancy where pat_id='$pat_id' ");
+./includes/app_edit_menu.php:$treatment_history=mysqli_query( $bd,"SELECT * FROM  treatment_history where pat_id='$pat_id' ");
+./includes/app_edit_menu.php:$treatment_monitoring=mysqli_query( $bd,"SELECT * FROM  monitoring where pat_id='$pat_id' ");
+./includes/app_edit_menu.php:$tb_treat=mysqli_query( $bd,"SELECT * FROM  tb_treat where pat_id='$pat_id' ");
+./includes/app_edit_menu.php:$adherence_lab=mysqli_query( $bd,"SELECT * FROM adherence where pat_id='$pat_id' ");
+./includes/app_pregnancy_edit.php:$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+./includes/app_pregnancy_edit.php:$pregnancy=mysqli_query( $bd,"SELECT * FROM pregnancy where pat_id='$pat_id' "); 
+./includes/app_treatment3_edit.php:$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+./includes/app_treatment3_edit.php:$tb_treat = mysqli_query( $bd,"SELECT * FROM tb_treat where pat_id='$pat_id' "); 
+./includes/app_treatment3_edit.php:$tb_treat_regimen1=mysqli_query( $bd,"SELECT * FROM tb_treat_regimen1 where pat_id='$pat_id' "); 
+./includes/app_treatment3_edit.php:$tb_treat_regimen2=mysqli_query( $bd,"SELECT * FROM tb_treat_regimen2 where pat_id='$pat_id' "); 
+./includes/app_treatment3_edit.php:$tb_treat_mdr=mysqli_query( $bd,"SELECT * FROM tb_treat_mdr where pat_id='$pat_id' "); 
+./includes/config.php:$SQL_secretary = "SELECT * FROM secretary limit 1";
+./includes/app_consolidated1_view.php:$form_creation=mysqli_query( $bd,"SELECT * FROM patient, form_creation, expert_review_consolidate1 WHERE  form_creation.3rdlineart_form_id=expert_review_consolidate1.form_id and form_creation.clinician_id ='$clinicianID' and form_creation.patient_id=patient.id and expert_review_consolidate1.form_id ='$formID' ORDER BY `form_creation`.`3rdlineart_form_id` DESC"); 
+./includes/app_consolidated1_view.php:        $SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./includes/app_consolidated1_view.php:         $SQL_patient = "SELECT * FROM patient WHERE id=$patient_id";
+./includes/app_adherence.php:$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+./includes/queries.php:        $query = "SELECT * FROM patient where id='$pat_id'";
+./includes/queries.php:        $query = "SELECT * FROM patient, form_creation, expert_review_consolidate2 WHERE  form_creation.3rdlineart_form_id=expert_review_consolidate2.form_id and form_creation.clinician_id ='$clinicianID' and form_creation.patient_id=patient.id and expert_review_consolidate2.form_id ='$formID' ORDER BY `form_creation`.`3rdlineart_form_id` DESC";
+./includes/queries.php:./includes/app_consolidated2_view.php:12:$form_creation=mysqli_query( $bd,"SELECT * FROM patient, form_creation, expert_review_consolidate2 WHERE  form_creation.3rdlineart_form_id=expert_review_consolidate2.form_id and form_creation.clinician_id ='$clinicianID' and form_creation.patient_id=patient.id and expert_review_consolidate2.form_id ='$formID' ORDER BY `form_creation`.`3rdlineart_form_id` DESC"); 
+./includes/queries.php:./includes/db_operations/insert_patient.php:18:    $check_patient=mysqli_query( $bd,"SELECT * FROM patient where art_id_num='$art_id_num' "); 
+./includes/queries.php:./includes/app_consolidated1_view.php:11:$form_creation=mysqli_query( $bd,"SELECT * FROM patient, form_creation, expert_review_consolidate1 WHERE  form_creation.3rdlineart_form_id=expert_review_consolidate1.form_id and form_creation.clinician_id ='$clinicianID' and form_creation.patient_id=patient.id and expert_review_consolidate1.form_id ='$formID' ORDER BY `form_creation`.`3rdlineart_form_id` DESC"); 
+./includes/queries.php:../includes/app_clinic_status_edit.php:147:$patient_side_effects=mysqli_query( $bd,"SELECT * FROM patient_side_effects where patient_id='$pat_id' ");
+./includes/queries.php:./pih/includes/lab_sample.php:23:       $patient=mysqli_query( $bd,"SELECT * FROM patient,form_creation where patient.id=form_creation.patient_id and form_creation.3rdlineart_form_id='$formid' "); 
+./includes/queries.php:    'select_assigned_forms' => "SELECT distinct form_id,date_assigned FROM assigned_forms 
+./includes/queries.php:    'select_new_forms' => "SELECT * FROM form_creation 
+./includes/queries.php:    'select_expert_review_consolidate1' => "SELECT * FROM expert_review_consolidate1 
+./includes/queries.php:    'select_sec_pending_sample' => "SELECT * FROM expert_review_consolidate1 
+./includes/queries.php:    'select_sec_pending_results' => "SELECT * FROM form_creation, lab_vl_repeat 
+./includes/queries.php:    'select_sec_results_under_review' => "SELECT distinct form_id,date_assigned 
+./includes/queries.php:    'select_sec_reviewed_results' => "SELECT * FROM expert_review_consolidate2 ORDER BY `expert_review_consolidate2`.`id` DESC ",
+./includes/queries.php:    'select_drugs' => 'SELECT * FROM drugs',
+./includes/queries.php:    'select_facilitys' => 'SELECT * FROM facility',
+./includes/queries.php:    'select_affiliates' => 'SELECT * FROM partner_org',
+./includes/queries.php:    'select_rev' => 'SELECT * FROM reviewer',
+./includes/queries.php:    'select_clinician' => 'SELECT * FROM clinician',
+./includes/queries.php:    'select_labs' => 'SELECT * FROM pih_lab',
+./includes/queries.php:    'select_sec' => 'SELECT * FROM secretary',   
+./includes/app_treatment3.php:$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+./includes/app_clinic_status_edit.php:$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+./includes/app_clinic_status_edit.php:$current_clinical_status = mysqli_query( $bd,"SELECT * FROM current_clinical_status where patient_id='$pat_id' ");
+./includes/app_clinic_status_edit.php:		$art_interruption = mysqli_query( $bd,"SELECT * FROM art_interruption where patient_id='$pat_id' "); 
+./includes/app_clinic_status_edit.php:		$ol_6months_details = mysqli_query( $bd,"SELECT * FROM ol_6months_details where patient_id='$pat_id' "); 
+./includes/app_clinic_status_edit.php:$patient_side_effects=mysqli_query( $bd,"SELECT * FROM patient_side_effects where patient_id='$pat_id' "); 
+./includes/app_clinic_status_edit.php:$current_clinical_status_details=mysqli_query( $bd,"SELECT * FROM current_clinical_status_details where pat_id='$pat_id' "); 
+./includes/app_treatment.php:$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+./includes/app_treatment.php:        $retrieve_drugs ="SELECT * FROM drugs";
+./includes/app_treatment.php:        $retrieve_drugs ="SELECT * FROM drugs";
+./includes/app_treatment.php:        $retrieve_drugs ="SELECT * FROM drugs";
+./includes/app_treatment.php:        $retrieve_drugs ="SELECT * FROM drugs";
+./includes/app_treatment.php:        $retrieve_drugs ="SELECT * FROM drugs";
+./includes/app_treatment.php:        $retrieve_drugs ="SELECT * FROM drugs";
+./includes/app_treatment.php:        $retrieve_drugs ="SELECT * FROM drugs";
+./includes/app_treatment.php:        $retrieve_drugs ="SELECT * FROM drugs";
+./includes/app_treatment.php:        $retrieve_drugs ="SELECT * FROM drugs";
+./includes/app_treatment.php:        $retrieve_drugs ="SELECT * FROM drugs";
+./includes/app_patientdetails_edit.php:  $form_rejected=mysqli_query( $bd,"SELECT * FROM form_rejected where form_id =$fno "); 
+./includes/app_patientdetails_edit.php:       $form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where (status='Not Complete' or complete ='Rejected') and clinician_id='$clinicianID' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
+./includes/app_patientdetails_edit.php:        $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$patient_id' "); 
+./includes/app_patientdetails_edit.php:  $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+./includes/app_patientdetails_edit.php:          $facility=mysqli_query( $bd,"SELECT * FROM facility"); 
+./includes/app_pregnancy.php:$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+./includes/app_treatment1/app_treatment_row1.php:$retrieve_drugs ="SELECT * FROM drugs";
+./includes/app_adherence_edit.php:$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+./includes/app_adherence_edit.php:$adherence = mysqli_query( $bd,"SELECT * FROM adherence where pat_id='$pat_id' "); 
+./includes/app_adherence_edit.php:$adherence_questions = mysqli_query( $bd,"SELECT * FROM adherence_questions where pat_id='$pat_id' "); 
+./includes/app_adherence_edit.php:$lab=mysqli_query( $bd,"SELECT * FROM lab where pat_id='$pat_id' "); 
+./includes/app_treatment2_edit.php:$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+./includes/app_treatment2_edit.php:$monitoring=mysqli_query( $bd,"SELECT * FROM monitoring where pat_id='$pat_id' "); 
+./includes/app_treatment2.php:$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+./includes/app_rejected_forms.php:$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation inner join form_rejected on (form_creation.3rdlineart_form_id =form_rejected.form_id) where status='Complete' and complete ='Rejected' and clinician_id=$clinicianID ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
+./includes/app_rejected_forms.php:        $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$patient_id' "); 
+./includes/app_edit_first.php:$patient_table=mysqli_query( $bd,"SELECT id FROM  patient where id='$pat_id' ");
+./includes/app_edit_last.php:$adherence_lab=mysqli_query( $bd,"SELECT * FROM adherence where pat_id='$pat_id' ");
+./includes/app_pedriatric_edit.php: $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+./includes/app_pedriatric_edit.php:$pediatric=mysqli_query( $bd,"SELECT * FROM pediatric where pat_id='$pat_id' "); 
+./reviewer/includes/nav_sub.php:$select_forms_new="SELECT * FROM assigned_forms where rev_id='$rev_id' and status ='Not Reviewed'"; 
+./reviewer/includes/nav_sub.php:$select_assigned_forms_lead="SELECT distinct form_id,date_assigned FROM assigned_forms WHERE form_id in (select form_id from reviewer_team_lead where reviewer_team_lead.rev_id=$rev_id) and form_id not in (select form_id from expert_review_consolidate1) ORDER BY `assigned_forms`.`form_id` DESC"; 
+./reviewer/includes/nav_sub.php:$select_form_my_reviews="SELECT * FROM assigned_forms where rev_id='$rev_id' and status = 'Reviewed'"; 
+./reviewer/includes/nav_sub.php:$select_form_assigned_app_results="SELECT * FROM assigned_app_results where rev_id='$rev_id' and status ='Not Reviewed'"; 
+./reviewer/includes/nav_sub.php:$select_lead_assigned_forms="SELECT distinct form_id,date_assigned FROM assigned_app_results WHERE form_id in (select form_id from reviewer_team_lead2 where reviewer_team_lead2.rev_id=$rev_id) and form_id not in (select form_id from expert_review_consolidate2) ORDER BY `assigned_app_results`.`form_id` DESC";
+./reviewer/includes/sec_consolidate2.php:$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where 3rdlineart_form_id ='$formID'"); 
+./reviewer/includes/sec_consolidate2.php:	$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./reviewer/includes/sec_consolidate2.php:	$SQL_patient = "SELECT * FROM patient WHERE id=$patient_id";
+./reviewer/includes/sec_consolidate2.php:	$expert_review_result=mysqli_query( $bd,"SELECT * FROM expert_review_result where form_id ='$formID' "); 
+./reviewer/includes/sec_consolidate2.php:		$select_reviewer=mysqli_query( $bd,"SELECT * FROM reviewer where id='$rev_id'"); 
+./reviewer/includes/sec_consolidate2.php:$form_creation=mysqli_query( $bd,"SELECT clinician_id FROM form_creation where 3rdlineart_form_id ='$formID' "); 
+./reviewer/includes/sec_consolidate2.php:	$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./reviewer/includes/sec_rev.php:	$assigned_forms=mysqli_query( $bd,"SELECT distinct form_id,date_assigned FROM assigned_forms WHERE form_id in (select form_id from reviewer_team_lead where reviewer_team_lead.rev_id=$rev_id) and form_id not in (select form_id from expert_review_consolidate1) ORDER BY `assigned_forms`.`form_id` DESC"); 
+./reviewer/includes/sec_rev.php:                $assigned=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_forms where form_id='$form_id'"); 
+./reviewer/includes/sec_rev.php:                $assigned_count=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_forms where form_id='$form_id' and status ='Reviewed'");
+./reviewer/includes/sec_rev.php:                $select_team_lead=mysqli_query( $bd,"SELECT * FROM reviewer_team_lead where form_id='$form_id'");
+./reviewer/includes/sec_rev.php:							$select_reviewer=mysqli_query( $bd,"SELECT * FROM reviewer where id='$rev_id_as'"); 
+./reviewer/includes/sec_reviewed_app.php:$expert_review_consolidate1=mysqli_query( $bd,"SELECT * FROM expert_review_consolidate1 ORDER BY `expert_review_consolidate1`.`id` DESC "); 
+./reviewer/includes/sec_consolidate1.php:$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where 3rdlineart_form_id ='$formID'"); 
+./reviewer/includes/sec_consolidate1.php:	$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./reviewer/includes/sec_consolidate1.php:	$SQL_patient = "SELECT * FROM patient WHERE id=$patient_id";
+./reviewer/includes/sec_consolidate1.php:$expert_review_form=mysqli_query( $bd,"SELECT * FROM expert_review_form where form_id ='$formID' "); 
+./reviewer/includes/sec_consolidate1.php:	$select_reviewer = mysqli_query( $bd,"SELECT * FROM reviewer where id='$rev_id'"); 
+./reviewer/includes/sec_consolidate1.php:$form_creation=mysqli_query( $bd,"SELECT clinician_id FROM form_creation where 3rdlineart_form_id ='$formID' "); 
+./reviewer/includes/sec_consolidate1.php:	$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./reviewer/includes/review_form.php:$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
+./reviewer/includes/review_form.php:$review = mysqli_query($bd, "SELECT * FROM expert_review_form where form_id = $form_id");
+./reviewer/includes/review_form.php:$current_clinical_status=mysqli_query( $bd,"SELECT * FROM current_clinical_status where patient_id='$pat_id' "); 
+./reviewer/includes/review_form.php:		$art_interruption = mysqli_query( $bd,"SELECT * FROM art_interruption where patient_id='$pat_id' "); 
+./reviewer/includes/review_form.php:		$ol_6months_details = mysqli_query( $bd,"SELECT * FROM ol_6months_details where patient_id='$pat_id' "); 
+./reviewer/includes/review_form.php:$patient_side_effects=mysqli_query( $bd,"SELECT * FROM patient_side_effects where patient_id='$pat_id' "); 
+./reviewer/includes/review_form.php:$current_clinical_status_details=mysqli_query( $bd,"SELECT * FROM current_clinical_status_details where pat_id='$pat_id' "); 
+./reviewer/includes/review_form.php:$tb_treatment=mysqli_query( $bd,"SELECT * FROM tb_treatment where pat_id='$pat_id' "); 
+./reviewer/includes/review_form.php:$adherence=mysqli_query( $bd,"SELECT * FROM adherence where pat_id='$pat_id' "); 
+./reviewer/includes/review_form.php:$adherence_questions=mysqli_query( $bd,"SELECT * FROM adherence_questions where pat_id='$pat_id' "); 
+./reviewer/includes/review_form.php:$lab=mysqli_query( $bd,"SELECT * FROM lab where pat_id='$pat_id' "); 
+./reviewer/includes/review_form.php:$treatment_history=mysqli_query( $bd,"SELECT * FROM treatment_history where pat_id='$pat_id' "); 
+./reviewer/includes/review_form.php:	$pregnancy=mysqli_query( $bd,"SELECT * FROM pregnancy where pat_id='$pat_id' "); 
+./reviewer/includes/review_form.php:	$pediatric=mysqli_query( $bd,"SELECT * FROM pediatric where pat_id='$pat_id' "); 
+./reviewer/includes/review_form.php:							$art_interruption = mysqli_query( $bd,"SELECT * FROM art_interruption where patient_id='$pat_id' "); 
+./reviewer/includes/review_form.php:					$ol_6months_details = mysqli_query( $bd,"SELECT * FROM ol_6months_details where patient_id='$pat_id' "); 
+./reviewer/includes/review_form.php:								$treatment_history=mysqli_query( $bd,"SELECT * FROM treatment_history where pat_id='$pat_id' "); 
+./reviewer/includes/review_form.php:							$monitoring=mysqli_query( $bd,"SELECT * FROM monitoring where pat_id='$pat_id' "); 
+./reviewer/includes/review_form.php:							$tb_treat =mysqli_query( $bd,"SELECT * FROM tb_treat where pat_id='$pat_id' "); 
+./reviewer/includes/review_form.php:								$tb_treat_regimen1=mysqli_query( $bd,"SELECT * FROM tb_treat_regimen1 where pat_id='$pat_id' "); 
+./reviewer/includes/review_form.php:								$tb_treat_regimen2=mysqli_query( $bd,"SELECT * FROM tb_treat_regimen2 where pat_id='$pat_id' "); 
+./reviewer/includes/review_form.php:								$tb_treat_mdr=mysqli_query( $bd,"SELECT * FROM tb_treat_mdr where pat_id='$pat_id' "); 
+./reviewer/includes/rev_new.php:$form_creation=mysqli_query( $bd,"SELECT * FROM assigned_forms where  rev_id='$rev_id' and status ='Not Reviewed'"); 
+./reviewer/includes/review_result.php:     $drug_query = "SELECT drug_name FROM drugs order by drug_name";
+./reviewer/includes/my_review.php:$expert_review_form=mysqli_query( $bd,"SELECT * FROM expert_review_form where form_id ='$formID' and rev_id = '$rev_id' "); 
+./reviewer/includes/my_review.php:	$select_reviewer = mysqli_query( $bd,"SELECT * FROM reviewer where id='$rev_id'"); 
+./reviewer/includes/rev_my_reviewed.php:$form_my_reviews=mysqli_query( $bd,"SELECT * FROM assigned_forms where  rev_id='$rev_id' and status ='Reviewed'"); 
+./reviewer/includes/sec_rev_results.php:	$assigned_forms=mysqli_query( $bd,"SELECT distinct form_id,date_assigned FROM assigned_app_results WHERE form_id in (select form_id from reviewer_team_lead2 where reviewer_team_lead2.rev_id=$rev_id) and form_id not in (select form_id from expert_review_consolidate2) ORDER BY `assigned_app_results`.`form_id` DESC"); 
+./reviewer/includes/sec_rev_results.php:						$assigned=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_app_results where form_id='$form_id'"); 						
+./reviewer/includes/sec_rev_results.php:						$assigned_count=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_app_results where form_id='$form_id' and status ='Reviewed'");						
+./reviewer/includes/sec_rev_results.php:						$select_team_lead=mysqli_query( $bd,"SELECT * FROM reviewer_team_lead where form_id='$form_id'");
+./reviewer/includes/sec_rev_results.php:							$select_reviewer=mysqli_query( $bd,"SELECT * FROM reviewer where id='$rev_id_as'"); 
+./reviewer/includes/rev_results.php:$form_assigned_app_results=mysqli_query( $bd,"SELECT * FROM assigned_app_results where rev_id='$rev_id' and status = 'Not Reviewed'"); 
+./reviewer/review_p1.php:								$form_creation=mysqli_query($bd,"SELECT * FROM form_creation where 3rdlineart_form_id='$formID' ");
+./reviewer/review_p1.php:									$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./reviewer/review_p1.php:								$form_creation=mysqli_query($bd,"SELECT * FROM form_creation, app_results where form_creation.3rdlineart_form_id='$formID' and  form_creation.3rdlineart_form_id=app_results.form_id");
+./reviewer/review_p1.php:                                        $SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./pih/includes/lab_new.php:	$sample=mysqli_query( $bd,"SELECT * FROM sample where status !='Dispatched'"); 
+./pih/includes/lab_new.php:				$clinician=mysqli_query( $bd,"SELECT * FROM clinician where id='$clinician_id'"); 
+./pih/includes/lab_sample.php:	$patient=mysqli_query( $bd,"SELECT * FROM patient,form_creation where patient.id=form_creation.patient_id and form_creation.3rdlineart_form_id='$formid' "); 
+./app.php:									$form_creation=mysqli_query($bd, "SELECT * FROM form_creation, expert_review_consolidate1 WHERE form_creation.3rdlineart_form_id not in (select form_id from sample) and form_creation.3rdlineart_form_id=expert_review_consolidate1.form_id and form_creation.clinician_id ='$clinicianID'"); 
+./app.php:									$form_creation_conso2=mysqli_query($bd, "SELECT * FROM form_creation, expert_review_consolidate2 WHERE form_creation.3rdlineart_form_id=expert_review_consolidate2.form_id and form_creation.clinician_id ='$clinicianID'"); 
+./form_complete.php:$patient=mysqli_query($bd, "SELECT * FROM patient where id='$pat_id' "); 
+./form_complete.php:$current_clinical_status=mysqli_query($bd, "SELECT * FROM current_clinical_status where patient_id='$pat_id' "); 
+./form_complete.php:    $art_interruption = mysqli_query($bd, "SELECT * FROM art_interruption where patient_id='$pat_id' "); 
+./form_complete.php:    $ol_6months_details = mysqli_query($bd,"SELECT * FROM ol_6months_details where patient_id='$pat_id' "); 
+./form_complete.php:$patient_side_effects=mysqli_query($bd, "SELECT * FROM patient_side_effects where patient_id='$pat_id' "); 
+./form_complete.php:$current_clinical_status_details=mysqli_query($bd,"SELECT * FROM current_clinical_status_details where pat_id='$pat_id' "); 
+./form_complete.php:$tb_treatment=mysqli_query($bd,"SELECT * FROM tb_treatment where pat_id='$pat_id' "); 
+./form_complete.php:$adherence=mysqli_query($bd,"SELECT * FROM adherence where pat_id='$pat_id' "); 
+./form_complete.php:$adherence_questions=mysqli_query($bd,"SELECT * FROM adherence_questions where pat_id='$pat_id' "); 
+./form_complete.php:$lab=mysqli_query($bd,"SELECT * FROM lab where pat_id='$pat_id' "); 
+./form_complete.php:$treatment_history=mysqli_query($bd,"SELECT * FROM treatment_history where pat_id='$pat_id' "); 
+./form_complete.php:  $pregnancy=mysqli_query($bd, "SELECT * FROM pregnancy where pat_id='$pat_id' "); 
+./form_complete.php:  $pediatric=mysqli_query($bd, "SELECT * FROM pediatric where pat_id='$pat_id' "); 
+./form_complete.php:      $art_interruption = mysqli_query($bd, "SELECT * FROM art_interruption where patient_id='$pat_id' "); 
+./form_complete.php:    $ol_6months_details = mysqli_query($bd, "SELECT * FROM ol_6months_details where patient_id='$pat_id' "); 
+./form_complete.php:      $treatment_history=mysqli_query($bd, "SELECT * FROM treatment_history where pat_id='$pat_id' "); 
+./form_complete.php:      $monitoring=mysqli_query($bd, "SELECT * FROM monitoring where pat_id='$pat_id' "); 
+./form_complete.php:     $tb_treat =mysqli_query($bd, "SELECT * FROM tb_treat where pat_id='$pat_id' "); 
+./form_complete.php:      $tb_treat_regimen1=mysqli_query($bd, "SELECT * FROM tb_treat_regimen1 where pat_id = '$pat_id' and start_date != ''"); 
+./form_complete.php:     $tb_treat_regimen2=mysqli_query($bd, "SELECT * FROM tb_treat_regimen2 where pat_id='$pat_id' and start_date != ''"); 
+./form_complete.php:    $tb_treat_mdr=mysqli_query($bd, "SELECT * FROM tb_treat_mdr where pat_id='$pat_id' and start_date != ''"); 
+./login.php:   $SQL = "SELECT * FROM users WHERE username='$username' AND password='$pword';";    			   
+./login.php:   $select_login_attempts = "SELECT * FROM login_attempts WHERE username=$username";   
+./login.php:    $SQL_user = "SELECT * FROM users WHERE username='$username'";                
+./login.php:            $SQL_clinician = "SELECT * FROM clinician WHERE user_id=$user_id";
+./login.php:            $SQL_reviewer = "SELECT * FROM reviewer WHERE user_id=$user_id";
+./login.php:            $SQL_secretary = "SELECT * FROM secretary WHERE user_id=$user_id";
+./login.php:            $SQL_pih_lab = "SELECT * FROM pih_lab WHERE user_id=$user_id";
+./complete_form.php:$SQL_secretary = "SELECT * FROM secretary limit 1";
+./complete_form.php:                                    $sql_get_formid = "SELECT form_id from form_rejected where form_id in (SElECT form_id from form_creation WHERE patient_id='$pat_id')";
+./reports.php:								$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where status!='Not Complete' and date_created Between '$start_date' And '$stop_date' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
+./reports.php:								$complete_forms=mysqli_query( $bd,"SELECT * FROM form_creation where status!='Not Complete' and complete ='Yes' and date_created Between '$start_date' And '$stop_date' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
+./reports.php:								$expert_review_consolidate1=mysqli_query( $bd,"SELECT * FROM expert_review_consolidate1 WHERE date_reviewed Between '$start_date' And '$stop_date' ORDER BY `expert_review_consolidate1`.`id` DESC "); 
+./reports.php:								$sample=mysqli_query( $bd,"SELECT * FROM sample "); 
+./reports.php:								$results=mysqli_query( $bd,"SELECT * FROM app_results "); 
+./reports.php:								$expert_review_consolidate2_PI=mysqli_query( $bd,"SELECT * FROM expert_review_consolidate2 where pi_mutation ='Yes' "); 
+./reports.php:								$expert_review_consolidate2_switch=mysqli_query( $bd,"SELECT * FROM expert_review_consolidate2 where switch ='SwitchYes' "); 
+./reports.php:								$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where status!='Not Complete' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
+./reports.php:								$complete_forms=mysqli_query( $bd,"SELECT * FROM form_creation where status!='Not Complete' and complete ='Yes' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
+./reports.php:								$expert_review_consolidate1=mysqli_query( $bd,"SELECT * FROM expert_review_consolidate1 ORDER BY `expert_review_consolidate1`.`id` DESC "); 
+./reports.php:								$sample=mysqli_query( $bd,"SELECT * FROM sample "); 
+./reports.php:								$results=mysqli_query( $bd,"SELECT * FROM app_results "); 
+./reports.php:								$expert_review_consolidate2_PI=mysqli_query( $bd,"SELECT * FROM expert_review_consolidate2 where pi_mutation ='Yes' "); 
+./reports.php:								$expert_review_consolidate2_switch=mysqli_query( $bd,"SELECT * FROM expert_review_consolidate2 where switch ='SwitchYes' "); 
+./reports.php:					$facility=mysqli_query( $bd,"SELECT * FROM facility"); 
+./send_emails.php:      $query_email = "SELECT body from email_log WHERE sent = 0 and id = ".$id;      
+./send_emails.php:      $query_email = "SELECT body from email_log WHERE sent = 0 and id = ?";
+./send_emails.php:	$query_unsent_emails = "SELECT id, msg_from, msg_to, subject from email_log WHERE sent = 0";
+./admin/includes/labuser_edit.php:$pih_lab=mysqli_query($bd, "SELECT * FROM pih_lab  where id='$id'"); 
+./admin/includes/labuser_edit.php:$users=mysqli_query($bd, "SELECT * FROM users where id='$user_id'"); 
+./admin/includes/insert_lab_user.php:	$find_users=mysqli_query($bd, "SELECT * FROM users where username='".encrypt ($username, $key)."'");
+./admin/includes/insert_lab_user.php:	$users=mysqli_query($bd, "SELECT * FROM users where username='".encrypt ($username, $key)."'"); 
+./admin/includes/clinician_edit.php:$clinician=mysqli_query($bd, "SELECT * FROM clinician where id='$id'"); 
+./admin/includes/clinician_edit.php:$users=mysqli_query($bd, "SELECT * FROM users where id='$user_id'"); 
+./admin/includes/clinician_edit.php:				$facility=mysqli_query( $bd,"SELECT * FROM facility"); 
+./admin/includes/drug_edit.php:$drugs=mysqli_query( $bd,"SELECT * FROM drugs where id =$drug_id"); 
+./admin/includes/man_drugs.php:			$drugs=mysqli_query( $bd,"SELECT * FROM drugs"); 
+./admin/includes/insert_sec.php:	$find_users=mysqli_query($bd, "SELECT * FROM users where username='".encrypt ($username, $key)."'"); 
+./admin/includes/insert_sec.php:                $users=mysqli_query($bd, "SELECT * FROM users where username='".encrypt ($username, $key)."'"); 
+./admin/includes/clinician.php:			$clinician=mysqli_query($bd, "SELECT * FROM clinician"); 
+./admin/includes/clinician.php:				$users=mysqli_query($bd, "SELECT * FROM users where id='$user_id'"); 
+./admin/includes/reviewer_edit.php:$reviewer=mysqli_query( $bd,"SELECT * FROM reviewer where id='$id' "); 
+./admin/includes/reviewer_edit.php:$users=mysqli_query($bd, "SELECT * FROM users where id='$user_id'"); 
+./admin/includes/reviewer_edit.php:				$partner_org=mysqli_query( $bd,"SELECT * FROM partner_org"); 
+./admin/includes/admin_facilities.php:			$facility=mysqli_query( $bd,"SELECT * FROM facility"); 
+./admin/includes/insert_drug.php:	$find_drugs=mysqli_query($bd, "SELECT * FROM drugs where drug_name='$drug_name'"); 
+./admin/includes/create_clin.php:				$facility=mysqli_query( $bd,"SELECT * FROM facility"); 
+./admin/includes/sec.php:			$secretary=mysqli_query($bd, "SELECT * FROM secretary"); 
+./admin/includes/sec.php:				$users=mysqli_query($bd, "SELECT * FROM users where id='$user_id'"); 
+./admin/includes/insert_reviewer.php:	$find_users=mysqli_query($bd, "SELECT * FROM users where username='".encrypt ($username, $key)."'"); 
+./admin/includes/insert_reviewer.php:	$users = mysqli_query($bd, "SELECT * FROM users where username='".encrypt ($username, $key)."'"); 
+./admin/includes/facility_edit.php:$facility=mysqli_query( $bd,"SELECT * FROM facility where id='$facility_id'"); 
+./admin/includes/sec_edit.php:$secretary=mysqli_query($bd, "SELECT * FROM secretary where id='$id'"); 
+./admin/includes/sec_edit.php:$users=mysqli_query($bd, "SELECT * FROM users where id='$user_id'"); 
+./admin/includes/insert_clinician.php:	$find_users=mysqli_query($bd, "SELECT * FROM users where username='".encrypt ($username, $key)."'");
+./admin/includes/insert_clinician.php:                $users = mysqli_query($bd, "SELECT * FROM users where username='".encrypt ($username, $key)."'"); 
+./admin/includes/lab_staff.php:			$pih_lab=mysqli_query($bd, "SELECT * FROM pih_lab"); 
+./admin/includes/lab_staff.php:				$users=mysqli_query($bd, "SELECT * FROM users where id='$user_id'"); 
+./admin/includes/affliate_edit.php:$partner_org=mysqli_query( $bd,"SELECT * FROM partner_org where id ='$partner_org_id'"); 
+./admin/includes/reviewer_new.php:				$partner_org=mysqli_query( $bd,"SELECT * FROM partner_org"); 
+./admin/includes/insert_facility.php:	$find_facilityName=mysqli_query($bd, "SELECT * FROM facility where facilityName='$facilityName'"); 
+./admin/includes/man_affliates.php:			$partner_org=mysqli_query( $bd,"SELECT * FROM partner_org"); 
+./admin/includes/reviewer.php:		$reviewer=mysqli_query( $bd,"SELECT * FROM reviewer"); 
+./admin/includes/reviewer.php:			$users=mysqli_query( $bd,"SELECT * FROM users where id='$user_id'"); 
+./admin/includes/insert_affliates.php:	$find_partner_org_name=mysqli_query($bd, "SELECT * FROM partner_org where partner_org_name='$partner_org_name'"); 
+./admin/includes/create_facility.php:     $facility_query = "SELECT * FROM facilitys where ftype like '%Hospital' order by name";
+./admin/login.php:    $SQL = "SELECT * FROM users WHERE username=$username AND password=$pword;";
+./admin/login.php:        $SQL_user = "SELECT * FROM users WHERE username=$username";                
+./admin/login.php:                    $SQL_clinician = "SELECT * FROM clinician WHERE user_id=$user_id";
+./admin/login.php:                     $SQL_admin = "SELECT * FROM admin WHERE user_id=$user_id";
+./admin/login.php://                $SQL_reviewer = "SELECT * FROM reviewer WHERE user_id=$user_id";
+./admin/login.php://                $SQL_secretary = "SELECT * FROM secretary WHERE user_id=$user_id";
+./admin/login.php://                $SQL_pih_lab = "SELECT * FROM pih_lab WHERE user_id=$user_id";
+./admin/review_p1.php:    $form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where 3rdlineart_form_id='$formID' "); 
+./admin/review_p1.php:        $SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./check_point/includes/insert_assign_reviewer.php:    $SQL_reviewer = "SELECT * FROM reviewer WHERE id=$rev_id";
+./check_point/includes/sec_consolidate2.php:$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where 3rdlineart_form_id ='$formID'"); 
+./check_point/includes/sec_consolidate2.php:        $SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./check_point/includes/sec_consolidate2.php:         $SQL_patient = "SELECT * FROM patient WHERE id=$patient_id";
+./check_point/includes/sec_consolidate2.php:/*$reviewer=mysqli_query( $bd,"SELECT * FROM reviewer"); 
+./check_point/includes/sec_consolidate2.php:$expert_review_result=mysqli_query( $bd,"SELECT * FROM expert_review_result where form_id ='$formID' "); 
+./check_point/includes/sec_consolidate2.php:         $select_reviewer=mysqli_query( $bd,"SELECT * FROM reviewer where id='$rev_id'"); 
+./check_point/includes/sec_consolidate2.php:$form_creation=mysqli_query( $bd,"SELECT clinician_id FROM form_creation where 3rdlineart_form_id ='$formID' "); 
+./check_point/includes/sec_consolidate2.php:        $SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./check_point/includes/sec_pending_result.php:				$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./check_point/includes/sec_pending_result.php:				$SQL_patient = "SELECT * FROM patient WHERE id=$patient_id";
+./check_point/includes/sec_rev.php:	$SQL_reviewer = "SELECT * FROM reviewer WHERE id=$rev_id";
+./check_point/includes/sec_rev.php:					$assigned=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_forms where form_id='$form_id'"); 
+./check_point/includes/sec_rev.php:					$assigned_count=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_forms where form_id='$form_id' and status ='Reviewed'");
+./check_point/includes/sec_rev.php:					$select_team_lead=mysqli_query( $bd,"SELECT reviewer_team_lead.rev_id, reviewer.title, reviewer.fname, reviewer.lname FROM reviewer_team_lead, reviewer where reviewer_team_lead.form_id='$form_id' and reviewer_team_lead.rev_id =reviewer.id");
+./check_point/includes/sec_rev.php:						$select_reviewer=mysqli_query( $bd,"SELECT * FROM reviewer where id='$rev_id'"); 
+./check_point/includes/sec_reviewed_app.php:                $forms = mysqli_query( $bd, "SELECT * FROM form_creation WHERE 3rdlineart_form_id = $form_id");
+./check_point/includes/sec_reminder.php:			$expert_review_consolidate2 = mysqli_query( $bd, "SELECT * FROM expert_review_consolidate2 ORDER BY `expert_review_consolidate2`.`id` DESC "); 
+./check_point/includes/sec_attach_resultpdf.php:$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where 3rdlineart_form_id ='$formID'"); 
+./check_point/includes/sec_attach_resultpdf.php:		$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./check_point/includes/sec_attach_resultpdf.php:		$SQL_patient = "SELECT * FROM patient WHERE id=$patient_id";
+./check_point/includes/sec_attach_resultpdf.php:			$reviewer=mysqli_query( $bd,"SELECT * FROM reviewer"); 
+./check_point/includes/sec_attach_resultpdf.php:				$assigned_forms=mysqli_query( $bd,"SELECT * FROM assigned_app_results where rev_id=' $id'");
+./check_point/includes/sec_attach_resultpdf.php:				$assigned_forms_reviewed=mysqli_query( $bd,"SELECT * FROM assigned_app_results where status = 'Reviewed' and rev_id=' $id'");
+./check_point/includes/sec_consolidate1.php:$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where 3rdlineart_form_id ='$formID'"); 
+./check_point/includes/sec_consolidate1.php:	$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./check_point/includes/sec_consolidate1.php:	$SQL_patient = "SELECT * FROM patient WHERE id=$patient_id";
+./check_point/includes/sec_consolidate1.php:$expert_review_form=mysqli_query( $bd,"SELECT * FROM expert_review_form where form_id ='$formID' "); 
+./check_point/includes/sec_consolidate1.php:	$select_reviewer=mysqli_query( $bd,"SELECT * FROM reviewer where id='$rev_id'"); 
+./check_point/includes/sec_consolidate1.php:$form_creation=mysqli_query( $bd,"SELECT clinician_id FROM form_creation where 3rdlineart_form_id ='$formID' "); 
+./check_point/includes/sec_consolidate1.php:	$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./check_point/includes/sec_results_under_rev.php:	$SQL_reviewer = "SELECT * FROM reviewer WHERE id=$rev_id";
+./check_point/includes/sec_results_under_rev.php:					$assigned=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_app_results where form_id='$form_id'"); 
+./check_point/includes/sec_results_under_rev.php:					$assigned_count=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_app_results where form_id='$form_id' and status ='Reviewed'");
+./check_point/includes/sec_results_under_rev.php:					$select_team_lead=mysqli_query( $bd,"SELECT * FROM reviewer_team_lead2 where form_id='$form_id'");
+./check_point/includes/sec_results_under_rev.php:                    $select_reviewer=mysqli_query( $bd,"SELECT * FROM reviewer where id='$team_leader_id'"); 
+./check_point/includes/sec_results_under_rev.php:						$select_reviewer=mysqli_query( $bd,"SELECT * FROM reviewer where id='$rev_id'"); 
+./check_point/includes/insert_attach_result.php:			$SQL_reviewer = "SELECT * FROM reviewer WHERE id=$rev_id";
+./check_point/includes/sec_assign_reviewer.php:$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where 3rdlineart_form_id ='$formID'"); 
+./check_point/includes/sec_assign_reviewer.php:	$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./check_point/includes/sec_assign_reviewer.php:	$SQL_patient = "SELECT * FROM patient WHERE id=$patient_id";
+./check_point/includes/sec_assign_reviewer.php:		$reviewer=mysqli_query( $bd,"SELECT * FROM reviewer"); 
+./check_point/includes/sec_assign_reviewer.php:			$assigned_forms=mysqli_query( $bd,"SELECT * FROM assigned_forms where rev_id=' $id'");
+./check_point/includes/sec_assign_reviewer.php:			$assigned_forms_reviewed=mysqli_query( $bd,"SELECT * FROM assigned_forms where status = 'Reviewed' and rev_id=' $id'");
+./check_point/includes/app_form.php:$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./check_point/includes/app_form.php:$patient=mysqli_query($bd, "SELECT * FROM patient where id='$pat_id' "); 
+./check_point/includes/app_form.php:$current_clinical_status=mysqli_query($bd, "SELECT * FROM current_clinical_status where patient_id='$pat_id' "); 
+./check_point/includes/app_form.php:		$art_interruption = mysqli_query($bd, "SELECT * FROM art_interruption where patient_id='$pat_id' "); 
+./check_point/includes/app_form.php:		$ol_6months_details = mysqli_query($bd, "SELECT * FROM ol_6months_details where patient_id='$pat_id' "); 
+./check_point/includes/app_form.php:$patient_side_effects=mysqli_query($bd, "SELECT * FROM patient_side_effects where patient_id='$pat_id' "); 
+./check_point/includes/app_form.php:$current_clinical_status_details=mysqli_query($bd, "SELECT * FROM current_clinical_status_details where pat_id='$pat_id' "); 
+./check_point/includes/app_form.php:$tb_treatment=mysqli_query($bd, "SELECT * FROM tb_treatment where pat_id='$pat_id' "); 
+./check_point/includes/app_form.php:$adherence=mysqli_query($bd, "SELECT * FROM adherence where pat_id='$pat_id' "); 
+./check_point/includes/app_form.php:$adherence_questions=mysqli_query($bd, "SELECT * FROM adherence_questions where pat_id='$pat_id' "); 
+./check_point/includes/app_form.php:$lab=mysqli_query($bd, "SELECT * FROM lab where pat_id='$pat_id' "); 
+./check_point/includes/app_form.php:$treatment_history=mysqli_query($bd, "SELECT * FROM treatment_history where pat_id='$pat_id' "); 
+./check_point/includes/app_form.php:	$pregnancy=mysqli_query($bd, "SELECT * FROM pregnancy where pat_id='$pat_id' "); 
+./check_point/includes/app_form.php:	$pediatric=mysqli_query($bd, "SELECT * FROM pediatric where pat_id='$pat_id' "); 
+./check_point/includes/app_form.php:							$art_interruption = mysqli_query($bd, "SELECT * FROM art_interruption where patient_id='$pat_id' "); 
+./check_point/includes/app_form.php:					$ol_6months_details = mysqli_query($bd, "SELECT * FROM ol_6months_details where patient_id='$pat_id' "); 
+./check_point/includes/app_form.php:								$treatment_history=mysqli_query($bd, "SELECT * FROM treatment_history where pat_id='$pat_id' "); 
+./check_point/includes/app_form.php:							$monitoring=mysqli_query($bd, "SELECT * FROM monitoring where pat_id='$pat_id' "); 
+./check_point/includes/app_form.php:							$tb_treat =mysqli_query($bd, "SELECT * FROM tb_treat where pat_id='$pat_id' "); 
+./check_point/includes/app_form.php:								$tb_treat_regimen1=mysqli_query($bd, "SELECT * FROM tb_treat_regimen1 where pat_id='$pat_id' "); 
+./check_point/includes/app_form.php:								$tb_treat_regimen2=mysqli_query($bd, "SELECT * FROM tb_treat_regimen2 where pat_id='$pat_id' "); 
+./check_point/includes/app_form.php:								$tb_treat_mdr=mysqli_query($bd, "SELECT * FROM tb_treat_mdr where pat_id='$pat_id' "); 
+./check_point/includes/sec_new.php:			$form_creation = mysqli_query( $bd,"SELECT * FROM form_creation where status='Complete' and complete !='Rejected' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
+./check_point/includes/sec_new.php:				$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+./check_point/cp_p1.php:												$SQL_reviewer = "SELECT * FROM reviewer WHERE id=$rev_id";
+./includes/db_operations/insert_treatment.php:            $insert_tb_treat_regimen1=" INSERT  INTO  tb_treat_regimen1
+./includes/db_operations/insert_treatment.php:            $insert_tb_treat_regimen2=" INSERT  INTO  tb_treat_regimen2
+./includes/db_operations/insert_treatment.php:            $insert_tb_treat_mdr=" INSERT  INTO  tb_treat_mdr
+./includes/db_operations/insert_treatment.php:$insert_tb_treatment=" INSERT  INTO  tb_treatment (pat_id,reg1,reg2,mdr,start_date,stop_date,reason_o_changes)
+./includes/db_operations/insert_treatment.php:$insert_monitoring=" INSERT  INTO  monitoring (pat_id,monito_date,cd4,vl,reason_4_detectable_vl,weight)
+./includes/db_operations/insert_treatment.php:        $insert_monitoring2=" INSERT  INTO  monitoring (pat_id,monito_date,cd4,vl,reason_4_detectable_vl,weight)
+./includes/db_operations/insert_treatment.php:        $insert_monitoring3=" INSERT  INTO  monitoring (pat_id,monito_date,cd4,vl,reason_4_detectable_vl,weight)
+./includes/db_operations/insert_treatment.php:     $insert_monitoring4=" INSERT  INTO  monitoring (pat_id,monito_date,cd4,vl,reason_4_detectable_vl,weight)
+./includes/db_operations/insert_treatment.php:       $insert_monitoring5=" INSERT  INTO  monitoring (pat_id,monito_date,cd4,vl,reason_4_detectable_vl,weight)
+./includes/db_operations/insert_treatment.php:$insert_treatment_history=" INSERT  INTO  treatment_history (pat_id,art_drug,start_date,stop_date,reason_for_change)
+./includes/db_operations/insert_treatment.php:    $insert_treatment_history2=" INSERT  INTO  treatment_history (pat_id,art_drug,start_date,stop_date,reason_for_change)
+./includes/db_operations/insert_treatment.php:    $insert_treatment_history3=" INSERT  INTO  treatment_history (pat_id,art_drug,start_date,stop_date,reason_for_change)
+./includes/db_operations/insert_treatment.php:    $insert_treatment_history4=" INSERT  INTO  treatment_history (pat_id,art_drug,start_date,stop_date,reason_for_change)
+./includes/db_operations/insert_treatment.php:    $insert_treatment_history5=" INSERT  INTO  treatment_history (pat_id,art_drug,start_date,stop_date,reason_for_change)
+./includes/db_operations/insert_adherence_lab.php:$insert_adherence=" INSERT  INTO adherence (pat_id,scheduled_visit_date1,actual_visit_date1,pill_count1,scheduled_visit_date2,actual_visit_date2,pill_count2,scheduled_visit_date3,actual_visit_date3,pill_count3)
+./includes/db_operations/insert_adherence_lab.php:$insert_adherence_questions=" INSERT  INTO adherence_questions (pat_id,ever_forget_2_take_meds,careless_taking_meds,stop_taking_meds,not_taken_meds,taken_meds_past_weekend,3months_days_not_taken_meds)
+./includes/db_operations/insert_adherence_lab.php:$insert_lab=" INSERT  INTO lab (pat_id,creatinine,hb,alt,bilirubin,hepbag)
+./includes/db_operations/update_clinic_status.php:	$insert_patient="INSERT INTO current_clinical_status (patient_id,who_stage,curr_who_stage,weight,height,art_interrup,h_o_ss_effects, ol_6months, sig_diarrhea_vom, alco_drug_consump, trad_med, co_medi, other_curr_problem)
+./includes/db_operations/update_clinic_status.php:	$insert_current_clinical_status_details="INSERT INTO current_clinical_status_details (pat_id,sig_diarrhea_vom_details,alco_drug_consump_details,trad_med_details,co_medi_details, other_curr_problem_details)
+./includes/db_operations/update_clinic_status.php:	$insert_pat_side_effect="INSERT INTO patient_side_effects (patient_id,PeripheralNeuropathy,Jaundice,Lipodystrophy,KidneyFailure,Psychosis,Gynecomastia,Anemia,other)
+./includes/db_operations/update_clinic_status.php:		$insert_art_interruption="INSERT INTO art_interruption (patient_id,reason,date)
+./includes/db_operations/update_clinic_status.php:		$insert_ol_6months_details="INSERT INTO ol_6months_details (patient_id,ol_6months_dign,ol_6months_date)
+./includes/db_operations/insert_clinic_status.php:    // echo(" INSERT INTO current_clinical_status (patient_id,who_stage,curr_who_stage,weight,height,art_interrup,h_o_ss_effects, ol_6months, sig_diarrhea_vom, alco_drug_consump, trad_med, co_medi, other_curr_problem)VALUES ('$patient_id', '$who_stage', '$curr_who_stage', '$weight', '$height', '$art_interrup', '$h_o_ss_effects', '$ol_6months', '$sig_diarrhea_vom', '$alco_drug_consump', '$trad_med', '$co_medi', '$other_curr_problem' )");
+./includes/db_operations/insert_clinic_status.php:	$insert_patient="INSERT INTO current_clinical_status (patient_id,who_stage,curr_who_stage,weight,height,art_interrup,h_o_ss_effects, ol_6months, sig_diarrhea_vom, alco_drug_consump, trad_med, co_medi, other_curr_problem)
+./includes/db_operations/insert_clinic_status.php:	$insert_current_clinical_status_details="INSERT  INTO current_clinical_status_details (pat_id,sig_diarrhea_vom_details,alco_drug_consump_details,trad_med_details,co_medi_details, other_curr_problem_details)
+./includes/db_operations/insert_clinic_status.php:// echo("INSERT  INTO patient_side_effects (patient_id,PeripheralNeuropathy,Jaundice,Lipodystrophy,Psychosis,Gynecomastia,Anemia,other) VALUES ('$patient_id', '$Jaundice', '$Lipodystrophy', '$KidneyFailure', '$Psychosis', '$Gynecomastia','$Anemia','$other')");
+./includes/db_operations/insert_clinic_status.php:	$insert_pat_side_effect="INSERT INTO patient_side_effects (patient_id,PeripheralNeuropathy,Jaundice,Lipodystrophy,KidneyFailure,Psychosis,Gynecomastia,Anemia,other)
+./includes/db_operations/insert_clinic_status.php:		$insert_art_interruption=" INSERT INTO art_interruption (patient_id,reason,date)
+./includes/db_operations/insert_clinic_status.php:		$insert_ol_6months_details=" INSERT INTO ol_6months_details (patient_id,ol_6months_dign,ol_6months_date)
+./includes/db_operations/insert_treatment3.php:	$insert_tb_treat = "INSERT INTO tb_treat (tb_treatment,pat_id)
+./includes/db_operations/insert_treatment3.php:				$insert_tb_treat_regimen1 = "INSERT INTO tb_treat_regimen1
+./includes/db_operations/insert_treatment3.php:					$insert_tb_treat_regimen2 = "INSERT INTO tb_treat_regimen2
+./includes/db_operations/insert_treatment3.php:				$insert_tb_treat_mdr="INSERT INTO tb_treat_mdr
+./includes/db_operations/insert_treatment2.php:            $insert_monitoring="INSERT INTO monitoring (pat_id,monito_date,cd4,vl,reason_4_detectable_vl,weight)
+./includes/db_operations/update_pediatric.php:$insert_pediatric=" INSERT INTO pediatric (pat_id,mother_had_single_dose_NVP,given_NVP,mother_had_PMTCT,swallow_tablets)
+./includes/db_operations/insert_patient.php:   	$insert_patient=" INSERT  INTO patient(pat_art_clinic,art_id_num,firstname,lastname,gender,dob,vl_sample_id, date_created)
+./includes/db_operations/insert_patient.php:   	$insert_form_creation=" INSERT  INTO form_creation (clinician_id,patient_id,status, date_created)
+./includes/db_operations/insert_sample.php:$insert_sample=" INSERT  INTO  sample (form_id,clinician_id,date_created)
+./includes/db_operations/update_treatment2.php:            $insert_monitoring=" INSERT INTO monitoring (pat_id,monito_date,cd4,vl,reason_4_detectable_vl,weight)
+./includes/db_operations/update_pregnancy.php:$insert_preg=" INSERT  INTO  pregnancy (pat_id,pregnant,weeks_o_preg,breastfeeding)
+./includes/db_operations/update_treatment1.php:            $insert_treatment_history="INSERT INTO treatment_history (pat_id,art_drug,start_date,stop_date,reason_for_change)
+./includes/db_operations/insert_pediatric.php:$insert_pediatric=" INSERT  INTO  pediatric (pat_id,mother_had_single_dose_NVP,given_NVP,mother_had_PMTCT,swallow_tablets)
+./includes/db_operations/insert_pregnancy.php:$insert_preg=" INSERT  INTO  pregnancy (pat_id,pregnant,weeks_o_preg,breastfeeding)
+./includes/db_operations/update_adherence_lab.php:$insert_adherence=" INSERT INTO adherence (pat_id,scheduled_visit_date1,actual_visit_date1,pill_count1,scheduled_visit_date2,actual_visit_date2,pill_count2,scheduled_visit_date3,actual_visit_date3,pill_count3)
+./includes/db_operations/update_adherence_lab.php:$insert_adherence_questions=" INSERT INTO adherence_questions (pat_id,ever_forget_2_take_meds,careless_taking_meds,stop_taking_meds,not_taken_meds,taken_meds_past_weekend,3months_days_not_taken_meds)
+./includes/db_operations/update_adherence_lab.php:$insert_lab=" INSERT INTO lab (pat_id,creatinine,hb,alt,bilirubin,hepbag)
+./includes/db_operations/insert_treatment1.php:	    $insert_treatment_history="INSERT INTO treatment_history (pat_id,art_drug,start_date,stop_date,reason_for_change)
+./includes/db_operations/update_treatment3.php:    $insert_tb_treat=" INSERT  INTO  tb_treat (tb_treatment,pat_id)
+./includes/db_operations/update_treatment3.php:                    $insert_tb_treat_regimen1=" INSERT  INTO  tb_treat_regimen1
+./includes/db_operations/update_treatment3.php:                    $insert_tb_treat_regimen2=" INSERT INTO tb_treat_regimen2
+./includes/db_operations/update_treatment3.php:                    $insert_tb_treat_mdr="INSERT INTO tb_treat_mdr
+./includes/queries.php:./includes/db_operations/update_clinic_status.php:90:   $insert_pat_side_effect="INSERT INTO patient_side_effects (patient_id,PeripheralNeuropathy,Jaundice,Lipodystrophy,KidneyFailure,Psychosis,Gynecomastia,Anemia,other)
+./includes/queries.php:./includes/db_operations/insert_clinic_status.php:82:// echo(" INSERT  INTO patient_side_effects (patient_id,PeripheralNeuropathy,Jaundice,Lipodystrophy,Psychosis,Gynecomastia,Anemia,other) VALUES ('$patient_id', '$Jaundice', '$Lipodystrophy', '$KidneyFailure', '$Psychosis', '$Gynecomastia','$Anemia','$other')");
+./includes/queries.php:./includes/db_operations/insert_clinic_status.php:84:$insert_pat_side_effect=" INSERT  INTO patient_side_effects (patient_id,PeripheralNeuropathy,Jaundice,Lipodystrophy,KidneyFailure,Psychosis,Gynecomastia,Anemia,other)
+./includes/queries.php:./includes/db_operations/insert_patient.php:23:$insert_patient=" INSERT  INTO patient(pat_art_clinic,art_id_num,firstname,lastname,gender,dob,vl_sample_id, date_created)
+./includes/email_templates.php:	$insert_email = "INSERT INTO email_log
+./includes/email_templates.php:	$insert_email = "INSERT INTO email_log
+./reviewer/includes/insert_consolidate1.php:$insert_expert_review_consolidate1=" INSERT  INTO  expert_review_consolidate1 (form_id,genotyping,comment_to_clinician, date_reviewed)
+./reviewer/includes/insert_review.php:	$insert_expert_review_Form=" INSERT INTO expert_review_form (form_id,rev_id,genotyping,comment_to_clinician,date_reviewed)
+./reviewer/includes/insert_reviewed_result.php:$insert_expert_review_result=" INSERT  INTO  expert_review_result (form_id,rev_id,pi_mutation,switch,drug1,drug2,drug3,drug4,drug5,comment,feedback_to_clinician)
+./reviewer/includes/insert_consolidate2.php:$insert_expert_review_consolidate2=" INSERT  INTO  expert_review_consolidate2 (form_id,sec_id,pi_mutation,switch,decision,attachements,consolidate2_date)
+./pih/includes/insert_lab_vl_repeat.php:	$insert_lab_vl_repeat=" INSERT  INTO  lab_vl_repeat (form_id,receive_date,vl_result,dispatch_date,nhls_receive_date,lab_personel_id,date_record_created)
+./login.php:        $insert_login_attempts="INSERT  INTO login_attempts (username,attempts, date)
+./admin/includes/insert_lab_user.php:	$insert_users=" INSERT  INTO  users
+./admin/includes/insert_lab_user.php:	$insert_pih_lab=" INSERT  INTO  pih_lab
+./admin/includes/insert_sec.php:                $insert_users=" INSERT  INTO  users
+./admin/includes/insert_sec.php:                $insert_secretary=" INSERT  INTO  secretary
+./admin/includes/insert_drug.php:	$insert_drugs=" INSERT  INTO  drugs
+./admin/includes/insert_reviewer.php:	$insert_users = " INSERT INTO users
+./admin/includes/insert_reviewer.php:	$insert_reviewer = " INSERT  INTO  reviewer
+./admin/includes/insert_clinician.php:                $insert_users = " INSERT INTO users
+./admin/includes/insert_clinician.php:                $insert_clinician = " INSERT INTO clinician
+./admin/includes/insert_facility.php:	$insert_facility=" INSERT  INTO  facility
+./admin/includes/insert_affliates.php:		$insert_partner_org=" INSERT  INTO  partner_org
+./check_point/includes/insert_assign_reviewer.php:    $insert_assigned_forms="INSERT INTO assigned_forms (form_id,sec_id,rev_id,date_assigned)
+./check_point/includes/sec_app_reject.php:$insert_form_rejected=" INSERT INTO form_rejected (form_id,comment)
+./check_point/includes/insert_consolidate1.php:$insert_expert_review_consolidate1=" INSERT  INTO  expert_review_consolidate1 (form_id,genotyping,comment_to_clinician, date_reviewed)
+./check_point/includes/insert_attach_result.php:	$insert_reviewer_team_lead =" INSERT INTO reviewer_team_lead2 (rev_id,form_id,sec_id)
+./check_point/includes/insert_attach_result.php:			$insert_assigned_app_results=" INSERT INTO assigned_app_results (form_id,sec_id,rev_id,date_assigned)
+./check_point/includes/insert_attach_result.php:			$insert_app_results = "INSERT INTO app_results (form_id,result_pdf,date_created)
+./check_point/includes/insert_consolidate2.php:$insert_expert_review_consolidate2=" INSERT  INTO  expert_review_consolidate2 (form_id,sec_id,pi_mutation,switch,decision,attachements,consolidate2_date)
+./check_point/cp_p1.php:										$insert_reviewer_team_lead = "INSERT INTO reviewer_team_lead (rev_id,form_id,sec_id)
+./check_point/cp_p1.php:												$insert_assigned_forms = "INSERT INTO assigned_forms (form_id,sec_id,rev_id,date_assigned)
+./includes/db_operations/update_patient.php:$sql_update_patient = "UPDATE patient 
+./includes/db_operations/update_clinic_status.php:	$sql_update_patient = "UPDATE patient 
+./includes/queries.php:./includes/db_operations/update_patient.php:16:$sql_update_patient = "UPDATE patient
+./includes/queries.php:./includes/db_operations/update_clinic_status.php:124:  $sql_update_patient = "UPDATE patient 
+./reviewer/includes/insert_review.php:	$sql_form_creation_r = "UPDATE form_creation ".
+./reviewer/includes/insert_review.php:	$sql_assigned_forms = "UPDATE assigned_forms ".
+./reviewer/includes/insert_reviewed_result.php:$sql_form_creation_r = "UPDATE form_creation ".
+./reviewer/includes/insert_reviewed_result.php:    $sql_assigned_app_results = "UPDATE assigned_app_results ".
+./pih/includes/lab_new.php:		$sql_sample = "UPDATE sample ".
+./pih/includes/insert_lab_vl_repeat.php:	$sql_sample = "UPDATE sample ".
+./login.php:        $update_login_attempts = "UPDATE login_attempts ".
+./complete_form.php:									$sql_form_creation = "UPDATE form_creation ".
+./send_emails.php:      $query_email = "UPDATE email_log set sent = 1 WHERE id = ".$id;      
+./admin/includes/update_facility_drug_affliates.php:		$sql_update_facility =  "UPDATE facility ".
+./admin/includes/update_facility_drug_affliates.php:	$sql_update_drugs =  "UPDATE drugs ".
+./admin/includes/update_facility_drug_affliates.php:	$sql_update_partner_org =  "UPDATE partner_org ".
+./admin/includes/update_user.php:                $sql_update_user = "UPDATE users ".
+./admin/includes/update_user.php:                $sql_update_clinician = "UPDATE clinician".
+./admin/includes/update_user.php:            $sql_update_user =  "UPDATE users ".
+./admin/includes/update_user.php:            $sql_update_pih_lab =  "UPDATE pih_lab ".
+./admin/includes/update_user.php:			$sql_update_user =  "UPDATE users ".
+./admin/includes/update_user.php:			$sql_update_secretary =  "UPDATE secretary ".
+./admin/includes/update_user.php:            $sql_update_user =  "UPDATE users ".
+./admin/includes/update_user.php:            $sql_update_reviewer =  "UPDATE reviewer ".
+./check_point/includes/sec_app_reject.php:$sql_form_creation_not_complete = "UPDATE form_creation ".
+./check_point/cp_p1.php:										$sql_form_creation4review = "UPDATE form_creation ".
+./check_point/cp_p1.php:										$sql_form_creation_complete = "UPDATE form_creation ".
+./includes/db_operations/update_clinic_status.php:    $sql_delete_ccstatus = "DELETE FROM current_clinical_status where patient_id = $patient_id";
+./includes/db_operations/update_clinic_status.php:    $sql_delete_ccs_details = "DELETE FROM current_clinical_status_details where pat_id = $patient_id";
+./includes/db_operations/update_clinic_status.php:    $sql_delete_patient_seffects = "DELETE FROM patient_side_effects where patient_id = $patient_id";
+./includes/db_operations/update_clinic_status.php:    mysqli_query( $bd, "DELETE from art_interruption WHERE patient_id = $patient_id" );
+./includes/db_operations/update_pediatric.php:    $sql_delete_pediatric = "DELETE FROM pediatric where pat_id =$patient_id";
+./includes/db_operations/update_treatment2.php:    $sql_delete_treatment2 = "DELETE FROM monitoring where pat_id =$patient_id";
+./includes/db_operations/update_pregnancy.php:     $sql_delete_pregnancy = "DELETE FROM  pregnancy where pat_id =$pat_id";
+./includes/db_operations/update_treatment1.php:    $sql_delete_treatment1 = "DELETE FROM treatment_history where pat_id =$patient_id";
+./includes/db_operations/update_adherence_lab.php:    $sql_delete_lab = "DELETE FROM lab where pat_id =$patient_id";
+./includes/db_operations/update_adherence_lab.php:    $sql_delete_adherence = "DELETE FROM adherence where pat_id =$patient_id";
+./includes/db_operations/update_adherence_lab.php:    $sql_delete_adherence_questions = "DELETE FROM adherence_questions where pat_id =$patient_id";
+./includes/db_operations/update_treatment3.php:    $sql_delete_treatment3 = "DELETE FROM tb_treat where pat_id = $patient_id";
+./includes/db_operations/update_treatment3.php:    $sql_delete_tb_treat_regimen1 = "DELETE FROM tb_treat_regimen1 where pat_id = $patient_id";
+./includes/db_operations/update_treatment3.php:    $sql_delete_tb_treat_regimen2 = "DELETE FROM tb_treat_regimen2 where pat_id = $patient_id";
+./includes/db_operations/update_treatment3.php:    $sql_delete_tb_treat_mdr = "DELETE FROM tb_treat_mdr where pat_id = $patient_id";
+./login.php:        $reset_login_attempts = "DELETE FROM login_attempts WHERE username=$username";
+./complete_form.php:										$sql_cancel_app = "DELETE FROM form_creation where patient_id =$pat_id";
+./complete_form.php:										$sql_cancel_patient = "DELETE FROM patient where id =$pat_id";
+./admin/includes/delete_user.php:	$sql_user = "DELETE FROM users WHERE id =$user_id";
+./admin/includes/delete_facility_drug_affliates.php:            $sql_drugs = "DELETE FROM drugs WHERE id =$id";
+./admin/includes/delete_facility_drug_affliates.php:            $sql_facility = "DELETE FROM facility WHERE id =$id";
+./admin/includes/delete_facility_drug_affliates.php:            $sql_partner_org = "DELETE FROM partner_org WHERE id =$id";
+./check_point/includes/insert_assign_reviewer.php:    mysqli_query("DELETE FROM assigned_forms WHERE form_id = '$formID and rev_id = '$rev_id'");
+./check_point/includes/sec_app_reject.php:$delete_form_rejected=" DELETE FROM form_rejected where form_id = '$form_ID'";

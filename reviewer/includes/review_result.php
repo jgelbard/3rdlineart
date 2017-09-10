@@ -61,14 +61,12 @@
 				<div style="width:110px; float:left" class="radio_sty">
 					<input type="radio" id="pi_mutation" name="pi_mutation" value="Yes"  required>
 					<label for="pi_mutation">Yes</label>
-
 					<div class="check">
 					</div>
 				</div>
 				<div style="width:100px; float:left" class="radio_sty">
 					<input type="radio" id="npi_mutation" name="pi_mutation" value="No" >
 					<label for="npi_mutation">No</label>
-
 					<div class="check">
 					</div>
 				</div>
@@ -77,26 +75,30 @@
 		</tr>
 		<tr><td>   
 			<h4>Switch Patient to 3rd line drug?</h4> 
-
-
 			<div style="width:110px; float:left" class="radio_sty span12">
 				<input type="radio" id="switch"  name="switch" value="SwitchYes"  required>
 				<label for="switch">Yes</label>
-
 				<div class="check">
 				</div>
 			</div>
 			<div style="width:100px; float:left" class="radio_sty">
 				<input type="radio" id="nswitch" name="switch" value="SwitchNo" >
 				<label for="nswitch">No</label>
-
 				<div class="check">
 				</div>
 			</div>
-
-
 		</td></tr>
 	</table>
+<?php
+     $drug_options = '<option>none</option>';
+     $drug_query = "SELECT drug_name FROM drugs order by drug_name";
+$drug_result = mysqli_query( $bd, $drug_query );
+// echo '<div class="controls"><select name="facilty" id="drug" class="span3">';
+while ($row_drug = mysqli_fetch_array($drug_result)) {
+    $drug = $row_drug['drug_name'];
+    $drug_options = $drug_options."<option value=\"$drug\">$drug</option>";
+}
+?>   
 	<div class="yes box">
 		<table style="width:100%; font-size:120%" >
 			<hr />
@@ -106,84 +108,28 @@
 					<P>ART Regimen</P>  
 					<p><strong>Drug 1:</strong> 
 						<select name="drug1">
-							<option>none</option>
-							<option>AZT</option>
-							<option>ABC</option>
-							<option>TDF</option>
-							<option>3TC</option>
-							<option>EFV</option>
-							<option>NVP</option>
-							<option>LPV/r</option>
-							<option>ATV/r</option>
-							<option>DRV/r</option>
-							<option>ETV</option>
-							<option>RAL</option>
+                            <?php echo $drug_options ?>
 						</select>
 					</p> 
 					<p><strong>Drug 2:</strong>
-
 						<select name="drug2">
-							<option>none</option>
-							<option>AZT</option>
-							<option>ABC</option>
-							<option>TDF</option>
-							<option>3TC</option>
-							<option>EFV</option>
-							<option>NVP</option>
-							<option>LPV/r</option>
-							<option>ATV/r</option>
-							<option>DRV/r</option>
-							<option>ETV</option>
-							<option>RAL</option>
+                            <?php echo $drug_options ?>
 						</select>
 					</p> 
 					<p><strong>Drug 3:</strong>
 						<select name="drug3">
-							<option>none</option>
-							<option>AZT</option>
-							<option>ABC</option>
-							<option>TDF</option>
-							<option>3TC</option>
-							<option>EFV</option>
-							<option>NVP</option>
-							<option>LPV/r</option>
-							<option>ATV/r</option>
-							<option>DRV/r</option>
-							<option>ETV</option>
-							<option>RAL</option>
+                            <?php echo $drug_options ?>
 						</select>
 
 					</p> <p><strong>Drug 4:</strong>
 					<select name="drug4">
-						<option>none</option>
-						<option>AZT</option>
-						<option>ABC</option>
-						<option>TDF</option>
-						<option>3TC</option>
-						<option>EFV</option>
-						<option>NVP</option>
-						<option>LPV/r</option>
-						<option>ATV/r</option>
-						<option>DRV/r</option>
-						<option>ETV</option>
-						<option>RAL</option>
+                            <?php echo $drug_options ?>
 					</select>
 
-				</p> <p><strong>Drug 3:</strong>
-				<select name="drug5">
-					<option>none</option>
-					<option>AZT</option>
-					<option>ABC</option>
-					<option>TDF</option>
-					<option>3TC</option>
-					<option>EFV</option>
-					<option>NVP</option>
-					<option>LPV/r</option>
-					<option>ATV/r</option>
-					<option>DRV/r</option>
-					<option>ETV</option>
-					<option>RAL</option>
-				</select>
+                    </p> <p><strong>Drug 5:</strong>
+				    <select name="drug5">
+                            <?php echo $drug_options ?>
+				    </select>
 
 			</p> 
 		</td>

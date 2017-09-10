@@ -68,9 +68,7 @@ echo '<h2 style="background-color:#dedd6;  text-align:center; color:#000000">Con
 
 
 
-echo '<form id="edit-profile" class="form-horizontal" action="cp_p1.php?p" method="post" style=" padding:10px;">
-?>
-<?php
+echo '<form id="edit-profile" class="form-horizontal" action="cp_p1.php?p" method="post" style=" padding:10px;">';
 
 $expert_review_form=mysqli_query( $bd,"SELECT * FROM expert_review_form where form_id ='$formID' "); 
 while ($row_expert_review_form=mysqli_fetch_array($expert_review_form)){
@@ -240,7 +238,7 @@ echo ' <table style="width:100%; background-color:#f7cf75; padding:5px;" >
 			<textarea type="text" class="span4" rows="8" name="comment_to_clinician1"  id="area1" >
 				<p>Dear&nbsp; <?php echo $clinician_name; ?></p>
 				<p>&nbsp;</p>
-				<p>Thank you for the application for resistance testing for your patient (Form #16).</p>
+				<p>Thank you for the application for resistance testing for your patient (Form #<?php echo $formID; ?>).</p>
 				<p>&nbsp;</p>
 				<p>Your Application was reviewed and the committee suggests that resistance testing is <U style="color:#f00">NOT</U> indicated.</p>
 				<p>&nbsp;</p>

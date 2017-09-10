@@ -29,7 +29,6 @@ include ('includes/head.php');
 					</li>>
 					<li class="">						
 						<a href="admin" class="">
-							<i class="icon-chevron-left"></i>
 							admin
       </a>
 					</li>
@@ -56,12 +55,12 @@ include ('includes/head.php');
 				<p>Please provide your details</p>
                 <?php
 if(isset($_GET ['error'])) { 
-$_error = $_GET ['error'];
-if ($_error =='fail') {
-    echo'<p style="color:#f00">You issued wrong Username or Password</p>';
+    $_error = $_GET ['error'];
+    if ($_error =='fail') {
+        echo'<p style="color:#f00">You issued wrong Username or Password</p>';
+    }
 }
-}
-                ?>
+?>
 				<div class="field">
 					<label for="username">Username</label>
 					<input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" />
@@ -80,12 +79,9 @@ if ($_error =='fail') {
                 <input class="button btn btn-success btn-large" type="submit" name="submit" value="Sign In"/>
 			</div> <!-- .actions -->
 		</form>
-		
+      
 	</div> <!-- /content -->
-	
 </div> <!-- /account-container -->
-
-
 
 <div class="login-extra">
 	<a href="reset.php">Reset Password</a>
@@ -93,7 +89,5 @@ if ($_error =='fail') {
 <script src="js/jquery-1.7.2.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/signin.js"></script>
-
 </body>
-
 </html>

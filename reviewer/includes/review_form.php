@@ -10,21 +10,12 @@ $gender =$row_pat['gender'];
 $dob =$row_pat['dob'];
 $vl_sample_id =$row_pat['vl_sample_id'];
 
- //calculating age of patient 
-function GetAge($dob) 
-{ 
-	$dob=explode("/",$dob); 
-	$curMonth = date("m");
-	$curDay = date("j");
-	$curYear = date("Y");
-	$age = $curYear - $dob[2]; 
-	if($curMonth<$dob[0] || ($curMonth==$dob[0] && $curDay<$dob[1])) 
-		$age--; 
-	return $age; 
-}
-$age =GetAge($dob);
+$age = GetAge($dob);
 
-
+$form_id = $_GET['id'];
+$review = mysqli_query($bd, "SELECT * FROM expert_review_form where form_id = $form_id");
+$row_review = mysqli_fetch_array($review);
+// echo 'genotyping recommended: '.$row_review['genotyping'].', note: '.$row_review['comment_to_clinician'];
 //clinic status info
 
 $current_clinical_status=mysqli_query( $bd,"SELECT * FROM current_clinical_status where patient_id='$pat_id' "); 
@@ -78,7 +69,6 @@ $trad_med_details =$row_current_clinical_status_details['trad_med_details'];
 $co_medi_details =$row_current_clinical_status_details['co_medi_details'];
 $other_curr_problem_details =$row_current_clinical_status_details['other_curr_problem_details'];
 
-
 // tb_treatment
 $tb_treatment=mysqli_query( $bd,"SELECT * FROM tb_treatment where pat_id='$pat_id' "); 
 $row_tb_treatment=mysqli_fetch_array($tb_treatment);
@@ -105,7 +95,6 @@ $pill_count2 =$row_adherence['pill_count2'];
 $scheduled_visit_date3 =$row_adherence['scheduled_visit_date3'];
 $actual_visit_date3 =$row_adherence['actual_visit_date3'];
 $pill_count3 =$row_adherence['pill_count3'];
-
 
 // adherence_questions
 $adherence_questions=mysqli_query( $bd,"SELECT * FROM adherence_questions where pat_id='$pat_id' "); 
@@ -141,32 +130,26 @@ if ($gender=='Female' && $age >'10') {
 //pregnacy for females age greater than 10
 	$pregnancy=mysqli_query( $bd,"SELECT * FROM pregnancy where pat_id='$pat_id' "); 
 	$row_pregnancy=mysqli_fetch_array($pregnancy);
-
 	$pregnant =$row_pregnancy['pregnant'];
 	$weeks_o_preg =$row_pregnancy['weeks_o_preg'];
 	$breastfeeding =$row_pregnancy['breastfeeding'];
-
-	/*echo  $breastfeeding;*/
 }
 
 if ($age <='3') {
 //pediatric age < 3
 	$pediatric=mysqli_query( $bd,"SELECT * FROM pediatric where pat_id='$pat_id' "); 
 	$row_pediatric=mysqli_fetch_array($pediatric);
-
 	$mother_had_single_dose_NVP =$row_pediatric['mother_had_single_dose_NVP'];
 	$given_NVP =$row_pediatric['given_NVP'];
 	$mother_had_PMTCT =$row_pediatric['mother_had_PMTCT'];
 	$swallow_tablets =$row_pediatric['swallow_tablets'];   
 }
-
 ?>
 
 <h1 style="background-color:#f8f7f7; text-align:center; color:#000">3rd Line ART Expert Committee Malawi</h1>
 <hr style=" border: 2px solid #000;" />
 <fieldset>
 	<table style="width:100%; border-color:#f5f0f0" border="0.5" cellpadding="4px">
-
 		<tr>
 			<td>
 				<h4>ART Clinic :</h4> 
@@ -181,8 +164,6 @@ if ($age <='3') {
 
 			echo "Date <i>".$date. "</i>  Time <i>". $time. "</i>";
 			?>
-			<!--<i>Date: 02-Dec-2016</i>-->
-
 		</td>
 	</tr> 
 
@@ -211,7 +192,6 @@ if ($age <='3') {
 		<td>
 			<p style="text-align:center"><strong><?php echo $clinician_email ?></strong></p>
 		</td>    
-
 	</tr> 
 </table>
 </fieldset> 
@@ -221,7 +201,6 @@ if ($age <='3') {
 	<table style="width:100%;border-color:#f5f0f0" border="0" cellpadding="4px">
 		<tr>
 			<td><h4>First Name : </h4> 
-
 			</td>
 			<td>
 				<p style="text-align:center"><strong><?php echo  $firstname; ?></strong></p>
@@ -229,9 +208,7 @@ if ($age <='3') {
 			<td><h4>Surname :</h4> 									
 			</td>    
 			<td>       
-
 				<p style="text-align:center"><strong><?php echo  $lastname; ?></strong></p>
-
 			</td>    
 		</tr> 
 		<tr>
@@ -240,13 +217,11 @@ if ($age <='3') {
 			</td>
 			<td>
 				<p style="text-align:center"><strong><?php echo   $art_id_num; ?></strong></p>     
-
 			</td>    
 			<td>
 				<h4>Gender :</h4>
 			</td>    
 			<td>
-
 				<p><?php echo '<p style="text-align:center"><strong>'. $gender. '</strong></p>'; ?></p>
 			</td>    
 		</tr> 
@@ -269,7 +244,6 @@ if ($age <='3') {
 <h3 style="background-color:#111; text-align:center; color:#ffffff">Current Clinic Status and history</h3>
 <fieldset>
 	<table style="width:100%; border-color:#f5f0f0; border:0px;" border="1">
-
 		<tr>
 			<td>
 				<h4>WHO stage at start of Treatment :</h4> 
@@ -285,7 +259,6 @@ if ($age <='3') {
 			</td>
 			<td>
 				<p style="text-align:center"><strong><?php echo  $curr_who_stage ?></strong></p>
-
 			</td>    
 		</tr> 
 
@@ -296,7 +269,6 @@ if ($age <='3') {
 			<td>
 				<p style="text-align:center"><strong><?php echo  $weight ?>Kgs</strong></p>
 			</td>    
-
 		</tr> 
 
 		<tr>
@@ -306,7 +278,6 @@ if ($age <='3') {
 			<td>
 				<p style="text-align:center"><strong><?php echo  $height ?>Cm</strong></p>
 			</td>    
-
 		</tr> 
 
 		<tr>
@@ -324,7 +295,6 @@ if ($age <='3') {
 					}
 					?></strong></p> 
 				</tr>
-
 
 				<tr>
 					<td>  </td>
@@ -540,7 +510,6 @@ if ($age <='3') {
 						<p style="text-align:left"><strong>Traditional medicine? <?php echo '<u>'. $trad_med. '</u>'; ?></strong></p>
 					</td>
 					<td>
-
 						<?php 
 						if ($trad_med=='Yes') {
 							echo '<p>Details: '. $trad_med_details. '</p>'; 
@@ -548,7 +517,6 @@ if ($age <='3') {
 						else {
 							echo '<p> N/A</p>';
 						}
-
 						?>                          
 					</td>
 				</tr> 
@@ -564,12 +532,9 @@ if ($age <='3') {
 						else {
 							echo '<p> N/A</p>';
 						}
-
 						?>                 
-
 					</td>
 				</tr> 
-
 				<tr>
 					<td> 
 						<p style="text-align:left"><strong>Other current clinical problems? <?php echo '<u>'. $other_curr_problem. '</u>'; ?></strong></p> 
@@ -582,8 +547,7 @@ if ($age <='3') {
 						else {
 							echo '<p> N/A</p>';
 						}
-
-						?>                 
+						?> 
 					</td>
 
 				</tr> 
@@ -596,36 +560,24 @@ if ($age <='3') {
 			<?php 
 			if ($gender=='Male' || $age <'10'){
 				echo '<h3 style="color:#f00">N/A</h3>';
-
 			}
 			else {
 				?>
-
 				<table style="width:100%" border="0" cellpadding="2px">
-
 					<tr>
 						<td>
-
 							<p style="text-align:left"><strong>Is the patient currently pregnant? <?php if  ($gender=='Female' && $age >'10'){ echo '<u>'. $pregnant. '</u>'; }?></strong></p>
 						</td>    
 					</tr>
 					<tr>
 						<td> <p style="text-align:left"><strong>If Yes, week of pregnancy? <?php if  ($gender=='Female' && $age >'10'){   echo '<u>'. $weeks_o_preg. '</u>'; }?></strong></p></td>
 					</tr>
-
 					<tr>
-
-
 						<td>
-
 							<p style="text-align:left"><strong>Is the patient breastfeeding? <?php if  ($gender=='Female' && $age >'10'){  echo '<u>'. $breastfeeding. '</u>'; }?></strong></p>
 						</td>    
-
-
 					</tr>
 				</table>
-
-
 				<?php } ?>
 			</fieldset> 
 
@@ -634,7 +586,6 @@ if ($age <='3') {
 				<?php 
 				if ($age >'3'){
 					echo '<h3 style="color:#f00">N/A</h3>';
-
 				}
 				else {
 					?>                     
@@ -642,7 +593,6 @@ if ($age <='3') {
 						<tr> 
 							<td>
 								<p style="text-align:left"><strong>Has mother had single dose NVP? <?php echo '<u>'. $mother_had_single_dose_NVP. '</u>'; ?></strong></p>
-
 							</td>    
 						</tr>  
 						<tr> 
@@ -654,13 +604,11 @@ if ($age <='3') {
 						<tr> 
 							<td>
 								<p style="text-align:left"><strong>Was baby given NVP? <?php echo '<u>'. $given_NVP. '</u>'; ?></strong></p>
-
 							</td>    
 						</tr>  
 						<tr> 
 							<td>
 								<p style="text-align:left"><strong>Is the child able to swallow tablets? <?php echo '<u>'. $swallow_tablets. '</u>'; ?></strong></p>
-
 							</td>    
 						</tr>  
 
@@ -681,7 +629,6 @@ if ($age <='3') {
 							</thead>
 							<tbody>
 								<?php
-
 // treatement history
 								$treatment_history=mysqli_query( $bd,"SELECT * FROM treatment_history where pat_id='$pat_id' "); 
 								while ($row_treatment_history=mysqli_fetch_array($treatment_history)){
@@ -691,12 +638,11 @@ if ($age <='3') {
 									$treat_stop_date =$row_treatment_history['stop_date'];
 									$treat_reason_for_change =$row_treatment_history['reason_for_change'];
 
-									echo ' <tr>
+									echo '<tr>
 									<td>  
 										<p style="text-align:center"><strong>'.$art_drug.'</strong></p>
 
-										';                       
-
+										';
 										echo '        
 									</td>
 									<td>   
@@ -711,9 +657,7 @@ if ($age <='3') {
 
 								</tr> 
 								';       
-
 							} ?>
-
 						</tbody>
 					</table>
 					<br />
@@ -756,8 +700,6 @@ if ($age <='3') {
 							}
 
 							?>
-
-
 						</tbody>
 					</table>
 					<br />
@@ -765,26 +707,21 @@ if ($age <='3') {
 				<h3 style="background-color:#111; text-align:center; color:#ffffff">TB Treatment</h3>
 				<fieldset>
 					<table style="width:100%" border="0" cellpadding="2px">
-
 						<tbody>
 							<?php
-
 // tb_treatment
 							$tb_treat =mysqli_query( $bd,"SELECT * FROM tb_treat where pat_id='$pat_id' "); 
 							$row_tb_treat=mysqli_fetch_array($tb_treat);
 
 							$tb_tb_treatment =$row_tb_treat['tb_treatment'];
 							if ($tb_tb_treatment=='Yes') {
-
 // tb_treat_regimen1
 								$tb_treat_regimen1=mysqli_query( $bd,"SELECT * FROM tb_treat_regimen1 where pat_id='$pat_id' "); 
 								while ( $row_tb_treat_regimen1=mysqli_fetch_array($tb_treat_regimen1)){
-
 									$reg_name =$row_tb_treat_regimen1['reg_name'];
 									$start_date =$row_tb_treat_regimen1['start_date'];
 									$stop_date =$row_tb_treat_regimen1['stop_date'];
 									$reason_for_change =$row_tb_treat_regimen1['reason_for_change'];
-
 									echo '
 									<tr>
 										<td> <p style="text-align:center"><strong> Reg. 1 </strong></p></td>
@@ -801,10 +738,8 @@ if ($age <='3') {
 											<p style="text-align:center"><strong>'.$reason_for_change.'</strong></p>
 										</td>
 									</tr>
-
 									';
 								}
-
 // tb_treat_regimen2
 								$tb_treat_regimen2=mysqli_query( $bd,"SELECT * FROM tb_treat_regimen2 where pat_id='$pat_id' "); 
 								while ( $row_tb_treat_regimen2=mysqli_fetch_array($tb_treat_regimen2)){
@@ -813,7 +748,6 @@ if ($age <='3') {
 									$start_date =$row_tb_treat_regimen2['start_date'];
 									$stop_date =$row_tb_treat_regimen2['stop_date'];
 									$reason_for_change =$row_tb_treat_regimen2['reason_for_change'];
-
 									echo '
 									<tr>
 										<td> <p style="text-align:center"><strong> Reg. 2 </strong></p></td>
@@ -823,7 +757,6 @@ if ($age <='3') {
 										<td> <p style="text-align:center"><strong>'. $reason_for_change .'</strong></p></td>
 
 									</tr>
-
 									';
 								}
 

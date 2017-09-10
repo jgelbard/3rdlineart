@@ -1,19 +1,26 @@
 <script>
-	$().ready(function() {
-		// validate the comment form when it is submitted
-		$("#commentForm").validate();
+$().ready(function() {
+    // validate the comment form when it is submitted
+    $("#commentForm").validate();
     $("#search_art").validate({
       rules: {
-        id: {
-         required: true,
-       },
-     },
-     messages: {
-      id: {
-       required: "",
-     },
-   }
- });
+          id: {
+              required: true,
+                    },
+                },
+            messages: {
+          id: {
+              required: "",
+                    },
+                }
+    });
+        
+  $(".date").datepicker({
+    format: 'dd/mm/yyyy',
+    changeMonth: true,
+    changeYear: true
+  });
+
  // validate signup form on keyup and submit
  $("#edit-profile").validate({
    rules: {
@@ -72,9 +79,7 @@
    minlength: "Your password must be at least 5 characters long",
    equalTo: "Please enter the same password as above"
  },
- email: "Please enter a valid email address",
- agree: "Please accept our policy",
- topic: "Please select at least 2 topics"
+ email: "Please enter a valid email address"
 }
 });
 	// propose username by combining first- and lastname
@@ -134,7 +139,7 @@ if(isset($_GET['comment'])){
         $_3rdlineart_form_id =$row_form_creation['3rdlineart_form_id'];
         $clinician_id =$row_form_creation['clinician_id']; 
         $patient_id =$row_form_creation['patient_id'];
-        
+ 
         $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$patient_id' "); 
         $row_pat=mysqli_fetch_array($patient);
         
@@ -180,7 +185,7 @@ if(isset($_GET['comment'])){
     return $age; 
   }
   $age = GetPatAge($dob);
-  echo 'Patient: '.$pat_id.', dob: '.$dob.', age: '.$age;
+  // echo 'Patient: '.$pat_id.', dob: '.$dob.', age: '.$age;
   ?>
   <?php 
   if(isset($_GET['pat_id'])) { 
@@ -286,7 +291,7 @@ if(isset($_GET['comment'])){
     if(isset($_GET['back'])){
       echo '<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="update_patD">Next</button> ';
     }
-    else { 
+    else {
       echo '<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="submit_patD">Next</button> ';
     }
     include ('includes/app_edit_last.php'); 

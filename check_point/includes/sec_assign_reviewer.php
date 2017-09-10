@@ -26,7 +26,7 @@ while ($row_form_creation=mysqli_fetch_array($form_creation)){
 }
 
 echo '<h2 style="background-color:#dedd6;  text-align:center; color:#000000">Assign Reviewers</h2>
-<i style="float:right    ">Please TICK only <u>three reviewers </u>and Pick one as <u>Lead reviewer</u></i>                 
+<i style="float:right">Please TICK only <u>three reviewers </u>and Pick one as <u>Lead reviewer</u></i>                 
 <form id="edit-profile" class="form-horizontal" action="cp_p1.php?p" method="post">
 	<h4 style="color:#69330c; padding:10px; background-color:#deed6;">3rdLineForm#: '. $formID.'</h4>
 	<table style="width:100%; background-color:#f7cf75; padding:5px;" >
@@ -68,8 +68,8 @@ echo '<h2 style="background-color:#dedd6;  text-align:center; color:#000000">Ass
 			$pending = $count - $rev_count;
 
 			echo '<tr><td>
-			<label class="checkbox ">
-				<input type="checkbox" name="checkbox[]" id="checkbox[]" value="'.$id.'" style="transform:scale(2, 2); margin: 3px;" ><p>&nbsp&nbsp'.$rev_fullname.'</p> <span style="color:#0b13d0">Assig <i>('.$count.')</i> Pending <i>('.$pending.')</i></span>
+			<label class="checkbox">
+				<input type="checkbox" name="checkbox[]" id="checkbox[]" value="'.$id.'" style="transform:scale(2, 2); margin: 3px;" ><p>&nbsp&nbsp'.$rev_fullname.'</p><span style="color:#0b13d0">Assig <i>('.$count.')</i> Pending <i>('.$pending.')</i></span>
 			</label></td><td><div style="width:110px; float:left" class="radio_sty">
 			<input type="radio" id="yes_'.$id.'" name="rev_lead" value="'.$id.'" required>
 			<label for="yes_'.$id.'">Yes</label>

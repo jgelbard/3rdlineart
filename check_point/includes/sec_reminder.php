@@ -17,33 +17,24 @@
 			$expert_review_consolidate2 = mysqli_query( $bd, "SELECT * FROM expert_review_consolidate2 ORDER BY `expert_review_consolidate2`.`id` DESC "); 
 			$num_newforms = mysqli_num_rows ($expert_review_consolidate2);
 			echo '<p>All reveiwed forms: [ <i>'. $num_newforms .'</i> ]</p>';
+
+            $today = new DateTime();
 			while ($row_expert_review_consolidate2=mysqli_fetch_array($expert_review_consolidate2)){
 
 				$form_id = $row_expert_review_consolidate2['form_id'];
 				$id = $row_expert_review_consolidate2['id'];
 				$date_reviewed = $row_expert_review_consolidate2['consolidate2_date'];
-				$date_rev = explode("/",$date_reviewed); 
 
-				$curMonth = date("m");
-				$curDay = date("j");
-				$curYear = date("Y");
-
-				$rew_Month = $date_rev['1'];
-				$rew_day = $date_rev['0'];
-				$rew_year = $date_rev['2'];
-
-				$y = ($curYear - $rew_year) * 12;
-				$m = ($curMonth - $rew_Month);
-				$d = ($curDay - $rew_day)/30;
-
-				$elapsed_months = round ($y+$m+$d,2);
-				$months_remaining = 6 - $elapsed_months;
-				/* echo $months_remaining;*/			
+                $rev_date = date_create_from_format('Y/m/d', $date_reviewed);
+                $rev_date->modify('+26 week');
+                $date_diff = $rev_date->diff($today);
+                $days_remaining = $date_diff->format('%a Days Remaining');
+                
 				echo '
 				<tr>
 					<td> <p style="text-align:center"><a href="#"><strong> 3rdLForm#'. $form_id.'</strong></a></p> </td>
 					<td> <p style="text-align:center"><strong>'. $date_reviewed.'</strong></p> </td>
-					<td><p><b>'.$months_remaining.'</b> months remaining.</p>
+					<td><p><b>'.$days_remaining.'.</p>
 
 						<a href="#myModal" role="button" class="btn btn-warning"  data-toggle="modal" style="padding:6px; font-size:110%; position:relative; top:-5px;" >Send Reminder</a>
 

@@ -16,7 +16,7 @@
 		<tbody>
 			<?php
 			global $num_newforms; 
-			$expert_review_consolidate2=mysqli_query( $bd,"SELECT * FROM expert_review_consolidate2 ORDER BY `expert_review_consolidate2`.`id` DESC "); 
+$expert_review_consolidate2=mysqli_query( $bd, $cp_query['select_sec_reviewed_results']); 
 			$num_newforms = mysqli_num_rows ($expert_review_consolidate2);
 			echo '<p>All reveiwed forms: [ <i>'. $num_newforms .'</i> ]</p>';
 			while ($row_expert_review_consolidate2=mysqli_fetch_array($expert_review_consolidate2)){

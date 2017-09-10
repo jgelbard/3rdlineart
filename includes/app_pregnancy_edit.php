@@ -1,98 +1,88 @@
-<script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-    if ($('input[id="yes_pregnant"]').attr("checked") == 'checked') {
-        $(".box").not(".yes").hide();
-        $(".yes").show();
-    } else {
-        $(".yes").hide();
-    }
-     $('input[type="radio"]').click(function(){
-        if($(this).attr("value")=="Yes_preg"){
+    $(document).ready(function(){
+        if ($('input[id="yes_pregnant"]').attr("checked") == 'checked') {
             $(".box").not(".yes").hide();
             $(".yes").show();
+        } else {
+            $(".yes").hide();
         }
-        if($(this).attr("value")=="No_preg"){
-            $(".box").not(".no").hide();
-            $(".no").show();
-        }
-        
+         $('input[type="radio"]').click(function(){
+            if($(this).attr("value")=="Yes_preg"){
+                $(".box").not(".yes").hide();
+                $(".yes").show();
+            }
+            if($(this).attr("value")=="No_preg"){
+                $(".box").not(".no").hide();
+                $(".no").show();
+            }
+
+        });
     });
-});
-</script>
 
- <script>
-	/*$.validator.setDefaults({
-		submitHandler: function() {
-			alert("submitted!");
-		}
-	});*/
 
-	$().ready(function() {
-		// validate the comment form when it is submitted
-		$("#commentForm").validate();
+    $().ready(function() {
+        // validate the comment form when it is submitted
+        $("#commentForm").validate();
 
         $("#search_art").validate({
             rules: {
-				
-				id: {
-					required: true,
-				},                
-			},
-			messages: {
-				id: {
-					required: "",
-				},
-			}
-		});
 
-		// validate clinic staus form on keyup and submit
-		$("#edit-profile").validate({
-			rules: {
-				firstname: "required",
-				lastname: "required",
-				              
+                id: {
+                    required: true,
+                },                
+            },
+            messages: {
+                id: {
+                    required: "",
+                },
+            }
+        });
+
+        // validate clinic staus form on keyup and submit
+        $("#edit-profile").validate({
+            rules: {
+                firstname: "required",
+                lastname: "required",
+
                 who_stage: {
-					required: true,					
-				},
+                    required: true,					
+                },
                 curr_who_stage: {
-					required: true,					
-				},
+                    required: true,					
+                },
                 weight: {
-					required: true,
-					minlength: 2,
-					maxlength: 3
-				},
-			 height: {
-					required: true,
-					minlength: 3,
-					maxlength: 3
-				},			
-			},
-			messages: {
-				firstname: "Please enter Client's firstname",
-				lastname: "Please enter Client's lastname",
-								
+                    required: true,
+                        range: [20, 250],
+                },
+             height: {
+                    required: true,
+                        range: [30, 300],
+                },			
+            },
+            messages: {
+                firstname: "Please enter Client's firstname",
+                lastname: "Please enter Client's lastname",
+
                 who_stage: {
-					required: "Please Select WHO stage"
-				},
+                    required: "Please Select WHO stage"
+                },
                 curr_who_stage: {
-					required: "Please Select Current WHO stage"
-				},
+                    required: "Please Select Current WHO stage"
+                },
                 weight: {
-					required: "Curr Weight",
-					minlength: "Under weight",
-					maxlength: "Over weight"					
-				}, 
+                    required: "Curr Weight",
+                        // min: "Under weight",
+                        // max: "Over weight"					
+                }, 
                 height: {
-					required: "Curr Weight",
-					minlength: "Under Height",
-					maxlength: "Over Height"					
-				},               
-			}
-		});
-	});
-	</script>
+                    required: "Curr Weight",
+                        // min: "Under Height",
+                        // max: "Over Height"					
+                },               
+            }
+        });
+    });
+</script>
 
 <?php
 

@@ -12,6 +12,7 @@ function get_email_body($id) {
           return base64_decode($row_emails['body']);
 }
 
+// this should work, but it doesn't
 function get_email_body2($id) {
       global $bd;
       echo 'id='.$id;
@@ -25,6 +26,13 @@ function get_email_body2($id) {
       mysqli_stmt_fetch($stmt);
 
       return $body;
+}
+
+function mark_email_sent($id) {
+      global $bd;
+      // echo 'id='.$id;
+      $query_email = "UPDATE email_log set sent = 1 WHERE id = ".$id;      
+      $emails=mysqli_query( $bd, $query_email);
 }
 
 function mail_unsentmsgs() {
@@ -49,7 +57,9 @@ function mail_unsentmsgs() {
         if ($body == '')
             continue;
         // echo "$to, $subject, $from";
-        phpmailer_send($to, $subject, $body, $from);
+        $success = phpmailer_send($to, $subject, $body, $from);
+        if ($success)
+            mark_email_sent($id);
     }
 }
 mail_unsentmsgs();

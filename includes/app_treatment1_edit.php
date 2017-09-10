@@ -4,14 +4,10 @@
 		$("#commentForm").validate();
 
 		$("#search_art").validate({
-
-			rules: {
-				
+			rules: {              
 				id: {
-					required: true,
-					
+					required: true,					
 				},
-
 			},
 			messages: {
 				id: {
@@ -26,7 +22,7 @@
 			rules: {
 				firstname: "required",
 				lastname: "required",
-
+/*
 				art_drug1: {
 					required: true,
 					
@@ -37,23 +33,7 @@
 				},
 				art_drug3: {
 					required: true,
-					
-				},
-				curr_who_stage: {
-					required: true,
-					
-				},
-				weight: {
-					required: true,
-					minlength: 2,
-					maxlength: 3
-				},
-				height: {
-					required: true,
-					minlength: 3,
-					maxlength: 3
-				},
-
+*/					
 			},
 			messages: {
 				firstname: "Please enter Client's firstname",
@@ -67,19 +47,6 @@
 				},
 				art_drug3: {
 					required: "Please Select ART drug"
-				},
-				curr_who_stage: {
-					required: "Please Select Current WHO stage"
-				},
-				weight: {
-					required: "Curr Weight",
-					minlength: "Under weight",
-					maxlength: "Over weight"					
-				}, 
-				height: {
-					required: "Curr Height",
-					minlength: "Under Height",
-					maxlength: "Over Height"					
 				},
 			}
 		});
@@ -156,53 +123,6 @@ echo '
 				</tr>
 			</thead>
 			<tbody>
-				<script type="text/javascript">
-					$(document).ready(function(){
-						$('input[type="button"]').click(function(){
-
-							if($(this).attr("name")=="row6"){
-								$(".box").not(".row6").hide();
-								$(".box1").not(".row6").hide();
-								$(".row7").not(".row6").hide();
-								$(".row8").not(".row6").hide();
-								$(".box2").show();
-								$(".row6").show();
-							} 
-							if($(this).attr("name")=="row5"){
-								$(".row6").not(".row5").hide();
-								$(".box1").show();
-							}
-							
-							if($(this).attr("name")=="row7"){
-								$(".box2").not(".row7").hide();
-								$(".row8").not(".row7").hide();
-								$(".box3").show();
-								$(".row7").show();
-							} 
-
-							if($(this).attr("name")=="row8"){
-								$(".box3").not(".row8").hide();
-								$(".row9").not(".row8").hide();
-								$(".endline").not(".row8").hide();
-								$(".box4").show();
-								$(".row8").show();
-							}
-
-							if($(this).attr("name")=="row9"){
-								$(".box4").not(".row9").hide();
-								$(".row9").show();
-							}
-							
-							if($(this).attr("name")=="endline"){           
-								$(".box1").not(".endline").hide();
-								$(".box2").not(".endline").hide();
-								$(".endline").show();
-							}
-
-						});
-					});
-
-				</script>
 
 				<?php 
 				include ('app_treatment1/app_treatment_row1.php');

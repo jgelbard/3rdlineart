@@ -29,23 +29,7 @@ if(isset($_GET['formID'])){
 	$dob =$row_pat['dob'];
 	$vl_sample_id =$row_pat['vl_sample_id'];
 
- //calculating age of patient 
-	function GetAge($dob) 
-	{ 
-		$dob=explode("/",$dob); 
-		$curMonth = date("m");
-		$curDay = date("j");
-		$curYear = date("Y");
-		$age = $curYear - $dob[0]; 
-		if($curMonth<$dob[1] || ($curMonth==$dob[1] && $curDay<$dob[2])) 
-			$age--; 
-		return $age; 
-	}
-
-
 	$age =GetAge($dob);
-
-
 }
 
 ?>

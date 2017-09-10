@@ -5,43 +5,53 @@
      <li><a href="review_p1.php?p"><img src="../img/app_log.png" width="100px"></a></li> 
      
 <?php
-     global $num_forms, $num_forms_lead, $lead_num_forms, $num_forms_my_rev, $num_forms_aap_results; 
+//     global $num_forms, $num_forms_lead, $lead_num_forms, $num_forms_my_rev, $num_forms_aap_results; 
 
-$form_creation=mysqli_query( $bd,"SELECT * FROM assigned_forms where  rev_id='$rev_id' and status ='Not Reviewed'"); 
-$num_forms_new = mysqli_num_rows ($form_creation);
-$assigned_forms_lead=mysqli_query( $bd,"SELECT distinct form_id,date_assigned FROM assigned_forms WHERE form_id in (select form_id from reviewer_team_lead where reviewer_team_lead.rev_id=$rev_id) and form_id not in (select form_id from expert_review_consolidate1) ORDER BY `assigned_forms`.`form_id` DESC"); 
+$select_forms_new="SELECT * FROM assigned_forms where rev_id='$rev_id' and status ='Not Reviewed'"; 
+$select_assigned_forms_lead="SELECT distinct form_id,date_assigned FROM assigned_forms WHERE form_id in (select form_id from reviewer_team_lead where reviewer_team_lead.rev_id=$rev_id) and form_id not in (select form_id from expert_review_consolidate1) ORDER BY `assigned_forms`.`form_id` DESC"; 
+$select_form_my_reviews="SELECT * FROM assigned_forms where rev_id='$rev_id' and status = 'Reviewed'"; 
+$select_form_assigned_app_results="SELECT * FROM assigned_app_results where rev_id='$rev_id' and status ='Not Reviewed'"; 
+$select_lead_assigned_forms="SELECT distinct form_id,date_assigned FROM assigned_app_results WHERE form_id in (select form_id from reviewer_team_lead2 where reviewer_team_lead2.rev_id=$rev_id) and form_id not in (select form_id from expert_review_consolidate2) ORDER BY `assigned_app_results`.`form_id` DESC";
 
-$num_forms_lead = mysqli_num_rows ($assigned_forms_lead);
-$form_my_reviews=mysqli_query( $bd,"SELECT * FROM assigned_forms where  rev_id='$rev_id' and status ='Reviewed'"); 
-$num_forms_my_rev = mysqli_num_rows ($form_my_reviews);
+function makebuttons($btname) {
+    global $cp_query, $bd;
+    
+    $buttons = [
+        'new' => ['New Reviews', 'select_forms_new'],
+        'lead_reviewer' => ['Lead App Reviewer', 'select_assigned_forms_lead'], 
+        'rev' => ['My Reviewed Forms', 'select_form_my_reviews'],
+        'result' => ['Review Results', 'select_form_assigned_app_results'],       
+        'lead_result' =>['Lead Results Reviewer', 'select_lead_assigned_forms'],
+    ];
+    foreach ($buttons as $name => $label_query) {
+        if ($label_query[1] == '')
+            continue;
+        $label = $label_query[0];
+        $query = $label_query[1];
+        $p = $name == 'new' ? 'p' : $name;       
+        // $forms = mysqli_query($bd, $cp_query[$query]);
+        eval("global \$$query; \$forms = mysqli_query(\$bd, \$$query);");
+        $num_forms = mysqli_num_rows($forms) ?  mysqli_num_rows($forms) : 0;
+        echo '<li class="'.($btname==$name?'active':'').'"><a href="review_p1.php?'.$p.'"><i class="icon-th-list" ></i><span style="font-size: 12px;">'.'('.$num_forms.') '.$label.'</span> </a> </li>';
+    }
+}
 
-$lead_assigned_forms=mysqli_query( $bd, "SELECT distinct form_id,date_assigned FROM assigned_app_results WHERE form_id in (select form_id from reviewer_team_lead2 where reviewer_team_lead2.rev_id=$rev_id) and form_id not in (select form_id from expert_review_consolidate2) ORDER BY `assigned_app_results`.`form_id` DESC");
-
-$lead_num_forms = mysqli_num_rows ($lead_assigned_forms);
-$form_assigned_app_results=mysqli_query( $bd, "SELECT * FROM assigned_app_results where  rev_id='$rev_id' and status ='Not Reviewed'"); 
-$num_forms_aap_results = mysqli_num_rows ($form_assigned_app_results);
-
-$review_panel = '<li class="active"><a href="review_p1.php?p"><i>('.$num_forms_new.')</i><span>New Reviews</span></a></li>
-				<li class=""><a href="review_p1.php?lead_reviewer"><i>('.$num_forms_lead.')</i><span>Lead App Reviewer</span></a></li>
-				<li class=""><a href="review_p1.php?rev"><i>('.$num_forms_my_rev.')</i><span>My Reviewed Forms</span></a></li>
-				<li class=""><a href="review_p1.php?result"><i>('.$num_forms_aap_results.')</i><span>Review Results</span></a></li>
-				<li class=""><a href="review_p1.php?lead_result"><i>('.$lead_num_forms.')</i><span>Lead Results Reviewer</span></a></li>
-				';
 
 if(isset($_GET['p']))
-    echo $review_panel;               
+    makebuttons('new');
 
-if(isset($_GET['pending']))
-    echo $review_panel;           
-
-if(isset($_GET['result']))
-    echo $review_panel;
-
-if(isset($_GET['lead_result']))
-    echo $review_panel;    
+if(isset($_GET['lead_reviewer']))
+    makebuttons('lead_reviewer');
 
 if(isset($_GET['rev']))
-    echo $review_panel;
+    makebuttons('rev');    
+
+if(isset($_GET['result']))
+    makebuttons('result');    
+
+if(isset($_GET['lead_result']))
+    makebuttons('lead_result');
+
 ?>
 <li><a href="../reports.php" target="_blank"><i class="icon-bar-chart"></i><span>Reports</span> </a> </li>               
 </ul>

@@ -16,7 +16,7 @@
 			<?php
 			global $num_forms;
 
-            $form_creation=mysqli_query( $bd,"SELECT * FROM form_creation, lab_vl_repeat WHERE form_id not in (select form_id from app_results) and form_creation.3rdlineart_form_id=lab_vl_repeat.form_id ORDER BY `form_creation`.`3rdlineart_form_id` DESC"); 
+            $form_creation=mysqli_query( $bd, $cp_query['select_sec_pending_results']); 
 			$num_forms = mysqli_num_rows ($form_creation);
 			echo '<p>Total forms: [ <i>'. $num_forms .'</i> ]</p>';
 

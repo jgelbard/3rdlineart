@@ -29,18 +29,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
    /*  $username = quote_smart($username, $bd);*/
    /*  $pword = quote_smart($pword, $bd);*/
 
-   echo('key is '.$key);
-   echo('salt is '.$salt);
+   // echo('key is '.$key);
+   // echo('salt is '.$salt);
 
    $username = encrypt ($username, $key);
-   echo('username is '.$username);
-   $pword= hasword ($pword, $salt);
+   // echo('username is '.$username);
+   $pword = hasword ($pword, $salt);
 
    $SQL = "SELECT * FROM users WHERE username='$username' AND password='$pword';";    			   
    $result = mysqli_query($bd,$SQL);
 
    $num_rows = mysqli_num_rows($result);
-   echo $username;
+   // echo $username;
 
      //checking login attempts
    global $attempts, $row_id;
@@ -49,12 +49,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
    $result_login_attempts = mysqli_query($bd,$select_login_attempts);
    $exist_attempts = mysqli_num_rows($result_login_attempts);
    $row_login_attempts = mysqli_fetch_array($result_login_attempts);
-   $row_id =$row_login_attempts['id'];
-   $attempts =$row_login_attempts['attempts'];
+   $row_id = $row_login_attempts['id'];
+   $attempts = $row_login_attempts['attempts'];
 
    // end checking login attempts
 
-   if($num_rows!=0 && $attempts <5){
+   if($num_rows != 0 && $attempts < 5){
     $SQL_user = "SELECT * FROM users WHERE username='$username'";                
     $user = mysqli_query($bd,$SQL_user);
 
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         $role = decrypt ($row_user['role'], $key);
         $user_id = $row_user['id'];
-        echo("role is ".$role);
+        // echo("role is ".$role);
         $_SESSION['login'] = 'true';
         $_SESSION['username'] = $row_user['username'];
         $_SESSION['identification'] = $row_user['id'];           			   
@@ -83,8 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_SESSION['name'] = $row_clinician['name'];
             $_SESSION['phone'] = $row_clinician['phone'];
             $_SESSION['email'] = $row_clinician['email'];
-            $_SESSION['art_clinic'] = $row_clinician['art_clinic'];
-            
+            $_SESSION['art_clinic'] = $row_clinician['art_clinic'];            
             echo"<meta http-equiv=\"Refresh\" content=\"0; url=app.php?p\">";
         }
 
@@ -98,7 +97,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_SESSION['lname'] = $row_reviewer['lname'];
             $_SESSION['phone'] = $row_reviewer['phone'];
             $_SESSION['email'] = $row_reviewer['email'];
-
             echo"<meta http-equiv=\"Refresh\" content=\"0; url=reviewer/review_p1.php?p\">";
         }
 
@@ -113,14 +111,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_SESSION['lname'] = $row_secretary['lname'];
             $_SESSION['phone'] = $row_secretary['phone'];
             $_SESSION['email'] = $row_secretary['email'];
-            echo 'secretary: '. $_SESSION['fname'].' '.$_SESSION['lname'];
+            // echo 'secretary: '. $_SESSION['fname'].' '.$_SESSION['lname'];            
             echo"<meta http-equiv=\"Refresh\" content=\"0; url=check_point/cp_p1.php?p\">";
         }
 
         if ($role=='Lab'){
             $SQL_pih_lab = "SELECT * FROM pih_lab WHERE user_id=$user_id";
             $pih_lab = mysqli_query($bd,$SQL_pih_lab);
-
             $row_pih_lab = mysqli_fetch_array($pih_lab);
 
             $_SESSION['id'] = $row_pih_lab['id'];
@@ -128,7 +125,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_SESSION['lname'] = $row_pih_lab['lname'];
             $_SESSION['phone'] = $row_pih_lab['phone'];
             $_SESSION['email'] = $row_pih_lab['email'];
-
             echo"<meta http-equiv=\"Refresh\" content=\"0; url=pih/pih_p1.php?p\">";
         }				
     }

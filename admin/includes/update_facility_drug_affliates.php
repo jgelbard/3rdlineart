@@ -13,7 +13,6 @@ if(isset($_GET['update'])){
 		location='$location'
 		WHERE id='$update_id'" ;
 
-		mysqli_select_db($bd, '3rdlineart_db');
 		if (mysqli_query($bd, $sql_update_facility)){
 			echo '  <div class="alert alert-success">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -36,7 +35,6 @@ if(isset($_POST['update_drug'])){
 	description='$description'
 	WHERE id='$update_id'" ;
 
-	mysqli_select_db($bd, '3rdlineart_db');
 	if (mysqli_query($bd, $sql_update_drugs)){
 		echo '<div class="alert alert-success">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -55,7 +53,6 @@ if(isset($_POST['update_affliate'])){
 	partner_org_name='$partner_org_name'
 	WHERE id='$update_id'" ;
 
-	mysqli_select_db($bd, '3rdlineart_db');
 	if (mysqli_query($bd, $sql_update_partner_org)){
 		echo '  <div class="alert alert-success">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>

@@ -1,86 +1,75 @@
 <?php 
+if (isset($_POST['submit_reviewers'])) {
+  $formID = $_POST['formID'];
+  $date_assigned = date ('Y/m/d');
 
-  if(isset($_POST['submit_reviewers'])){
-      
-      	
+  if(!empty($_POST['checkbox'])) {   
+   $checkbox = $_POST['checkbox'];
+   for($i=0; $i<count($_POST['checkbox']); $i++) {
+    if(!empty($checkbox[$i])) {
+      $rev_id = $checkbox[$i];
+    }
+    mysqli_query("DELETE FROM assigned_forms WHERE form_id = '$formID and rev_id = '$rev_id'");
+    $insert_assigned_forms="INSERT INTO assigned_forms (form_id,sec_id,rev_id,date_assigned)
+    VALUES (
+    '$formID', '$sec_id', '$rev_id', '$date_assigned')";
+    mysqli_query( $bd,$insert_assigned_forms );	
+    
+    $SQL_reviewer = "SELECT * FROM reviewer WHERE id=$rev_id";
+    $reviewer = mysqli_query($bd,$SQL_reviewer);
+    $row_reviewer = mysqli_fetch_array($reviewer);
+    $rev_email_address = $row_reviewer['email'];
+    $rev_title = $row_reviewer['title'];
+    $rev_lname = $row_reviewer['lname'];
+
+    email_msg('insert_assign_reviewer', $rev_email_address);                
+   }
+  }
+}
+
+/*
 $formID= $_POST['formID']; 
-      
-      /*$rev_lead = $_POST['rev_lead'];
-      echo $rev_lead;
-      
-      $insert_reviewer_team_lead =" INSERT  INTO  reviewer_team_lead (rev_id,form_id,sec_id)
+$date_assigned = date ('Y/m/d');
+$rev_lead = $_POST['rev_lead'];
+$insert_reviewer_team_lead = "INSERT INTO reviewer_team_lead (rev_id,form_id,sec_id)
 VALUES (
 '$rev_lead', '$formID', '$sec_id')";
+// echo $insert_reviewer_team_lead;
 
 mysqli_query( $bd,$insert_reviewer_team_lead);	
-      
-      */
 
-      $date_assigned = date ('Y/m/d');
-      
-	  if(!empty($_POST['checkbox'])){   
- $checkbox = $_POST['checkbox'];
- 
-	
-	
-for($i=0;$i<count($_POST['checkbox']);$i++){
-	
-    if(!empty($checkbox[$i])){  
-$rev_id = $checkbox[$i];
-	}
+$sql_form_creation4review = "UPDATE form_creation ".
+"SET status='Assigned Reviewer'".
+"WHERE 3rdlineart_form_id='$formID'" ;
 
-    
-$insert_assigned_forms=" INSERT  INTO  assigned_forms (form_id,sec_id,rev_id,date_assigned)
-VALUES (
-'$formID', '$sec_id', '$rev_id', '$date_assigned')";
+$form_submited_4review = mysqli_query( $bd , $sql_form_creation4review);   
 
-mysqli_query( $bd,$insert_assigned_forms);	
-    
-$SQL_reviewer = "SELECT * FROM reviewer WHERE id=$rev_id";
-$reviewer = mysqli_query($bd,$SQL_reviewer);
+if(!empty($_POST['checkbox'])){   
+    $checkbox = $_POST['checkbox'];
 
-$row_reviewer = mysqli_fetch_array($reviewer);
-$rev_email_address = $row_reviewer['email'];
-$rev_title = $row_reviewer['title'];
-$rev_lname = $row_reviewer['lname'];
+    for($i=0; $i<count($_POST['checkbox']); $i++){
+        if(!empty($checkbox[$i])){  
+            $rev_id = $checkbox[$i];
+        }
 
-email_msg('insert_assign_reviewer', $rev_email_address);                
+        $insert_assigned_forms = "INSERT INTO assigned_forms (form_id,sec_id,rev_id,date_assigned)
+        VALUES ('$formID', '$sec_id', '$rev_id', '$date_assigned')";
 
-/* moved to email_templates     
- $to = $rev_email_address;
-   $subject = "3RD Line Expert Application form review";
-   $message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>New form to review</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-</head>
-<body>
+        // echo $insert_assigned;
 
-<p>Dear '.$rev_title.' '.$rev_lname.',</p>
-<p>&nbsp;</p>
-<p>Please review the following application for genotyping for resistance mutations.</p>
-<p>After review please state:</p>
-<p>-Genotyping indicated yes/no.</p>
-<p>&nbsp;</p>
-<p>If genotyping is not indicated please additionally provide feedback to the clinician.</p>
-<p>&nbsp;</p>
-<p>Thank you very much,</p>
-<p><strong>Mercy</strong></p>
-<p><span style="text-decoration: underline;"><strong>3<sup>rd</sup> line committee Secretary</strong></span></p>
+        mysqli_query( $bd,$insert_assigned_forms);                     
+        $SQL_reviewer = "SELECT * FROM reviewer WHERE id=$rev_id";
+        $reviewer = mysqli_query($bd,$SQL_reviewer);
 
-</body>
-</html>
-';   
- $header = "From:dumi_ndhlovu@lighthouse.org.mw\r\n";
-   $header .= "Cc:j.dumisani7291@gmail.com\r\n";
-   $header .= "MIME-Version: 1.0\r\n";
-   $header .= "Content-type: text/html\r\n";
-   $retval = mail ($to,$subject,$message,$header);      
-*/    
+        $row_reviewer = mysqli_fetch_array($reviewer);
+        $rev_email_address = $row_reviewer['email'];
+        $rev_title = $row_reviewer['title'];
+        $rev_lname = $row_reviewer['lname'];
+
+        // include_once('../includes/email_templates.php');
+        email_msg('cp_p1', $rev_email_address);
+    }
 }
-      }
-      
-  }
+echo"<meta http-equiv=\"Refresh\" content=\"1; url=cp_p1.php?p\">";   
+*/
 ?>

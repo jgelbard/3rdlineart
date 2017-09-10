@@ -1,5 +1,3 @@
-
-
 <a href="dash.php?reviewer" class="btn btn-small btn-success" style="padding:5px; font-size:120%; float:right"> Create New </a>
 <h2 style="background-color:#fff; text-align:center; color:#000000">Registered Reviewers</h2>
 <hr style=" border: 1px solid #cbe509;" />
@@ -13,7 +11,6 @@
 			<th> <p style="text-align:center"><strong>Email</strong></p></th>
 			<th> <p style="text-align:center"><strong>Phone</strong></p></th>
 			<th> <p style="text-align:center"><strong>About</strong></p></th>
-			
 		</tr>
 	</thead>
 	<tbody>
@@ -48,7 +45,7 @@
 				<td> <p style="text-align:center"><strong>'.$phone.'</strong></p> </td>
 				<td> <p style="text-align:center"><strong>'.$snapshot.'</strong></p> </td>
 				<td class="td-actions"><a href="dash.php?rev_edit&id='.$rev_id.'"> Edit </i></a></td>
-				<td class="td-actions"><a href="dash.php?del_user&page=rev&id='.$user_id.'" style="color:#f00" onclick ="return confirm (\'Are you sure you want to delete?\')"> Remove </i></a></td>
+				<td class="td-actions"><a href="dash.php?del_user&page=man_rev&id='.$user_id.'" style="color:#f00" onclick ="return confirm (\'Are you sure you want to delete?\')"> Remove </i></a></td>
 			</tr> 
 			
 			';

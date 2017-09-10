@@ -7,7 +7,7 @@ if (isset($_SESSION['identification'])) {
 	/* global  $fullname;*/
 	$fname = $_SESSION['fname'];
 	$lname = $_SESSION['lname'];
-	$fullname = $fname . " " .$lname;
+	$loginfullname = $fname . " " .$lname;
 
 	/*$fname= $_SESSION['fname'];*/
 	$sec_id = $_SESSION['id'];
@@ -39,7 +39,7 @@ if (isset($_SESSION['identification'])) {
 <body>
 
 <?php
-        global $rev_title, $rev_lname, $comment_to_clinician;
+    global $rev_title, $rev_lname, $comment_to_clinician;
 	include ('../includes/nav_main.php');
 	include ('includes/nav_sub.php');
  	?>
@@ -61,52 +61,8 @@ if (isset($_SESSION['identification'])) {
 								<div class="pricing-plans plans-3">
 
 									<?php
-
 									if(isset($_POST['submit_reviewers'])){
-
-										$formID= $_POST['formID']; 
-										$date_assigned = date ('Y/m/d');
-										$rev_lead = $_POST['rev_lead'];
-										$insert_reviewer_team_lead = "INSERT INTO reviewer_team_lead (rev_id,form_id,sec_id)
-										VALUES (
-										'$rev_lead', '$formID', '$sec_id')";
-                                        echo $insert_reviewer_team_lead;
-                                        
-										mysqli_query( $bd,$insert_reviewer_team_lead);	
-
-										$sql_form_creation4review = "UPDATE form_creation ".
-										"SET status='Assigned Reviewer'".
-										"WHERE 3rdlineart_form_id='$formID'" ;
-
-										$form_submited_4review = mysqli_query( $bd , $sql_form_creation4review);   
-
-										if(!empty($_POST['checkbox'])){   
-											$checkbox = $_POST['checkbox'];
-
-											for($i=0; $i<count($_POST['checkbox']); $i++){
-
-												if(!empty($checkbox[$i])){  
-													$rev_id = $checkbox[$i];
-												}
-
-												$insert_assigned_forms = "INSERT INTO assigned_forms (form_id,sec_id,rev_id,date_assigned)
-												VALUES ('$formID', '$sec_id', '$rev_id', '$date_assigned')";
-
-                                                echo $insert_assigned;
-
-												mysqli_query( $bd,$insert_assigned_forms);                     
-												$SQL_reviewer = "SELECT * FROM reviewer WHERE id=$rev_id";
-												$reviewer = mysqli_query($bd,$SQL_reviewer);
-												$row_reviewer = mysqli_fetch_array($reviewer);
-												$rev_email_address = $row_reviewer['email'];
-												$rev_title = $row_reviewer['title'];
-												$rev_lname = $row_reviewer['lname'];
-
-                                                // include_once('../includes/email_templates.php');
-                                                email_msg('cp_p1', $rev_email_address);
-											}
-										}
-                                        echo"<meta http-equiv=\"Refresh\" content=\"1; url=cp_p1.php?p\">";   
+                                        include ('includes/insert_reviewers.php');
 									}
 
 									if(isset($_POST['submit_consolidate1'])){ 
@@ -138,7 +94,9 @@ if (isset($_SESSION['identification'])) {
 										include ('includes/sec_new.php');
 									}
 
-									if(isset($_GET['view'])){ 
+									if(isset($_GET['view'])) {
+                                        if (isset($_GET['subnav']))
+                                            include ('includes/sub_nav.php');
 										include ('includes/app_form.php');   
 									}
 
@@ -203,7 +161,8 @@ if (isset($_SESSION['identification'])) {
 		</div>
 
 	</div> <!-- /main -->
-
+        
+<?php include ('../includes/footer.php'); ?>   
 <!-- Le javascript
 	================================================== -->
 	<!-- Placed at the end of the document so the pages load faster

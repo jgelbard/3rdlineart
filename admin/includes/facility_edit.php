@@ -20,7 +20,7 @@ $location =$row_facility['location'];
 	</div>
 
 	<div class="control-group">											
-		<label class="control-label" for="firstname">Address</label>
+		<label class="control-label" for="firstname">District</label>
 		<div class="controls">
 			<input type="text" class="span3" id="location" name="location" value="<?php echo $location; ?>" style="margin:5px" ><br />
 		</div>			

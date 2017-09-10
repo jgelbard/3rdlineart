@@ -13,6 +13,39 @@ while($drug_row = mysqli_fetch_array($drugs)) {
 
 $numvisrows = 5;
 $visrow = 1;
+?>
+
+<script type="text/javascript">
+    $().ready(function() {
+        $('input[type="button"]').click(function(){
+            // alert('click!'+ $(this).attr("name"));
+<?php
+            $i=1;
+            for($row=6; $row<=10; $row++) {
+                $i1 = $i + 1;
+                echo "if($(this).attr(\"name\")==\"row+$row\") {
+                        // alert($(this).attr(\"name\"));
+                        $(\".box$row\").show();
+                        $(\".butts$i\").hide();
+                        $(\".butts$i1\").show();
+                    }
+                    if($(this).attr(\"name\")==\"row-$row\") {
+                        $(\".box$row\").hide();
+                        $(\".butts$i\").show();
+                    }";
+                $i++;
+            }
+?>
+        });
+       
+        // deal with the form +/- buttons
+        $( "tr:gt(5)" ).hide();  // of course this needs to change if more than 5 rows are shown by default
+        $( "input[type=number][name^=art_drug][value!='']").parents("tr").show();
+    });        
+</script>
+        
+<?php
+$box = 1;
 for($i=0; $i<10; $i++) {
     $i_1 = $i - 1;
 	$drug = $i + 1;
@@ -21,7 +54,7 @@ for($i=0; $i<10; $i++) {
     $drugb = "art_drug$drug"."_b";
     $drugc = "art_drug$drug"."_c";
     $required = '';
-    if ($i < 2)
+    if ($i < 1)
         $required = 'required';
     $rowclass = "";
     $datepicker2 = $datepicker + 1;
@@ -52,9 +85,9 @@ for($i=0; $i<10; $i++) {
 		} );
 	</script>";
 
-    if ($i >= $numvisrows)
-        $rowclass = "row$drug box"; 
-
+    $i1 = $i + 1;
+    $i2 = $i + 2;    
+    $rowclass = $i1 >= 5 ? "box$i1":"sbox";    
 	echo "
 	<tr class=\"$rowclass\">
 		<td> 		
@@ -111,40 +144,24 @@ for($i=0; $i<10; $i++) {
                         else {
                             echo '';
                         }
-                        echo "
-				 </textarea></td>";
+                        echo "</textarea></td>";
                         
-                        $regrow = $i;
-                        $regrow1 = '+row'.($regrow+1);
-                        $regrow2 = '-row'.($regrow);
-                        $class_sec = "butts$regrow";
-
-             echo "
-             <td style=\"color:#000; min-width:110px\">
-             <div class=\"$class_sec\">".
-        		($regrow>=4?"<input type=\"button\" class=\"btn btn-success\" name=\"$regrow1\" value=\"+\" />\n\t":"").
-        		($regrow>4?"<input type=\"button\" class=\"btn btn-danger\" name=\"$regrow2\"  value=\"-\" />":"").
-        		"</div>
-        	</td>";
-                        
-// comment this if broken
-    if ($drug > $numvisrows) {
-        echo "
-    <td><form action=\"#\">
-        <div class=\"box$drug\">
-    <input type=\"button\" name=\"row$drug\" class=\"btn btn-success\" value=\"+\" />";
-            if ($i > ($numvisrows + 1))
-                echo "<input type=\"button\" name=\"row$drug_2\" class=\"btn btn-danger\" value=\"-\" />";
-            echo "
-        </div>
-    </form></td>";
-    $visrow += 1;
-    }
-//
-                        echo "
-						</tr>
-						";
+ 						if ($i1 >= 5) {
+							echo "
+							    <td><div class=\"butts$box\">".
+                                (($i1>=5 and $i1<10)?"<input type=\"button\" name=\"row+$i2\" class=\"btn btn-success\" value=\"+\" />":"").
+                                (($i1>5 and $i1<11)?"<input type=\"button\" name=\"row-$i1\" class=\"btn btn-danger\" value=\"-\" />":"").
+                                "</div>
+								</td>";
+								$box += 1;
+                        }
+                        if ($i1 > 11)
+                            echo '
+							<tr class="endline box">
+								<td><p style="color:#f00">Max number reached</p> </td>';
+                                echo '</tr>';
+                                
 						$datepicker += 2;
                         //  exit();
-					}
-					?>
+}
+?>

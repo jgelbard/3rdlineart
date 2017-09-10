@@ -2,33 +2,18 @@
 global $pat_id;
 $pat_id= $_GET['pat_id'];
 
-
 $patient=mysqli_query($bd, "SELECT * FROM patient where id='$pat_id' "); 
 $row_pat=mysqli_fetch_array($patient);
 
-$art_id_num =$row_pat['art_id_num'];
-$firstname =$row_pat['firstname'];
-$lastname =$row_pat['lastname'];
-$gender =$row_pat['gender'];
-$dob =$row_pat['dob'];
-$vl_sample_id =$row_pat['vl_sample_id'];
+$art_id_num = $row_pat['art_id_num'];
+$firstname = $row_pat['firstname'];
+$lastname = $row_pat['lastname'];
+$fullname = "$firstname $lastname";
+$gender = $row_pat['gender'];
+$dob = $row_pat['dob'];
+$vl_sample_id = $row_pat['vl_sample_id'];
 
-
-//calculating age of patient 
-function GetAge($dob) 
-{ 
-  $dob=explode("/",$dob); 
-  $curMonth = date("m");
-  $curDay = date("j");
-  $curYear = date("Y");
-  $age = $curYear - $dob[2]; 
-  if($curMonth<$dob[1] || ($curMonth==$dob[1] && $curDay<$dob[0])) 
-    $age--; 
-  return $age; 
-}
-
-
-$age =GetAge($dob);
+$age = GetAge($dob);
 
 //clinic status info
 
@@ -285,7 +270,6 @@ include ('includes/app_edit_menu.php');
       </td>
       <td>
        <p style="text-align:center"><strong><?php echo  $curr_who_stage ?></strong></p>
-
      </td>    
    </tr> 
 
@@ -306,7 +290,6 @@ include ('includes/app_edit_menu.php');
  <td>
    <p style="text-align:center"><strong><?php echo  $height ?>Cm</strong></p>
  </td>    
-
 </tr> 
 
 <tr>
@@ -490,7 +473,6 @@ include ('includes/app_edit_menu.php');
   <tr>
    <td> 
      <p style="text-align:left"><strong>Significant diarrhea or vomiting? <?php echo '<u>'. $sig_diarrhea_vom. '</u>'; ?></strong></p>
-
    </td>
    <td>
     <?php
@@ -550,15 +532,13 @@ include ('includes/app_edit_menu.php');
   else {
     echo '<p> N/A</p>';
   }
-
   ?>                 
-
 </td>
 </tr> 
 
 <tr>
   <td> 
-    <p style="text-align:left"><strong>Other current clinical problems? <?php echo '<u>'. $other_curr_problem. '</u>'; ?></strong></p> 
+    <p style="text-align:left"><strong>Other current clinical problems? <?php echo '<u>'. $other_curr_problem. '</u>'; ?></strong></p>
   </td>
   <td>
     <?php 
@@ -591,7 +571,6 @@ include ('includes/app_edit_menu.php');
 
       <tr>
         <td>
-
          <p style="text-align:left"><strong>Is the patient currently pregnant? <?php if  ($gender=='Female' && $age >'10'){ echo '<u>'. $pregnant. '</u>'; }?></strong></p>
        </td>    
      </tr>
@@ -600,14 +579,9 @@ include ('includes/app_edit_menu.php');
     </tr>
 
     <tr>
-
-
       <td>
-
         <p style="text-align:left"><strong>Is the patient breastfeeding? <?php if  ($gender=='Female' && $age >'10'){  echo '<u>'. $breastfeeding. '</u>'; }?></strong></p>
       </td>    
-
-
     </tr>
   </table>
 
@@ -628,7 +602,6 @@ else {
     <tr> 
       <td>
        <p style="text-align:left"><strong>Has mother had single dose NVP? <?php echo '<u>'. $mother_had_single_dose_NVP. '</u>'; ?></strong></p>
-
      </td>    
    </tr>  
    <tr> 
@@ -646,7 +619,6 @@ else {
 <tr> 
   <td>
    <p style="text-align:left"><strong>Is the child able to swallow tablets? <?php echo '<u>'. $swallow_tablets. '</u>'; ?></strong></p>
-
  </td>    
 </tr>  
 
@@ -679,24 +651,7 @@ else {
 
         echo ' <tr>
         <td>  
-          <p style="text-align:center"><strong>'.$art_drug.'</strong></p>
-
-          ';
-        /*       
-        $retrieve_drugs ="SELECT * FROM drugs";
-
-     $drugs = mysqli_query($bd, $retrieve_drugs);
-	       
-while($drug_row = mysqli_fetch_array($drugs)) {
-    
-    
-	$drug_name = $drug_row['drug_name'];
-    echo '<option value='.$drug_name.'>'.$drug_name.'</option>';
-    
-}
-*/
-
-
+          <p style="text-align:center"><strong>'.$art_drug.'</strong></p>';
 echo '        
 </td>
 <td>   
@@ -711,7 +666,6 @@ echo '
 
 </tr> 
 ';       
-
 } ?>
 
 </tbody>
@@ -750,14 +704,10 @@ echo '
           <td>   <p style="text-align:center"><strong>'.$vl.'</strong></p>  </td>
           <td>   <p style="text-align:center"><strong>'.$reason_4_detectable_vl.'</strong></p>  </td>
           <td>   <p style="text-align:center"><strong>'.$weight.'</strong></p>  </td>
-
         </tr>  
         '; 
       }
-
       ?>
-
-
     </tbody>
   </table>
   <br />
@@ -822,7 +772,6 @@ echo '
         <td> <p style="text-align:center"><strong>'. $start_date .'</strong></p></td>
         <td> <p style="text-align:center"><strong>'. $start_date .'</strong></p></td>
         <td> <p style="text-align:center"><strong>'. $reason_for_change .'</strong></p></td>
-
       </tr>
 
       ';
@@ -844,16 +793,13 @@ echo '
         <td> <p style="text-align:center"><strong>'. $start_date .'</strong></p></td>
         <td> <p style="text-align:center"><strong>'. $start_date .'</strong></p></td>
         <td> <p style="text-align:center"><strong>'. $reason_for_change .'</strong></p></td>
-
       </tr>
-
       ';
     }
   }
   else {
     echo '<h3 style="color:#f00">No TB treatment</h3>';
   }
-
   ?>
 
 </tbody>

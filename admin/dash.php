@@ -1,12 +1,11 @@
 <?php 
 session_start();
-global $now,$expire,$user_id,$fullname;
-if (isset($_SESSION['identification'])){
-
+global $now,$expire,$user_id,$fullname,$loginname;
+if (isset($_SESSION['identification'])) {
 	/* global  $fullname;*/
 	$fname= $_SESSION['fname'];
 	$lname= $_SESSION['lname'];
-	$fullname =$fname . " " .$lname;
+	$loginfullname = $fname . " " .$lname;
 
 	/*$fname= $_SESSION['fname'];*/
 	$rev_id= $_SESSION['id'];
@@ -50,19 +49,21 @@ include ('includes/nav_sub.php');
 
 					<div class="span12">
 
-    <div class="widget">
+                        <div class="widget">
 
 							<div class="widget-content">
 								
 								<div class="pricing-plans plans-3">
 <?php
     global $username, $password, $role;
-                            if (isset($_GET['source_page'])) {
+if (isset($_GET['source_page'])) {
     $main_page = 'new_user.php';
     $source = '&source_page';
 } else {
     $main_page = 'dash.php';
     $source = '';
+
+// foreach($_POST as $key => $value) { echo "<br>$key: $value"; }
 }
 									include ('includes/delete_user.php');                             
 									include ('includes/delete_facility_drug_affliates.php');
@@ -70,6 +71,7 @@ include ('includes/nav_sub.php');
 									include ('includes/insert_clinician.php'); 
 									include ('includes/insert_lab_user.php'); 
 									include ('includes/insert_sec.php');
+									include ('includes/insert_admin.php');
 									include ('includes/insert_drug.php'); 
 									include ('includes/insert_facility.php'); 
 									include ('includes/insert_affliates.php'); 
@@ -93,7 +95,7 @@ include ('includes/nav_sub.php');
 									include ('includes/create_facility.php');   
 								}
 
-								if(isset($_GET['facility_edit'])){ 
+                                if(isset($_GET['facility_edit'])){ // 2 places for managing facilities??
 									include ('includes/facility_edit.php');   
 								}
 
@@ -137,7 +139,19 @@ include ('includes/nav_sub.php');
 									include ('includes/reviewer.php');   
 								}
 
-								if(isset($_GET['create_clin'])){ 
+								if(isset($_GET['create_admin'])){ 
+									include ('includes/create_admin.php');   
+								}
+
+								if(isset($_GET['man_admin'])){ 
+									include ('includes/admin.php');   
+								}
+
+                                if(isset($_GET['admin_edit'])){ 
+									include ('includes/admin_edit.php');   
+								}
+
+                                if(isset($_GET['create_clin'])){ 
 									include ('includes/create_clin.php');   
 								}
 

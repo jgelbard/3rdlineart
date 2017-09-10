@@ -11,8 +11,6 @@ if(isset($_GET['lead'])){
 	$rev_title = $row_reviewer['title'];
 	$rev_lname = $row_reviewer['lname'];
 
-
-
 	echo '							
 	<div class="alert alert-success">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -39,54 +37,53 @@ if(isset($_GET['lead'])){
 				<th class="td-actions" style="text-align:center"><p><strong>Reviewer 1</strong></p> </th>
 				<th class="td-actions" style="text-align:center"><p><strong>Reviewer 2</strong></p> </th>
 				<th class="td-actions" style="text-align:center"><p><strong>Reviewer 3</strong></p> </th>
-				<th class="td-actions" style="text-align:center"><p><strong>Expert Reviews</strong></p> </th>
+				<th class="td-actions" style="text-align:center"><p><strong>Team Lead</strong></p> </th>
 
 			</tr>
 		</thead>
 		<tbody>
 
 			<?php
-			$assigned_app_results=mysqli_query( $bd,"SELECT distinct form_id,date_assigned FROM assigned_app_results WHERE form_id not in (select form_id from expert_review_consolidate2) ORDER BY `assigned_app_results`.`form_id` DESC"); 
-
-
+            $assigned_app_results=mysqli_query( $bd, $cp_query['select_sec_results_under_review']); 
 			while ($row_assigned_app_results=mysqli_fetch_array($assigned_app_results)){
-
 				$form_id =$row_assigned_app_results['form_id'];
 				$date_assigned =$row_assigned_app_results['date_assigned'];
-
 				echo '
 				<tr>
 					<td> <p style="text-align:center"><strong> 3rdLForm#'.$form_id.'</strong></p> </td>
 					<td> <p style="text-align:center"><strong>'.$date_assigned.'</strong></p> </td>
 					';
-
 					$assigned=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_app_results where form_id='$form_id'"); 
-
 					$assigned_count=mysqli_query( $bd,"SELECT rev_id, status FROM assigned_app_results where form_id='$form_id' and status ='Reviewed'");
-
 					$complete_review = mysqli_num_rows ($assigned_count);
 
 					$select_team_lead=mysqli_query( $bd,"SELECT * FROM reviewer_team_lead2 where form_id='$form_id'");
 					$row_team_lead=mysqli_fetch_array($select_team_lead);
 
 					$team_leader_id = $row_team_lead ['rev_id'];
+                    echo "team_lead: $team_leader_id";
 
+                    // use team_leader_id for $team_leader_id;
+                    $select_reviewer=mysqli_query( $bd,"SELECT * FROM reviewer where id='$team_leader_id'"); 
+                    $row_select_reviewer=mysqli_fetch_array($select_reviewer);                    
+                    $rev_fname =$row_select_reviewer['fname']; 
+                    $rev_lname =$row_select_reviewer['lname']; 
+                    $rev_title =$row_select_reviewer['title']; 
+                    $leadrev_fullname = $rev_title.'.  '.$rev_fname.' '.$rev_lname;
+   
 					while ($row_assigned=mysqli_fetch_array($assigned)){
 						$rev_id =$row_assigned['rev_id']; 
 						$rev_status =$row_assigned['status']; 
-
 						$select_reviewer=mysqli_query( $bd,"SELECT * FROM reviewer where id='$rev_id'"); 
 						$row_select_reviewer=mysqli_fetch_array($select_reviewer);
-
 						$rev_fname =$row_select_reviewer['fname']; 
 						$rev_lname =$row_select_reviewer['lname']; 
 						$rev_title =$row_select_reviewer['title']; 
-
 						$rev_fullname = $rev_title.'.  '.$rev_fname.' '.$rev_lname;
 
 						if ($rev_status=='Not Reviewed'){
 							echo '
-							<td class="td-actions" > <p><u>'.$rev_fullname.'</u></p><a href="#" class="btn btn-small btn-warning" disabled="disabled"><i class="btn-icon-only icon-ok"> Not Reviewed </i></a></td>
+							<td class="td-actions" > <p><u>'.$rev_fullname.'</u></p><a href="#" class="btn btn-small btn-warning" disabled="disabled"><i class="btn-icon-only icon-ok">Not Reviewed</i></a></td>
 							';
 						}
 
@@ -99,13 +96,13 @@ if(isset($_GET['lead'])){
 
 					if ($complete_review >='3'){
 						echo ' 
-						<td class="td-actions"><a href="cp_p1.php?pending&lead='.$team_leader_id.'&formid='.$form_id.'" class="btn btn-large btn-invert" style="color:#f00"><i class="btn-icon-only icon-ok"> '. $team_leader_id.'Notify Lead Expert </i></a></td>
+						<td class="td-actions"><a href="cp_p1.php?pending&lead='.$team_leader_id.'&formid='.$form_id.'" class="btn btn-large btn-invert" style="color:#f00"><i class="btn-icon-only icon-ok">Notify Lead Expert</i></a></td>
 					</tr> 
 
 					';
 				}
 				else {
-					echo ' <td class="td-actions"> 2 Review days remaining   </td>';   
+					echo ' <td class="td-actions">'.$leadrev_fullname.'</td>';   
 				}
 			}
 

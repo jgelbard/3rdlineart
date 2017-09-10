@@ -37,9 +37,7 @@ $drugs=mysqli_query( $bd,"SELECT * FROM drugs where id =$drug_id");
 <div class="control-group">											
             <label class="control-label" for="firstname">Description</label>
             <div class="controls">
-                    <textarea type="text" id="email" rows="3" cols="6" name="description"  style="width:50%; margin:5px">
-                        <?php echo $description; ?>
-                    </textarea>
+                    <textarea type="text" id="email" rows="3" cols="6" name="description"  style="width:50%; margin:5px"><?php echo $description;?></textarea>
             </div>			
 </div> 
 

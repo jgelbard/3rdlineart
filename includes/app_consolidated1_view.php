@@ -40,23 +40,6 @@ $num_forms = mysqli_num_rows ($form_creation);
                         $dob = $row_patient['dob'];
         
         $patient_name = $firstname .' '.$lastname;
-        /*
-         //calculating age of patient 
-function GetAge($dob) 
-{ 
-        $dob=explode("-",$dob); 
-        $curMonth = date("m");
-        $curDay = date("j");
-        $curYear = date("Y");
-        $age = $curYear - $dob[0]; 
-        if($curMonth<$dob[1] || ($curMonth==$dob[1] && $curDay<$dob[2])) 
-                $age--; 
-        return $age; 
-}
-
-
-$age =GetAge($dob);
-*/
       
     echo '    
          <h4 style="color:#69330c; padding:10px; background-color:#deed6;">3rdLineForm#: '. $formID.'</h4>

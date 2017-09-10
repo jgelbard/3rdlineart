@@ -4,12 +4,30 @@
 			if($(this).attr("value")=="SwitchYes"){
 				$(".box").not(".yes").hide();
 				$(".yes").show();
+
+                // $("#rec_drug1").text("hey");                
+                var checkedVals = $('input.cb_drugs:checkbox:checked').map(function() {
+                    return this.value;
+                }).get();
+                var html = [];
+                for(var i=0; i<checkedVals.length; i++) {
+                    html.push('<tr><td>Drug'+(i+1)+': '+checkedVals[i]+'</td></tr>');
+                    // alert(checkedVals[i]);
+                }
+                $("#rec_drugs").html(html);
+                // alert(checkedVals.join(','));
 			}
 			if($(this).attr("value")=="SwitchNo"){
 				$(".box").not(".no").hide();
 				$(".no").show();
 			}
 		});
+ 
+        $('button[type="submit"]').click(function(){
+            // alert($("#div_decision").html());
+            $("#decision").val($("#div_decision").html());
+        });
+         
 	});
 </script>
 <?php
@@ -57,18 +75,21 @@ echo '<h2 style="background-color:#dedd6;  text-align:center; color:#000000">Con
 <hr />  
 ';
 
-echo '<form id="edit-profile" class="form-horizontal" action="reviwer_p1.php?p" method="post" style="background-color:#ddf; padding:10px;">';
+echo '<form id="edit-profile" class="form-horizontal" action="reviewer_p1.php?p" method="post" style="background-color:#ddf; padding:10px;">';
 ?>
 <tr>
 	<?php
-
 	$expert_review_result=mysqli_query( $bd,"SELECT * FROM expert_review_result where form_id ='$formID' "); 
 
+    $cons_drugs = [];
+    $rev_name = [];
 	while ($row_expert_review_result=mysqli_fetch_array($expert_review_result)){
-
+                
 		$rev_id = $row_expert_review_result['rev_id'];
 		$pi_mutation =$row_expert_review_result['pi_mutation'];
 		$switch =$row_expert_review_result['switch'];
+        // echo "$rev_id:$switch";
+        
 		$drug1=$row_expert_review_result['drug1'];
 		$drug2=$row_expert_review_result['drug2'];
 		$drug3=$row_expert_review_result['drug3'];
@@ -84,6 +105,22 @@ echo '<form id="edit-profile" class="form-horizontal" action="reviwer_p1.php?p" 
 		$rev_title =$row_select_reviewer['title']; 
 
 		$rev_fullname = $rev_title.'.  '.$rev_fname.' '.$rev_lname;
+        $rev_name[$rev_id] = $rev_fullname;
+        for($i=1; $i<=5; $i++) {
+            eval("\$drug = \$row_expert_review_result['drug$i'];");
+            if ($switch == 'No')
+                continue;
+            if ($drug == 'none')
+                continue;
+            // echo "drug $drug, $switch, <br>";            
+            if (!array_key_exists($drug, $cons_drugs))
+                $cons_drugs[$drug] = [$rev_id];
+            else
+                if (!in_array($rev_id, $cons_drugs[$drug])) {
+                    array_push($cons_drugs[$drug], $rev_id);
+                    // echo "<br>push $rev_id for $drug";
+                }
+        }
 
 		echo ' 
 		<table class="table table-striped table-bordered" title="Reviewer 1" style="width:32.2%; float:left; margin:2px;">
@@ -143,8 +180,14 @@ echo '<form id="edit-profile" class="form-horizontal" action="reviwer_p1.php?p" 
 </td></tr>
 </table>
 ';
-
-
+echo '<table><tr><td><h3>Select the New Regimen based on the Reviewers Choices</h3></td></tr><tr><td>';
+            foreach($cons_drugs as $key => $value) {
+                $reviewers="";
+                for($i=0; $i<count($value); $i++)
+                    $reviewers = $reviewers.($reviewers == ''?'':', ').$rev_name[$value[$i]];
+                echo "<label class=\"checkbox\"><input type=\"checkbox\" class=\"cb_drugs\" id=\"$key\" value=\"$key\">$key: $reviewers</label>";
+            }
+echo '</td></tr></table>';
 
 $form_creation=mysqli_query( $bd,"SELECT clinician_id FROM form_creation where 3rdlineart_form_id ='$formID' "); 
 
@@ -164,7 +207,7 @@ while ($row_form_creation=mysqli_fetch_array($form_creation)){
 </form>
 <hr /><br />
 <form id="edit-profile" class="form-horizontal" action="review_p1.php?p" method="post" style="background-color:#e5e5e5; padding:20px; width:100%; float:left">
-
+    <input type="hidden" name="decision" id="decision" value="" />
 	<h2 style="background-color:#f5ec10; text-align:center">Fabricated Information</h2>
 	<hr style=" border: 1.5px solid #b49308;" />
 
@@ -241,13 +284,14 @@ while ($row_form_creation=mysqli_fetch_array($form_creation)){
 	</table>
 
 	<div class="yes box">
-
 		<table style="width:100%; font-size:120%; position:relative; top:-20px;" >
 			<hr />
 			<tr>
 				<td><h2>Switch Indicated</h2>
 					<h4>Comment to Clinician?</h4>
-					<textarea type="text" class="span4" rows="8" name="decision"  id="area1" >
+					<!-- <textarea type="text" class="span4" rows="8" name="decision"  id="area1" > -->
+    <div id="div_decision" contenteditable="true" style="background-color: white; border: 1px solid #ccc; padding: 5px; ">
+                    
 						<p>Dear&nbsp; <?php echo $clinician_name; ?></p>
 						<p>&nbsp;</p>
 						<p>Thank you for the application for resistance testing for your patient (Form #<?php echo $formID; ?>).</p>
@@ -264,27 +308,8 @@ while ($row_form_creation=mysqli_fetch_array($form_creation)){
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>Drug 1:</td>
-									<td>&nbsp;</td>
-								</tr>
-								<tr>
-									<td>Drug 2:</td>
-									<td>&nbsp;</td>
-								</tr>
-								<tr>
-									<td>Drug 3:</td>
-									<td>&nbsp;</td>
-								</tr>
-								<tr>
-									<td>Drug 4:</td>
-									<td>&nbsp;</td>
-								</tr>
-								<tr>
-									<td>Drug 5:</td>
-									<td>&nbsp;</td>
-								</tr>
-							</tbody>
+                                <tr><td><span id="rec_drugs"></span><td></tr>
+ 							</tbody>
 						</table>
 						<p>&nbsp;</p>
 						<p>Comment from reviewers:</p>
@@ -310,7 +335,8 @@ while ($row_form_creation=mysqli_fetch_array($form_creation)){
 						<p><?php echo $fullname; ?></p>  
 						<p>3rd Line committee secretary</p>                                     
 
-					</textarea>
+					<!-- </textarea> -->
+                        </div>
 					<p>Attachment: file Result <a href="#">form#12.pdf</a></p>
 					<hr />
 					<h3>Other Attachments</h3>

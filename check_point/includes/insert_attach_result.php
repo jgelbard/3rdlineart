@@ -33,54 +33,10 @@ if(isset($_POST['submit_assign_result'])){
 			$rev_lname = $row_reviewer['lname'];
 
 			email_msg('insert_consolidate1', $rev_email_address);
-
-/* moved to email_templates.php   
- $to = $rev_email_address;
-   $subject = "3RD Line Expert Commitee: Results for Genotyping received from NHLS";
-   $message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>New form to review</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-</head>
-<body>
-
-<p>Dear '.$rev_title.' '.$rev_lname.',</p>
-<p>&nbsp;</p>
-<p>Please review the following results for genotyping for resistance mutations which was received from NHLS.</p>
-<p>Attached you will find:</p>
-<p>a) The original application form with the clinical information</p>
-<p>b) The result and documentation from NHLS.</p>
-<p>&nbsp;</p>
-<p>After your review please state:</p>
-<p>-PI mutation present yes/no</p>
-<p>-switch to 3rd line drug indicated yes/no</p>
-<p>&nbsp;</p>
-<p>If switch is not indicated please additionally provide feedback to the clinician.</p>
-<p>&nbsp;</p>
-<p>If switch is indicated, indicate suggested ART regimen (Drug 1,2,3).</p>
-<p>&nbsp;</p>
-<p>Thank you very much,</p>
-<p><strong>Mercy</strong></p>
-<p><span style="text-decoration: underline;"><strong>3<sup>rd</sup> line committee Secretary</strong></span></p>
-
-</body>
-</html>
-';   
- $header = "From:dumi_ndhlovu@lighthouse.org.mw\r\n";
-   $header .= "Cc:j.dumisani7291@gmail.com\r\n";
-   $header .= "MIME-Version: 1.0\r\n";
-   $header .= "Content-type: text/html\r\n";
-   $retval = mail ($to,$subject,$message,$header);    
-*/    
-
         }
     }
 
-// $date_created = date('Y-m-d hr:m:s');
-$date_created = date('Y-m-d');
-// $date= date ('Y'-'M'-'D');
+$date_created = date('Y/m/d');
 $file=$_FILES['file'];  
 // file properties  
 $file_name=$file['name'];  
@@ -93,14 +49,16 @@ $file_error=$file['error'];
 // file extension  
 $file_ext = explode('.',$file_name);  
 $file_ext = strtolower(end($file_ext));  
-$allow = array('txt','jpg','docx','pdf');  
+$allow = array('txt','jpg','docx','pdf');
+
 if (in_array($file_ext, $allow)) {
     if ($file_error === 0){  
 		if ($file_size<=2097152) { 
             // $file_name_new = uniqid('',true) . '.' .$file_ext;  
 			$file_name_new = time().'-3rdartline-result.'.$file_ext;  
 			$file_dest = __DIR__.'/../../documents/results/'.$file_name_new;  
-			move_uploaded_file($file_temp,$file_dest); 
+			move_uploaded_file($file_temp,$file_dest);
+            // echo "moved $file_dest";
 			// echo 'move form'.$formID.' from '.$file_temp.' to '.$file_dest;	
 			$insert_app_results = "INSERT INTO app_results (form_id,result_pdf,date_created)
 			VALUES (

@@ -1,9 +1,14 @@
 <script>
-
 $().ready(function() {
-    // $('#edit-profile').parsley();  // and in input elements, add  <required data-parsley-type="integer"> or whatever
-		// validate the comment form when it is submitted
-       
+    // $('#edit-profile').parsley();  // and in input elements, add  <required data-parsley-type="integer"> or whatever       
+    // deal with the form +/- buttons
+    $( "tr:gt(5)" ).hide();  // of course this needs to change if more than 5 rows are shown by default
+    $( "input[type=number][name^=cd4][value!='']").parents("tr").show();
+});
+
+  
+    $().ready(function() {  
+// validate the comment form when it is submitted
 		$("#commentForm").validate();
 		$("#search_art").validate({
 			rules: {
@@ -13,7 +18,7 @@ $().ready(function() {
 			},
 			messages: {
 				id: {
-					required: "",
+					required: "need this!",
 				},
 			}
 		});
@@ -21,71 +26,54 @@ $().ready(function() {
 		// validate clinic staus form on keyup and submit
 		$("#edit-profile").validate({
 			rules: {
-				firstname: "required",
-				lastname: "required",
-
-				datepicker16: {
-					required: true,			
-				},
 				weight: {
 					required: true,
-					minlength: 2,
-					maxlength: 6
+                        range: [10, 250],
+
 				},
 			},
 			messages: {
-				firstname: "Please enter Client's firstname",
-				lastname: "Please enter Client's lastname",
-
-				datepicker16: {
-					required: "Please Select ART drug"
-				},                 
 				weight: {
 					required: "Curr Weight",
-					minlength: "Under weight",
-					maxlength: "Over weight"
-					
+                        // min: "Under weight",
+                        // max: "Over weight"					
 				}, 
 			}
 		});
-       
-        // deal with the form +/- buttons
-        $( "tr:gt(5)" ).hide();  // of course this needs to change if more than 5 rows are shown by default
-        $( "input[type=number][name^=cd4][value!='']").parents("tr").show();
 	});
+
 </script>
 
-<h2 style="background-color:#f8f7f7; text-align:center">CD4 &VL Monitoring</h2>
-<!--   <hr style=" border: 2px solid #1c952f;" />  --> 
+<h2 style="background-color:#f8f7f7; text-align:center">CD4 & VL Monitoring</h2>
 <?php
 
 global $pat_id;
-$pat_id= $_GET['pat_id'];
+$pat_id = $_GET['pat_id'];
 /*echo $pat_id;*/
 if(isset($_GET['xx'])){ 
-	$age= $_GET['xx'];
+	$age = $_GET['xx'];
 }
 
 $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
 $row_pat=mysqli_fetch_array($patient);
 
-$art_id_num =$row_pat['art_id_num'];
-$firstname =$row_pat['firstname'];
-$lastname =$row_pat['lastname'];
-$gender =$row_pat['gender'];
-$dob =$row_pat['dob'];
-$vl_sample_id =$row_pat['vl_sample_id'];
+$art_id_num = $row_pat['art_id_num'];
+$firstname = $row_pat['firstname'];
+$lastname = $row_pat['lastname'];
+$gender = $row_pat['gender'];
+$dob = $row_pat['dob'];
+$vl_sample_id = $row_pat['vl_sample_id'];
 
 $client_name = $firstname.' '.$lastname;
 
 //monitoring
-$monitoring=mysqli_query( $bd,"SELECT * FROM monitoring where pat_id='$pat_id' "); 
-while ( $row_monitoring=mysqli_fetch_array($monitoring)){
-	$monito_date []=$row_monitoring['monito_date'];
-	$cd4 []=$row_monitoring['cd4'];
-	$vl []=$row_monitoring['vl'];
-	$reason_4_detectable_vl []=$row_monitoring['reason_4_detectable_vl'];
-	$weight []=$row_monitoring['weight'];
+$monitoring = mysqli_query( $bd,"SELECT * FROM monitoring where pat_id='$pat_id' "); 
+while ( $row_monitoring = mysqli_fetch_array($monitoring)){
+	$monito_date [] = $row_monitoring['monito_date'];
+	$cd4 [] = $row_monitoring['cd4'];
+	$vl [] = $row_monitoring['vl'];
+	$reason_4_detectable_vl [] = $row_monitoring['reason_4_detectable_vl'];
+	$weight [] = $row_monitoring['weight'];
 }
 
 echo '
@@ -94,7 +82,6 @@ echo '
 	?> 
 
 	<h3>Client Name: <strong><i style="background-color:#f8f7f7; color:red"><?php echo $client_name; ?></i></strong></h3>
-
 	<input type="hidden" name="pat_id" value="<?php echo $pat_id; ?>" />
 	<input type="hidden" name="dob" value="<?php echo $dob; ?>"  /> 
 
@@ -149,7 +136,10 @@ echo '
 				for($date_i=16; $date_i<=25; $date_i++) {
 					$i1 = $i+1;
 					$i2 = $i+2;
-
+                    if ($i < 1)
+                        $required = 'required';
+                    else
+                        $required = '';
 					$dateval = !empty ($monito_date[$i]) ? $monito_date[$i] : '';
 					$cd4val = !empty ($cd4[$i]) ? $cd4[$i] : '';
 					$vlval = !empty ( $vl[$i]) ? $vl[$i] : '';
@@ -159,11 +149,11 @@ echo '
 					$rowclass = $i1 >= 5 ? "box$i1":"sbox";
  					echo "
 					<tr class=\"$rowclass\">
-						<td> <input type=\"text\" name=\"monito_date$i1\" id=\"datepicker$date_i\" value=\"$dateval\"/> </td>
+						<td> <input type=\"text\" name=\"monito_date$i1\" id=\"datepicker$date_i\" value=\"$dateval\" $required/> </td>
 						<td> <input type=\"number\" name=\"cd4$i1\" style=\"width:120px\" value=\"$cd4val\""."/> </td>
 						<td> <input type=\"number\" name=\"vl$i1\" style=\"width:120px\" value=\"$vlval\""."/> </td>
 						<td> <textarea name=\"reason_4_detectable_vl$i1\">$reasonval</textarea> </td>
-						<td> <input type=\"number\" name=\"weight$i1\" value=\"$weightval\"/> </td>";
+						<td> <input type=\"number\" name=\"weight$i1\" value=\"$weightval\" $required/> </td>";
 
 						if ($i1 >= 5) {
 							echo "
@@ -185,7 +175,7 @@ echo '
 ?>
 <script type="text/javascript">
      $('input[type="button"]').click(function(){
-            alert('click!');
+            // alert('click!');
 <?php
             $i=1;
             for($row=6; $row<=10; $row++) {

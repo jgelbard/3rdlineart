@@ -3,8 +3,7 @@
 		// validate the comment form when it is submitted
 		$("#commentForm").validate();
 		$("#search_art").validate({
-			rules: {
-				
+			rules: {				
 				id: {
 					required: true,		
 				},
@@ -16,6 +15,32 @@
 			}
 		});
 
+        $('body').keypress(function(e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                $('input[type="submit"]:last').click();
+            }
+        });
+        
+  $("#datepicker").datepicker({
+    dateFormat: 'dd/mm/yyyy',
+  });
+
+  $('#edit-profile').submit(function() {
+      alert('barf!');
+    $('#error').text('');
+    try {
+    var dateParse = $.datepicker.parseDate("dd/mm/yyyy", $("#datepicker").val());
+    } catch (e) {}
+    if (dateParse) {
+      $('#error').text(dateParse);
+    } else {
+      $('#error').text('invalid date format');
+    }
+      alert('foo');
+      return false;
+  });
+                
 		// validate signup form on keyup and submit
 		$("#edit-profile").validate({
 			rules: {
@@ -57,8 +82,7 @@
 				lastname: "Please enter Client's lastname",
 				art_id_num: {
 					required: "Please enter ART Number",
-					minlength: "The ART Number must consist of at least 7 characters"
-					
+					minlength: "The ART Number must consist of at least 7 characters"					
 				},
 				art_clinic: {
 					required: "Please Select Patient's ART Clinic"
@@ -102,6 +126,7 @@
 			topicInputs.attr("disabled", !this.checked);
 		});
 	});
+
 </script>
 <?php echo "id".$clinicianID; ?>
 <table style="width:100%; background-color:#f8f7f7;  " >
@@ -112,7 +137,6 @@
 				<?php
 
 				global $num_newforms; 
-
 				$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where (status='Not Complete' or complete ='Rejected') and clinician_id='$clinicianID' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
 
 				$num_newforms = mysqli_num_rows ($form_creation);
@@ -207,6 +231,7 @@
 			</td>    
 			<td>
 				<input type="text" class="span4" name="dob" id="datepicker">
+                <p id="error"></p>
 			</td>    
 		</tr> 
 
@@ -225,8 +250,8 @@
 			if(isset($_GET['back'])){
 				echo '<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="update_patD">Update</button> ';
 			}
-			else { 
-				echo '<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="submit_patD">Next</button> '; }
+			else {
+				echo '<button type="submit" id="next" class="btn btn-success" style="padding:10px; font-size:180%" name="submit_patD">Next</button> '; }
 				?>    
 			</div>
 		</div>

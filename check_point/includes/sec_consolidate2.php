@@ -448,7 +448,7 @@ tinymce.init({
                                       <textarea type="text" class="span4" rows="8" name="decision_no"  id="area1" >
                                     <p>Dear&nbsp; <?php echo $clinician_name; ?></p>
 <p>&nbsp;</p>
-<p>Thank you for the application for resistance testing for your patient (Form #16).</p>
+<p>Thank you for the application for resistance testing for your patient (Form #<?php echo $formID; ?>).</p>
 <p>&nbsp;</p>
 <p>We received your patient&rsquo;s resistance test results (attached). From the resistance mutations of your patient, the 3<sup>rd</sup> line committee concluded that switch of ART is indicated.</p>
 <p>The committee recommends:</p>

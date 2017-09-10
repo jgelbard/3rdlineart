@@ -10,21 +10,18 @@
 		// validate the comment form when it is submitted
 		$("#commentForm").validate();
 
-        $("#search_art").validate({
-            
+        $("#search_art").validate({            
             rules: {
 				
 				id: {
-					required: true,
-					
+					required: true,					
 				},
                 
 			},
 			messages: {
 				id: {
 					required: "",
-				},
-				
+				},				
 			}
 		});
 
@@ -44,13 +41,11 @@
 				},
                 weight: {
 					required: true,
-					minlength: 2,
-					maxlength: 3
+                    range: [1, 100],                        
 				},
-			 height: {
+                height: {
 					required: true,
-					minlength: 3,
-					maxlength: 3
+                    range: [10, 100],
 				},
 			
 			},
@@ -66,14 +61,14 @@
 				},
                 weight: {
 					required: "Curr Weight",
-					minlength: "Under weight",
-					maxlength: "Over weight"
+                        // min: "Under weight",
+                        // max: "Over weight"
 					
 				}, 
                 height: {
 					required: "Curr Weight",
-					minlength: "Under Height",
-					maxlength: "Over Height"
+                        // min: "Under Height",
+                        // max: "Over Height"
 					
 				},
                

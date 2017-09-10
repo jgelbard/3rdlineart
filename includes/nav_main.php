@@ -10,7 +10,7 @@
         <ul class="nav pull-right">
           <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-     <i class="icon-user"></i> <?php echo $fullname; ?> <b class="caret"></b></a>
+     <i class="icon-user"></i> <?php echo $loginfullname; ?> <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="javascript:;">Profile</a></li>
               <li><a href="logout.php">Logout</a></li>

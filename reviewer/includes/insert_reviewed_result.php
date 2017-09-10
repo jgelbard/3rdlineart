@@ -41,7 +41,6 @@ $form_reviewed = mysqli_query( $bd , $sql_form_creation_r);
        "SET status='Reviewed'".
        "WHERE form_id='$formID' and rev_id='$rev_id' " ;
 
-mysqli_select_db('3rdlineart_db');
 $form_reviewed_result = mysqli_query( $bd , $sql_assigned_app_results);    
     
     

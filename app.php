@@ -1,18 +1,16 @@
 <?php 
 session_start();
-global $now,$expire,$user_id, $clinicianID;
+global $now, $expire, $user_id, $clinicianID;
 if (isset($_SESSION['identification'])){
 
 	global  $fullname;
 	$fname= $_SESSION['username'];
 	/* $lname= $_SESSION['lname'];*/
 	$user_id=$_SESSION['identification'];
-
 	$clinicianID = $_SESSION['id'];
-
-	$fullname = $_SESSION['name'];
+	$loginfullname = $_SESSION['name'];
 	$clin_phone = $_SESSION['phone'];
-	$clin_email= $_SESSION['email'];
+	$clin_email = $_SESSION['email'];
 	$facility = $_SESSION['art_clinic'];
 
 	$now = time(); 
@@ -56,14 +54,21 @@ document.oncontextmenu = new Function("return false")
 </script>  
 <?php include ('includes/head.php');
 ?>
-<link rel="stylesheet" href="./css/app.css">
+
+<?php
+echo "<link rel=\"stylesheet\" href=\"$rooturl/css/app.css\" type=\"text/css\" >";
+?>
+
+<!-- <link href="css/app.css" rel="stylesheet"  type="text/css" > -->
 
 </head>
 <body>
 
 <?php
-	include ('includes/nav_main.php');
+include ('includes/nav_main.php');
 include ('includes/nav_sub.php');
+
+// foreach($_POST as $key => $value) { echo "<br>$key: $value"; }
 ?>
 	<div class="main">
 
@@ -72,7 +77,7 @@ include ('includes/nav_sub.php');
 			<div class="container">
 				<?Php
 				if (isset($_SESSION['identification'])){
-					echo '<h4>  <span class="glyphicon glyphicon-user">Clinician: '. $fullname.'</span></h4>';
+					echo '<h4>  <span class="glyphicon glyphicon-user">Clinician: '. $loginfullname.'</span></h4>';
 
 				}
 				?>  
@@ -86,7 +91,7 @@ include ('includes/nav_sub.php');
 
                                 <div class="pricing-plans plans-3">
 
-									<?php 
+                                <?php
 									global $tot_number;
 									$form_creation=mysqli_query($bd, "SELECT * FROM form_creation, expert_review_consolidate1 WHERE form_creation.3rdlineart_form_id not in (select form_id from sample) and form_creation.3rdlineart_form_id=expert_review_consolidate1.form_id and form_creation.clinician_id ='$clinicianID'"); 
 
@@ -100,7 +105,6 @@ include ('includes/nav_sub.php');
 
 								</div>
 								<?php
-
 								if(isset($_POST['search'])) { 
 
 									$pat_id = $_POST['id'];
@@ -120,30 +124,15 @@ include ('includes/nav_sub.php');
 								global $pat_id, $gender, $age, $dob;
 
 								if(isset($_GET['g'])){ 
-									$gender=$_GET['g'];
+									$gender = $_GET['g'];
 								}
 
-								if(isset($_POST['dob'])){ 
-									$dob=$_POST['dob'];
-
-    //calculating age of patient 
-									function GetAge($dob) 
-									{ 
-										$dob=explode("/",$dob); 
-										$curMonth = date("m");
-										$curDay = date("j");
-										$curYear = date("Y");
-										$age = $curYear - $dob[2]; 
-										if($curMonth<$dob[1] || ($curMonth==$dob[1] && $curDay<$dob[0])) 
-											$age--; 
-										return $age; 
-									}
-
-									$age =GetAge($dob);
+                                if(isset($_POST['dob'])) {
+									$dob = $_POST['dob'];
+									$age = GetAge($dob);
 								}
 
-								/*echo $dob;*/
-								if(isset($_GET['p'])){ 
+                                if(isset($_GET['p'])){ 
 									include ('includes/app_facility.php');  
 									/*include ('includes/app_treatment3.php'); */
 								}
@@ -194,10 +183,11 @@ include ('includes/nav_sub.php');
 								}
 
 								$age=$_GET['xx'];
+                                $age_or_preg = 0;
 
 								if(isset($_POST['submit_clinicstatus']) || isset($_POST['update_clinicstatus']) || isset($_GET['back_3'])) {
                                     //insert updated clinic status records
-                                    include ('includes/db_operations/update_clinic_status.php');
+                                    // include ('includes/db_operations/update_clinic_status.php');
                                     
 									if (isset($_POST['update_clinicstatus'])) { 
 										include ('includes/db_operations/update_clinic_status.php');  
@@ -206,8 +196,9 @@ include ('includes/nav_sub.php');
 									if (isset($_POST['submit_clinicstatus'])) { 
 										include ('includes/db_operations/insert_clinic_status.php'); 
 									}
-
-									if  ($gender=='Female' && $age >'10') {
+                                    
+									if  ($gender=='Female' && $age >'10') { // possibly pregnant
+                                        $age_or_preg = 1;
 										if (isset($_POST['update_clinicstatus']) || isset($_GET['back_3'])) { 
 											include ('includes/app_pregnancy_edit.php'); 
 										}
@@ -217,9 +208,10 @@ include ('includes/nav_sub.php');
 										}
 									} 
 
-									else if ($age <='3') {
+									else if ($age <='3') { // pediatric
 										/*echo 'age'. $gender;*/
-										if (isset($_POST['update_clinicstatus']) || isset($_GET['back_3'])) { 
+                                        $age_or_preg = 1;
+										if (isset($_POST['update_clinicstatus']) || isset($_GET['back_3']) || isset($_GET['back'])) { 
 											include ('includes/app_pedriatric_edit.php');  
 										}
 
@@ -228,7 +220,7 @@ include ('includes/nav_sub.php');
 										}
 									} 
 
-									else { // if (!isset($_GET['part_2'])) {
+									else if (!isset($_GET['part_2'])) {
 										include ('includes/app_treatment1_edit.php');
 									}
 								}
@@ -275,11 +267,11 @@ include ('includes/nav_sub.php');
 									echo"<meta http-equiv=\"Refresh\" content=\"1; url=app.php?p\">";
 								}
                                 // update form processes
-								if(isset($_POST['update_patD'])){ 
+								if(isset($_POST['update_patD'])){
 									include ('includes/db_operations/update_patient.php');   
 								}
 
-                                if(isset($_GET['part_2']) and !isset($_GET['back_3'])) { // ($gender=='Female' and $age >'10') and !($age < '3')  ){
+                                if(isset($_GET['part_2']) and (isset($_GET['back_3']) or isset($_GET['back'])) and !$age_or_preg) { 
 									include ('includes/app_clinic_status_edit.php');
 								}
 

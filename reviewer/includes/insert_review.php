@@ -6,7 +6,7 @@ if(isset($_POST['submit_review'])) {
 	$comment_to_clinician= mysqli_real_escape_string($bd, $_POST ['comment_to_clinician']);
 	$date_reviewed= date('Y/m/d');
 
-	$insert_expert_review_Form=" INSERT  INTO  expert_review_form (form_id,rev_id,genotyping,comment_to_clinician,date_reviewed)
+	$insert_expert_review_Form=" INSERT INTO expert_review_form (form_id,rev_id,genotyping,comment_to_clinician,date_reviewed)
 	VALUES (
 	'$formID', '$rev_id', '$genotyping', '$comment_to_clinician', '$date_reviewed')";
 
@@ -16,13 +16,11 @@ if(isset($_POST['submit_review'])) {
 	"SET status='Reviewed'".
 	"WHERE 3rdlineart_form_id='$formID'" ;
 
-// mysqli_select_db('3rdlineart_db');
 	$form_reviewed = mysqli_query( $bd , $sql_form_creation_r);    
 	$sql_assigned_forms = "UPDATE assigned_forms ".
 	"SET status='Reviewed'".
 	"WHERE form_id='$formID' and rev_id='$rev_id' " ;
 
-// mysqli_select_db('3rdlineart_db');
 	$form_reviewed_as = mysqli_query( $bd , $sql_assigned_forms);    
 
 	echo '							

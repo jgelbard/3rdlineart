@@ -1,7 +1,44 @@
-<h2 style="background-color:#f8f7f7; text-align:center">CD4 &VL Monitoring</h2>
-<!--   <hr style=" border: 2px solid #1c952f;" />  --> 
-<?php
+<h2 style="background-color:#f8f7f7; text-align:center">CD4 & VL Monitoring</h2>
+<!--   <hr style=" border: 2px solid #1c952f;" />  -->
 
+<script>     
+    $().ready(function() {  
+// validate the comment form when it is submitted
+		$("#commentForm").validate();
+		$("#search_art").validate({
+			rules: {
+				id: {
+					required: true,					
+				},
+			},
+			messages: {
+				id: {
+					required: "need this!",
+				},
+			}
+		});
+
+		// validate clinic staus form on keyup and submit
+		$("#edit-profile").validate({
+			rules: {
+				weight: {
+					required: true,
+                        range: [10, 250],
+
+				},
+			},
+			messages: {
+				weight: {
+					required: "Curr Weight",
+                        // min: "Under weight",
+                        // max: "Over weight"					
+				}, 
+			}
+		});
+	});
+</script>
+     
+<?php
 global $pat_id;
 $pat_id= $_GET['pat_id'];
 /*echo $pat_id;*/

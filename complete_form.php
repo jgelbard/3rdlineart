@@ -3,13 +3,13 @@ include ('includes/head.php');
 
 session_start();
 global $now,$expire,$user_id;
-echo 'fuck me!';
+
 if (isset($_SESSION['identification'])){
     global  $fullname;
     $fname= $_SESSION['username'];
     $user_id=$_SESSION['identification'];
     
-    $fullname =$_SESSION['name'];
+    $loginfullname =$_SESSION['name'];
     $phone= $_SESSION['phone'];
     $email= $_SESSION['email'];
     $facility = $_SESSION['art_clinic'];
@@ -18,15 +18,10 @@ if (isset($_SESSION['identification'])){
     $expire= $_SESSION['expire'];
 }
 
-// print_r($bd);
-
 $SQL_secretary = "SELECT * FROM secretary limit 1";
 $secretary = mysqli_query($bd, $SQL_secretary);
 $row_secretary = mysqli_fetch_array($secretary);
 $email_secretary = $row_secretary['email'];
-
-// include 'includes/email_templates.php';
-echo 'cf: '.$email_secretary;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,10 +29,6 @@ echo 'cf: '.$email_secretary;
 <head>
 	<meta charset="utf-8">
 	<title>Application Form</title>
-
-	<?php 
-	include ('includes/head.php');
-	?>
 
 	<style>
 		input[type="text"] {
@@ -95,24 +86,6 @@ echo 'cf: '.$email_secretary;
 										';
 									}
 
-                                        /*
-									echo '							
-									<div class="form-actions">
-										<form id="edit-profile" class="form-horizontal" action="logout.php" method="post"> 
-											<div class="span3">
-												<button class="btn " style="padding:10px; font-size:180%">Logout</button>
-											</div>
-										</form>
-										<div class="span3"></div>
-
-										<form id="edit-profile" class="form-horizontal" action="app.php?p" method="post">                                          
-											<div class="span3">
-												<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="complete_submit">New Application</button> 
-											</div>
-										</form>	 
-									</div>		
-									';   
-                                        */
 								}
 
 								if(isset($_POST['save_app'])){ 
@@ -153,15 +126,18 @@ echo 'cf: '.$email_secretary;
 											</div>
 										</form>
 									</div>				
-
 									';
-
 								}
 
-								if(isset($_POST['complete_submit'])){ 
+								if(isset($_POST['complete_submit'])) {
+                                    $sql_get_formid = "SELECT form_id from form_rejected where form_id in (SElECT form_id from form_creation WHERE patient_id='$pat_id')";
+                                    $form_exists = mysqli_num_rows(mysqli_query($bd, $sql_get_formid ));
+
+                                    $form_submited = mysqli_query($bd, $sql_get_formid ); 
 									$sql_form_creation = "UPDATE form_creation ".
 									"SET status='Complete'".
-									"WHERE patient_id='$pat_id'" ;
+                                        ($form_exists?", complete='No' ":" ").
+									"WHERE patient_id='$pat_id'";
 
 									$form_submited = mysqli_query($bd, $sql_form_creation );    
 
@@ -171,44 +147,22 @@ echo 'cf: '.$email_secretary;
 										<strong>Success!</strong> You have submitted the application.
 									</div>
 									<div class="form-actions">
-										<form id="edit-profile" class="form-horizontal" action="logout.php" method="post">                                                 
+										<form id="edit-profile" class="form-horizontal" action="logout.php" method="post">
 											<div class="span3">
-												<button class="btn " style="padding:10px; font-size:180%">Logout</button>                                                                                                     
+												<button class="btn " style="padding:10px; font-size:180%">Logout</button>               
 											</div>
-										</form>                                                                                                                                     
-										<div class="span3">
-										</div>
-										<form id="edit-profile" class="form-horizontal" action="app.php?p" method="post">                                          
+										</form>
+										<div class="span3"></div>
+										<form id="edit-profile" class="form-horizontal" action="app.php?p" method="post">
 											<div class="span3">
 												<button type="submit" class="btn btn-success" style="padding:10px; font-size:180%" name="complete_submit">New Application</button> 
 											</div>
 										</form>	 
 									</div>				
 									';
-
                                     email_msg('complete_form', $email_secretary);
-
-                                    /* moved to email_templates
-									$receiver ='3rdlineart@lighthouse.org.mw';
-									$to = $receiver;
-									$subject = "New 3rd Line ART Application";
-									$message = '<p>Dear 3<sup>rd</sup> Line ART Secretary,</p>
-									<p>&nbsp;</p>
-									<p>You have a new 3<sup>rd</sup> Line ART Expert committee application form from '.$facility.'.</p>
-									<p>Kindly check its completeness, following the SOP.</p>
-									<p>&nbsp;</p>
-									<p>Regards</p>
-									<p>System email Notification &nbsp;</p>'; 
-									$header = "From:3rdlineart@lighthouse.org.mw\r\n";
-									$header .= "Bcc:dumi_ndhlovu@lighthouse.org.mw\r\n";
-									$header .= "MIME-Version: 1.0\r\n";
-									$header .= "Content-type: text/html\r\n";
-									$retval = mail ($to,$subject,$message,$header);
-                                    */
 								}
-
 								?>	
-
 							</div> 
 
 						</div> 
