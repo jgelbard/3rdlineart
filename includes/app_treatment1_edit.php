@@ -61,37 +61,8 @@
 global $pat_id;
 $pat_id= $_GET['pat_id'];
 
-$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
-$row_pat=mysqli_fetch_array($patient);
-
-$art_id_num = $row_pat['art_id_num'];
-$firstname = $row_pat['firstname'];
-$lastname = $row_pat['lastname'];
-$gender = $row_pat['gender'];
-$dob = $row_pat['dob'];
-$vl_sample_id = $row_pat['vl_sample_id'];
-
-$client_name = $firstname.' '.$lastname;
-
-//get age or calc age
-if(isset($_GET['xx']) and $_GET['XX'] != ''){ 
-	$age= $_GET['xx'];
-//    echo "GOT AGE $age";
-}
-else {
-	function CalcAge($dob) 
-	{ 
-		$dob = explode("/",$dob); 
-		$curMonth = date("m");
-		$curDay = date("j");
-		$curYear = date("Y");
-		$age = $curYear - $dob[2]; 
-		if($curMonth<$dob[1] || ($curMonth==$dob[1] && $curDay<$dob[0])) 
-			$age--; 
-		return $age; 
-	}
-	$age = CalcAge($dob);
-}
+$patient = new Patient($pat_id);
+$client_name = $patient->fullname;
 
 //treatement history
 $treatment_history=mysqli_query( $bd,"SELECT * FROM treatment_history where pat_id='$pat_id' "); 
@@ -101,7 +72,6 @@ while ($row_treatment_history=mysqli_fetch_array($treatment_history)) {
 	$treat_stop_date [] = $row_treatment_history['stop_date'];
 	$treat_reason_for_change [] = $row_treatment_history['reason_for_change'];
 }
-
 
 echo '
 <form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$pat_id.'" method="post">';
@@ -134,7 +104,7 @@ echo '
 
 	<div class="form-actions">
 		<div class="span3">
-			<a class="btn" href="app.php?back_3&part_2<?php echo '&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'' ?>" style="padding:10px; font-size:180%">Back</a>           
+			<a class="btn" href="app.php?back_3&part_2<?php echo '&pat_id='.$pat_id.'&g='.$patient->gender.'&xx='.$patient->age.'' ?>" style="padding:10px; font-size:180%">Back</a>           
 		</div> 
 		<div class="span3">
 			<?php include ('includes/app_edit_menu.php'); ?>

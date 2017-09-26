@@ -15,32 +15,36 @@
 			}
 		});
 
-        $('body').keypress(function(e) {
-            if (e.which == 13) {
-                e.preventDefault();
-                $('input[type="submit"]:last').click();
-            }
-        });
-        
-  $("#datepicker").datepicker({
-    dateFormat: 'dd/mm/yyyy',
-  });
+		$('body').keypress(function(e) {
+			if (e.which == 13) {
+				e.preventDefault();
+				$('input[type="submit"]:last').click();
+			}
+		});
 
-  $('#edit-profile').submit(function() {
-      alert('barf!');
-    $('#error').text('');
-    try {
-    var dateParse = $.datepicker.parseDate("dd/mm/yyyy", $("#datepicker").val());
-    } catch (e) {}
-    if (dateParse) {
-      $('#error').text(dateParse);
-    } else {
-      $('#error').text('invalid date format');
-    }
-      alert('foo');
-      return false;
-  });
-                
+          $(".date").datepicker({
+              // $("#datepicker").datepicker({
+			dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true
+		});
+
+		$('#edit-profile').submit(function() {
+			$('#error').text('');
+			try {
+				var dateParse = $.datepicker.parseDate("dd/mm/yy", $("#datepicker").val());
+                // alert(dateParse);
+			} catch (e) {}
+			if (dateParse) {
+				$('#error').text(dateParse);
+			} else {
+				$('#error').text('invalid date format');
+                return false;                
+			}
+			return true;
+
+		});
+		
 		// validate signup form on keyup and submit
 		$("#edit-profile").validate({
 			rules: {
@@ -71,10 +75,6 @@
 					required: true,
 					email: true
 				},
-				topic: {
-					required: "#newsletter:checked",
-					minlength: 2
-				},
 				agree: "required"
 			},
 			messages: {
@@ -100,8 +100,6 @@
 					equalTo: "Please enter the same password as above"
 				},
 				email: "Please enter a valid email address",
-				agree: "Please accept our policy",
-				topic: "Please select at least 2 topics"
 			}
 		});
 
@@ -113,22 +111,14 @@
 				this.value = firstname + "." + lastname;
 			}
 		});
-
-		//code to hide topic selection, disable for demo
-		var newsletter = $("#newsletter");
-		// newsletter topics are optional, hide at first
-		var inital = newsletter.is(":checked");
-		var topics = $("#newsletter_topics")[inital ? "removeClass" : "addClass"]("gray");
-		var topicInputs = topics.find("input").attr("disabled", !inital);
-		// show when newsletter is checked
-		newsletter.click(function() {
-			topics[this.checked ? "removeClass" : "addClass"]("gray");
-			topicInputs.attr("disabled", !this.checked);
-		});
 	});
 
 </script>
-<?php echo "id".$clinicianID; ?>
+<?php
+global $key;
+// echo "id".$clinicianID;
+// echo "<br>key: $key";
+?>
 <table style="width:100%; background-color:#f8f7f7;  " >
 	<tr><td>
 		<form id="search_art" action="app.php" method="post" style="float:right; padding:10px; height:20px;">
@@ -138,21 +128,12 @@
 
 				global $num_newforms; 
 				$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where (status='Not Complete' or complete ='Rejected') and clinician_id='$clinicianID' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
-
 				$num_newforms = mysqli_num_rows ($form_creation);
-				while ($row_form_creation=mysqli_fetch_array($form_creation)){      
-					$_3rdlineart_form_id =$row_form_creation['3rdlineart_form_id'];
-					$clinician_id =$row_form_creation['clinician_id']; 
-					$patient_id =$row_form_creation['patient_id'];        
-					$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$patient_id' "); 
-					$row_pat=mysqli_fetch_array($patient);        
-					$art_id_num =$row_pat['art_id_num'];
-					$firstname =$row_pat['firstname'];
-					$lastname =$row_pat['lastname'];
-					$gender =$row_pat['gender'];
-					$dob =$row_pat['dob'];
-					$vl_sample_id =$row_pat['vl_sample_id'];              
-					echo '<option value="'.$patient_id.'">'.$art_id_num.'</a></option>';
+				while ($row_form_creation = mysqli_fetch_array($form_creation)){      
+					$patient_id = $row_form_creation['patient_id'];
+
+                    $patient = new Patient($patient_id);
+					echo '<option value= "'.$patient_id.'">'.$patient->art_id_num.'</a></option>';
 				}
 				?>
 			</select>
@@ -230,8 +211,8 @@
 				<h4>Date of Birth</h4><label><i>(dd/mm/yyyy)</i></label>
 			</td>    
 			<td>
-				<input type="text" class="span4" name="dob" id="datepicker">
-                <p id="error"></p>
+				<input type="text" class="span4" name="dob" id="datepicker" readonly>
+				<p id="error"></p>
 			</td>    
 		</tr> 
 

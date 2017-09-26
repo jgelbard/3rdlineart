@@ -15,20 +15,17 @@
 </script>
 <?php
 if(isset($_GET['formID'])){
-	$sampleid =$_GET ['sample'];
-	$formid =$_GET ['formID'];
+	$sampleid = $_GET ['sample'];
+	$formid = $_GET ['formID'];
 	$today = date ('Y/m/d');
 
-
-	$patient=mysqli_query( $bd,"SELECT * FROM patient,form_creation where patient.id=form_creation.patient_id and form_creation.3rdlineart_form_id='$formid' "); 
-	$row_pat=mysqli_fetch_array($patient);
-
-	$art_id_num =$row_pat['art_id_num'];
-	$patientName =$row_pat['firstname'].'  ' .$row_pat['lastname'];
-	$gender =$row_pat['gender'];
-	$dob =$row_pat['dob'];
-	$vl_sample_id =$row_pat['vl_sample_id'];
-
+	$patient = mysqli_query( $bd,"SELECT * FROM patient,form_creation where patient.id=form_creation.patient_id and form_creation.3rdlineart_form_id='$formid' "); 
+	$row_pat = mysqli_fetch_array($patient);
+	$art_id_num = $row_pat['art_id_num'];
+	$patientName = $row_pat['firstname'].' '.$row_pat['lastname'];
+	$gender = $row_pat['gender'];
+	$dob = $row_pat['dob'];
+	$vl_sample_id = $row_pat['vl_sample_id'];
 	$age =GetAge($dob);
 }
 

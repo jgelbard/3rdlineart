@@ -1,16 +1,8 @@
 <?php
 
-$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
-$row_pat=mysqli_fetch_array($patient);
-
-$art_id_num =$row_pat['art_id_num'];
-$firstname =$row_pat['firstname'];
-$lastname =$row_pat['lastname'];
-$gender =$row_pat['gender'];
-$dob =$row_pat['dob'];
-$vl_sample_id =$row_pat['vl_sample_id'];
-
-$age = GetAge($dob);
+$patient = new Patient($pat_id);
+$client_name = $patient->fullname;
+$age = $patient->age;
 
 $form_id = $_GET['id'];
 $review = mysqli_query($bd, "SELECT * FROM expert_review_form where form_id = $form_id");
@@ -203,12 +195,12 @@ if ($age <='3') {
 			<td><h4>First Name : </h4> 
 			</td>
 			<td>
-				<p style="text-align:center"><strong><?php echo  $firstname; ?></strong></p>
+				<p style="text-align:center"><strong><?php echo $patient->firstname; ?></strong></p>
 			</td>    
 			<td><h4>Surname :</h4> 									
 			</td>    
 			<td>       
-				<p style="text-align:center"><strong><?php echo  $lastname; ?></strong></p>
+				<p style="text-align:center"><strong><?php echo $patient->lastname; ?></strong></p>
 			</td>    
 		</tr> 
 		<tr>
@@ -216,13 +208,13 @@ if ($age <='3') {
 				<h4>ART-ID Number :</h4>
 			</td>
 			<td>
-				<p style="text-align:center"><strong><?php echo   $art_id_num; ?></strong></p>     
+				<p style="text-align:center"><strong><?php echo $patient->art_id_num; ?></strong></p>     
 			</td>    
 			<td>
 				<h4>Gender :</h4>
 			</td>    
 			<td>
-				<p><?php echo '<p style="text-align:center"><strong>'. $gender. '</strong></p>'; ?></p>
+				<p><?php echo '<p style="text-align:center"><strong>'.$patient->gender. '</strong></p>'; ?></p>
 			</td>    
 		</tr> 
 		<tr>
@@ -230,13 +222,13 @@ if ($age <='3') {
 				<h4>VL sample-ID :</h4>
 			</td>
 			<td>
-				<p style="text-align:center"><strong><?php echo  $vl_sample_id; ?></strong></p>     
+				<p style="text-align:center"><strong><?php echo $patient->vl_sample_id; ?></strong></p>     
 			</td>    
 			<td>
 				<h4>Date of Birth :</h4>
 			</td>    
 			<td>												
-				<p><?php echo '<p style="text-align:center"><strong>'. $dob. '</strong></p>'; ?></p>
+				<p><?php echo '<p style="text-align:center"><strong>'. $patient->dob. '</strong></p>'; ?></p>
 			</td>    
 		</tr> 
 	</table>

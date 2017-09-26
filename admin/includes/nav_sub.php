@@ -20,7 +20,7 @@ function changeClass(id)
         'man_drugs' => ['Drugs', 'select_drugs' ], 
         'man_affliates' => ['Affiliates', 'select_affiliates' ],
         'man_rev' => ['Reviewers', 'select_rev' ],
-        'man_clin' => ['Clinics', 'select_clinician' ],
+        'man_clin' => ['Clinicians', 'select_clinician' ],
         'man_lab' => ['Lab Staff', 'select_labs' ],
         'man_sec' => ['Secretaries', 'select_sec' ],
         'man_admin' => ['Administrators', 'select_admin' ],

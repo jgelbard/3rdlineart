@@ -15,6 +15,16 @@ if (isset($_SESSION['identification'])){
 
 	$now = time(); 
 	$expire= $_SESSION['expire'];}
+    $expired = ((integer)$now) > ((integer)$expire);
+// echo "$now > $expire".":".$expired;
+    if ($expired) {
+        echo '							
+	<div class="alert alert-success">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<strong>Hey!!</strong>Your session has expired. Please Login again to continue!!.
+	</div>';
+        echo "<meta http-equiv=\"Refresh\" content=\"2; url=" . "logout.php?" . "\">";
+    }
 ?>
 	<!DOCTYPE html>
 	<html lang="en">
@@ -94,12 +104,9 @@ include ('includes/nav_sub.php');
                                 <?php
 									global $tot_number;
 									$form_creation=mysqli_query($bd, "SELECT * FROM form_creation, expert_review_consolidate1 WHERE form_creation.3rdlineart_form_id not in (select form_id from sample) and form_creation.3rdlineart_form_id=expert_review_consolidate1.form_id and form_creation.clinician_id ='$clinicianID'"); 
-
 									$tot_number = mysqli_num_rows ($form_creation);
-
 									global $tot_number_conso2;
 									$form_creation_conso2=mysqli_query($bd, "SELECT * FROM form_creation, expert_review_consolidate2 WHERE form_creation.3rdlineart_form_id=expert_review_consolidate2.form_id and form_creation.clinician_id ='$clinicianID'"); 
-
 									$tot_number_conso2 = mysqli_num_rows ($form_creation_conso2);
 									?>
 
@@ -122,6 +129,7 @@ include ('includes/nav_sub.php');
 
 
 								global $pat_id, $gender, $age, $dob;
+                                $patient = new Patient($pat_id);
 
 								if(isset($_GET['g'])){ 
 									$gender = $_GET['g'];
@@ -134,12 +142,11 @@ include ('includes/nav_sub.php');
 
                                 if(isset($_GET['p'])){ 
 									include ('includes/app_facility.php');  
-									/*include ('includes/app_treatment3.php'); */
 								}
-//dash stats
+
+                                // dash stats
 								if(isset($_GET['dash'])){ 
 									include ('includes/app_dashboard.php');  
-									/*include ('includes/app_treatment3.php'); */
 								}
 
                                 if(isset($_GET['rejec'])){ 
@@ -175,7 +182,7 @@ include ('includes/nav_sub.php');
 								}
 
 								if(isset($_GET['app_clin'])){ 
-									include ('includes/app_clinic_status.php'); 
+									include ('includes/app_clinic_status_edit.php');  // was app_clinic_status 
 								}
 
 								if(isset($_POST['submit_patD'])){ 
@@ -230,7 +237,7 @@ include ('includes/nav_sub.php');
 								}
 
 								if(isset($_POST['submit_treatment2'])){ 
-									include ('includes/app_treatment3.php');
+									include ('includes/app_treatment3_edit.php');  // was app_treatment3.php
 								}
 
 								if(isset($_POST['submit_Preg'])){ 
@@ -267,7 +274,7 @@ include ('includes/nav_sub.php');
 									echo"<meta http-equiv=\"Refresh\" content=\"1; url=app.php?p\">";
 								}
                                 // update form processes
-								if(isset($_POST['update_patD'])){
+								if(isset($_POST['update_patD'])) {
 									include ('includes/db_operations/update_patient.php');   
 								}
 
@@ -279,7 +286,8 @@ include ('includes/nav_sub.php');
 									include ('includes/db_operations/update_pediatric.php');   
 								}
 
-								if(isset($_POST['update_Preg'])){ 
+								if(isset($_POST['update_Preg'])){
+                                    // echo "update preg?";
 									include ('includes/db_operations/update_pregnancy.php');   
 								}
 

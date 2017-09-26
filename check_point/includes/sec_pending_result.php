@@ -32,28 +32,19 @@
 
 				$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
 				$clinician = mysqli_query($bd,$SQL_clinician);
-
 				$row_clinician = mysqli_fetch_array($clinician);
 				$art_clinic = $row_clinician['art_clinic'];
 
-				$SQL_patient = "SELECT * FROM patient WHERE id=$patient_id";
-				$patient = mysqli_query($bd,$SQL_patient);
-
-				$row_patient = mysqli_fetch_array($patient);
-				$firstname = $row_patient['firstname'];
-				$lastname = $row_patient['lastname'];
-				$gender = $row_patient['gender'];
-				$dob = $row_patient['dob'];
-
-				$patient_name = $firstname .' '.$lastname;
+                $patient = new Patient($patient_id);
+                $patient_name = $patient->fullname;
                 
 				echo '
 				<tr>
 					<td> <p style="text-align:center"><a href="cp_p1.php?assign&id='.$_3rdlineart_form_id.'"><strong> 3rdLForm#'.$_3rdlineart_form_id.'</strong></a></p> </td>
 					<td> 
 						<p style="text-align:left"><strong>Name: '. $patient_name.'</strong></p> 
-						<p style="text-align:left"><strong>DOB: '. $dob.'</strong></p> 
-						<p style="text-align:left"><strong>Gender: '. $gender.'</strong></p> 
+						<p style="text-align:left"><strong>DOB: '. $patient->dob.'</strong></p> 
+						<p style="text-align:left"><strong>Gender: '. $patient->gender.'</strong></p> 
 
 					</td>
 					<td> <p style="text-align:center"><strong>'.$dispatch_date.'</strong></p> </td>

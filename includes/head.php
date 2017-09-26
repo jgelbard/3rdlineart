@@ -38,4 +38,5 @@ echo '<link rel="stylesheet" href="'.$rooturl.'css/jquery-ui.css">';
 include_once($cpath);
 include_once $path.'/includes/email_templates.php';
 include_once $path.'/includes/queries.php';
+include_once $path.'/includes/crypt_function.php';
 ?>

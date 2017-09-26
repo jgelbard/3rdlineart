@@ -12,27 +12,17 @@ if(isset($_POST['submit_clinicstatus'])){
 	$location ="complete_form.php";  
 }
 
-$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
-$row_pat=mysqli_fetch_array($patient);
-
-$art_id_num = $row_pat['art_id_num'];
-$firstname = $row_pat['firstname'];
-$lastname = $row_pat['lastname'];
-$gender = $row_pat['gender'];
-$dob = $row_pat['dob'];
-$vl_sample_id = $row_pat['vl_sample_id'];
-$client_name = $firstname.' '.$lastname;
+$patient = new Patient($pat_id);
+$client_name = $patient->fullname;
 
 // echo 'action="'.$location.'?pat_id='.$pat_id.'"';
-echo '
-<form id="edit-profile" class="form-horizontal" action="'.$location.'?pat_id='.$pat_id.'" method="post">
-	';
-	?> 
+echo '<form id="edit-profile" class="form-horizontal" action="'.$location.'?pat_id='.$pat_id.'" method="post">';
+?>
 
 	<h3>Client Name: <strong><i style="color:red"><?php echo $client_name; ?></i></strong></h3>
 
 	<input type="hidden" name="pat_id" value="<?php echo $pat_id; ?>"  /> 
-	<input type="hidden" name="dob" value="<?php echo $dob; ?>" /> 
+	<input type="hidden" name="dob" value="<?php echo $patient->dob; ?>" /> 
 	<script>
 		$( function() {
 			$( "#datepickersVis_Date1" ).datepicker({

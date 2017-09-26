@@ -1,6 +1,7 @@
 <?php
 include("includes/config.php");
-include ("admin/includes/crypt_function.php");
+require_once("includes/crypt_function.php");
+
 function urldecodex($x) {
     return $x;
 }
@@ -10,30 +11,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
     $role = urldecodex($_GET['y']);
     $pword = urldecodex($_GET['z']);
     
-   echo "username=$username, before='".$_GET['y']."' role=$role, pword=$pword";
+    // echo "username=$username, before='".$_GET['y']."' role=$role, pword=$pword";
    
-   $xusername = decrypt ($username, $key);
-   $xrole = decrypt ($role, $key);
-   echo('<br>username is '.$xusername);
-   echo('role is '.$xrole);
+    $xusername = decrypt ($username, $key);
+    $xrole = decrypt ($role, $key);
+    // echo('<br>username is '.$xusername);
+    // echo('role is '.$xrole);
+    
+    /* echo('key is '.$key);
+       echo('salt is '.$salt); */
+    
+    $SQL = "SELECT * FROM users WHERE username='$username' AND role='$role' AND password='$pword';";    			   
+    $result = mysqli_query($bd,$SQL);
+    $num_rows = mysqli_num_rows($result);
+    echo "<br>$SQL, returned num_rows: $num_rows";
    
-   /* echo('key is '.$key);
-   echo('salt is '.$salt); */
-
-   $SQL = "SELECT * FROM users WHERE username='$username' AND role='$role' AND password='$pword';";    			   
-   $result = mysqli_query($bd,$SQL);
-   $num_rows = mysqli_num_rows($result);
-   echo "<br>$SQL, returned num_rows: $num_rows";
-   
-   if ($num_rows != 0) {
+    if ($num_rows != 0) {
         
         $row_users = mysqli_fetch_array($result);
         $user_id = $row_users['id'];
         
         $username = decrypt ($username, $key);
         $role = decrypt ($role, $key);
-        echo('username is '.$username);
-        echo('role is '.$role);
+        // echo('username is '.$username);
+        // echo('role is '.$role);
         global $id;
         
         if ($role=='Clinician') {
@@ -63,8 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
             $row_pih_lab = mysqli_fetch_array($pih_lab);
             $id = $row_pih_lab['id'];        
         }				
-        
-        echo "<meta http-equiv=\"Refresh\" content=\"0; url=admin/new_user.php?u=$username&r=$role&source_page&id=$id\">";
+        // echo "url=admin/new_user.php?u=$username&r=$role&source_page&id=$id&logoutafter";
+        echo "<meta http-equiv=\"Refresh\" content=\"0; url=admin/new_user.php?u=$username&r=$role&source_page&id=$id&logoutafter=1\">";
     }
     
     else {

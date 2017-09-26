@@ -1,10 +1,14 @@
 <?php
 // echo 'loading queries...';
 
-if (file_exists('config.php')) 
-    include_once('config.php');
-else
-    include_once('includes/config.php');
+
+if (file_exists('config.php')) {
+    include_once('config.php');    
+    include_once ("crypt_function.php");
+} else {
+    include_once('includes/config.php');    
+    include_once ("includes/crypt_function.php");
+}
 
 //calculating age of patient 
 function getAge($dob) { 
@@ -19,54 +23,75 @@ function getAge($dob) {
     return $age; 
 }
 
-class User
-{
-    public $name;
-    public $age;
-    
-    public function __construct()
-    {
-        // echo "I'm alive!";        
-    }
-    public function Describe()
-    {
-        return $this->name . " is " . $this->age . " years old";
-    }
-}
-
 class Patient {
     public $fullname;
+    public $firstname;
+    public $lastname;
     public $age;
+    public $dob;
     public $gender;
+    public $art_id_num;
+    public $pat_art_clinic;
+    public $vl_sample_id;
+    public $date_created;
+    public $enc;
     
     private $row_pat;
     public function __construct($id, $id_type='patient')
     {
         $bd = $GLOBALS['bd'];
-        // echo "I'm alive";
-        if ($id_type == 'patient')
+        $key = $GLOBALS['key'];
+        
+        // echo "my key: $key";
+        if ($id_type == 'patient') 
             $query = "SELECT * FROM patient WHERE id = '$id'";
         else if ($id_type == 'form')
             $query = "SELECT p.* FROM patient p INNER JOIN form_creation fc on p.id = fc.patient_id WHERE fc.3rdlineart_form_id = '$id'";
-        $patient = mysqli_query($bd, $query); 
-        $this->row_pat = mysqli_fetch_array($patient);
-        $row_pat = $this->row_pat;
-        
-        $art_id_num = $row_pat['art_id_num'];
-        $firstname = $row_pat['firstname'];
-        $lastname = $row_pat['lastname'];
-        $this->gender = $row_pat['gender'];
-        $dob = $row_pat['dob'];
-        $vl_sample_id = $row_pat['vl_sample_id'];
-        $this->fullname = "$firstname $lastname";       
-        $this->age = GetAge($dob);
-    }
 
+        $pat = mysqli_query($bd, $query); 
+        $row_pat = mysqli_fetch_assoc($pat);
+        $enc = $row_pat['enc'];
+        
+        // echo "\nencrypt $enc -> ".$row_pat['firstname']." ".$row_pat['lastname'];        
+
+        // db column order specific
+        // $this->row_pat[1] = $this->pat_art_clinic = $enc ? decrypt($row_pat['pat_art_clinic'], $key) : $row_pat['pat_art_clinic'];
+        // $this->row_pat['pat_art_clinic'] = $this->pat_art_clinic = $enc ? decrypt($row_pat['pat_art_clinic'], $key) : $row_pat['pat_art_clinic'];
+        // echo $enc.'=>'.(decrypt($row_pat['pat_art_clinic'], $key) : $row_pat['pat_art_clinic']);
+        $this->pat_art_clinic = $enc ? decrypt($row_pat['pat_art_clinic'], $key) : $row_pat['pat_art_clinic'];
+        // $this->row_pat['art_id_num'] = $this->art_id_num = $enc ? decrypt($row_pat['art_id_num'], $key) : $row_pat['art_id_num'];
+        $this->art_id_num = $enc ? decrypt($row_pat['art_id_num'], $key) : $row_pat['art_id_num'];
+        // $this->row_pat['firstname'] = $this->firstname = ($enc == 1) ? decrypt($row_pat['firstname'], $key) : $row_pat['firstname'];
+        $this->firstname = ($enc == 1) ? decrypt($row_pat['firstname'], $key) : $row_pat['firstname'];
+        //  $this->row_pat['lastname'] = $this->lastname = $enc ? decrypt($row_pat['lastname'], $key) : $row_pat['lastname'];
+        $this->lastname = $enc ? decrypt($row_pat['lastname'], $key) : $row_pat['lastname'];
+        $this->date_created = $row_pat['date_created'];
+        $this->row_pat = $row_pat;
+        // echo $this->firstname.' '.$this->lastname;
+        /*
+          echo "**************";
+          foreach($this->row_pat as $key => $value)
+             echo "\n$key: $value";
+          echo "\n**************";
+        */
+        $this->gender = $row_pat['gender'];
+        $this->dob = $row_pat['dob'];
+        $this->vl_sample_id = $row_pat['vl_sample_id'];
+        $this->fullname = $this->firstname." ".$this->lastname;       
+        $this->age = GetAge($this->dob);
+        $this->enc = $enc;
+    }
+    
+    public function Describe()
+    {
+        return $this->fullname . " is " . $this->age . " years old";
+    }
+    
     public function getProp($prop='') {
         if ($prop == '')
             return $this->row_pat;
         else
-            return $this->row_pat[$prop];
+            return ($this->row_pat)[$prop];
     }
 
     public function getFullname() {
@@ -150,9 +175,24 @@ list($a, $b, $c) = $p->getProp();
 echo "\n$a";
 echo "\n$b";
 echo "\n$c";
+*/
 
-$p = new Patient(224, 'form');
-list($id, $pat_art_clinic, $art_id_num, $firstname, $lastname, $gender, $dob) = $p->getProp();
-echo "<br>$firstname $lastname: $gender, age: $p->age";
+// $p = new Patient(267, 'form');
+/*
+$select_patients = "SELECT * FROM patient";
+$patients = mysqli_query($bd, $select_patients);
+while ($row = mysqli_fetch_array($patients)) {
+    echo "id: ".$row['id'];
+    $p = new Patient($row['id']);
+    echo "*********** ".$p->getProp('firstname').' '.$p->getProp('lastname').' '.$p->getProp('pat_art_clinic').' '.$p->pat_art_clinic;
+echo "\n";
+}
+
+$p = new Patient(410);
+echo $p->getProp('firstname').' '.$p->getProp('lastname').' '.$p->getProp('pat_art_clinic').' '.$p->pat_art_clinic;
+// list($id, $clinic, $art_id_num, $firstname, $lastname, $gender, $dob, $vl_sample_id, $date_created) = $p->getProp();  // order dependent (but concise)
+// echo "id: $id, art_clinic: $clinic, $art_id_num, fn: $firstname, ln: $lastname, g: $gender, dob: $dob, samp: $vl_sample_id, created: $date_created";
+// echo "<br>".$p->firstname." ".$p->lastname.": ".$p->gender.", age: ".$p->age.", art_clinic: ".$p->pat_art_clinic;
+// testClass(411);
 */
 ?>

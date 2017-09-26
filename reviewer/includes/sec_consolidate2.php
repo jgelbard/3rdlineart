@@ -1,3 +1,5 @@
+<?php echo "hey!!";
+?>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('input[type="radio"]').click(function(){
@@ -34,29 +36,20 @@
 global $formID;
 $formID= $_GET['formid'];
 
-
-$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where 3rdlineart_form_id ='$formID'"); 
-
+$form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where 3rdlineart_form_id ='$formID'");
 
 while ($row_form_creation=mysqli_fetch_array($form_creation)){
 	$clinician_id =$row_form_creation['clinician_id'];
 	$patient_id =$row_form_creation['patient_id'];
 
-	$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+	$SQL_clinician = "SELECT * FROM clinician WHERE id = $clinician_id";
 	$clinician = mysqli_query($bd,$SQL_clinician);
 	$row_clinician = mysqli_fetch_array($clinician);
 	$art_clinic = $row_clinician['art_clinic'];
 	$clinician_name = $row_clinician['name'];
 
-	$SQL_patient = "SELECT * FROM patient WHERE id=$patient_id";
-	$patient = mysqli_query($bd,$SQL_patient);
-	$row_patient = mysqli_fetch_array($patient);
-	$firstname = $row_patient['firstname'];
-	$lastname = $row_patient['lastname'];
-	$art_id_num = $row_patient['art_id_num'];
-	$gender = $row_patient['gender'];
-	$dob = $row_patient['dob'];
-	$patient_name = $firstname .' '.$lastname;
+    $patient = new Patient($patient_id);
+    $patient_name = $patient->fullname;
 }
 
 echo '<h2 style="background-color:#dedd6;  text-align:center; color:#000000">Consolidate Expert Reviews</h2>
@@ -64,11 +57,11 @@ echo '<h2 style="background-color:#dedd6;  text-align:center; color:#000000">Con
 <form id="edit-profile" class="form-horizontal" action="cp_p1.php?p" method="post">
 	<h4 style="color:#69330c; padding:10px; background-color:#deed6;">3rdLineForm#: '. $formID.'</h4>
 	<table style="width:100%; background-color:#f7cf75; padding:5px;" >
-		<td><p style="color:#000">Name: <strong>'.$patient_name.'</strong>   ART Number: <strong>'.$art_id_num.' </strong> Gender: <strong>'.$gender.'</strong>
-			Dob: '.$dob.' </p>
+		<td><p style="color:#000">Name: <strong>'.$patient_name.'</strong>   ART Number: <strong>'.$patient->art_id_num.' </strong> Gender: <strong>'.$patient->gender.'</strong>
+			Dob: '.$patient->dob.' </p>
 		</td>
 		<td>
-			<p style="color:#000">Facility: <strong>'.$art_clinic.'</strong> Clinician: <strong>'.$clinician_name.'</strong> </p>
+			<p style="color:#000">Facility: <strong>'.$patient->art_clinic.'</strong> Clinician: <strong>'.$clinician_name.'</strong> </p>
 		</td>
 	</tr>
 </table>
@@ -180,29 +173,27 @@ echo '<form id="edit-profile" class="form-horizontal" action="reviewer_p1.php?p"
 </td></tr>
 </table>
 ';
-echo '<table><tr><td><h3>Select the New Regimen based on the Reviewers Choices</h3></td></tr><tr><td>';
-            foreach($cons_drugs as $key => $value) {
-                $reviewers="";
-                for($i=0; $i<count($value); $i++)
-                    $reviewers = $reviewers.($reviewers == ''?'':', ').$rev_name[$value[$i]];
-                echo "<label class=\"checkbox\"><input type=\"checkbox\" class=\"cb_drugs\" id=\"$key\" value=\"$key\">$key: $reviewers</label>";
-            }
-echo '</td></tr></table>';
 
 $form_creation=mysqli_query( $bd,"SELECT clinician_id FROM form_creation where 3rdlineart_form_id ='$formID' "); 
-
-while ($row_form_creation=mysqli_fetch_array($form_creation)){
-	$clinician_id =$row_form_creation['clinician_id'];
-	$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
-	$clinician = mysqli_query($bd,$SQL_clinician);
-	$row_clinician = mysqli_fetch_array($clinician);
-	$clinician_name = $row_clinician['name'];
-	$clinician_phone = $row_clinician['phone'];
-	$clinician_email = $row_clinician['email'];
-	$art_clinic = $row_clinician['art_clinic'];
-}
+    while ($row_form_creation=mysqli_fetch_array($form_creation)){
+    
+        $clinician_id =$row_form_creation['clinician_id'];
+        
+        
+        $SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+                    $clinician = mysqli_query($bd,$SQL_clinician);
+                    
+                    $row_clinician = mysqli_fetch_array($clinician);
+                        $clinician_name = $row_clinician['name'];
+                        $clinician_phone = $row_clinician['phone'];
+                        $clinician_email = $row_clinician['email'];
+                        $art_clinic = $row_clinician['art_clinic'];
+                       
+    }
 ?>
-
+  
+         
+           
 </tr></tbody></table>
 </form>
 <hr /><br />
@@ -284,6 +275,29 @@ while ($row_form_creation=mysqli_fetch_array($form_creation)){
 	</table>
 
 	<div class="yes box">
+echo '<table><tr><td><h3>Select the New Regimen based on the Reviewers Choices</h3></td></tr><tr><td>';
+            foreach($cons_drugs as $key => $value) {
+                $reviewers="";
+                for($i=0; $i<count($value); $i++)
+                    $reviewers = $reviewers.($reviewers == ''?'':', ').$rev_name[$value[$i]];
+                echo "<label class=\"checkbox\"><input type=\"checkbox\" class=\"cb_drugs\" id=\"$key\" value=\"$key\">$key: $reviewers</label>";
+            }
+echo '</td></tr></table>';
+
+$form_creation=mysqli_query( $bd,"SELECT clinician_id FROM form_creation where 3rdlineart_form_id ='$formID' "); 
+
+while ($row_form_creation=mysqli_fetch_array($form_creation)){
+	$clinician_id =$row_form_creation['clinician_id'];
+	$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
+	$clinician = mysqli_query($bd,$SQL_clinician);
+	$row_clinician = mysqli_fetch_array($clinician);
+	$clinician_name = $row_clinician['name'];
+	$clinician_phone = $row_clinician['phone'];
+	$clinician_email = $row_clinician['email'];
+	$art_clinic = $row_clinician['art_clinic'];
+}
+?>
+        
 		<table style="width:100%; font-size:120%; position:relative; top:-20px;" >
 			<hr />
 			<tr>

@@ -1,6 +1,8 @@
 <?PHP
 session_start();
 include("includes/config.php");
+include("includes/crypt_function.php");
+
 $username = "";
 $pword = "";
 
@@ -16,8 +18,6 @@ function quote_smart($value, $handle) {
    }
    return $value;
 }
-
-include ("admin/includes/crypt_function.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
    $username = $_POST['username'];
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $_SESSION['login'] = 'true';
         $_SESSION['username'] = $row_user['username'];
         $_SESSION['identification'] = $row_user['id'];           			   
-        $_SESSION['start'] = time(); // taking now logged in time
+        $_SESSION['start'] = time(); // taking now logged in time (was time())
         $_SESSION['expire'] = $_SESSION['start'] + (20 * 60) ;
         //header ("Location:".$pageLocation);
 
@@ -126,6 +126,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_SESSION['phone'] = $row_pih_lab['phone'];
             $_SESSION['email'] = $row_pih_lab['email'];
             echo"<meta http-equiv=\"Refresh\" content=\"0; url=pih/pih_p1.php?p\">";
+        }				
+        if ($role=='Admin'){
+            $SQL_admin = "SELECT * FROM admin WHERE user_id=$user_id";
+            $admin = mysqli_query($bd,$SQL_admin);
+            $row_admin = mysqli_fetch_array($admin);
+
+            $_SESSION['id'] = $row_admin['id'];
+            $_SESSION['fname'] = $row_admin['fname'];
+            $_SESSION['lname'] = $row_admin['lname'];
+            $_SESSION['phone'] = $row_admin['phone'];
+            $_SESSION['email'] = $row_admin['email'];
+            echo"<meta http-equiv=\"Refresh\" content=\"0; url=admin/dash.php?p\">";
         }				
     }
 

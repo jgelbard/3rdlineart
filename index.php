@@ -30,7 +30,7 @@ include ('includes/head.php');
 					<li class="">						
 						<a href="admin" class="">
 							admin
-      </a>
+                        </a>
 					</li>
 					<li class="">						
 						<a href="#" class="">
@@ -53,7 +53,8 @@ include ('includes/head.php');
 			<div class="login-fields">
 				
 				<p>Please provide your details</p>
-                <?php
+
+<?php
 if(isset($_GET ['error'])) { 
     $_error = $_GET ['error'];
     if ($_error =='fail') {

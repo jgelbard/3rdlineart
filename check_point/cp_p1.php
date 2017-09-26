@@ -9,16 +9,24 @@ if (isset($_SESSION['identification'])) {
 	$lname = $_SESSION['lname'];
 	$loginfullname = $fname . " " .$lname;
 
-	/*$fname= $_SESSION['fname'];*/
 	$sec_id = $_SESSION['id'];
 	$user_id = $_SESSION['identification'];
 
-	/*$fullname =$_SESSION['name'];*/
 	$phone = $_SESSION['phone'];
 	$email = $_SESSION['email'];
     
 	$now = time(); 
 	$expire = $_SESSION['expire'];
+    $expired = ((integer)$now) > ((integer)$expire);
+    // echo "$now > $expire".":".$expired;
+    if ($expired) {
+        echo '							
+	<div class="alert alert-success">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<strong>Hey!</strong>Your session has expired. Please Login again to continue!!.
+	</div>';
+        echo "<meta http-equiv=\"Refresh\" content=\"2; url=" . "logout.php?" . "\">";
+    }
 }
 
 ?>

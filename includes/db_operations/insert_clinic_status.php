@@ -61,8 +61,6 @@ if(isset($_POST['submit_clinicstatus'])){
 		$other_curr_problem_details = mysqli_real_escape_string($bd, $_POST['other_curr_problem_details']);
 	}
 
-    // echo(" INSERT INTO current_clinical_status (patient_id,who_stage,curr_who_stage,weight,height,art_interrup,h_o_ss_effects, ol_6months, sig_diarrhea_vom, alco_drug_consump, trad_med, co_medi, other_curr_problem)VALUES ('$patient_id', '$who_stage', '$curr_who_stage', '$weight', '$height', '$art_interrup', '$h_o_ss_effects', '$ol_6months', '$sig_diarrhea_vom', '$alco_drug_consump', '$trad_med', '$co_medi', '$other_curr_problem' )");
-
 	$insert_patient = "INSERT INTO current_clinical_status (patient_id,who_stage,curr_who_stage,weight,height,art_interrup,h_o_ss_effects, ol_6months, sig_diarrhea_vom, alco_drug_consump, trad_med, co_medi, other_curr_problem)
 	VALUES (
 	'$patient_id', '$who_stage', '$curr_who_stage', '$weight', '$height', '$art_interrup', '$h_o_ss_effects', '$ol_6months', '$sig_diarrhea_vom', '$alco_drug_consump', '$trad_med', '$co_medi', '$other_curr_problem' )";
@@ -85,33 +83,20 @@ if(isset($_POST['submit_clinicstatus'])){
 	mysqli_query( $bd,$insert_pat_side_effect);	  
 
 	if ($art_interrup == 'Yes'){   
-		$insert_art_interruption = " INSERT INTO art_interruption (patient_id,reason,date)
+		$insert_art_interruption = "INSERT INTO art_interruption (patient_id,reason,date)
 		VALUES (
 		'$patient_id', '$art_interrup_reason', '$art_interrup_date')";
 		mysqli_query( $bd,$insert_art_interruption);	  
 	}
 
 	if ($ol_6months == 'Yes'){   
-		$insert_ol_6months_details = " INSERT INTO ol_6months_details (patient_id,ol_6months_dign,ol_6months_date)
+		$insert_ol_6months_details = "INSERT INTO ol_6months_details (patient_id,ol_6months_dign,ol_6months_date)
 		VALUES (
 		'$patient_id', '$ol_6months_dign', '$ol_6months_date')";
 		mysqli_query( $bd,$insert_ol_6months_details);	  
 	}
 
-	if(isset($_GET['xx'])){ 
-		$age = $_GET['xx'];
-	}
-
-	$patient = mysqli_query( $bd,"SELECT * FROM patient where id = '$patient_id' "); 
-	$row_pat = mysqli_fetch_array($patient);
-	$art_id_num = $row_pat['art_id_num'];
-	$firstname = $row_pat['firstname'];
-	$lastname = $row_pat['lastname'];
-	$gender = $row_pat['gender'];
-	$dob = $row_pat['dob'];
-	$vl_sample_id = $row_pat['vl_sample_id'];
-
-	echo "<meta http-equiv=\"Refresh\" content=\"1; url=app.php?back_3&pat_id=".$patient_id."&g=".$gender."&xx=".$age."\">";
-//	echo('submit_clinicstatus end!!!');    
+    $patient = new Patient($patient_id);
+	echo "<meta http-equiv=\"Refresh\" content=\"1; url=app.php?back_3&pat_id=".$patient_id."&g=".$patient->gender."&xx=".$patient->age."\">";
 }
 ?>

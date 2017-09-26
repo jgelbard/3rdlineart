@@ -9,7 +9,7 @@ echo '
 		</div>
 		<div class="modal-body">';
 			
-$patient_table=mysqli_query( $bd,"SELECT id FROM  patient where id='$pat_id' ");
+$patient_table=mysqli_query( $bd,"SELECT id FROM patient where id='$pat_id' ");
 $if_exist_patient_table = mysqli_num_rows ($patient_table);
 if ($if_exist_patient_table != '0') {			   
     echo '<div style="width:90%; background-color:#f2f2f2; border-radius: 5px; padding:5px; text-align:center; margin:5px;" >				
@@ -25,7 +25,7 @@ if ($if_exist_current_clinical_status !='0'){
 		</div>';		
 }
 
-$pediatric_section=mysqli_query( $bd,"SELECT * FROM  pediatric where pat_id='$pat_id' ");
+$pediatric_section=mysqli_query( $bd,"SELECT * FROM pediatric where pat_id='$pat_id' ");
 $if_exist_pediatric_section = mysqli_num_rows ($pediatric_section);
 	if ($if_exist_pediatric_section !='0' && $age < 4 ){		
 		echo ' <div style="width:90%; background-color:#f2f2f2; border-radius: 5px; padding:5px; text-align:center; margin:5px;" >
@@ -33,7 +33,7 @@ $if_exist_pediatric_section = mysqli_num_rows ($pediatric_section);
 	</div>';	
 }
 
-$pregnancy=mysqli_query( $bd,"SELECT * FROM  pregnancy where pat_id='$pat_id' ");
+$pregnancy=mysqli_query( $bd,"SELECT * FROM pregnancy where pat_id='$pat_id' ");
 $if_exist_pregnancy = mysqli_num_rows ($pregnancy);
 if ($if_exist_pregnancy !='0' || $age > 10 && $gender=='Female'){
 	echo ' <div style="width:90%; background-color:#f2f2f2; border-radius: 5px; padding:5px; text-align:center; margin:5px;" >
@@ -41,7 +41,7 @@ if ($if_exist_pregnancy !='0' || $age > 10 && $gender=='Female'){
 </div>';
 }
 
-$treatment_history=mysqli_query( $bd,"SELECT * FROM  treatment_history where pat_id='$pat_id' ");
+$treatment_history=mysqli_query( $bd,"SELECT * FROM treatment_history where pat_id='$pat_id' ");
 $if_exist_treatment_history = mysqli_num_rows ($treatment_history);
 
 if ($if_exist_treatment_history != '0'){
@@ -51,7 +51,7 @@ if ($if_exist_treatment_history != '0'){
 
 }
 
-$treatment_monitoring=mysqli_query( $bd,"SELECT * FROM  monitoring where pat_id='$pat_id' ");
+$treatment_monitoring=mysqli_query( $bd,"SELECT * FROM monitoring where pat_id='$pat_id' ");
 $if_exist_treatment_monitoring = mysqli_num_rows ($treatment_monitoring);
 if ($if_exist_treatment_monitoring != '0') {
 	echo ' <div style="width:90%; background-color:#f2f2f2; border-radius: 5px; padding:5px; text-align:center; margin:5px;" >
@@ -60,7 +60,7 @@ if ($if_exist_treatment_monitoring != '0') {
 
 }
 
-$tb_treat=mysqli_query( $bd,"SELECT * FROM  tb_treat where pat_id='$pat_id' ");
+$tb_treat=mysqli_query( $bd,"SELECT * FROM tb_treat where pat_id='$pat_id' ");
 $if_exist_tb_treat = mysqli_num_rows ($tb_treat);
 if ($if_exist_tb_treat != '0') {
 	echo ' <div style="width:90%; background-color:#f2f2f2; border-radius: 5px; padding:5px; text-align:center; margin:5px;" >

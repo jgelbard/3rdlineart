@@ -7,30 +7,20 @@ global $pat_id;
 $pat_id= $_GET['pat_id'];
 /*echo $pat_id;*/
 
-$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
-    $row_pat=mysqli_fetch_array($patient);
-        
-        $art_id_num =$row_pat['art_id_num'];
-        $firstname =$row_pat['firstname'];
-        $lastname =$row_pat['lastname'];
-        $gender =$row_pat['gender'];
-        $dob =$row_pat['dob'];
-        $vl_sample_id =$row_pat['vl_sample_id'];
-
-$client_name = $firstname.' '.$lastname;
+$patient = new Patient($pat_id);
+$client_name = $patient->fullname;
 
 echo '
 <form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$pat_id.'" method="post">
-
 ';
 ?> 
 
 <h3>Client Name: <strong><i style="background-color:#f8f7f7; color:red"><?php echo $client_name; ?></i></strong></h3>
 
 <input type="hidden" name="pat_id" value="<?php echo $pat_id; ?>" style="background-color:#fff; border:none; height:20px; color:#fff; position:relative; top:-300px;"/>
- <input type="hidden" name="dob" value="<?php echo $dob; ?>" style="background-color:#fff; border:none; height:20px; color:#fff; position:relative; top:-300px;" /> 
+<input type="hidden" name="dob" value="<?php echo $patient->dob; ?>" style="background-color:#fff; border:none; height:20px; color:#fff; position:relative; top:-300px;" /> 
 
-    <script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function(){
     $('input[type="radio"]').click(function(){
         if($(this).attr("value")=="Yes"){
@@ -47,8 +37,6 @@ $(document).ready(function(){
 
 </script>
      
-    <!-- <hr style=" border: 1px solid #cbe509;" />
-    <h3>TB Treatment</h3>-->
 <fieldset>
     <div style="width:110px; float:left" class="radio_sty">
     <input type="radio" id="tb_treat-yes" name="tb_treat" value="Yes" required>
@@ -64,16 +52,6 @@ $(document).ready(function(){
     <div class="check">
 		</div>
   </div>
- <!--   
- <div class="controls" style="position:relative; left:-150px">
-                                            <label class="radio inline">
-                                              <input type="radio"  name="tb_treat" value="Yes" id="app_radio"> Yes
-                                            </label>
-                                            
-                                            <label class="radio inline">
-                                              <input type="radio" name="tb_treat" value="No" id="app_radio" checked="checked"> No
-                                            </label>
-</div>  -->  
 
 <script type="text/javascript">
       jQuery(document).ready(function ($) {
@@ -103,7 +81,6 @@ $(document).ready(function(){
                     <tr style="background-color:#cb9112; font-size:112%; font-weight:300; color:#000">
                     <td> </td>
                     <td> Regimen Drug </td>
-                 <!--   <th> MDR</th> -->
                     <td> Start Date</td>
                     <td> Stop Date</td>
                     <td> Reason for changes (toxicities?)</td>

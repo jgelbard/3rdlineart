@@ -4,20 +4,31 @@ global $now,$expire,$user_id,$fullname, $rev_id;
 
 if (isset($_SESSION['identification'])) {
 	/* global  $fullname; */
-	$fname= $_SESSION['fname'];
-	$lname= $_SESSION['lname'];
-	$loginfullname =$fname . " " .$lname;
+	$fname = $_SESSION['fname'];
+	$lname = $_SESSION['lname'];
+	$loginfullname = $fname . " " .$lname;
 
 	/* $fname= $_SESSION['fname']; */
-	$rev_id= $_SESSION['id'];
-	$user_id=$_SESSION['identification'];
+	$rev_id = $_SESSION['id'];
+	$user_id = $_SESSION['identification'];
 
 	/* $fullname =$_SESSION['name']; */
-	$phone= $_SESSION['phone'];
-	$email= $_SESSION['email'];
+	$phone = $_SESSION['phone'];
+	$email = $_SESSION['email'];
 
 	$now = time(); 
-	$expire= $_SESSION['expire'];}
+	$expire = $_SESSION['expire'];
+    $expired = ((integer)$now) > ((integer)$expire);
+    // echo "$now > $expire".":".$expired;
+    if ($expired) {
+	echo '							
+	<div class="alert alert-success">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<strong>Hey!</strong>Your session has expired. Please Login again to continue!!.
+	</div>';
+        echo "<meta http-equiv=\"Refresh\" content=\"2; url=" . "logout.php?" . "\">";
+    }
+}
 
 	?>
 	<!DOCTYPE html>
@@ -113,7 +124,7 @@ include ('includes/nav_sub.php');
                                     include ('includes/review.php');  
 							}
 
-							if (isset($_GET['result'])) { 
+                            if (isset($_GET['result'])) { 
 								$formID= $_GET ['id'];
 								$form_creation=mysqli_query($bd,"SELECT * FROM form_creation, app_results where form_creation.3rdlineart_form_id='$formID' and  form_creation.3rdlineart_form_id=app_results.form_id");
                                 if (mysqli_num_rows($form_creation) > 0) {
@@ -152,7 +163,8 @@ include ('includes/nav_sub.php');
 								include ('includes/sec_consolidate1.php');   
 							}
 
-							if (isset($_GET['consolidate_result'])) { 
+							if (isset($_GET['consolidate_result'])) {
+                                echo "here2";
 								include ('includes/sec_consolidate2.php');   
 							}
 
@@ -171,7 +183,6 @@ include ('includes/nav_sub.php');
 							if (isset($_POST['submit_Preg'])) { 
 								include ('includes/app_pedriatric.php');   
 							}
-
 							?>		
 
 						</div> <!-- /pricing-plans -->

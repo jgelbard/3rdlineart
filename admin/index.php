@@ -4,13 +4,10 @@
 <head>
     <meta charset="utf-8">
     <title>Login - 3rd Line ART Expert Committee Malawi</title>
-<?php 
-    
+<?php
 include ('../includes/head.php');
-    
-    ?>
+?>
 </head>
-
 <body>
 	
 	<div class="navbar navbar-fixed-top">

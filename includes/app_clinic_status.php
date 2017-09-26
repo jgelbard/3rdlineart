@@ -79,25 +79,14 @@
 global $pat_id;
 if(isset($_GET['pat_id'])){ 
 	$pat_id= $_GET['pat_id'];
-	
 }
 
 // echo "about to query $pat_id";
-$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
-$row_pat=mysqli_fetch_array($patient);
-
-$art_id_num =$row_pat['art_id_num'];
-$firstname =$row_pat['firstname'];
-$lastname =$row_pat['lastname'];
-$gender =$row_pat['gender'];
-$dob =$row_pat['dob'];
-$vl_sample_id =$row_pat['vl_sample_id'];
-$client_name = $firstname.' '.$lastname;
-
-$age = GetAge($dob);
+$patient = new Patient($pat_id);
+$client_name = $patient->fullname;
 
 echo '
-<form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'" method="post">
+<form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$pat_id.'&g='.$patient->gender.'&xx='.$patient->age.'" method="post">
 	<h2 style="background-color:#f8f7f7; text-align:center">Current Clinic Status and history</h2>
 	<hr style=" border: 1px solid #12c3f8;" />
 	';

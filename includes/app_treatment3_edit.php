@@ -4,19 +4,9 @@
 
 global $pat_id;
 $pat_id= $_GET['pat_id'];
-/*echo $pat_id;*/
 
-$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
-$row_pat=mysqli_fetch_array($patient);
-
-$art_id_num =$row_pat['art_id_num'];
-$firstname =$row_pat['firstname'];
-$lastname =$row_pat['lastname'];
-$gender =$row_pat['gender'];
-$dob =$row_pat['dob'];
-$vl_sample_id =$row_pat['vl_sample_id'];
-
-$client_name = $firstname.' '.$lastname;
+$patient = new Patient($pat_id);
+$client_name = $patient->fullname;
 
 $tb_treatment ="";
 //tb_treat
@@ -237,11 +227,6 @@ for($regimen=1; $regimen<=3; $regimen++) {
         $regrow1 = $regnamecl.'+row'.($regrow+1);
         $regrow2 = $regnamecl.'-row'.($regrow);
 
-        // echo("\n\$reg_name = !empty (\$reg$regimen"."_name [$regrow]) ? \$reg$regimen"."_name [$regrow] : '2RHZE/4RH';");
-        // echo("\n\$start_date = !empty(\$start_date$regimen [$regrow]) ? \$start_date$regimen [$regrow] : '';");
-        // echo("\n\$stop_date = !empty (\$stop_date$regimen [$regrow]) ? \$stop_date$regimen [$regrow] : '';");
-        // echo("\n\$reason = !empty (\$reason_for_change$regimen [$regrow]) ? \$reason_for_change$regimen [$regrow] : '';");
-
         eval("\$reg_name = !empty (\$reg$regimen"."_name [$regrow]) ? \$reg$regimen"."_name [$regrow] : '".$regimens[$regimen-1]."';");
         eval("\$start_date = !empty(\$start_date$regimen [$regrow]) ? \$start_date$regimen [$regrow] : '';");
         eval("\$stop_date = !empty (\$stop_date$regimen [$regrow]) ? \$stop_date$regimen [$regrow] : '';");
@@ -263,23 +248,6 @@ for($regimen=1; $regimen<=3; $regimen++) {
         		"</div>
         	</td>
         </tr>";
-
-        /*
-        if ($regrow < 4) {
-            $js .= "if($(this).attr(\"name\")==\"$regnamecl+row$regrowp1\"){
-                 $(\".$regnamecl"."row$regrowp1\").show();
-                 $(\".$regnamecl"."butts$cols\").hide();
-                 $(\".$regnamecl"."butts$regrowp1\").show();
-            }";
-        }
-        if ($regrow > 0) {
-            $js .= "\nif($(this).attr(\"name\")==\"$regnamecl-row$regrow\"){
-                $(\".$regnamecl"."row$regrow\").hide();
-                $(\".$regnamecl"."butts$cols1\").show();".
-                ($regrow < 4 ? "$(\".$regnamecl"."butts$regrowp1\").hide();":"").
-            "}";
-        }
-        */
         
         $regrow++;
         $datepicker += 2;
@@ -303,7 +271,7 @@ for($regimen=1; $regimen<=3; $regimen++) {
 
 <div class="form-actions">
 	<div class="span3">
-		<a class="btn" href="app.php?back&back_treatment2<?php echo '&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'' ?>" style="padding:10px; font-size:180%">Back</a>
+		<a class="btn" href="app.php?back&back_treatment2<?php echo '&pat_id='.$pat_id.'&g='.$patient->gender.'&xx='.$patient->age.'' ?>" style="padding:10px; font-size:180%">Back</a>
 	</div> 
 	<div class="span3">
 

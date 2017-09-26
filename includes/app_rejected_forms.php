@@ -29,25 +29,13 @@ echo '<p>Total forms: [ <i>'. $num_newforms .'</i> ]</p>';
         $date_created =$row_form_creation['date_created'];
         $comment =$row_form_creation['comment'];
         
-        $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$patient_id' "); 
-        $row_pat=mysqli_fetch_array($patient);
-        
-            $art_id_num =$row_pat['art_id_num'];
-            $pat_id = $row_pat['id'];
-            $patient_fullname= $row_pat['firstname'].' '.$row_pat['lastname'];
-            $gender =$row_pat['gender'];
-            $dob =$row_pat['dob'];
-            $vl_sample_id =$row_pat['vl_sample_id'];
-
-        
-        echo '
-                    
-           <tr>
+        $patient = new Patient($patient_id);
+        echo '<tr>
                     <td>'.$form_id.'</td>
-                    <td>'.$patient_fullname.'</td>
-                    <td>'.$art_id_num.'</td>
-                    <td>'.$gender.'</td>
-                    <td>'.$date_created.'</td>
+                    <td>'.$patient->fullname.'</td>
+                    <td>'.$patient->$art_id_num.'</td>
+                    <td>'.$patient->$gender.'</td>
+                    <td>'.$patient->$date_created.'</td>
                     <td>
     <form id="search_art" action="app.php" method="post">
     <input type="hidden" name="form_id" value="'.$form_id.'" />

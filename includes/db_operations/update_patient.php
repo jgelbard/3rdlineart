@@ -1,25 +1,30 @@
 <?php
-if(isset($_POST['update_patD'])) { 
+echo "key is $key";
+
+if(isset($_POST['update_patD'])) {
+    $pat_art_clinic = encrypt(mysqli_real_escape_string($bd, $_POST['pat_art_clinic']), $key);
+    // echo "pat_art_clinic is ".$pat_art_clinic;
     $pat_id = mysqli_real_escape_string($bd, $_POST['pat_id']);
-    $art_id_num = mysqli_real_escape_string($bd, $_POST['art_id_num']);
- 	$firstname = mysqli_real_escape_string($bd, $_POST['firstname']);
-	$lastname = mysqli_real_escape_string($bd, $_POST['lastname']);
+    $art_id_num = encrypt(mysqli_real_escape_string($bd, $_POST['art_id_num']), $key);
+ 	$firstname = encrypt(mysqli_real_escape_string($bd, $_POST['firstname']), $key);
+    $lastname = encrypt(mysqli_real_escape_string($bd, $_POST['lastname']), $key);
  	$gender = mysqli_real_escape_string($bd, $_POST['gender']);
 	$dob = mysqli_real_escape_string($bd, $_POST['dob']);
 	$vl_sample_id = mysqli_real_escape_string($bd, $_POST['vl_sample_id']);
 	$date_created = date('Y/m/d');
     
     $sql_update_patient = "UPDATE patient 
-SET art_id_num = '$art_id_num',
+      SET art_id_num = '$art_id_num',
+       pat_art_clinic = '$pat_art_clinic',
        firstname = '$firstname',
        lastname = '$lastname',
        gender = '$gender',
        dob = '$dob',
        vl_sample_id = '$vl_sample_id',
-       date_created = '$date_created'       
+       date_created = '$date_created',
+       enc = 1
        WHERE id = '$pat_id'" ;
 
-// mysqli_select_db($bd, '3rdlineart_db');
     $patient_updated = mysqli_query( $bd ,$sql_update_patient);    
     
     if ($patient_updated) {

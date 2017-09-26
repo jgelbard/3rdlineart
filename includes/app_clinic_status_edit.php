@@ -93,20 +93,9 @@ if(isset($_GET['pat_id'])){
 	$pat_id= $_GET['pat_id'];
 
 }
-if(isset($_POST['xx'])){ 
-	$age= $_POST['xx'];
-}
 
-$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
-$row_pat=mysqli_fetch_array($patient);
-
-$art_id_num =$row_pat['art_id_num'];
-$firstname =$row_pat['firstname'];
-$lastname =$row_pat['lastname'];
-$gender =$row_pat['gender'];
-$dob =$row_pat['dob'];
-$vl_sample_id =$row_pat['vl_sample_id'];
-$client_name = $firstname.' '.$lastname;
+$patient = new Patient($pat_id);
+$client_name = $patient->fullname;
 
 $current_clinical_status = mysqli_query( $bd,"SELECT * FROM current_clinical_status where patient_id='$pat_id' ");
 $if_exist_current_clinical_status = mysqli_num_rows ($current_clinical_status);
@@ -162,7 +151,7 @@ $trad_med_details = $row_current_clinical_status_details['trad_med_details'];
 $co_medi_details = $row_current_clinical_status_details['co_medi_details'];
 $other_curr_problem_details = $row_current_clinical_status_details['other_curr_problem_details'];
 
-echo '<form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'" method="post">
+echo '<form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$pat_id.'&g='.$patient->gender.'&xx='.$patient->age.'" method="post">
 	<h2 style="background-color:#f8f7f7; text-align:center">Current Clinic Status and history</h2>
 	<hr style=" border: 1px solid #12c3f8;" />
 	';                   
@@ -373,17 +362,14 @@ echo '<form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$
 							echo '
 
 							<div style="width:110px; float:left" class="radio_sty">
-
 								<input type="radio" id="ol_6months-yes"  name="ol_6months" value="Yes" checked="checked">
 								<label for="ol_6months-yes">Yes</label>
-
 								<div class="check">
 								</div>
 							</div>
 							<div style="width:100px; float:left" class="radio_sty">
 								<input type="radio" id="ol_6months-no" name="ol_6months" value="No" >
 								<label for="ol_6months-no">No</label>
-
 								<div class="check">
 								</div>
 							</div> 
@@ -411,26 +397,20 @@ echo '<form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$
 
 					';
 				}        
-				if ($ol_6months=='No'){
-
+				if ($ol_6months=='No') {
 					echo '
-
 					<div style="width:110px; float:left" class="radio_sty">
-
 						<input type="radio" id="ol_6months-yes"  name="ol_6months" value="Yes" >
 						<label for="ol_6months-yes">Yes</label>
-
 						<div class="check">
 						</div>
 					</div>
 					<div style="width:100px; float:left" class="radio_sty">
 						<input type="radio" id="ol_6months-no" name="ol_6months" value="No" checked="checked">
 						<label for="ol_6months-no">No</label>
-
 						<div class="check">
 						</div>
 					</div> 
-
 				</td>    
 				<td>
 					If yes, Date
@@ -449,9 +429,6 @@ echo '<form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$
 				</td> 
 
 			</tr>
-
-
-
 			';
 		}
 		?>

@@ -49,22 +49,10 @@ $().ready(function() {
 
 global $pat_id;
 $pat_id = $_GET['pat_id'];
-/*echo $pat_id;*/
-if(isset($_GET['xx'])){ 
-	$age = $_GET['xx'];
-}
 
-$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
-$row_pat=mysqli_fetch_array($patient);
+$patient = new Patient($pat_id);
+$client_name = $patient->fullname;
 
-$art_id_num = $row_pat['art_id_num'];
-$firstname = $row_pat['firstname'];
-$lastname = $row_pat['lastname'];
-$gender = $row_pat['gender'];
-$dob = $row_pat['dob'];
-$vl_sample_id = $row_pat['vl_sample_id'];
-
-$client_name = $firstname.' '.$lastname;
 
 //monitoring
 $monitoring = mysqli_query( $bd,"SELECT * FROM monitoring where pat_id='$pat_id' "); 
@@ -201,7 +189,7 @@ echo '
 
 				<div class="form-actions">
 					<div class="span3">
-						<a class="btn" href="app.php?back_treatment1<?php echo '&pat_id='.$pat_id.'&g='.$gender.'&xx='.$age.'' ?>" style="padding:10px; font-size:180%">Back</a>
+						<a class="btn" href="app.php?back_treatment1<?php echo '&pat_id='.$pat_id.'&g='.$patient->gender.'&xx='.$patient->age.'' ?>" style="padding:10px; font-size:180%">Back</a>
 					</div>
 					<div class="span3">
                     <?php include ('includes/app_edit_menu.php'); ?>

@@ -129,70 +129,47 @@ if(isset($_GET['comment'])){
        <option value="">--select ARV Number--</option>
        <?php
        global $num_newforms; 
-
-       $form_creation=mysqli_query( $bd,"SELECT * FROM form_creation where (status='Not Complete' or complete ='Rejected') and clinician_id='$clinicianID' ORDER BY `form_creation`.`3rdlineart_form_id` DESC "); 
+       $patient_from_art = "SELECT * FROM form_creation where (status='Not Complete' or complete ='Rejected') and clinician_id='$clinicianID' ORDER BY `form_creation`.`3rdlineart_form_id` DESC ";
+       $form_creation=mysqli_query( $bd, $patient_from_art); 
 
        $num_newforms = mysqli_num_rows ($form_creation);
 
-       while ($row_form_creation=mysqli_fetch_array($form_creation)){
+       while ($row_form_creation=mysqli_fetch_array($form_creation)) {
 
-        $_3rdlineart_form_id =$row_form_creation['3rdlineart_form_id'];
-        $clinician_id =$row_form_creation['clinician_id']; 
-        $patient_id =$row_form_creation['patient_id'];
- 
-        $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$patient_id' "); 
-        $row_pat=mysqli_fetch_array($patient);
-        
-        $art_id_num =$row_pat['art_id_num'];
-        $firstname =$row_pat['firstname'];
-        $lastname =$row_pat['lastname'];
-        $gender =$row_pat['gender'];
-        $dob =$row_pat['dob'];
-        $vl_sample_id =$row_pat['vl_sample_id'];
+        $_3rdlineart_form_id = $row_form_creation['3rdlineart_form_id'];
+        $clinician_id = $row_form_creation['clinician_id']; 
+        $patient_id = trim($row_form_creation['patient_id']);
 
-        echo '<option value="'.$patient_id.'">'.$art_id_num.'</a></option>';
+        $patient = new Patient($patient_id);
+        // echo "<br>:$patient_id: ".$patient->art_id_num;
+        echo '<option value="'.$patient_id.'">'.$patient->art_id_num.'</a></option>';
       }
       ?>
     </select>
     <button type="submit" name="search" class="btn btn-primary" style="padding:6px; font-size:110%; position:relative; top:-5px; color:#fff" >Complete Application</button>	
   </form>
 
-  <?php
+<?php
   global $pat_id;
   $pat_id= $_GET['pat_id'];
+  $patient = new Patient($pat_id);
 
-  $patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
-  $row_pat=mysqli_fetch_array($patient);
+  $pat_art_clinic = $patient->pat_art_clinic;
+  $art_id_num = $patient->art_id_num;
+  $firstname = $patient->firstname;
+  $lastname = $patient->lastname;
+  $gender = $patient->gender;
+  $dob = $patient->dob;
+  $vl_sample_id = $patient->vl_sample_id;
+  $age = $patient->age;
 
-  $pat_art_clinic =$row_pat['pat_art_clinic'];
-  $art_id_num =$row_pat['art_id_num'];
-  $firstname =$row_pat['firstname'];
-  $lastname =$row_pat['lastname'];
-  $gender =$row_pat['gender'];
-  $dob =$row_pat['dob'];
-  $vl_sample_id =$row_pat['vl_sample_id'];
+  // echo 'Patient: '.$pat_id.', dob: '.$dob.', age: '.$age.', clinic: '.$pat_art_clinic;
 
-  //calculating age of patient 
-  function GetPatAge($dob) 
-  { 
-    $dob=explode("/",$dob); 
-    $curMonth = date("m");
-    $curDay = date("j");
-    $curYear = date("Y");
-    $age = $curYear - $dob[2]; 
-    if($curMonth<$dob[1] || ($curMonth==$dob[1] && $curDay<$dob[0])) 
-      $age--; 
-    return $age; 
-  }
-  $age = GetPatAge($dob);
-  // echo 'Patient: '.$pat_id.', dob: '.$dob.', age: '.$age;
-  ?>
-  <?php 
   if(isset($_GET['pat_id'])) { 
-   $pat_id= $_GET['pat_id'];
-   include ('includes/app_edit_menu.php'); 
- }
- ?>
+      $pat_id= $_GET['pat_id'];
+      include ('includes/app_edit_menu.php');
+  }
+?>
 
 </td></tr>
 </table>
@@ -217,13 +194,10 @@ if(isset($_GET['comment'])){
           <?php
 //clinic status info
 
-          $facility=mysqli_query( $bd,"SELECT * FROM facility"); 
-          while ($row_facility=mysqli_fetch_array($facility)){
-
+          $facility = mysqli_query( $bd,"SELECT * FROM facility"); 
+          while ($row_facility = mysqli_fetch_array($facility)){
             $facility_name =$row_facility['facilityName'];
-
             echo '<option>'.$facility_name.'</option>';
-
           }
           ?>
         </select>

@@ -7,10 +7,7 @@
 	
 	<?php
 	include ('../includes/head.php');
-	if (file_exists('../includes/crypt_function.php'))
-		require_once '../includes/crypt_function.php';
-	else
-		require 'includes/crypt_function.php';
+    require_once ('../includes/crypt_function.php');
 	?>
 	
 	<style>
@@ -69,10 +66,8 @@
 									if (($role=='Lab') or isset($_GET['lab_edit']) ){
 										include ('includes/labuser_edit.php');     
 									}
-									
-									
-									include ('includes/update_user.php');  
-									
+																		
+									include ('includes/update_user.php');  									
 									?>
 									
 									

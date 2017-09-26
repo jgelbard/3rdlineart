@@ -2,6 +2,7 @@
 global $id;
 $id = $_GET['id'];
 
+echo 'here';
 $clinician=mysqli_query($bd, "SELECT * FROM clinician where id='$id'"); 
 $row_clinician=mysqli_fetch_array($clinician);
 
@@ -16,6 +17,11 @@ $users=mysqli_query($bd, "SELECT * FROM users where id='$user_id'");
 $row_users=mysqli_fetch_array($users);
 $username =$row_users['username'];
 $username = decrypt ($username, $key);
+
+if (isset(_POST['logoutafter'])) {
+    echo 'hi new user';
+    exit();
+}
 ?>
 
 <h2 style="background-color:#fff; text-align:left; color:#000000">Edit Clinician</h2>
@@ -88,6 +94,4 @@ $username = decrypt ($username, $key);
 			<button type="submit" class="button btn btn-primary btn-large" style="padding:10px; font-size:180%" name="update_clinician">Register</button>
 		</div>
 	</div>
-
-
 </form>

@@ -3,16 +3,25 @@ session_start();
 global $now,$expire,$user_id,$fullname,$loginname;
 if (isset($_SESSION['identification'])) {
 	/* global  $fullname;*/
-	$fname= $_SESSION['fname'];
-	$lname= $_SESSION['lname'];
+	$fname = $_SESSION['fname'];
+	$lname = $_SESSION['lname'];
 	$loginfullname = $fname . " " .$lname;
 
-	/*$fname= $_SESSION['fname'];*/
-	$rev_id= $_SESSION['id'];
-	$user_id=$_SESSION['identification'];
+	$rev_id = $_SESSION['id'];
+	$user_id =$_SESSION['identification'];
 
 	$now = time(); 
-	$expire= $_SESSION['expire'];}
+	$expire = $_SESSION['expire'];}
+    $expired = ((integer)$now) > ((integer)$expire);
+    // echo "$now > $expire".":".$expired;
+    if ($expired) {
+        echo '							
+	<div class="alert alert-success">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<strong>Hey!</strong>Your session has expired. Please Login again to continue!!.
+	</div>';
+        echo "<meta http-equiv=\"Refresh\" content=\"2; url=" . "logout.php?" . "\">";
+    }
 
 	?>
 	<!DOCTYPE html>

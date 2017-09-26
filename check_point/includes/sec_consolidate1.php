@@ -27,8 +27,6 @@ while ($row_form_creation=mysqli_fetch_array($form_creation)){
 
 	$clinician_id =$row_form_creation['clinician_id'];
 	$patient_id =$row_form_creation['patient_id'];
-
-
 	$SQL_clinician = "SELECT * FROM clinician WHERE id=$clinician_id";
 	$clinician = mysqli_query($bd,$SQL_clinician);
 
@@ -36,18 +34,8 @@ while ($row_form_creation=mysqli_fetch_array($form_creation)){
 	$art_clinic = $row_clinician['art_clinic'];
 	$clinician_name = $row_clinician['name'];
 
-	$SQL_patient = "SELECT * FROM patient WHERE id=$patient_id";
-	$patient = mysqli_query($bd,$SQL_patient);
-
-	$row_patient = mysqli_fetch_array($patient);
-	$firstname = $row_patient['firstname'];
-	$lastname = $row_patient['lastname'];
-	$art_id_num = $row_patient['art_id_num'];
-	$gender = $row_patient['gender'];
-	$dob = $row_patient['dob'];
-
-	$patient_name = $firstname .' '.$lastname;
-
+    $patient = new Patient($patient_id);
+    $patient_name = $patient->fullname;
 }
 
 echo '<h2 style="background-color:#dedd6;  text-align:center; color:#000000">Consolidate Expert Reviews</h2>
@@ -55,11 +43,11 @@ echo '<h2 style="background-color:#dedd6;  text-align:center; color:#000000">Con
 <form id="edit-profile" class="form-horizontal" action="cp_p1.php?p" method="post">
 	<h4 style="color:#69330c; padding:10px; background-color:#deed6;">3rdLineForm#: '. $formID.'</h4>
 	<table style="width:100%; background-color:#f7cf75; padding:5px;" >
-		<td><p style="color:#000">Name: <strong>'.$patient_name.'</strong>   ART Number: <strong>'.$art_id_num.' </strong> Gender: <strong>'.$gender.'</strong>
-			Dob: '.$dob.' </p>
+		<td><p style="color:#000">Name: <strong>'.$patient_name.'</strong>   ART Number: <strong>'.$patient->art_id_num.' </strong> Gender: <strong>'.$patient->gender.'</strong>
+			Dob: '.$patient->dob.' </p>
 		</td>
 		<td>
-			<p style="color:#000">Facility: <strong>'.$art_clinic.'</strong> Clinician: <strong>'.$clinician_name.'</strong> </p>
+			<p style="color:#000">Facility: <strong>'.$patient->art_clinic.'</strong> Clinician: <strong>'.$clinician_name.'</strong> </p>
 		</td>
 	</tr>
 </table>

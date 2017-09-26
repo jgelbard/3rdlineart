@@ -30,8 +30,6 @@
 			messages: {
 				weight: {
 					required: "Curr Weight",
-                        // min: "Under weight",
-                        // max: "Over weight"					
 				}, 
 			}
 		});
@@ -41,30 +39,16 @@
 <?php
 global $pat_id;
 $pat_id= $_GET['pat_id'];
-/*echo $pat_id;*/
 
-$patient=mysqli_query( $bd,"SELECT * FROM patient where id='$pat_id' "); 
-$row_pat=mysqli_fetch_array($patient);
+$patient = new Patient($pat_id);
+$client_name = $patient->fullname;
 
-$art_id_num =$row_pat['art_id_num'];
-$firstname =$row_pat['firstname'];
-$lastname =$row_pat['lastname'];
-$gender =$row_pat['gender'];
-$dob =$row_pat['dob'];
-$vl_sample_id =$row_pat['vl_sample_id'];
-
-$client_name = $firstname.' '.$lastname;
-
-echo '
-<form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$pat_id.'" method="post">
-
-	';
-	?> 
-
+echo '<form id="edit-profile" class="form-horizontal" action="app.php?pat_id='.$pat_id.'" method="post">';
+?> 
 	<h3>Client Name: <strong><i style="background-color:#f8f7f7; color:red"><?php echo $client_name; ?></i></strong></h3>
 
 	<input type="hidden" name="pat_id" value="<?php echo $pat_id; ?>" />
-	<input type="hidden" name="dob" value="<?php echo $dob; ?>"  />
+	<input type="hidden" name="dob" value="<?php echo $patient->dob; ?>"  />
 	<script>
 		<?php
 		for ($i=16; $i<25; $i++) {
